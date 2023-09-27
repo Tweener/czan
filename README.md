@@ -4,3 +4,7 @@
 <h1 align="center">Cezanne Android</h1>
 
 <p align="center">Tweener Labs Design System library for Android apps</p>
+
+## Introduction
+
+Introducing the "_Cezanne_" design system, framework used accross all [Tweener Labs](https://www.tweener-labs.com/) products. Named in honor of Paul Cezanne, a renowned painter from Aix-en-Provence, France, this system is our creative core, blending aesthetics and functionality to craft visually captivating and user-centric apps. 
