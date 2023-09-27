@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = Dependencies.Versions.Common.namespace
-    compileSdk = Dependencies.Versions.Common.compileSDK
+    namespace = Dependencies.Versions.Cezanne.namespace
+    compileSdk = Dependencies.Versions.Cezanne.compileSDK
 
     defaultConfig {
-        minSdk = Dependencies.Versions.Common.minSDK
+        minSdk = Dependencies.Versions.Cezanne.minSDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -48,6 +48,8 @@ android {
 dependencies {
 
     coreLibraryDesugaring(Dependencies.Libraries.desugarJdkLibs)
+
+    implementation(Dependencies.Libraries.tweenerCommon)
     implementation(Dependencies.Libraries.napier)
     implementation(Dependencies.Libraries.adMob)
 
@@ -70,4 +72,18 @@ dependencies {
     implementation(Dependencies.Libraries.AndroidX.Compose.activity)
     implementation(Dependencies.Libraries.AndroidX.Compose.navigation)
     implementation(Dependencies.Libraries.AndroidX.Compose.lifecycleRuntime)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register("release", MavenPublication::class) {
+                group = Dependencies.Versions.Cezanne.Jitpack.group
+                artifactId = Dependencies.Versions.Cezanne.Jitpack.artifactId
+                version = Dependencies.Versions.Cezanne.versionName
+
+                from(components["release"])
+            }
+        }
+    }
 }

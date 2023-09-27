@@ -9,20 +9,20 @@ object Dependencies {
 
     object Versions {
 
-        object Common {
+        object Cezanne {
             const val packageName = "com.tweener.cezanne"
             const val versionName = "1.0"
             const val versionCode = 1
-            const val applicationId = Common.packageName
-            const val namespace = Common.packageName + ".android"
+            const val applicationId = Cezanne.packageName
+            const val namespace = Cezanne.packageName + ".android"
             const val compileSDK = 34
             const val targetSDK = compileSDK
             const val minSDK = 24
-        }
 
-        object Jitpack {
-            const val group = "com.github.Tweener"
-            const val artifactId = "common-android"
+            object Jitpack {
+                const val group = "com.github.Tweener"
+                const val artifactId = "cezanne-android"
+            }
         }
 
         object Compiler {
@@ -32,6 +32,7 @@ object Dependencies {
 
         const val kotlin = "1.9.10"
         const val gradle = "8.1.1"
+        const val tweenerCommon = "2.0.0"
         const val coroutines = "1.7.3"
         const val napier = "2.6.1"
         const val composeCompilerExtension = "1.5.3"
@@ -54,6 +55,7 @@ object Dependencies {
 
     object Libraries {
 
+        const val tweenerCommon = "com.github.Tweener:common-android:${Versions.tweenerCommon}"
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
         const val napier = "io.github.aakira:napier:${Versions.napier}"
         const val adMob = "com.google.android.gms:play-services-ads:${Versions.adMob}"
