@@ -41,7 +41,6 @@ object Dependencies {
         const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.32.0"
-        const val adMob = "22.4.0"
 
         object AndroidX {
             const val material3 = "1.1.1"
@@ -58,7 +57,6 @@ object Dependencies {
         const val tweenerCommon = "com.github.Tweener:common-android:${Versions.tweenerCommon}"
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
         const val napier = "io.github.aakira:napier:${Versions.napier}"
-        const val adMob = "com.google.android.gms:play-services-ads:${Versions.adMob}"
 
         object AndroidX {
             const val material3 = "androidx.compose.material3:material3:${Versions.AndroidX.material3}"

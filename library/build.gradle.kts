@@ -51,7 +51,6 @@ dependencies {
 
     implementation(Dependencies.Libraries.tweenerCommon)
     implementation(Dependencies.Libraries.napier)
-    implementation(Dependencies.Libraries.adMob)
 
     // Android
     implementation(Dependencies.Libraries.AndroidX.material3)
