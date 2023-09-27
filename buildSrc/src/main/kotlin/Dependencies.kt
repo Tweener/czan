@@ -33,7 +33,6 @@ object Dependencies {
         const val kotlin = "1.9.10"
         const val gradle = "8.1.1"
         const val tweenerCommon = "2.0.0"
-        const val coroutines = "1.7.3"
         const val napier = "2.6.1"
         const val composeCompilerExtension = "1.5.3"
         const val compose = "1.5.1"
