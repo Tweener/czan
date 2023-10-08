@@ -49,8 +49,9 @@ dependencies {
 
     coreLibraryDesugaring(Dependencies.Libraries.desugarJdkLibs)
 
-    implementation(Dependencies.Libraries.tweenerCommon)
-    implementation(Dependencies.Libraries.napier)
+    // Tweener
+    implementation(Dependencies.Libraries.Tweener.Android.common)
+    implementation(Dependencies.Libraries.Tweener.Android.placeholder)
 
     // Android
     implementation(Dependencies.Libraries.AndroidX.material3)
@@ -58,7 +59,6 @@ dependencies {
 
     // Accompanist
     implementation(Dependencies.Libraries.Accompanist.systemUIController)
-    implementation(Dependencies.Libraries.Accompanist.placeholder)
 
     // Compose
     implementation(Dependencies.Libraries.AndroidX.Compose.ui)

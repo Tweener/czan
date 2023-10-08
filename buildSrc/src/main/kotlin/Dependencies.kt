@@ -12,7 +12,6 @@ object Dependencies {
         object Cezanne {
             const val packageName = "com.tweener.cezanne"
             const val versionName = "1.0"
-            const val versionCode = 1
             const val applicationId = Cezanne.packageName
             const val namespace = Cezanne.packageName + ".android"
             const val compileSDK = 34
@@ -32,7 +31,6 @@ object Dependencies {
 
         const val kotlin = "1.9.10"
         const val gradle = "8.1.1"
-        const val tweenerCommon = "2.0.0"
         const val napier = "2.6.1"
         const val composeCompilerExtension = "1.5.3"
         const val compose = "1.5.1"
@@ -40,6 +38,13 @@ object Dependencies {
         const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.32.0"
+
+        object Tweener {
+            object Android {
+                const val common = "2.0.1"
+                const val placeholder = "1.0.0"
+            }
+        }
 
         object AndroidX {
             const val material3 = "1.1.1"
@@ -53,9 +58,15 @@ object Dependencies {
 
     object Libraries {
 
-        const val tweenerCommon = "com.github.Tweener:common-android:${Versions.tweenerCommon}"
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
         const val napier = "io.github.aakira:napier:${Versions.napier}"
+
+        object Tweener {
+            object Android {
+                const val common = "com.github.Tweener:common-android:${Versions.Tweener.Android.common}"
+                const val placeholder = "com.github.Tweener:placeholder-material3:${Versions.Tweener.Android.placeholder}"
+            }
+        }
 
         object AndroidX {
             const val material3 = "androidx.compose.material3:material3:${Versions.AndroidX.material3}"
@@ -77,7 +88,6 @@ object Dependencies {
 
         object Accompanist {
             const val systemUIController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist}"
-            const val placeholder = "com.google.accompanist:accompanist-placeholder:${Versions.accompanist}"
         }
     }
 }
