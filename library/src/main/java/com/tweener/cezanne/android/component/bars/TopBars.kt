@@ -12,6 +12,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
@@ -35,9 +36,12 @@ fun CenterAlignedTopAppBar(
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
     logo: Painter? = null,
+    backgroundColor: Color? = null,
+    contentColor: Color? = null,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
-    val contentColor = MaterialTheme.colorScheme.onPrimary
+    val background = backgroundColor ?: MaterialTheme.colorScheme.primary
+    val content = contentColor ?: MaterialTheme.colorScheme.onPrimary
 
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -49,22 +53,22 @@ fun CenterAlignedTopAppBar(
                     Image(
                         modifier = Modifier.size(32.dp),
                         painter = logo,
-                        colorFilter = ColorFilter.tint(color = contentColor),
+                        colorFilter = ColorFilter.tint(color = content),
                         contentDescription = null
                     )
                 }
 
                 Text(
                     text = text,
-                    color = contentColor,
+                    color = content,
                     style = textStyle
                 )
             }
         },
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            actionIconContentColor = contentColor
+            containerColor = background,
+            actionIconContentColor = content
         )
     )
 }
