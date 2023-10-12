@@ -3,6 +3,7 @@ package com.tweener.cezanne.android.system
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.ColorInt
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 
@@ -16,7 +17,9 @@ import androidx.compose.runtime.DisposableEffect
 @Composable
 fun SystemBarsSystemUI(
     themeType: ThemeType,
-    activity: ComponentActivity
+    activity: ComponentActivity,
+    @ColorInt lightScrim: Int,
+    @ColorInt darkScrim: Int,
 ) {
     val useDarkTheme = shouldUseDarkTheme(themeType = themeType)
 
@@ -36,6 +39,3 @@ fun SystemBarsSystemUI(
         onDispose {}
     }
 }
-
-private val lightScrim = android.graphics.Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
-private val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
