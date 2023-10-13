@@ -25,5 +25,7 @@ object CezanneUiDefaults {
         val color: Color @Composable get() = MaterialTheme.colorScheme.primaryContainer
 
         val selectedColor: Color @Composable get() = MaterialTheme.colorScheme.primary
+
+        val dashColor: Color @Composable get() = MaterialTheme.colorScheme.background
     }
 }
