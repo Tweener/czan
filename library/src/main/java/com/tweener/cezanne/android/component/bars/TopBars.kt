@@ -21,6 +21,7 @@ import com.tweener.cezanne.android.component.bars.icon.ArrowBackIconButton
 import com.tweener.cezanne.android.component.bars.icon.CloseBackIconButton
 import com.tweener.cezanne.android.component.text.Text
 import com.tweener.cezanne.android.preview.UiModePreviews
+import com.tweener.cezanne.android.system.CezanneUiDefaults
 import com.tweener.cezanne.android.theme.CezanneTheme
 import com.tweener.cezanne.android.theme.Size
 
@@ -36,13 +37,10 @@ fun CenterAlignedTopAppBar(
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
     logo: Painter? = null,
-    backgroundColor: Color? = null,
-    contentColor: Color? = null,
+    backgroundColor: Color = CezanneUiDefaults.TopBar.backgroundColor,
+    contentColor: Color = CezanneUiDefaults.TopBar.contentColor,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
-    val background = backgroundColor ?: MaterialTheme.colorScheme.primary
-    val content = contentColor ?: MaterialTheme.colorScheme.onPrimary
-
     CenterAlignedTopAppBar(
         modifier = modifier,
         title = {
@@ -53,22 +51,22 @@ fun CenterAlignedTopAppBar(
                     Image(
                         modifier = Modifier.size(32.dp),
                         painter = logo,
-                        colorFilter = ColorFilter.tint(color = content),
+                        colorFilter = ColorFilter.tint(color = contentColor),
                         contentDescription = null
                     )
                 }
 
                 Text(
                     text = text,
-                    color = content,
+                    color = contentColor,
                     style = textStyle
                 )
             }
         },
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = background,
-            actionIconContentColor = content
+            containerColor = backgroundColor,
+            actionIconContentColor = contentColor
         )
     )
 }
