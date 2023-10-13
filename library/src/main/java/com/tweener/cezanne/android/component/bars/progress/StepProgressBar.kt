@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tweener.cezanne.android.preview.UiModePreviews
 import com.tweener.cezanne.android.system.CezanneUiDefaults
@@ -36,7 +37,8 @@ fun StepProgressBar(
     selectedIndex: Int = 0,
     color: Color = CezanneUiDefaults.ProgressBar.color,
     selectedColor: Color = CezanneUiDefaults.ProgressBar.selectedColor,
-    dashColor: Color = CezanneUiDefaults.ProgressBar.dashColor
+    dashColor: Color = CezanneUiDefaults.ProgressBar.dashColor,
+    dashWidth: Dp = 10.dp
 ) {
     val progressBarHeight = 4.dp
     val animationDuration = 300
@@ -68,7 +70,7 @@ fun StepProgressBar(
             ) {
                 for (stepIndex in 0..<stepsCount - 1) {
                     Divider(
-                        modifier = Modifier.width(20.dp),
+                        modifier = Modifier.width(dashWidth),
                         thickness = progressBarHeight,
                         color = dashColor
                     )
