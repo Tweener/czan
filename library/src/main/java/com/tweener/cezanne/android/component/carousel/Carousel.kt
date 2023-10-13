@@ -32,13 +32,12 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Carousel(
-    itemsCount: Int,
     modifier: Modifier = Modifier,
     userScrollEnabled: Boolean = true,
     showDots: Boolean = true,
     animationType: CarouselAnimationType = CarouselAnimationType.NONE,
     slideDuration: Duration = CezanneUiDefaults.Carousel.slideDuration(),
-    pagerState: PagerState = rememberPagerState { itemsCount },
+    pagerState: PagerState = rememberPagerState { 0 },
     itemContent: @Composable (index: Int) -> Unit,
 ) {
     val isDragged by pagerState.interactionSource.collectIsDraggedAsState()
@@ -48,7 +47,7 @@ fun Carousel(
         LaunchedEffect(pageIndex) {
             delay(slideDuration)
 
-            val newPageIndex = (pagerState.currentPage + 1) % itemsCount
+            val newPageIndex = (pagerState.currentPage + 1) % pagerState.pageCount
             if (newPageIndex != 0 || animationType != CarouselAnimationType.ONE_TIME) {
                 pagerState.animateScrollToPage(newPageIndex)
                 pageIndex = newPageIndex
@@ -73,7 +72,7 @@ fun Carousel(
 
             CarouselDots(
                 modifier = Modifier.fillMaxWidth(),
-                pageCount = itemsCount,
+                pageCount = pagerState.pageCount,
                 currentPage = if (isDragged) pagerState.currentPage else pagerState.targetPage,
             )
         }
@@ -85,7 +84,7 @@ fun Carousel(
 @Composable
 private fun CarouselWithDotsPreview() {
     CezanneTheme {
-        Carousel(itemsCount = 5) {
+        Carousel(pagerState = rememberPagerState { 4 }) {
             Text("Page $it")
         }
     }
@@ -97,7 +96,7 @@ private fun CarouselWithDotsPreview() {
 private fun CarouselWithoutDotsPreview() {
     CezanneTheme {
         Carousel(
-            itemsCount = 5,
+            pagerState = rememberPagerState { 4 },
             showDots = false
         ) {
             Text("Page $it")
