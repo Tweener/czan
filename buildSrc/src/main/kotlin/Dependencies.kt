@@ -33,7 +33,7 @@ object Dependencies {
         const val gradle = "8.1.1"
         const val napier = "2.6.1"
         const val composeCompilerExtension = "1.5.3"
-        const val compose = "1.5.1"
+        const val compose = "1.6.0-alpha03"
         const val activityCompose = "1.7.2"
         const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
