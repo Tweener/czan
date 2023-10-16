@@ -1,9 +1,6 @@
 package com.tweener.cezanne.android.component.button
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,13 +17,13 @@ fun FloatingActionButton(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null
 ) {
-    LargeFloatingActionButton(
+    androidx.compose.material3.SmallFloatingActionButton(
         modifier = modifier,
         onClick = { onClick?.invoke() },
         containerColor = MaterialTheme.colorScheme.primary
     ) {
         Icon(
-            modifier = Modifier.size(size = FloatingActionButtonDefaults.LargeIconSize),
+//            modifier = Modifier.size(size = FloatingActionButtonDefaults.LargeIconSize),
             imageVector = icon,
             contentDescription = null
         )
