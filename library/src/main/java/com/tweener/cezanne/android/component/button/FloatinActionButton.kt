@@ -17,7 +17,7 @@ fun FloatingActionButton(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null
 ) {
-    androidx.compose.material3.SmallFloatingActionButton(
+    androidx.compose.material3.FloatingActionButton(
         modifier = modifier,
         onClick = { onClick?.invoke() },
         containerColor = MaterialTheme.colorScheme.primary
