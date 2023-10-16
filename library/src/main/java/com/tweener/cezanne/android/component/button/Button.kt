@@ -3,6 +3,7 @@ package com.tweener.cezanne.android.component.button
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.Button
@@ -52,7 +53,9 @@ fun Button(
             val endPadding = if (text != null) Size.Padding.ExtraSmall else 0.dp
 
             Icon(
-                modifier = Modifier.padding(end = endPadding),
+                modifier = Modifier
+                    .size(size.iconSize)
+                    .padding(end = endPadding),
                 imageVector = icon,
                 contentDescription = null
             )
