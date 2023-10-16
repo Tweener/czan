@@ -30,10 +30,6 @@ enum class ButtonSize {
         private val SmallButtonHorizontalPadding = 14.dp
         private val SmallButtonVerticalPadding = 8.dp
         private val SmallButtonWithIconHorizontalStartPadding = 12.dp
-
-        private val BigButtonIconSize = 16.dp
-        private val ButtonIconSize = 12.dp
-        private val SmallButtonIconSize = 8.dp
     }
 
     val height: Dp
@@ -87,14 +83,5 @@ enum class ButtonSize {
                 end = SmallButtonHorizontalPadding,
                 bottom = SmallButtonVerticalPadding
             )
-        }
-
-    val iconSize: Dp
-        @Composable
-        @ReadOnlyComposable
-        get() = when (this) {
-            BIG -> BigButtonIconSize
-            REGULAR -> ButtonIconSize
-            SMALL -> SmallButtonIconSize
         }
 }

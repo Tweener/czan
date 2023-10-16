@@ -1,8 +1,8 @@
 package com.tweener.cezanne.android.component.button
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
@@ -50,15 +50,14 @@ fun Button(
         border = if (outlined) BorderStroke(1.dp, style.containerColor) else null
     ) {
         if (icon != null) {
-            val endPadding = if (text != null) Size.Padding.ExtraSmall else 0.dp
-
             Icon(
-                modifier = Modifier
-                    .size(size.iconSize)
-                    .padding(end = endPadding),
                 imageVector = icon,
                 contentDescription = null
             )
+
+            if (text != null) {
+                Spacer(modifier = Modifier.size(Size.Padding.ExtraSmall))
+            }
         }
 
         if (text != null) {
