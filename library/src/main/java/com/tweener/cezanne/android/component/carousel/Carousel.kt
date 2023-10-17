@@ -55,9 +55,7 @@ fun Carousel(
         }
     }
 
-    Column(
-        modifier = modifier.fillMaxWidth()
-    ) {
+    Column(modifier = modifier.fillMaxWidth()) {
         HorizontalPager(
             modifier = Modifier.fillMaxWidth(),
             state = pagerState,

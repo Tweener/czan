@@ -30,5 +30,7 @@ object CezanneUiDefaults {
 
     object Carousel {
         fun slideDuration() = 3.seconds
+
+        val dropShadowColor: Color @Composable get() = MaterialTheme.colorScheme.onBackground
     }
 }
