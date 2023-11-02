@@ -71,6 +71,10 @@ dependencies {
     implementation(Dependencies.Libraries.AndroidX.Compose.activity)
     implementation(Dependencies.Libraries.AndroidX.Compose.navigation)
     implementation(Dependencies.Libraries.AndroidX.Compose.lifecycleRuntime)
+
+    // Image fetcher
+    implementation(Dependencies.Libraries.glide)
+    implementation(Dependencies.Libraries.glidePlaceholder)
 }
 
 afterEvaluate {

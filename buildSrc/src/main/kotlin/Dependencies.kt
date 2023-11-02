@@ -38,6 +38,7 @@ object Dependencies {
         const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.32.0"
+        const val glide = "2.1.0"
 
         object Tweener {
             object Android {
@@ -60,6 +61,8 @@ object Dependencies {
 
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
         const val napier = "io.github.aakira:napier:${Versions.napier}"
+        const val glide = "com.github.skydoves:landscapist-glide:${Versions.glide}"
+        const val glidePlaceholder = "com.github.skydoves:landscapist-placeholder:${Versions.glide}"
 
         object Tweener {
             object Android {
