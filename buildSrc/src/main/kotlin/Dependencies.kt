@@ -38,7 +38,7 @@ object Dependencies {
         const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.32.0"
-        const val glide = "2.1.0"
+        const val glide = "2.2.11"
 
         object Tweener {
             object Android {
