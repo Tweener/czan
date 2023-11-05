@@ -38,7 +38,9 @@ fun Image(
                 highlightColor = highlightColor
             )
 
-            +PlaceholderPlugin.Failure(painterResource(id = placeholder))
+            if (placeholder != 0) {
+                +PlaceholderPlugin.Failure(painterResource(id = placeholder))
+            }
         }
     )
 }
