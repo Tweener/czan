@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -74,12 +75,14 @@ fun CenterAlignedTopAppBar(
 @Composable
 fun SimpleTopBar(
     title: String,
+    textStyle: TextStyle,
     modifier: Modifier = Modifier,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopBarWithIcon(
         modifier = modifier,
         title = title,
+        style = textStyle,
         actions = actions
     )
 }
@@ -87,6 +90,7 @@ fun SimpleTopBar(
 @Composable
 fun TopBarWithBackButton(
     title: String,
+    textStyle: TextStyle,
     modifier: Modifier = Modifier,
     actions: @Composable RowScope.() -> Unit = {},
     onBackClicked: (() -> Unit)? = null
@@ -94,6 +98,7 @@ fun TopBarWithBackButton(
     TopBarWithIcon(
         modifier = modifier,
         title = title,
+        style = textStyle,
         navigationIcon = { ArrowBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -102,6 +107,7 @@ fun TopBarWithBackButton(
 @Composable
 fun TopBarWithCloseButton(
     title: String,
+    textStyle: TextStyle,
     modifier: Modifier = Modifier,
     actions: @Composable RowScope.() -> Unit = {},
     onBackClicked: (() -> Unit)? = null
@@ -109,6 +115,7 @@ fun TopBarWithCloseButton(
     TopBarWithIcon(
         modifier = modifier,
         title = title,
+        style = textStyle,
         navigationIcon = { CloseBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -119,12 +126,13 @@ fun TopBarWithCloseButton(
 private fun TopBarWithIcon(
     title: String,
     modifier: Modifier = Modifier,
+    style: TextStyle = LocalTextStyle.current,
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     TopAppBar(
         modifier = modifier,
-        title = { Text(text = title) },
+        title = { Text(text = title, style = style) },
         navigationIcon = navigationIcon,
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(),
@@ -138,7 +146,7 @@ private fun TopLevelScreenTopBarPreview() {
     CezanneTheme {
         CenterAlignedTopAppBar(
             title = "App name",
-            textStyle = MaterialTheme.typography.bodyLarge
+            textStyle = MaterialTheme.typography.titleLarge
         )
     }
 }
@@ -149,6 +157,7 @@ private fun SimpleTopBarPreview() {
     CezanneTheme {
         SimpleTopBar(
             title = "App name",
+            textStyle = MaterialTheme.typography.titleLarge
         )
     }
 }
@@ -157,7 +166,10 @@ private fun SimpleTopBarPreview() {
 @Composable
 private fun TopBarWithBackButtonPreview() {
     CezanneTheme {
-        TopBarWithBackButton(title = "Title")
+        TopBarWithBackButton(
+            title = "Title",
+            textStyle = MaterialTheme.typography.titleLarge
+        )
     }
 }
 
@@ -165,6 +177,9 @@ private fun TopBarWithBackButtonPreview() {
 @Composable
 private fun TopBarWithCloseButtonPreview() {
     CezanneTheme {
-        TopBarWithCloseButton(title = "Title")
+        TopBarWithCloseButton(
+            title = "Title",
+            textStyle = MaterialTheme.typography.titleLarge
+        )
     }
 }
