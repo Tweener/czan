@@ -33,7 +33,7 @@ import com.tweener.cezanne.android.theme.Size
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CenterAlignedTopAppBar(
-    text: String,
+    title: String,
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
     logo: Painter? = null,
@@ -57,7 +57,7 @@ fun CenterAlignedTopAppBar(
                 }
 
                 Text(
-                    text = text,
+                    text = title,
                     color = contentColor,
                     style = textStyle
                 )
@@ -68,6 +68,19 @@ fun CenterAlignedTopAppBar(
             containerColor = backgroundColor,
             actionIconContentColor = contentColor
         )
+    )
+}
+
+@Composable
+fun SimpleTopBar(
+    title: String,
+    modifier: Modifier = Modifier,
+    actions: @Composable RowScope.() -> Unit = {}
+) {
+    TopBarWithIcon(
+        modifier = modifier,
+        title = title,
+        actions = actions
     )
 }
 
@@ -124,8 +137,18 @@ private fun TopBarWithIcon(
 private fun TopLevelScreenTopBarPreview() {
     CezanneTheme {
         CenterAlignedTopAppBar(
-            text = "App name",
+            title = "App name",
             textStyle = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun SimpleTopBarPreview() {
+    CezanneTheme {
+        SimpleTopBar(
+            title = "App name",
         )
     }
 }
