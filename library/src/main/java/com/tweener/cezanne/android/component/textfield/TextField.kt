@@ -54,16 +54,18 @@ fun TextField(
         visualTransformation = inputType.visualTransformation
     }
 
+    val inputValueChanged: (String) -> Unit = {
+        inputValue = it
+        onValueChanged?.invoke(inputValue)
+    }
+
     TextField(
         modifier = modifier
             .onFocusChanged { focusState -> hasFocus = focusState.isFocused }
             .applyBorder(hasFocus = hasFocus),
         value = inputValue,
         placeholder = placeholderText?.let { { Text(it, style = textStyle) } },
-        onValueChange = {
-            inputValue = it
-            onValueChanged?.invoke(it)
-        },
+        onValueChange = { inputValueChanged(it) },
         label = label?.let { { Text(it) } },
         enabled = enabled,
         textStyle = textStyle,
@@ -79,7 +81,7 @@ fun TextField(
                     when (inputType) {
                         TextFieldType.PASSWORD_VISIBLE -> inputType = TextFieldType.PASSWORD_HIDDEN
                         TextFieldType.PASSWORD_HIDDEN -> inputType = TextFieldType.PASSWORD_VISIBLE
-                        TextFieldType.SEARCH -> inputValue = ""
+                        TextFieldType.SEARCH -> inputValueChanged("")
                         else -> Unit // Nothing to do for the other types
                     }
                 }) {
