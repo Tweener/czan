@@ -6,8 +6,6 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -26,8 +24,6 @@ enum class TextFieldType {
     SEARCH;
 
     val leadingIcon: ImageVector?
-        @Composable
-        @ReadOnlyComposable
         get() = when (this) {
             TEXT -> null
             NUMBER -> null
@@ -38,8 +34,6 @@ enum class TextFieldType {
         }
 
     val trailingIcon: ImageVector?
-        @Composable
-        @ReadOnlyComposable
         get() = when (this) {
             TEXT -> null
             NUMBER -> null
@@ -50,8 +44,6 @@ enum class TextFieldType {
         }
 
     val visualTransformation: VisualTransformation
-        @Composable
-        @ReadOnlyComposable
         get() = when (this) {
             TEXT -> VisualTransformation.None
             NUMBER -> VisualTransformation.None
@@ -62,8 +54,6 @@ enum class TextFieldType {
         }
 
     val keyboardOptions: KeyboardOptions
-        @Composable
-        @ReadOnlyComposable
         get() = when (this) {
             TEXT -> KeyboardOptions.Default
             NUMBER -> KeyboardOptions(keyboardType = KeyboardType.Number)

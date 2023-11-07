@@ -3,9 +3,11 @@ package com.tweener.cezanne.android.component.textfield
 import androidx.compose.foundation.border
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.tweener.cezanne.android.component.text.Text
 import com.tweener.cezanne.android.component.textfield.TextFieldDefaults.applyBorder
@@ -40,10 +43,16 @@ fun TextField(
     singleLine: Boolean = false,
     imeAction: ImeAction = ImeAction.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
-    onValueChanged: ((String) -> Unit)? = null
+    onValueChanged: ((String) -> Unit)? = null,
 ) {
     var inputValue by remember { mutableStateOf(text) }
+    var inputType by remember { mutableStateOf(type) }
     var hasFocus by remember { mutableStateOf(false) }
+    var visualTransformation by remember { mutableStateOf(VisualTransformation.None) }
+
+    LaunchedEffect(inputType) {
+        visualTransformation = inputType.visualTransformation
+    }
 
     TextField(
         modifier = modifier
@@ -59,12 +68,25 @@ fun TextField(
         enabled = enabled,
         textStyle = textStyle,
         singleLine = singleLine,
-        visualTransformation = type.visualTransformation,
-        keyboardOptions = type.keyboardOptions.copy(imeAction = imeAction),
+        visualTransformation = visualTransformation,
+        keyboardOptions = inputType.keyboardOptions.copy(imeAction = imeAction),
         keyboardActions = keyboardActions,
         shape = TextFieldDefaults.shape(),
-        leadingIcon = type.leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
-        trailingIcon = type.trailingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+        leadingIcon = inputType.leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+        trailingIcon = inputType.trailingIcon?.let {
+            {
+                IconButton(onClick = {
+                    when (inputType) {
+                        TextFieldType.PASSWORD_VISIBLE -> inputType = TextFieldType.PASSWORD_HIDDEN
+                        TextFieldType.PASSWORD_HIDDEN -> inputType = TextFieldType.PASSWORD_VISIBLE
+                        TextFieldType.SEARCH -> inputValue = ""
+                        else -> Unit // Nothing to do for the other types
+                    }
+                }) {
+                    Icon(imageVector = it, contentDescription = null)
+                }
+            }
+        },
         colors = TextFieldDefaults.textFieldColors()
     )
 }
@@ -83,7 +105,13 @@ fun TextField(
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     onValueChanged: ((TextFieldValue) -> Unit)? = null
 ) {
+    var inputType by remember { mutableStateOf(type) }
     var hasFocus by remember { mutableStateOf(false) }
+    var visualTransformation by remember { mutableStateOf(VisualTransformation.None) }
+
+    LaunchedEffect(inputType) {
+        visualTransformation = inputType.visualTransformation
+    }
 
     TextField(
         modifier = modifier
@@ -91,20 +119,29 @@ fun TextField(
             .applyBorder(hasFocus = hasFocus),
         value = text,
         placeholder = placeholderText?.let { { Text(it, style = textStyle) } },
-        onValueChange = {
-            if (text != it)
-                onValueChanged?.invoke(it)
-        },
+        onValueChange = { if (text != it) onValueChanged?.invoke(it) },
         label = label?.let { { Text(it) } },
         enabled = enabled,
         textStyle = textStyle,
         singleLine = singleLine,
-        visualTransformation = type.visualTransformation,
-        keyboardOptions = type.keyboardOptions.copy(imeAction = imeAction),
+        visualTransformation = visualTransformation,
+        keyboardOptions = inputType.keyboardOptions.copy(imeAction = imeAction),
         keyboardActions = keyboardActions,
         shape = TextFieldDefaults.shape(),
-        leadingIcon = type.leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
-        trailingIcon = type.trailingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+        leadingIcon = inputType.leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+        trailingIcon = inputType.trailingIcon?.let {
+            {
+                IconButton(onClick = {
+                    when (inputType) {
+                        TextFieldType.PASSWORD_VISIBLE -> inputType = TextFieldType.PASSWORD_HIDDEN
+                        TextFieldType.PASSWORD_HIDDEN -> inputType = TextFieldType.PASSWORD_VISIBLE
+                        else -> Unit // Nothing to do for the other types
+                    }
+                }) {
+                    Icon(imageVector = it, contentDescription = null)
+                }
+            }
+        },
         colors = TextFieldDefaults.textFieldColors()
     )
 }
