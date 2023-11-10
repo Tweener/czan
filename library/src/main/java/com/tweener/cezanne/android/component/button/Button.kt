@@ -32,14 +32,15 @@ fun Button(
     style: ButtonStyle = ButtonStyle.PRIMARY,
     enabled: Boolean = true,
     outlined: Boolean = false,
-    icon: ImageVector? = null,
+    leadingIcon: ImageVector? = null,
+    trailingIcon: ImageVector? = null,
     onClick: (() -> Unit)? = null
 ) {
     Button(
         modifier = modifier.height(size.height),
         enabled = enabled,
         onClick = { onClick?.invoke() },
-        contentPadding = if (icon != null && text != null) size.contentWithIconPadding else size.contentPadding,
+        contentPadding = if (leadingIcon != null && text != null) size.contentWithIconPadding else size.contentPadding,
         shape = size.shape,
         colors = ButtonDefaults.buttonColors(
             containerColor = if (outlined) Color.Transparent else style.containerColor,
@@ -49,9 +50,9 @@ fun Button(
         ),
         border = if (outlined) BorderStroke(1.dp, style.containerColor) else null
     ) {
-        if (icon != null) {
+        if (leadingIcon != null) {
             Icon(
-                imageVector = icon,
+                imageVector = leadingIcon,
                 contentDescription = null
             )
 
@@ -64,6 +65,17 @@ fun Button(
             Text(
                 text = text,
                 style = size.textStyle
+            )
+        }
+
+        if (trailingIcon != null) {
+            if (text != null) {
+                Spacer(modifier = Modifier.size(Size.Padding.ExtraSmall))
+            }
+
+            Icon(
+                imageVector = trailingIcon,
+                contentDescription = null
             )
         }
     }
@@ -96,25 +108,50 @@ private fun PrimaryButtonSmallEnabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun PrimaryButtonRegularWithIconEnabledPreview() {
+private fun PrimaryButtonRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun PrimaryButtonSmallRegularWithIconEnabledPreview() {
+private fun PrimaryButtonRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun PrimaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             size = ButtonSize.SMALL,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun PrimaryButtonSmallRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            size = ButtonSize.SMALL,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -144,25 +181,50 @@ private fun PrimaryButtonSmallRegularDisabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun PrimaryButtonRegularWithIconDisabledPreview() {
+private fun PrimaryButtonRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun PrimaryButtonSmallRegularWithIconDisabledPreview() {
+private fun PrimaryButtonRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun PrimaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             size = ButtonSize.SMALL,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun PrimaryButtonSmallRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            size = ButtonSize.SMALL,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -210,27 +272,54 @@ private fun SecondaryButtonSmallEnabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun SecondaryButtonRegularWithIconEnabledPreview() {
+private fun SecondaryButtonRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             style = ButtonStyle.SECONDARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun SecondaryButtonSmallRegularWithIconEnabledPreview() {
+private fun SecondaryButtonRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            style = ButtonStyle.SECONDARY,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun SecondaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             size = ButtonSize.SMALL,
             style = ButtonStyle.SECONDARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun SecondaryButtonSmallRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            size = ButtonSize.SMALL,
+            style = ButtonStyle.SECONDARY,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -262,27 +351,54 @@ private fun SecondaryButtonSmallRegularDisabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun SecondaryButtonRegularWithIconDisabledPreview() {
+private fun SecondaryButtonRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             style = ButtonStyle.SECONDARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun SecondaryButtonSmallRegularWithIconDisabledPreview() {
+private fun SecondaryButtonRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            style = ButtonStyle.SECONDARY,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun SecondaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             size = ButtonSize.SMALL,
             style = ButtonStyle.SECONDARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun SecondaryButtonSmallRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            size = ButtonSize.SMALL,
+            style = ButtonStyle.SECONDARY,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -318,27 +434,54 @@ private fun TertiaryButtonSmallEnabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun TertiaryButtonRegularWithIconEnabledPreview() {
+private fun TertiaryButtonRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             style = ButtonStyle.TERTIARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun TertiaryButtonSmallRegularWithIconEnabledPreview() {
+private fun TertiaryButtonRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            style = ButtonStyle.TERTIARY,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun TertiaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             size = ButtonSize.SMALL,
             style = ButtonStyle.TERTIARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun TertiaryButtonSmallRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            size = ButtonSize.SMALL,
+            style = ButtonStyle.TERTIARY,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -370,27 +513,54 @@ private fun TertiaryButtonSmallRegularDisabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun TertiaryButtonRegularWithIconDisabledPreview() {
+private fun TertiaryButtonRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             style = ButtonStyle.TERTIARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun TertiaryButtonSmallRegularWithIconDisabledPreview() {
+private fun TertiaryButtonRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            style = ButtonStyle.TERTIARY,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun TertiaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             size = ButtonSize.SMALL,
             style = ButtonStyle.TERTIARY,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun TertiaryButtonSmallRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            size = ButtonSize.SMALL,
+            style = ButtonStyle.TERTIARY,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -426,27 +596,54 @@ private fun ErrorButtonSmallEnabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun ErrorButtonRegularWithIconEnabledPreview() {
+private fun ErrorButtonRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             style = ButtonStyle.ERROR,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun ErrorButtonSmallRegularWithIconEnabledPreview() {
+private fun ErrorButtonRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            style = ButtonStyle.ERROR,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun ErrorButtonSmallRegularWithLeadingIconEnabledPreview() {
     CezanneTheme {
         Button(
             text = "Enabled with icon",
             enabled = true,
             size = ButtonSize.SMALL,
             style = ButtonStyle.ERROR,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun ErrorButtonSmallRegularWithTrailingIconEnabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Enabled with icon",
+            enabled = true,
+            size = ButtonSize.SMALL,
+            style = ButtonStyle.ERROR,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
@@ -478,27 +675,54 @@ private fun ErrorButtonSmallRegularDisabledPreview() {
 
 @UiModePreviews
 @Composable
-private fun ErrorButtonRegularWithIconDisabledPreview() {
+private fun ErrorButtonRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             style = ButtonStyle.ERROR,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
         )
     }
 }
 
 @UiModePreviews
 @Composable
-private fun ErrorButtonSmallRegularWithIconDisabledPreview() {
+private fun ErrorButtonRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            style = ButtonStyle.ERROR,
+            trailingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun ErrorButtonSmallRegularWithLeadingIconDisabledPreview() {
     CezanneTheme {
         Button(
             text = "Disabled with icon",
             enabled = false,
             size = ButtonSize.SMALL,
             style = ButtonStyle.ERROR,
-            icon = Icons.Rounded.Add
+            leadingIcon = Icons.Rounded.Add
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun ErrorButtonSmallRegularWithTrailingIconDisabledPreview() {
+    CezanneTheme {
+        Button(
+            text = "Disabled with icon",
+            enabled = false,
+            size = ButtonSize.SMALL,
+            style = ButtonStyle.ERROR,
+            trailingIcon = Icons.Rounded.Add
         )
     }
 }
