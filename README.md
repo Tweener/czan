@@ -3,7 +3,7 @@
 
 <h1 align="center">Cezanne Android</h1>
 
-<p align="center">Tweener Labs Design System library for Android apps</p>
+<p align="center">Design System library for apps running on Jetpack Compose</p>
 
 ## Introduction
 
