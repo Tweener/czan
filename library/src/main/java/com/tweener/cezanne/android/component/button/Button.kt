@@ -36,11 +36,13 @@ fun Button(
     trailingIcon: ImageVector? = null,
     onClick: (() -> Unit)? = null
 ) {
+    val shouldUseIconPadding = (leadingIcon != null || trailingIcon != null) && text != null
+
     Button(
         modifier = modifier.height(size.height),
         enabled = enabled,
         onClick = { onClick?.invoke() },
-        contentPadding = if (leadingIcon != null && text != null) size.contentWithIconPadding else size.contentPadding,
+        contentPadding = if (shouldUseIconPadding) size.contentWithIconPadding else size.contentPadding,
         shape = size.shape,
         colors = ButtonDefaults.buttonColors(
             containerColor = if (outlined) Color.Transparent else style.containerColor,
