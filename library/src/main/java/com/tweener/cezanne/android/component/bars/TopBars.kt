@@ -52,7 +52,7 @@ fun CenterAlignedTopAppBar(
             ) {
                 logo?.let {
                     Image(
-                        modifier = Modifier.size(32.dp),
+                        modifier = Modifier.size(42.dp),
                         painter = logo,
                         colorFilter = ColorFilter.tint(color = contentColor),
                         contentDescription = null
