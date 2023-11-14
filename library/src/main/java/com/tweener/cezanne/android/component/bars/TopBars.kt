@@ -47,7 +47,7 @@ fun CenterAlignedTopAppBar(
         modifier = modifier,
         title = {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(Size.Padding.Default),
+                horizontalArrangement = Arrangement.spacedBy(Size.Padding.Small),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 logo?.let {
