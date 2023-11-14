@@ -3,8 +3,10 @@
 
 <h1 align="center">Cezanne Android</h1>
 
-<p align="center">Tweener Labs Design System library for Android apps</p>
+<p align="center">Design System library for apps running on Jetpack Compose</p>
 
 ## Introduction
 
-Introducing the "_Cezanne_" design system, framework used accross all [Tweener Labs](https://www.tweener-labs.com/) products. Named in honor of Paul Cezanne, a renowned painter from Aix-en-Provence, France, this system is our creative core, blending aesthetics and functionality to craft visually captivating and user-centric apps. 
+Introducing the "_Cezanne_" design system, named in honor of Paul Cezanne, a renowned painter from Aix-en-Provence, France. This framework is a wrapper of [Material 3](https://m3.material.io/), Google's open-source design system, and is specifically adapted for apps running on [Jetpack Compose](https://developer.android.com/jetpack/compose).
+
+This system is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can use to build your app.
