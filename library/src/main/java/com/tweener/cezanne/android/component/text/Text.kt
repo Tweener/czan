@@ -1,10 +1,12 @@
 package com.tweener.cezanne.android.component.text
 
+import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -51,6 +53,36 @@ fun Text(
                 }
             }
         }
+    )
+}
+
+@Composable
+fun Text(
+    text: AnnotatedString,
+    modifier: Modifier = Modifier,
+    style: TextStyle = LocalTextStyle.current,
+    color: Color = Color.Unspecified,
+    fontStyle: FontStyle? = null,
+    fontWeight: FontWeight? = null,
+    textAlign: TextAlign? = null,
+    overflow: TextOverflow = TextOverflow.Clip,
+    lines: Int? = null,
+    maxLines: Int = Int.MAX_VALUE,
+    minLines: Int = 1,
+    inlineContent: Map<String, InlineTextContent> = mapOf(),
+) {
+    Text(
+        modifier = modifier,
+        text = text,
+        color = color,
+        fontStyle = fontStyle,
+        fontWeight = fontWeight,
+        textAlign = textAlign,
+        overflow = overflow,
+        maxLines = lines ?: maxLines,
+        minLines = lines ?: minLines,
+        style = style,
+        inlineContent = inlineContent,
     )
 }
 
