@@ -69,12 +69,12 @@ fun Modifier.horizontalGradientBackground(
     }
 
 fun Modifier.bottomBorder(
-    strokeWidth: Dp,
+    width: Dp,
     color: Color
 ) =
     composed {
         val density = LocalDensity.current
-        val strokeWidthPx = density.run { strokeWidth.toPx() }
+        val strokeWidthPx = density.run { width.toPx() }
 
         Modifier.drawBehind {
             val width = size.width
@@ -84,6 +84,24 @@ fun Modifier.bottomBorder(
                 color = color,
                 start = Offset(x = 0f, y = height),
                 end = Offset(x = width, y = height),
+                strokeWidth = strokeWidthPx
+            )
+        }
+    }
+
+fun Modifier.topBorder(
+    width: Dp,
+    color: Color
+) =
+    composed {
+        val density = LocalDensity.current
+        val strokeWidthPx = density.run { width.toPx() }
+
+        Modifier.drawBehind {
+            drawLine(
+                color = color,
+                start = Offset(x = 0f, y = 0f),
+                end = Offset(x = size.width, y = 0f),
                 strokeWidth = strokeWidthPx
             )
         }
