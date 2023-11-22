@@ -39,20 +39,10 @@ enum class ButtonStyle {
     val disabledContainerColor: Color
         @Composable
         @ReadOnlyComposable
-        get() = when (this) {
-            PRIMARY -> MaterialTheme.colorScheme.primary.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-            SECONDARY -> MaterialTheme.colorScheme.secondary.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-            TERTIARY -> MaterialTheme.colorScheme.tertiary.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-            ERROR -> MaterialTheme.colorScheme.error.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-        }
+        get() = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
 
     val disabledContentColor: Color
         @Composable
         @ReadOnlyComposable
-        get() = when (this) {
-            PRIMARY -> MaterialTheme.colorScheme.onPrimary.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-            SECONDARY -> MaterialTheme.colorScheme.onSecondary.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-            TERTIARY -> MaterialTheme.colorScheme.onTertiary.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-            ERROR -> MaterialTheme.colorScheme.onError.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
-        }
+        get() = MaterialTheme.colorScheme.onSurface.copy(alpha = CezanneUiDefaults.uiDisabledAlpha())
 }
