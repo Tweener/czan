@@ -7,6 +7,6 @@
 
 ## Introduction
 
-Introducing the "_C·ZAN_" design system, named in honor of Paul Cezanne, a renowned painter from Aix-en-Provence, France. This framework is a wrapper of [Material 3](https://m3.material.io/), Google's open-source design system, and is specifically adapted for apps running on [Jetpack Compose](https://developer.android.com/jetpack/compose).
+Introducing the **C·ZAN** design system, named in honor of Paul Cezanne, a renowned painter from Aix-en-Provence, France. This framework is a wrapper of [Material 3](https://m3.material.io/), Google's open-source design system, and is specifically adapted for apps running on [Jetpack Compose](https://developer.android.com/jetpack/compose).
 
 This system is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can use to build your app.
