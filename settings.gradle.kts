@@ -17,5 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CezanneAndroid"
+rootProject.name = "C·ZAN Android"
 include(":library")

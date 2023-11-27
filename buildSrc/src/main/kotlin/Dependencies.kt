@@ -9,18 +9,18 @@ object Dependencies {
 
     object Versions {
 
-        object Cezanne {
-            const val packageName = "com.tweener.cezanne"
+        object CZAN {
+            const val packageName = "com.tweener.czan"
             const val versionName = "1.0"
-            const val applicationId = Cezanne.packageName
-            const val namespace = Cezanne.packageName + ".android"
+            const val applicationId = CZAN.packageName
+            const val namespace = CZAN.packageName + ".android"
             const val compileSDK = 34
             const val targetSDK = compileSDK
             const val minSDK = 24
 
             object Jitpack {
                 const val group = "com.github.Tweener"
-                const val artifactId = "cezanne-android"
+                const val artifactId = "czan-android"
             }
         }
 

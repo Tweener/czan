@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = Dependencies.Versions.Cezanne.namespace
-    compileSdk = Dependencies.Versions.Cezanne.compileSDK
+    namespace = Dependencies.Versions.CZAN.namespace
+    compileSdk = Dependencies.Versions.CZAN.compileSDK
 
     defaultConfig {
-        minSdk = Dependencies.Versions.Cezanne.minSDK
+        minSdk = Dependencies.Versions.CZAN.minSDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -81,9 +81,9 @@ afterEvaluate {
     publishing {
         publications {
             register("release", MavenPublication::class) {
-                group = Dependencies.Versions.Cezanne.Jitpack.group
-                artifactId = Dependencies.Versions.Cezanne.Jitpack.artifactId
-                version = Dependencies.Versions.Cezanne.versionName
+                group = Dependencies.Versions.CZAN.Jitpack.group
+                artifactId = Dependencies.Versions.CZAN.Jitpack.artifactId
+                version = Dependencies.Versions.CZAN.versionName
 
                 from(components["release"])
             }
