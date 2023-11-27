@@ -9,11 +9,11 @@ object Dependencies {
 
     object Versions {
 
-        object CZAN {
+        object Czan {
             const val packageName = "com.tweener.czan"
             const val versionName = "1.0"
-            const val applicationId = CZAN.packageName
-            const val namespace = CZAN.packageName + ".android"
+            const val applicationId = Czan.packageName
+            const val namespace = Czan.packageName + ".android"
             const val compileSDK = 34
             const val targetSDK = compileSDK
             const val minSDK = 24
