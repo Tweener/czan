@@ -1,5 +1,5 @@
 # C·ZAN-android
-![Logo   text with background](https://github.com/Tweener/cezanne-android/assets/596985/ee172267-223b-4e88-8518-559e767fcfe4)
+![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
 
 <h1 align="center">C·ZAN Android</h1>
 
