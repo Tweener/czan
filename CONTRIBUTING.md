@@ -7,15 +7,6 @@ We love your input! We want to make contributing to this project as easy and tra
 - Submitting a fix
 - Proposing new features
 
-## Create a pull request
-
-Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
-
-1. Fork the repo and create your branch from `develop`.
-2. If you've changed APIs, update the documentation.
-3. Join any visual assets (images, videos, GIFs) to showcase your work.
-4. Issue that pull request!
-
 ## Write bug reports with detail, background, and sample code
 
 **Great Bug Reports** tend to have:
@@ -27,6 +18,15 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 - What you expected would happen
 - What actually happens
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
+
+## Create a pull request to submit a fix or propose a new feature
+
+Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
+
+1. Fork the repo and create your branch from `develop`.
+2. If you've changed APIs, update the documentation.
+3. Join any visual assets (images, videos, GIFs) to showcase your work.
+4. Issue that pull request!
 
 ## License
 
