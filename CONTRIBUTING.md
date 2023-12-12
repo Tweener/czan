@@ -1,13 +1,14 @@
-# Contribute to C·ZAN
+# How to contribute to C·ZAN
+
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 
-Reporting a bug
-Discussing the current state of the code
-Submitting a fix
-Proposing new features
-
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
 
 ## Create a pull request
+
 Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
 
 1. Fork the repo and create your branch from `develop`.
@@ -21,12 +22,13 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 
 - A quick summary and/or background
 - Steps to reproduce
-  - Be specific!
-  - Give sample code if you can. 
+    - Be specific!
+    - Give sample code if you can.
 - What you expected would happen
 - What actually happens
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 
-
 ## License
-By contributing, you agree that your contributions will be licensed under its Apache-2.0 license. See [LICENCE](https://github.com/Tweener/c-zan-android?tab=Apache-2.0-1-ov-file#readme) for more details.
+
+By contributing, you agree that your contributions will be licensed under its Apache-2.0 license. See [LICENCE](https://github.com/Tweener/c-zan-android?tab=Apache-2.0-1-ov-file#readme) for more
+details.
