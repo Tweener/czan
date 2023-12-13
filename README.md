@@ -9,7 +9,6 @@
 ![kotlin-version](https://img.shields.io/badge/kotlin-1.9.10-blue)
 ![gradle-version](https://img.shields.io/badge/gradle-8.1.1-blue)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
 
 ---
 
