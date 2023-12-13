@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -29,8 +30,30 @@ import com.tweener.czan.android.theme.CzanUiDefaults
 @Composable
 fun Image(
     modifier: Modifier = Modifier,
+    imageVector: ImageVector,
+    contentScale: ContentScale = ContentScale.Crop,
+    alignment: Alignment = Alignment.Center,
+    contentDescription: String? = null,
+    alpha: Float = DefaultAlpha,
+    colorFilter: ColorFilter? = null,
+) {
+    Image(
+        modifier = modifier,
+        imageVector = imageVector,
+        contentScale = contentScale,
+        alignment = alignment,
+        contentDescription = contentDescription,
+        alpha = alpha,
+        colorFilter = colorFilter,
+    )
+}
+
+@Composable
+fun Image(
+    modifier: Modifier = Modifier,
     @DrawableRes resourceId: Int,
     contentScale: ContentScale = ContentScale.Crop,
+    alignment: Alignment = Alignment.Center,
     contentDescription: String? = null,
     alpha: Float = DefaultAlpha,
     colorFilter: ColorFilter? = null,
@@ -39,6 +62,7 @@ fun Image(
         modifier = modifier,
         painter = painterResource(id = resourceId),
         contentScale = contentScale,
+        alignment = alignment,
         contentDescription = contentDescription,
         alpha = alpha,
         colorFilter = colorFilter,
@@ -50,6 +74,7 @@ fun Image(
     modifier: Modifier = Modifier,
     bitmap: ImageBitmap,
     contentScale: ContentScale = ContentScale.Crop,
+    alignment: Alignment = Alignment.Center,
     contentDescription: String? = null,
     alpha: Float = DefaultAlpha,
     colorFilter: ColorFilter? = null,
@@ -58,6 +83,7 @@ fun Image(
         modifier = modifier,
         bitmap = bitmap,
         contentScale = contentScale,
+        alignment = alignment,
         contentDescription = contentDescription,
         alpha = alpha,
         colorFilter = colorFilter,
