@@ -4,6 +4,7 @@
 
 [![](https://jitpack.io/v/Tweener/c-zan.svg)](https://jitpack.io/#Tweener/c-zan)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
 
 ---
 
