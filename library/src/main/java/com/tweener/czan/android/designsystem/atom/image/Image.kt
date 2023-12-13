@@ -1,10 +1,15 @@
 package com.tweener.czan.android.designsystem.atom.image
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.DefaultAlpha
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -14,6 +19,7 @@ import com.skydoves.landscapist.components.imageComponent
 import com.skydoves.landscapist.glide.GlideImage
 import com.skydoves.landscapist.placeholder.placeholder.PlaceholderPlugin
 import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
+import com.tweener.czan.android.theme.CzanUiDefaults
 
 /**
  * @author Vivien Mahe
@@ -23,28 +29,66 @@ import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 @Composable
 fun Image(
     modifier: Modifier = Modifier,
-    imageUrl: String? = null,
-    color: Color = Color.Transparent,
-    highlightColor: Color = Color.Transparent,
+    @DrawableRes resourceId: Int,
     contentScale: ContentScale = ContentScale.Crop,
+    contentDescription: String? = null,
+    alpha: Float = DefaultAlpha,
+    colorFilter: ColorFilter? = null,
+) {
+    Image(
+        modifier = modifier,
+        painter = painterResource(id = resourceId),
+        contentScale = contentScale,
+        contentDescription = contentDescription,
+        alpha = alpha,
+        colorFilter = colorFilter,
+    )
+}
+
+@Composable
+fun Image(
+    modifier: Modifier = Modifier,
+    bitmap: ImageBitmap,
+    contentScale: ContentScale = ContentScale.Crop,
+    contentDescription: String? = null,
+    alpha: Float = DefaultAlpha,
+    colorFilter: ColorFilter? = null,
+) {
+    Image(
+        modifier = modifier,
+        bitmap = bitmap,
+        contentScale = contentScale,
+        contentDescription = contentDescription,
+        alpha = alpha,
+        colorFilter = colorFilter,
+    )
+}
+
+@Composable
+fun Image(
+    modifier: Modifier = Modifier,
+    imageUrl: String? = null,
+    colors: ImageColors = ImageDefaults.imageColors(),
     @DrawableRes placeholder: Int = 0,
-    dimensions: Pair<Int, Int>? = null,
+    contentScale: ContentScale = ContentScale.Crop,
+    alignment: Alignment = Alignment.Center,
+    imageSize: ImageSize? = null,
 ) {
     GlideImage(
         modifier = modifier,
         imageModel = { imageUrl },
-        imageOptions = ImageOptions(contentScale = contentScale, alignment = Alignment.Center),
+        imageOptions = ImageOptions(contentScale = contentScale, alignment = alignment),
         requestOptions = {
             with(RequestOptions()) {
-                dimensions?.let { override(it.first, it.second) }
+                imageSize?.let { override(imageSize.width, imageSize.height) }
                 diskCacheStrategy(DiskCacheStrategy.ALL)
             }
         },
         previewPlaceholder = placeholder,
         component = imageComponent {
             +ShimmerPlugin(
-                baseColor = color,
-                highlightColor = highlightColor
+                baseColor = colors.shimmerBaseColor(),
+                highlightColor = colors.shimmerHighlightColor()
             )
 
             if (placeholder != 0) {
@@ -52,4 +96,29 @@ fun Image(
             }
         }
     )
+}
+
+object ImageDefaults {
+
+    @Composable
+    fun imageColors(
+        shimmerBaseColor: Color = CzanUiDefaults.Shimmer.baseColor,
+        shimmerHighlightColor: Color = CzanUiDefaults.Shimmer.highlightColor,
+    ): ImageColors = ImageColors(
+        shimmerBaseColor = shimmerBaseColor,
+        shimmerHighlightColor = shimmerHighlightColor,
+    )
+}
+
+@Immutable
+class ImageColors internal constructor(
+    private val shimmerBaseColor: Color,
+    private val shimmerHighlightColor: Color,
+) {
+
+    @Composable
+    internal fun shimmerBaseColor(): Color = shimmerBaseColor
+
+    @Composable
+    internal fun shimmerHighlightColor(): Color = shimmerHighlightColor
 }
