@@ -33,4 +33,10 @@ object CzanUiDefaults {
 
         val dropShadowColor: Color @Composable get() = MaterialTheme.colorScheme.onBackground
     }
+
+    object Shimmer {
+        val baseColor: Color @Composable get() = Color.Transparent
+
+        val highlightColor: Color @Composable get() = Color.Transparent
+    }
 }
