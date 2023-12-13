@@ -2,7 +2,12 @@
 
 <h2 align="center">Design System library for apps running on Jetpack Compose</h2>
 
+[![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
+![Website](https://img.shields.io/badge/Website-vivienmahe.com-blue)
+
 [![](https://jitpack.io/v/Tweener/c-zan.svg)](https://jitpack.io/#Tweener/c-zan)
+![kotlin-version](https://img.shields.io/badge/kotlin-1.9.10-blue)
+![gradle-version](https://img.shields.io/badge/gradle-8.1.1-blue)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ---
