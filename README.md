@@ -3,7 +3,7 @@
 <h2 align="center">Design System library for apps running on Jetpack Compose</h2>
 
 [![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
-![Website](https://img.shields.io/badge/Website-vivienmahe.com-blue)
+[![Website](https://img.shields.io/badge/Website-vivienmahe.com-orange)](https://vivienmahe.com/)
 
 [![](https://jitpack.io/v/Tweener/c-zan.svg)](https://jitpack.io/#Tweener/c-zan)
 ![kotlin-version](https://img.shields.io/badge/kotlin-1.9.10-blue)
