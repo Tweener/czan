@@ -1,11 +1,11 @@
 ![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
 
-<h1 align="center">C·ZAN</h1>
-
-<p align="center">Design System library for apps running on Jetpack Compose</p>
+<h2 align="center">Design System library for apps running on Jetpack Compose</h2>
 
 [![](https://jitpack.io/v/Tweener/c-zan.svg)](https://jitpack.io/#Tweener/c-zan)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+---
 
 # ⭐️ Introduction
 
