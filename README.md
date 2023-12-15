@@ -50,16 +50,13 @@ The latest version is: [![](https://jitpack.io/v/Tweener/c-zan-android.svg)](htt
 
 # 🗺️ Roadmap
 
-The C·ZAN design system, still in its early stages, has an exciting journey of development ahead. Below is a list of upcoming tasks, presented in no specific order and without set deadlines:
-
-- Keep on adding new atoms and molecules
-- Make it compatible with iOS as well by using [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/)
-- Showcase every Composable with `@Preview` and maybe use Airbnb's [Showkase](https://github.com/airbnb/Showkase) library to generate a UI browser to render Composables
+The C·ZAN design system, still in its early stages, has an exciting journey of development ahead. Checkout the [roadmap](https://github.com/users/Tweener/projects/1/views/1) to know all about the
+upcoming tasks, presented in no specific order and without set deadlines.
 
 # 👨‍💻 Contributing
 
-We love your input and welcome any contributions! See our [contributing guidelines](https://github.com/Tweener/c-zan-android/blob/master/CONTRIBUTING.md) for more details.
+We love your input and welcome any contributions! Please read our [contribution guidelines](https://github.com/Tweener/c-zan-android/blob/master/CONTRIBUTING.md) before submitting a pull request.
 
 # 🪪 Licence
 
-C·ZAN is released under the Apache-2.0 license. See [LICENCE](https://github.com/Tweener/c-zan-android?tab=Apache-2.0-1-ov-file#readme) for more details.
+C·ZAN is licensed under the [Apache-2.0](https://github.com/Tweener/c-zan-android?tab=Apache-2.0-1-ov-file#readme).
