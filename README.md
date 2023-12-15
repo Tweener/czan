@@ -53,6 +53,8 @@ The latest version is: [![](https://jitpack.io/v/Tweener/c-zan-android.svg)](htt
 The C·ZAN design system, still in its early stages, has an exciting journey of development ahead. Checkout the [roadmap](https://github.com/users/Tweener/projects/1/views/1) to know all about the
 upcoming tasks, presented in no specific order and without set deadlines.
 
+Feel free to check out the range of `Composable`s that are already available [here](https://github.com/Tweener/c-zan/tree/main/library/src/main/java/com/tweener/czan/android/designsystem)!
+
 # 👨‍💻 Contributing
 
 We love your input and welcome any contributions! Please read our [contribution guidelines](https://github.com/Tweener/c-zan-android/blob/master/CONTRIBUTING.md) before submitting a pull request.
