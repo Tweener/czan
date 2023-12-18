@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.CzanTheme
 import com.tweener.czan.android.theme.Size
 
@@ -85,7 +85,7 @@ fun Button(
 
 // region Preview Primary
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularEnabledPreview() {
     CzanTheme {
@@ -96,7 +96,7 @@ private fun PrimaryButtonRegularEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallEnabledPreview() {
     CzanTheme {
@@ -108,7 +108,7 @@ private fun PrimaryButtonSmallEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -120,7 +120,7 @@ private fun PrimaryButtonRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -132,7 +132,7 @@ private fun PrimaryButtonRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -145,7 +145,7 @@ private fun PrimaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -158,7 +158,7 @@ private fun PrimaryButtonSmallRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularDisabledPreview() {
     CzanTheme {
@@ -169,7 +169,7 @@ private fun PrimaryButtonRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularDisabledPreview() {
     CzanTheme {
@@ -181,7 +181,7 @@ private fun PrimaryButtonSmallRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -193,7 +193,7 @@ private fun PrimaryButtonRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -205,7 +205,7 @@ private fun PrimaryButtonRegularWithTrailingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -218,7 +218,7 @@ private fun PrimaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -231,7 +231,7 @@ private fun PrimaryButtonSmallRegularWithTrailingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularOutlinedEnabledPreview() {
     CzanTheme {
@@ -247,7 +247,7 @@ private fun PrimaryButtonRegularOutlinedEnabledPreview() {
 
 // region Preview Secondary
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularEnabledPreview() {
     CzanTheme {
@@ -259,7 +259,7 @@ private fun SecondaryButtonRegularEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallEnabledPreview() {
     CzanTheme {
@@ -272,7 +272,7 @@ private fun SecondaryButtonSmallEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -285,7 +285,7 @@ private fun SecondaryButtonRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -298,7 +298,7 @@ private fun SecondaryButtonRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -312,7 +312,7 @@ private fun SecondaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -326,7 +326,7 @@ private fun SecondaryButtonSmallRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularDisabledPreview() {
     CzanTheme {
@@ -338,7 +338,7 @@ private fun SecondaryButtonRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularDisabledPreview() {
     CzanTheme {
@@ -351,7 +351,7 @@ private fun SecondaryButtonSmallRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -364,7 +364,7 @@ private fun SecondaryButtonRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -377,7 +377,7 @@ private fun SecondaryButtonRegularWithTrailingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -391,7 +391,7 @@ private fun SecondaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -409,7 +409,7 @@ private fun SecondaryButtonSmallRegularWithTrailingIconDisabledPreview() {
 
 // region Preview Tertiary
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularEnabledPreview() {
     CzanTheme {
@@ -421,7 +421,7 @@ private fun TertiaryButtonRegularEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallEnabledPreview() {
     CzanTheme {
@@ -434,7 +434,7 @@ private fun TertiaryButtonSmallEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -447,7 +447,7 @@ private fun TertiaryButtonRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -460,7 +460,7 @@ private fun TertiaryButtonRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -474,7 +474,7 @@ private fun TertiaryButtonSmallRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -488,7 +488,7 @@ private fun TertiaryButtonSmallRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularDisabledPreview() {
     CzanTheme {
@@ -500,7 +500,7 @@ private fun TertiaryButtonRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularDisabledPreview() {
     CzanTheme {
@@ -513,7 +513,7 @@ private fun TertiaryButtonSmallRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -526,7 +526,7 @@ private fun TertiaryButtonRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -539,7 +539,7 @@ private fun TertiaryButtonRegularWithTrailingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -553,7 +553,7 @@ private fun TertiaryButtonSmallRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -571,7 +571,7 @@ private fun TertiaryButtonSmallRegularWithTrailingIconDisabledPreview() {
 
 // region Preview Error
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonRegularEnabledPreview() {
     CzanTheme {
@@ -583,7 +583,7 @@ private fun ErrorButtonRegularEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonSmallEnabledPreview() {
     CzanTheme {
@@ -596,7 +596,7 @@ private fun ErrorButtonSmallEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -609,7 +609,7 @@ private fun ErrorButtonRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -622,7 +622,7 @@ private fun ErrorButtonRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithLeadingIconEnabledPreview() {
     CzanTheme {
@@ -636,7 +636,7 @@ private fun ErrorButtonSmallRegularWithLeadingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithTrailingIconEnabledPreview() {
     CzanTheme {
@@ -650,7 +650,7 @@ private fun ErrorButtonSmallRegularWithTrailingIconEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonRegularDisabledPreview() {
     CzanTheme {
@@ -662,7 +662,7 @@ private fun ErrorButtonRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularDisabledPreview() {
     CzanTheme {
@@ -675,7 +675,7 @@ private fun ErrorButtonSmallRegularDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -688,7 +688,7 @@ private fun ErrorButtonRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithTrailingIconDisabledPreview() {
     CzanTheme {
@@ -701,7 +701,7 @@ private fun ErrorButtonRegularWithTrailingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithLeadingIconDisabledPreview() {
     CzanTheme {
@@ -715,7 +715,7 @@ private fun ErrorButtonSmallRegularWithLeadingIconDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithTrailingIconDisabledPreview() {
     CzanTheme {

@@ -18,11 +18,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.bars.icon.ArrowBackIconButton
 import com.tweener.czan.android.designsystem.atom.bars.icon.CloseBackIconButton
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.CzanTheme
 import com.tweener.czan.android.theme.CzanUiDefaults
 import com.tweener.czan.android.theme.Size
@@ -142,7 +142,7 @@ private fun TopBarWithIcon(
     )
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TopLevelScreenTopBarPreview() {
     CzanTheme {
@@ -153,7 +153,7 @@ private fun TopLevelScreenTopBarPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SimpleTopBarPreview() {
     CzanTheme {
@@ -164,7 +164,7 @@ private fun SimpleTopBarPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TopBarWithBackButtonPreview() {
     CzanTheme {
@@ -175,7 +175,7 @@ private fun TopBarWithBackButtonPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TopBarWithCloseButtonPreview() {
     CzanTheme {

@@ -16,8 +16,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.CzanTheme
 import com.tweener.czan.android.theme.CzanUiDefaults
 import com.tweener.czan.android.theme.Size
@@ -78,7 +78,7 @@ fun Carousel(
 }
 
 @OptIn(ExperimentalFoundationApi::class)
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun CarouselWithDotsPreview() {
     CzanTheme {
@@ -89,7 +89,7 @@ private fun CarouselWithDotsPreview() {
 }
 
 @OptIn(ExperimentalFoundationApi::class)
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun CarouselWithoutDotsPreview() {
     CzanTheme {

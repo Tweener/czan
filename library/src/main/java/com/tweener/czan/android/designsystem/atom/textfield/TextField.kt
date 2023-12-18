@@ -19,10 +19,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.text.Text
 import com.tweener.czan.android.designsystem.atom.textfield.TextFieldDefaults.applyBorder
-import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.CzanTheme
 import com.tweener.czan.android.theme.CzanUiDefaults
 
@@ -181,7 +181,7 @@ private object TextFieldDefaults {
     )
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldTextEnabledPlaceholderPreview() {
     CzanTheme {
@@ -194,7 +194,7 @@ private fun TextFieldTextEnabledPlaceholderPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldTextEnabledPreview() {
     CzanTheme {
@@ -207,7 +207,7 @@ private fun TextFieldTextEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldTextDisabledPreview() {
     CzanTheme {
@@ -220,7 +220,7 @@ private fun TextFieldTextDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldPasswordVisibleEnabledPreview() {
     CzanTheme {
@@ -232,7 +232,7 @@ private fun TextFieldPasswordVisibleEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldPasswordVisibleDisabledPreview() {
     CzanTheme {
@@ -245,7 +245,7 @@ private fun TextFieldPasswordVisibleDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldPasswordHiddenEnabledPreview() {
     CzanTheme {
@@ -257,7 +257,7 @@ private fun TextFieldPasswordHiddenEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldPasswordHiddenDisabledPreview() {
     CzanTheme {
@@ -270,7 +270,7 @@ private fun TextFieldPasswordHiddenDisabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldSearchEnabledPreview() {
     CzanTheme {
@@ -282,7 +282,7 @@ private fun TextFieldSearchEnabledPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun TextFieldSearchDisabledPreview() {
     CzanTheme {

@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.tweener.czan.android.preview.UiModePreviews
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.theme.CzanTheme
 
 /**
@@ -35,7 +35,7 @@ fun FloatingActionButton(
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun FloatingActionButtonPreview() {
     CzanTheme {

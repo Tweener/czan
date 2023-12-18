@@ -11,9 +11,9 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.CzanTheme
 
 /**
@@ -66,7 +66,7 @@ fun OutlineText(
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun OutlineTextPreview() {
     CzanTheme {

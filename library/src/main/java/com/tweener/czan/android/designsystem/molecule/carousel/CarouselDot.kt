@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import com.tweener.czan.android.preview.UiModePreviews
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.theme.CzanTheme
 import com.tweener.czan.android.theme.Size
 
@@ -37,7 +37,7 @@ fun CarouselDot(
     )
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun CarouselDotSelectedPreview() {
     CzanTheme {
@@ -47,7 +47,7 @@ private fun CarouselDotSelectedPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun CarouselDotNotSelectedPreview() {
     CzanTheme {

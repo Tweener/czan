@@ -13,7 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.tweener.czan.android.preview.UiModePreviews
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.theme.CzanTheme
 
 /**
@@ -58,7 +58,7 @@ fun Switch(
 
 // region Preview Primary
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchPrimaryCheckedPreview() {
     CzanTheme {
@@ -66,7 +66,7 @@ private fun SwitchPrimaryCheckedPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchPrimaryNotCheckedPreview() {
     CzanTheme {
@@ -78,7 +78,7 @@ private fun SwitchPrimaryNotCheckedPreview() {
 
 // region Preview Secondary
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchSecondaryCheckedPreview() {
     CzanTheme {
@@ -86,7 +86,7 @@ private fun SwitchSecondaryCheckedPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchSecondaryNotCheckedPreview() {
     CzanTheme {
@@ -98,7 +98,7 @@ private fun SwitchSecondaryNotCheckedPreview() {
 
 // region Preview Tertiary
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchTertiaryCheckedPreview() {
     CzanTheme {
@@ -106,7 +106,7 @@ private fun SwitchTertiaryCheckedPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchTertiaryNotCheckedPreview() {
     CzanTheme {

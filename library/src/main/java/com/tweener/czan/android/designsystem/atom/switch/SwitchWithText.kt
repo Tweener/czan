@@ -9,8 +9,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.CzanTheme
 import com.tweener.czan.android.theme.Size
 
@@ -46,7 +46,7 @@ fun SwitchWithText(
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchWithTextCheckedPreview() {
     CzanTheme {
@@ -54,7 +54,7 @@ private fun SwitchWithTextCheckedPreview() {
     }
 }
 
-@UiModePreviews
+@PreviewLightDark
 @Composable
 private fun SwitchWithTextNotCheckedPreview() {
     CzanTheme {
