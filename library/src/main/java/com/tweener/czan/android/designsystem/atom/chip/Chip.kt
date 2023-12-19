@@ -16,6 +16,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -32,6 +33,7 @@ import com.tweener.czan.android.preview.CzanThemePreview
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
+    leadingIcon: ImageVector? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
     size: Dp = ChipDefaults.Size,
     canBeDeleted: Boolean = false,
@@ -57,23 +59,25 @@ fun Chip(
             borderColor = colors.borderColor(),
             borderWidth = 1.dp
         ),
-        avatar = {
-            Icon(
-                modifier = Modifier
-                    .size(size)
-                    .clip(CircleShape)
-                    .background(colors.leadingIconBackgroundColor()),
-                imageVector = Icons.Filled.Person,
-                tint = colors.leadingIconColor(),
-                contentDescription = "Localized description",
-            )
+        leadingIcon = {
+            leadingIcon?.let {
+                Icon(
+                    modifier = Modifier
+                        .size(size)
+                        .clip(CircleShape)
+                        .background(colors.leadingIconBackgroundColor()),
+                    imageVector = it,
+                    tint = colors.leadingIconColor(),
+                    contentDescription = "Chip leading icon",
+                )
+            }
         },
         trailingIcon = {
             if (canBeDeleted) {
                 Icon(
                     modifier = Modifier.size(size),
                     imageVector = Icons.Default.Close,
-                    contentDescription = "Localized description",
+                    contentDescription = "Chip delete icon",
                 )
             }
         },
@@ -90,6 +94,7 @@ object ChipDefaults {
         containerColor: Color = MaterialTheme.colorScheme.surface,
         disabledContainerColor: Color = MaterialTheme.colorScheme.surface,
         labelColor: Color = MaterialTheme.colorScheme.onSurface,
+        disabledLabelColor: Color = MaterialTheme.colorScheme.onSurface,
         borderColor: Color = MaterialTheme.colorScheme.outline,
         leadingIconColor: Color = MaterialTheme.colorScheme.primary,
         leadingIconBackgroundColor: Color = MaterialTheme.colorScheme.background
@@ -97,6 +102,7 @@ object ChipDefaults {
         containerColor = containerColor,
         disabledContainerColor = disabledContainerColor,
         labelColor = labelColor,
+        disabledLabelColor = disabledLabelColor,
         borderColor = borderColor,
         leadingIconColor = leadingIconColor,
         leadingIconBackgroundColor = leadingIconBackgroundColor,
@@ -108,6 +114,7 @@ class ChipColors internal constructor(
     private val containerColor: Color,
     private val disabledContainerColor: Color,
     private val labelColor: Color,
+    private val disabledLabelColor: Color,
     private val borderColor: Color,
     private val leadingIconColor: Color,
     private val leadingIconBackgroundColor: Color,
@@ -122,6 +129,9 @@ class ChipColors internal constructor(
     internal fun labelColor(): Color = labelColor
 
     @Composable
+    internal fun disabledLabelColor(): Color = disabledLabelColor
+
+    @Composable
     internal fun borderColor(): Color = borderColor
 
     @Composable
@@ -133,10 +143,45 @@ class ChipColors internal constructor(
 
 @PreviewLightDark
 @Composable
-private fun ChipPreview() {
+private fun ChipNoLeadingIconAndNotDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
+            canBeDeleted = false
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ChipLeadingIconAndNotDeletablePreview() {
+    CzanThemePreview {
+        Chip(
+            title = "Chip title",
+            leadingIcon = Icons.Filled.Person,
+            canBeDeleted = false
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ChipNoLeadingIconAndDeletablePreview() {
+    CzanThemePreview {
+        Chip(
+            title = "Chip title",
+            canBeDeleted = true
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ChipLeadingIconAndDeletablePreview() {
+    CzanThemePreview {
+        Chip(
+            title = "Chip title",
+            leadingIcon = Icons.Filled.Person,
             canBeDeleted = true
         )
     }
