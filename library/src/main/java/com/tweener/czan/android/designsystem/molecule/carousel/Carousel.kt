@@ -18,7 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.theme.CzanUiDefaults
 import com.tweener.czan.android.theme.Size
 import kotlin.time.Duration
@@ -81,7 +81,7 @@ fun Carousel(
 @PreviewLightDark
 @Composable
 private fun CarouselWithDotsPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Carousel(pagerState = rememberPagerState { 4 }) {
             Text("Page $it")
         }
@@ -92,7 +92,7 @@ private fun CarouselWithDotsPreview() {
 @PreviewLightDark
 @Composable
 private fun CarouselWithoutDotsPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Carousel(
             pagerState = rememberPagerState { 4 },
             showDots = false

@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.theme.Size
 
 /**
@@ -49,7 +49,7 @@ fun SwitchWithText(
 @PreviewLightDark
 @Composable
 private fun SwitchWithTextCheckedPreview() {
-    CzanTheme {
+    CzanThemePreview {
         SwitchWithText(text = "Switch checked with text", isChecked = true)
     }
 }
@@ -57,7 +57,7 @@ private fun SwitchWithTextCheckedPreview() {
 @PreviewLightDark
 @Composable
 private fun SwitchWithTextNotCheckedPreview() {
-    CzanTheme {
+    CzanThemePreview {
         SwitchWithText(text = "Switch not checked with text", isChecked = false)
     }
 }

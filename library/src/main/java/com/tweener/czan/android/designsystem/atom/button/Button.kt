@@ -16,7 +16,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
+import com.tweener.czan.android.preview.UiModePreviews
 import com.tweener.czan.android.theme.Size
 
 /**
@@ -85,10 +86,10 @@ fun Button(
 
 // region Preview Primary
 
-@PreviewLightDark
+@UiModePreviews
 @Composable
 private fun PrimaryButtonRegularEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true
@@ -99,7 +100,7 @@ private fun PrimaryButtonRegularEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -111,7 +112,7 @@ private fun PrimaryButtonSmallEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -123,7 +124,7 @@ private fun PrimaryButtonRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -135,7 +136,7 @@ private fun PrimaryButtonRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -148,7 +149,7 @@ private fun PrimaryButtonSmallRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -161,7 +162,7 @@ private fun PrimaryButtonSmallRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false
@@ -172,7 +173,7 @@ private fun PrimaryButtonRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -184,7 +185,7 @@ private fun PrimaryButtonSmallRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -196,7 +197,7 @@ private fun PrimaryButtonRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -208,7 +209,7 @@ private fun PrimaryButtonRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -221,7 +222,7 @@ private fun PrimaryButtonSmallRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonSmallRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -234,7 +235,7 @@ private fun PrimaryButtonSmallRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun PrimaryButtonRegularOutlinedEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -250,7 +251,7 @@ private fun PrimaryButtonRegularOutlinedEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -262,7 +263,7 @@ private fun SecondaryButtonRegularEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -275,7 +276,7 @@ private fun SecondaryButtonSmallEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -288,7 +289,7 @@ private fun SecondaryButtonRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -301,7 +302,7 @@ private fun SecondaryButtonRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -315,7 +316,7 @@ private fun SecondaryButtonSmallRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -329,7 +330,7 @@ private fun SecondaryButtonSmallRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -341,7 +342,7 @@ private fun SecondaryButtonRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -354,7 +355,7 @@ private fun SecondaryButtonSmallRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -367,7 +368,7 @@ private fun SecondaryButtonRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -380,7 +381,7 @@ private fun SecondaryButtonRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -394,7 +395,7 @@ private fun SecondaryButtonSmallRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun SecondaryButtonSmallRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -412,7 +413,7 @@ private fun SecondaryButtonSmallRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -424,7 +425,7 @@ private fun TertiaryButtonRegularEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -437,7 +438,7 @@ private fun TertiaryButtonSmallEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -450,7 +451,7 @@ private fun TertiaryButtonRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -463,7 +464,7 @@ private fun TertiaryButtonRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -477,7 +478,7 @@ private fun TertiaryButtonSmallRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -491,7 +492,7 @@ private fun TertiaryButtonSmallRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -503,7 +504,7 @@ private fun TertiaryButtonRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -516,7 +517,7 @@ private fun TertiaryButtonSmallRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -529,7 +530,7 @@ private fun TertiaryButtonRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -542,7 +543,7 @@ private fun TertiaryButtonRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -556,7 +557,7 @@ private fun TertiaryButtonSmallRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TertiaryButtonSmallRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -574,7 +575,7 @@ private fun TertiaryButtonSmallRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonRegularEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -586,7 +587,7 @@ private fun ErrorButtonRegularEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonSmallEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled",
             enabled = true,
@@ -599,7 +600,7 @@ private fun ErrorButtonSmallEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -612,7 +613,7 @@ private fun ErrorButtonRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -625,7 +626,7 @@ private fun ErrorButtonRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithLeadingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -639,7 +640,7 @@ private fun ErrorButtonSmallRegularWithLeadingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithTrailingIconEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Enabled with icon",
             enabled = true,
@@ -653,7 +654,7 @@ private fun ErrorButtonSmallRegularWithTrailingIconEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -665,7 +666,7 @@ private fun ErrorButtonRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled",
             enabled = false,
@@ -678,7 +679,7 @@ private fun ErrorButtonSmallRegularDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -691,7 +692,7 @@ private fun ErrorButtonRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -704,7 +705,7 @@ private fun ErrorButtonRegularWithTrailingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithLeadingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,
@@ -718,7 +719,7 @@ private fun ErrorButtonSmallRegularWithLeadingIconDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun ErrorButtonSmallRegularWithTrailingIconDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         Button(
             text = "Disabled with icon",
             enabled = false,

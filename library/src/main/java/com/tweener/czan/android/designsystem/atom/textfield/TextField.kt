@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.text.Text
 import com.tweener.czan.android.designsystem.atom.textfield.TextFieldDefaults.applyBorder
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.theme.CzanUiDefaults
 
 /**
@@ -184,7 +184,7 @@ private object TextFieldDefaults {
 @PreviewLightDark
 @Composable
 private fun TextFieldTextEnabledPlaceholderPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "",
             label = "Label",
@@ -197,7 +197,7 @@ private fun TextFieldTextEnabledPlaceholderPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldTextEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -210,7 +210,7 @@ private fun TextFieldTextEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldTextDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -223,7 +223,7 @@ private fun TextFieldTextDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldPasswordVisibleEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -235,7 +235,7 @@ private fun TextFieldPasswordVisibleEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldPasswordVisibleDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -248,7 +248,7 @@ private fun TextFieldPasswordVisibleDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldPasswordHiddenEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -260,7 +260,7 @@ private fun TextFieldPasswordHiddenEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldPasswordHiddenDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -273,7 +273,7 @@ private fun TextFieldPasswordHiddenDisabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldSearchEnabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",
@@ -285,7 +285,7 @@ private fun TextFieldSearchEnabledPreview() {
 @PreviewLightDark
 @Composable
 private fun TextFieldSearchDisabledPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TextField(
             text = "Text field",
             label = "Label",

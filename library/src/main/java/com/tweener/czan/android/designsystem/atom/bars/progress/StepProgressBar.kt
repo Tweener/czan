@@ -22,7 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.theme.CzanUiDefaults
 
 /**
@@ -83,7 +83,7 @@ fun StepProgressBar(
 @PreviewLightDark
 @Composable
 private fun ProgressBarNoSelectionPreview() {
-    CzanTheme {
+    CzanThemePreview {
         StepProgressBar(stepsCount = 5)
     }
 }
@@ -91,7 +91,7 @@ private fun ProgressBarNoSelectionPreview() {
 @PreviewLightDark
 @Composable
 private fun ProgressBarSecondSelectedPreview() {
-    CzanTheme {
+    CzanThemePreview {
         StepProgressBar(stepsCount = 5, selectedIndex = 1)
     }
 }

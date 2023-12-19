@@ -7,7 +7,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 
 /**
  * @author Vivien Mahe
@@ -33,7 +33,7 @@ fun ArrowBackIconButton(
 @PreviewLightDark
 @Composable
 private fun ArrowBackIconButtonPreview() {
-    CzanTheme {
+    CzanThemePreview {
         ArrowBackIconButton()
     }
 }

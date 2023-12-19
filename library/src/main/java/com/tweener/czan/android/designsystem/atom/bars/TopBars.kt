@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.bars.icon.ArrowBackIconButton
 import com.tweener.czan.android.designsystem.atom.bars.icon.CloseBackIconButton
 import com.tweener.czan.android.designsystem.atom.text.Text
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.theme.CzanUiDefaults
 import com.tweener.czan.android.theme.Size
 
@@ -145,7 +145,7 @@ private fun TopBarWithIcon(
 @PreviewLightDark
 @Composable
 private fun TopLevelScreenTopBarPreview() {
-    CzanTheme {
+    CzanThemePreview {
         CenterAlignedTopAppBar(
             title = "App name",
             textStyle = MaterialTheme.typography.titleLarge
@@ -156,7 +156,7 @@ private fun TopLevelScreenTopBarPreview() {
 @PreviewLightDark
 @Composable
 private fun SimpleTopBarPreview() {
-    CzanTheme {
+    CzanThemePreview {
         SimpleTopBar(
             title = "App name",
             textStyle = MaterialTheme.typography.titleLarge
@@ -167,7 +167,7 @@ private fun SimpleTopBarPreview() {
 @PreviewLightDark
 @Composable
 private fun TopBarWithBackButtonPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TopBarWithBackButton(
             title = "Title",
             textStyle = MaterialTheme.typography.titleLarge
@@ -178,7 +178,7 @@ private fun TopBarWithBackButtonPreview() {
 @PreviewLightDark
 @Composable
 private fun TopBarWithCloseButtonPreview() {
-    CzanTheme {
+    CzanThemePreview {
         TopBarWithCloseButton(
             title = "Title",
             textStyle = MaterialTheme.typography.titleLarge

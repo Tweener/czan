@@ -14,7 +14,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 
 /**
  * @author Vivien Mahe
@@ -69,7 +69,7 @@ fun OutlineText(
 @PreviewLightDark
 @Composable
 private fun OutlineTextPreview() {
-    CzanTheme {
+    CzanThemePreview {
         OutlineText(
             text = "This is an outline text",
             color = Color.Black,

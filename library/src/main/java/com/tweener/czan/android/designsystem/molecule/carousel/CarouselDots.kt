@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 
 /**
  * @author Vivien Mahe
@@ -31,7 +31,7 @@ fun CarouselDots(
 @PreviewLightDark
 @Composable
 private fun CarouselDotsPreview() {
-    CzanTheme {
+    CzanThemePreview {
         CarouselDots(
             pageCount = 3,
             currentPage = 1

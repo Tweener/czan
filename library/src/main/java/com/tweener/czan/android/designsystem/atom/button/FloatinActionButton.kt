@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 
 /**
  * @author Vivien Mahe
@@ -38,7 +38,7 @@ fun FloatingActionButton(
 @PreviewLightDark
 @Composable
 private fun FloatingActionButtonPreview() {
-    CzanTheme {
+    CzanThemePreview {
         FloatingActionButton(icon = Icons.Default.Add)
     }
 }

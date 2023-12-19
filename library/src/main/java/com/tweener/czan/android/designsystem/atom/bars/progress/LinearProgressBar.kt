@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.theme.CzanUiDefaults
 
 /**
@@ -32,7 +32,7 @@ fun LinearProgressBar(
 @PreviewLightDark
 @Composable
 private fun LinearProgressBarProgressNonePreview() {
-    CzanTheme {
+    CzanThemePreview {
         LinearProgressBar(progress = 0f)
     }
 }
@@ -40,7 +40,7 @@ private fun LinearProgressBarProgressNonePreview() {
 @PreviewLightDark
 @Composable
 private fun LinearProgressBarProgress30Preview() {
-    CzanTheme {
+    CzanThemePreview {
         LinearProgressBar(progress = 0.3f)
     }
 }

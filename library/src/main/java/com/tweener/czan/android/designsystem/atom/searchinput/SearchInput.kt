@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.tweener.czan.android.designsystem.atom.textfield.TextField
 import com.tweener.czan.android.designsystem.atom.textfield.TextFieldType
-import com.tweener.czan.android.theme.CzanTheme
+import com.tweener.czan.android.preview.CzanThemePreview
 
 /**
  * @author Vivien Mahe
@@ -41,7 +41,7 @@ fun SearchInput(
 @PreviewLightDark
 @Composable
 private fun SearchInputPreview() {
-    CzanTheme {
+    CzanThemePreview {
         SearchInput(
             placeholderText = "Search mood or category"
         )
