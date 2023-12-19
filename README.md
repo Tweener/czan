@@ -2,13 +2,13 @@
 
 <h2 align="center">Design System library for apps running on Jetpack Compose</h2>
 
+[![Website](https://img.shields.io/badge/Author-vivienmahe.com-orange)](https://vivienmahe.com/)
 [![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
-[![Website](https://img.shields.io/badge/Website-vivienmahe.com-orange)](https://vivienmahe.com/)
 
 [![](https://jitpack.io/v/Tweener/c-zan.svg)](https://jitpack.io/#Tweener/c-zan)
-![kotlin-version](https://img.shields.io/badge/kotlin-1.9.10-blue)
-![gradle-version](https://img.shields.io/badge/gradle-8.1.1-blue)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
+![gradle-version](https://img.shields.io/badge/gradle-8.1.1-blue?logo=gradle)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ---
 
@@ -49,6 +49,111 @@ implementation('com.github.Tweener:c-zan-android:$czan_version')
 The latest version is: [![](https://jitpack.io/v/Tweener/c-zan-android.svg)](https://jitpack.io/#Tweener/c-zan-android)
 
 🔄 Sync Project with Gradle files and that's it!
+
+# ⚙️ Usage
+
+### 1. Theme configuration
+First, you must configure your theme and define your color palette, typography and shape, as explained in the official [documentation](https://developer.android.com/jetpack/compose/designsystems/material3#material-theming) for Material 3 with Jetpack Compose.
+
+- Colors:
+
+```
+val md_theme_light_primary = Color(0xFF123456)
+
+val MyAppLightColorScheme = lightColorScheme(
+    primary = md_theme_light_primary,
+    ...
+)
+
+val md_theme_dark_primary = Color(0xFF123456)
+
+val MyAppLightColorScheme = darkColorScheme(
+    primary = md_theme_dark_primary,
+    ...
+)
+```
+
+- Typography:
+```
+val MyAppTypography = Typography(
+    labelLarge = TextStyle(
+        fontFamily = MontserratFont,
+        ...
+    )
+    ...
+)
+````
+
+- Shapes:
+```
+val MyAppShapes = Shapes(
+    small = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(8.dp),
+    large = RoundedCornerShape(12.dp),
+    extraLarge = RoundedCornerShape(16.dp)
+)
+
+```
+</br>
+
+### 2. Theme declaration
+Then, declare your app theme using `CzanTheme` as follows:
+
+```
+@Composable
+fun MyAppTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    CzanTheme(
+        darkTheme = darkTheme,
+        lightColorScheme = MyAppLightColorScheme,
+        darkColorScheme = MyAppDarkColorScheme,
+        typography = MyAppTypography,
+        shapes = MyAppShapes,
+        content = content
+    )
+}
+```
+_Note: if your app does not need a dark theme, use `darkColorScheme = null`._
+
+### 3. Theme usage
+And finally, use it in your `MainActivity`:
+```
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    
+        setContent {
+            Surface {
+                MyAppTheme {
+                    Scaffold(
+                        ...
+                    ) { innerPadding ->
+                        ...
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+### 4. Light & Dark mode
+If you declared a `darkColorScheme` in step 2, C·ZAN will automatically adapts the theme to light or dark mode depending on the device's settings.
+
+If you want to override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/c-zan/blob/main/library/src/main/java/com/tweener/czan/android/theme/ThemeType.kt) as follows:
+```
+val themeType: ThemeType = ThemeType.DARK // If you want to use the ThemeType directly from the MainActivity
+// or
+val themeType by viewModel.themeType.collectAsState() // If the ThemeType is provided by the ViewModel 
+
+ApplyTheme(themeType = themeType)
+MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
+    ...
+}
+```
 
 # 🗺️ Roadmap
 
