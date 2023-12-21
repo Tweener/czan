@@ -1,9 +1,13 @@
 package com.tweener.czan.android.designsystem.atom.chip
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,10 +40,10 @@ import com.tweener.czan.android.preview.UiModePreviews
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
-    leadingIconVector: ImageVector? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
+    sizes: ChipSizes = ChipDefaults.chipSizes(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    size: Dp = ChipDefaults.Size,
+    contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
     onDismiss: (() -> Unit)? = null,
 ) {
@@ -47,15 +51,40 @@ fun Chip(
         modifier = modifier,
         title = title,
         colors = colors,
+        sizes = sizes,
         textStyle = textStyle,
-        size = size,
+        contentPadding = contentPadding,
+        canBeDeleted = canBeDeleted,
+        onDismiss = onDismiss,
+    )
+}
+
+@Composable
+fun Chip(
+    title: String,
+    modifier: Modifier = Modifier,
+    leadingIconVector: ImageVector? = null,
+    colors: ChipColors = ChipDefaults.chipColors(),
+    sizes: ChipSizes = ChipDefaults.chipSizes(),
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    contentPadding: PaddingValues = ChipDefaults.ContentPadding,
+    canBeDeleted: Boolean = false,
+    onDismiss: (() -> Unit)? = null,
+) {
+    InputChip(
+        modifier = modifier,
+        title = title,
+        colors = colors,
+        sizes = sizes,
+        textStyle = textStyle,
+        contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
         onDismiss = onDismiss,
         leadingIcon = {
             leadingIconVector?.let {
                 Image(
                     modifier = Modifier
-                        .size(size)
+                        .size(sizes.iconsSize())
                         .clip(CircleShape)
                         .background(colors.leadingIconBackgroundColor()),
                     imageVector = it,
@@ -73,8 +102,9 @@ fun Chip(
     modifier: Modifier = Modifier,
     leadingIconBitmap: ImageBitmap? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
+    sizes: ChipSizes = ChipDefaults.chipSizes(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    size: Dp = ChipDefaults.Size,
+    contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
     onDismiss: (() -> Unit)? = null,
 ) {
@@ -82,15 +112,16 @@ fun Chip(
         modifier = modifier,
         title = title,
         colors = colors,
+        sizes = sizes,
         textStyle = textStyle,
-        size = size,
+        contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
         onDismiss = onDismiss,
         leadingIcon = {
             leadingIconBitmap?.let {
                 Image(
                     modifier = Modifier
-                        .size(size)
+                        .size(sizes.iconsSize())
                         .clip(CircleShape)
                         .background(colors.leadingIconBackgroundColor()),
                     bitmap = it,
@@ -108,8 +139,9 @@ fun Chip(
     modifier: Modifier = Modifier,
     leadingIconUrl: String? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
+    sizes: ChipSizes = ChipDefaults.chipSizes(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    size: Dp = ChipDefaults.Size,
+    contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
     onDismiss: (() -> Unit)? = null,
 ) {
@@ -117,15 +149,16 @@ fun Chip(
         modifier = modifier,
         title = title,
         colors = colors,
+        sizes = sizes,
         textStyle = textStyle,
-        size = size,
+        contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
         onDismiss = onDismiss,
         leadingIcon = {
             leadingIconUrl?.let {
                 Image(
                     modifier = Modifier
-                        .size(size)
+                        .size(sizes.iconsSize())
                         .clip(CircleShape)
                         .background(colors.leadingIconBackgroundColor()),
                     imageUrl = it,
@@ -142,8 +175,9 @@ private fun InputChip(
     modifier: Modifier = Modifier,
     leadingIcon: (@Composable () -> Unit)? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
+    sizes: ChipSizes = ChipDefaults.chipSizes(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    size: Dp = ChipDefaults.Size,
+    contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
     onDismiss: (() -> Unit)? = null,
 ) {
@@ -152,12 +186,13 @@ private fun InputChip(
         onClick = { onDismiss?.invoke() },
         label = {
             Text(
+                modifier = Modifier.padding(contentPadding),
                 text = title,
                 style = textStyle,
             )
         },
         selected = false,
-        shape = MaterialTheme.shapes.extraLarge,
+        shape = RoundedCornerShape(sizes.roundedCornerSize()),
         colors = InputChipDefaults.inputChipColors(
             containerColor = colors.containerColor(),
             disabledContainerColor = colors.disabledContainerColor(),
@@ -166,13 +201,13 @@ private fun InputChip(
         ),
         border = InputChipDefaults.inputChipBorder(
             borderColor = colors.borderColor(),
-            borderWidth = 1.dp
+            borderWidth = sizes.borderWidth()
         ),
         leadingIcon = { leadingIcon?.invoke() },
         trailingIcon = {
             if (canBeDeleted) {
                 Icon(
-                    modifier = Modifier.size(size),
+                    modifier = Modifier.size(sizes.iconsSize()),
                     imageVector = Icons.Default.Close,
                     contentDescription = "Chip delete icon",
                 )
@@ -184,7 +219,15 @@ private fun InputChip(
 object ChipDefaults {
 
     @OptIn(ExperimentalMaterial3Api::class)
-    val Size = InputChipDefaults.AvatarSize
+    val IconsSize = InputChipDefaults.AvatarSize
+
+    private val ChipHorizontalPadding = 0.dp
+    private val ChipVerticalPadding = 0.dp
+
+    val ContentPadding = PaddingValues(
+        horizontal = ChipHorizontalPadding,
+        vertical = ChipVerticalPadding,
+    )
 
     @Composable
     fun chipColors(
@@ -203,6 +246,17 @@ object ChipDefaults {
         borderColor = borderColor,
         leadingIconColor = leadingIconColor,
         leadingIconBackgroundColor = leadingIconBackgroundColor,
+    )
+
+    @Composable
+    fun chipSizes(
+        borderWidth: Dp = 1.dp,
+        roundedCornerSize: Dp = 300.dp,
+        iconsSize: Dp = IconsSize,
+    ): ChipSizes = ChipSizes(
+        borderWidth = borderWidth,
+        roundedCornerSize = roundedCornerSize,
+        iconsSize = iconsSize,
     )
 }
 
@@ -236,6 +290,22 @@ class ChipColors internal constructor(
 
     @Composable
     internal fun leadingIconBackgroundColor(): Color = leadingIconBackgroundColor
+}
+
+@Immutable
+class ChipSizes internal constructor(
+    private val borderWidth: Dp,
+    private val roundedCornerSize: Dp,
+    private val iconsSize: Dp,
+) {
+    @Composable
+    internal fun borderWidth(): Dp = borderWidth
+
+    @Composable
+    internal fun roundedCornerSize(): Dp = roundedCornerSize
+
+    @Composable
+    internal fun iconsSize(): Dp = iconsSize
 }
 
 @UiModePreviews
@@ -280,9 +350,11 @@ private fun ChipLeadingIconAndDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
-            leadingIconVector = Icons.Filled.Person,
+            leadingIconVector = Icons.Filled.AccountCircle,
             canBeDeleted = true,
-            textStyle = MaterialTheme.typography.bodyLarge
+            textStyle = MaterialTheme.typography.titleMedium,
+            sizes = ChipDefaults.chipSizes(iconsSize = 32.dp),
+            contentPadding = PaddingValues(vertical = 12.dp),
         )
     }
 }
