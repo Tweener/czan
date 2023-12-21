@@ -88,6 +88,18 @@ fun Button(
 
 @UiModePreviews
 @Composable
+private fun PrimaryButtonBigEnabledPreview() {
+    CzanThemePreview {
+        Button(
+            text = "Enabled",
+            enabled = true,
+            size = ButtonSize.BIG,
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
 private fun PrimaryButtonRegularEnabledPreview() {
     CzanThemePreview {
         Button(

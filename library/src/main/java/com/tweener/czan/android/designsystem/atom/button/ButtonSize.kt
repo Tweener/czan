@@ -54,9 +54,9 @@ enum class ButtonSize {
         @Composable
         @ReadOnlyComposable
         get() = when (this) {
-            BIG -> MaterialTheme.typography.bodyMedium
-            REGULAR -> MaterialTheme.typography.labelLarge
-            SMALL -> MaterialTheme.typography.labelMedium
+            BIG -> MaterialTheme.typography.bodyLarge
+            REGULAR -> MaterialTheme.typography.bodyMedium
+            SMALL -> MaterialTheme.typography.bodySmall
         }
 
     val contentPadding: PaddingValues
