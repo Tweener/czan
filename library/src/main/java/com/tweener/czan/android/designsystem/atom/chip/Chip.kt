@@ -16,25 +16,133 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tweener.czan.android.designsystem.atom.image.Image
 import com.tweener.czan.android.designsystem.atom.text.Text
 import com.tweener.czan.android.preview.CzanThemePreview
+import com.tweener.czan.android.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
  * @since 18/12/2023
  */
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
-    leadingIcon: ImageVector? = null,
+    leadingIconVector: ImageVector? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    size: Dp = ChipDefaults.Size,
+    canBeDeleted: Boolean = false,
+    onDismiss: (() -> Unit)? = null,
+) {
+    InputChip(
+        modifier = modifier,
+        title = title,
+        colors = colors,
+        textStyle = textStyle,
+        size = size,
+        canBeDeleted = canBeDeleted,
+        onDismiss = onDismiss,
+        leadingIcon = {
+            leadingIconVector?.let {
+                Image(
+                    modifier = Modifier
+                        .size(size)
+                        .clip(CircleShape)
+                        .background(colors.leadingIconBackgroundColor()),
+                    imageVector = it,
+                    colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
+                    contentDescription = "Chip leading icon",
+                )
+            }
+        },
+    )
+}
+
+@Composable
+fun Chip(
+    title: String,
+    modifier: Modifier = Modifier,
+    leadingIconBitmap: ImageBitmap? = null,
+    colors: ChipColors = ChipDefaults.chipColors(),
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    size: Dp = ChipDefaults.Size,
+    canBeDeleted: Boolean = false,
+    onDismiss: (() -> Unit)? = null,
+) {
+    InputChip(
+        modifier = modifier,
+        title = title,
+        colors = colors,
+        textStyle = textStyle,
+        size = size,
+        canBeDeleted = canBeDeleted,
+        onDismiss = onDismiss,
+        leadingIcon = {
+            leadingIconBitmap?.let {
+                Image(
+                    modifier = Modifier
+                        .size(size)
+                        .clip(CircleShape)
+                        .background(colors.leadingIconBackgroundColor()),
+                    bitmap = it,
+                    colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
+                    contentDescription = "Chip leading icon",
+                )
+            }
+        },
+    )
+}
+
+@Composable
+fun Chip(
+    title: String,
+    modifier: Modifier = Modifier,
+    leadingIconUrl: String? = null,
+    colors: ChipColors = ChipDefaults.chipColors(),
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    size: Dp = ChipDefaults.Size,
+    canBeDeleted: Boolean = false,
+    onDismiss: (() -> Unit)? = null,
+) {
+    InputChip(
+        modifier = modifier,
+        title = title,
+        colors = colors,
+        textStyle = textStyle,
+        size = size,
+        canBeDeleted = canBeDeleted,
+        onDismiss = onDismiss,
+        leadingIcon = {
+            leadingIconUrl?.let {
+                Image(
+                    modifier = Modifier
+                        .size(size)
+                        .clip(CircleShape)
+                        .background(colors.leadingIconBackgroundColor()),
+                    imageUrl = it,
+                )
+            }
+        },
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun InputChip(
+    title: String,
+    modifier: Modifier = Modifier,
+    leadingIcon: (@Composable () -> Unit)? = null,
+    colors: ChipColors = ChipDefaults.chipColors(),
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     size: Dp = ChipDefaults.Size,
     canBeDeleted: Boolean = false,
     onDismiss: (() -> Unit)? = null,
@@ -45,7 +153,7 @@ fun Chip(
         label = {
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyMedium,
+                style = textStyle,
             )
         },
         selected = false,
@@ -53,25 +161,14 @@ fun Chip(
         colors = InputChipDefaults.inputChipColors(
             containerColor = colors.containerColor(),
             disabledContainerColor = colors.disabledContainerColor(),
-            labelColor = colors.labelColor()
+            labelColor = colors.labelColor(),
+            disabledLabelColor = colors.disabledLabelColor(),
         ),
         border = InputChipDefaults.inputChipBorder(
             borderColor = colors.borderColor(),
             borderWidth = 1.dp
         ),
-        leadingIcon = {
-            leadingIcon?.let {
-                Icon(
-                    modifier = Modifier
-                        .size(size)
-                        .clip(CircleShape)
-                        .background(colors.leadingIconBackgroundColor()),
-                    imageVector = it,
-                    tint = colors.leadingIconColor(),
-                    contentDescription = "Chip leading icon",
-                )
-            }
-        },
+        leadingIcon = { leadingIcon?.invoke() },
         trailingIcon = {
             if (canBeDeleted) {
                 Icon(
@@ -141,48 +238,51 @@ class ChipColors internal constructor(
     internal fun leadingIconBackgroundColor(): Color = leadingIconBackgroundColor
 }
 
-@PreviewLightDark
+@UiModePreviews
 @Composable
 private fun ChipNoLeadingIconAndNotDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
+            leadingIconVector = null,
             canBeDeleted = false
         )
     }
 }
 
-@PreviewLightDark
+@UiModePreviews
 @Composable
 private fun ChipLeadingIconAndNotDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
-            leadingIcon = Icons.Filled.Person,
+            leadingIconVector = Icons.Filled.Person,
             canBeDeleted = false
         )
     }
 }
 
-@PreviewLightDark
+@UiModePreviews
 @Composable
 private fun ChipNoLeadingIconAndDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
+            leadingIconVector = null,
             canBeDeleted = true
         )
     }
 }
 
-@PreviewLightDark
+@UiModePreviews
 @Composable
 private fun ChipLeadingIconAndDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
-            leadingIcon = Icons.Filled.Person,
-            canBeDeleted = true
+            leadingIconVector = Icons.Filled.Person,
+            canBeDeleted = true,
+            textStyle = MaterialTheme.typography.bodyLarge
         )
     }
 }
