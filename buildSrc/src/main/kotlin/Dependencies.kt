@@ -12,10 +12,8 @@ object Dependencies {
         object Czan {
             const val packageName = "com.tweener.czan"
             const val versionName = "1.0"
-            const val applicationId = Czan.packageName
-            const val namespace = Czan.packageName + ".android"
+            const val namespace = "$packageName.android"
             const val compileSDK = 34
-            const val targetSDK = compileSDK
             const val minSDK = 24
 
             object Jitpack {
@@ -42,7 +40,7 @@ object Dependencies {
 
         object Tweener {
             object Android {
-                const val common = "2.0.1"
+                const val common = "2.0.8"
                 const val placeholder = "1.0.0"
             }
         }
@@ -50,10 +48,7 @@ object Dependencies {
         object AndroidX {
             const val material3 = "1.1.1"
             const val activity = "1.8.0-alpha07"
-            const val appcompat = "1.4.2"
-            const val constraintlayout = "2.1.4"
             const val lifecycle = "2.6.2"
-            const val splashscreen = "1.0.1"
         }
     }
 
