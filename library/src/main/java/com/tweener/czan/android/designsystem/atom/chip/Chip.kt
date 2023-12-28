@@ -1,5 +1,6 @@
 package com.tweener.czan.android.designsystem.atom.chip
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.android.designsystem.atom.image.Image
+import com.tweener.czan.android.designsystem.atom.image.ImageDefaults
 import com.tweener.czan.android.designsystem.atom.text.Text
 import com.tweener.czan.android.preview.CzanThemePreview
 import com.tweener.czan.android.preview.UiModePreviews
@@ -138,6 +140,7 @@ fun Chip(
     title: String,
     modifier: Modifier = Modifier,
     leadingIconUrl: String? = null,
+    @DrawableRes placeholder: Int = 0,
     colors: ChipColors = ChipDefaults.chipColors(),
     sizes: ChipSizes = ChipDefaults.chipSizes(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
@@ -162,6 +165,11 @@ fun Chip(
                         .clip(CircleShape)
                         .background(colors.leadingIconBackgroundColor()),
                     imageUrl = it,
+                    placeholder = placeholder,
+                    colors = ImageDefaults.imageColors(
+                        shimmerBaseColor = colors.shimmerBaseColor(),
+                        shimmerHighlightColor = colors.shimmerHighlightColor(),
+                    ),
                 )
             }
         },
@@ -237,7 +245,9 @@ object ChipDefaults {
         disabledLabelColor: Color = MaterialTheme.colorScheme.onSurface,
         borderColor: Color = MaterialTheme.colorScheme.outline,
         leadingIconColor: Color = MaterialTheme.colorScheme.primary,
-        leadingIconBackgroundColor: Color = MaterialTheme.colorScheme.background
+        leadingIconBackgroundColor: Color = MaterialTheme.colorScheme.background,
+        shimmerBaseColor: Color = Color.Transparent,
+        shimmerHighlightColor: Color = Color.Transparent,
     ): ChipColors = ChipColors(
         containerColor = containerColor,
         disabledContainerColor = disabledContainerColor,
@@ -246,6 +256,8 @@ object ChipDefaults {
         borderColor = borderColor,
         leadingIconColor = leadingIconColor,
         leadingIconBackgroundColor = leadingIconBackgroundColor,
+        shimmerBaseColor = shimmerBaseColor,
+        shimmerHighlightColor = shimmerHighlightColor,
     )
 
     @Composable
@@ -269,6 +281,8 @@ class ChipColors internal constructor(
     private val borderColor: Color,
     private val leadingIconColor: Color,
     private val leadingIconBackgroundColor: Color,
+    private val shimmerBaseColor: Color,
+    private val shimmerHighlightColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
@@ -290,6 +304,12 @@ class ChipColors internal constructor(
 
     @Composable
     internal fun leadingIconBackgroundColor(): Color = leadingIconBackgroundColor
+
+    @Composable
+    internal fun shimmerBaseColor(): Color = shimmerBaseColor
+
+    @Composable
+    internal fun shimmerHighlightColor(): Color = shimmerHighlightColor
 }
 
 @Immutable
