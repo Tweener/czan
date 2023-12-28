@@ -99,16 +99,17 @@ fun Image(
     contentScale: ContentScale = ContentScale.Crop,
     alignment: Alignment = Alignment.Center,
     imageSize: ImageSize? = null,
+    circleCrop: Boolean = false,
 ) {
     GlideImage(
         modifier = modifier,
         imageModel = { imageUrl },
         imageOptions = ImageOptions(contentScale = contentScale, alignment = alignment),
         requestOptions = {
-            with(RequestOptions()) {
-                imageSize?.let { override(imageSize.width, imageSize.height) }
-                diskCacheStrategy(DiskCacheStrategy.ALL)
-            }
+            RequestOptions()
+                .apply { imageSize?.let { override(imageSize.width, imageSize.height) } ?: this }
+                .let { if (circleCrop) it.circleCrop() else it }
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
         },
         previewPlaceholder = placeholder,
         component = imageComponent {

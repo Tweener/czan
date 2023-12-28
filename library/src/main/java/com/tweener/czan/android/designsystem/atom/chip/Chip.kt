@@ -92,7 +92,7 @@ fun Chip(
                         .clip(CircleShape)
                         .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
                         .background(colors.leadingIconBackgroundColor())
-                        .conditional(sizes.iconBorderWidth() > 0.dp, { padding(sizes.iconPadding()) }),
+                        .padding(sizes.iconPadding()),
                     imageVector = it,
                     colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
                     contentDescription = "Chip leading icon",
@@ -131,7 +131,7 @@ fun Chip(
                         .clip(CircleShape)
                         .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
                         .background(colors.leadingIconBackgroundColor())
-                        .conditional(sizes.iconBorderWidth() > 0.dp, { padding(sizes.iconPadding()) }),
+                        .padding(sizes.iconPadding()),
                     bitmap = it,
                     colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
                     contentDescription = "Chip leading icon",
@@ -164,22 +164,37 @@ fun Chip(
         canBeDeleted = canBeDeleted,
         onDismiss = onDismiss,
         leadingIcon = {
-            leadingIconUrl?.let {
-                Image(
-                    modifier = Modifier
-                        .size(sizes.iconsSize())
-                        .clip(CircleShape)
-                        .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
-                        .background(colors.leadingIconBackgroundColor())
-                        .conditional(sizes.iconBorderWidth() > 0.dp, { padding(sizes.iconPadding()) }),
-                    imageUrl = it,
-                    placeholder = placeholder,
-                    colors = ImageDefaults.imageColors(
-                        shimmerBaseColor = colors.shimmerBaseColor(),
-                        shimmerHighlightColor = colors.shimmerHighlightColor(),
-                    ),
-                )
-            }
+            leadingIconUrl
+                ?.let {
+                    Image(
+                        modifier = Modifier
+                            .size(sizes.iconsSize())
+                            .clip(CircleShape)
+                            .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
+                            .background(colors.leadingIconBackgroundColor())
+                            .padding(sizes.iconPadding()),
+                        imageUrl = it,
+                        placeholder = placeholder,
+                        colors = ImageDefaults.imageColors(
+                            shimmerBaseColor = colors.shimmerBaseColor(),
+                            shimmerHighlightColor = colors.shimmerHighlightColor(),
+                        ),
+                        circleCrop = true,
+                    )
+                }
+                ?: run {
+                    Image(
+                        modifier = Modifier
+                            .size(sizes.iconsSize())
+                            .clip(CircleShape)
+                            .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
+                            .background(colors.leadingIconBackgroundColor())
+                            .padding(sizes.iconPadding()),
+                        resourceId = placeholder,
+                        colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
+                        contentDescription = "Chip leading icon",
+                    )
+                }
         },
     )
 }
