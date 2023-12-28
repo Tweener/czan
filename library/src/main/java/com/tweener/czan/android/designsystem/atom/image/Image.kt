@@ -106,10 +106,18 @@ fun Image(
         imageModel = { imageUrl },
         imageOptions = ImageOptions(contentScale = contentScale, alignment = alignment),
         requestOptions = {
-            RequestOptions()
-                .apply { imageSize?.let { override(imageSize.width, imageSize.height) } ?: this }
-                .let { if (circleCrop) it.circleCrop() else it }
+            var requestOptions = RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+
+            if (imageSize != null) {
+                requestOptions = requestOptions.override(imageSize.width, imageSize.height)
+            }
+
+            if (circleCrop) {
+                requestOptions = requestOptions.circleCrop()
+            }
+
+            requestOptions
         },
         previewPlaceholder = placeholder,
         component = imageComponent {
