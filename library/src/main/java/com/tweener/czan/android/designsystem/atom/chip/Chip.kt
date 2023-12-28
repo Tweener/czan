@@ -2,6 +2,7 @@ package com.tweener.czan.android.designsystem.atom.chip
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -27,6 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tweener.common.android.kotlinextension.conditional
 import com.tweener.czan.android.designsystem.atom.image.Image
 import com.tweener.czan.android.designsystem.atom.image.ImageDefaults
 import com.tweener.czan.android.designsystem.atom.text.Text
@@ -88,7 +90,9 @@ fun Chip(
                     modifier = Modifier
                         .size(sizes.iconsSize())
                         .clip(CircleShape)
-                        .background(colors.leadingIconBackgroundColor()),
+                        .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
+                        .background(colors.leadingIconBackgroundColor())
+                        .conditional(sizes.iconBorderWidth() > 0.dp, { padding(sizes.iconPadding()) }),
                     imageVector = it,
                     colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
                     contentDescription = "Chip leading icon",
@@ -125,7 +129,9 @@ fun Chip(
                     modifier = Modifier
                         .size(sizes.iconsSize())
                         .clip(CircleShape)
-                        .background(colors.leadingIconBackgroundColor()),
+                        .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
+                        .background(colors.leadingIconBackgroundColor())
+                        .conditional(sizes.iconBorderWidth() > 0.dp, { padding(sizes.iconPadding()) }),
                     bitmap = it,
                     colorFilter = ColorFilter.tint(color = colors.leadingIconColor()),
                     contentDescription = "Chip leading icon",
@@ -163,7 +169,9 @@ fun Chip(
                     modifier = Modifier
                         .size(sizes.iconsSize())
                         .clip(CircleShape)
-                        .background(colors.leadingIconBackgroundColor()),
+                        .conditional(sizes.iconBorderWidth() > 0.dp, { border(width = sizes.iconBorderWidth(), shape = CircleShape, color = colors.leadingIconBorderColor()) })
+                        .background(colors.leadingIconBackgroundColor())
+                        .conditional(sizes.iconBorderWidth() > 0.dp, { padding(sizes.iconPadding()) }),
                     imageUrl = it,
                     placeholder = placeholder,
                     colors = ImageDefaults.imageColors(
@@ -246,6 +254,7 @@ object ChipDefaults {
         borderColor: Color = MaterialTheme.colorScheme.outline,
         leadingIconColor: Color = MaterialTheme.colorScheme.primary,
         leadingIconBackgroundColor: Color = MaterialTheme.colorScheme.background,
+        leadingIconBorderColor: Color = MaterialTheme.colorScheme.primary,
         shimmerBaseColor: Color = Color.Transparent,
         shimmerHighlightColor: Color = Color.Transparent,
     ): ChipColors = ChipColors(
@@ -256,6 +265,7 @@ object ChipDefaults {
         borderColor = borderColor,
         leadingIconColor = leadingIconColor,
         leadingIconBackgroundColor = leadingIconBackgroundColor,
+        leadingIconBorderColor = leadingIconBorderColor,
         shimmerBaseColor = shimmerBaseColor,
         shimmerHighlightColor = shimmerHighlightColor,
     )
@@ -265,10 +275,14 @@ object ChipDefaults {
         borderWidth: Dp = 1.dp,
         roundedCornerSize: Dp = 300.dp,
         iconsSize: Dp = IconsSize,
+        iconBorderWidth: Dp = 0.dp,
+        iconPadding: Dp = 0.dp,
     ): ChipSizes = ChipSizes(
         borderWidth = borderWidth,
         roundedCornerSize = roundedCornerSize,
         iconsSize = iconsSize,
+        iconBorderWidth = iconBorderWidth,
+        iconPadding = iconPadding,
     )
 }
 
@@ -281,6 +295,7 @@ class ChipColors internal constructor(
     private val borderColor: Color,
     private val leadingIconColor: Color,
     private val leadingIconBackgroundColor: Color,
+    private val leadingIconBorderColor: Color,
     private val shimmerBaseColor: Color,
     private val shimmerHighlightColor: Color,
 ) {
@@ -306,6 +321,9 @@ class ChipColors internal constructor(
     internal fun leadingIconBackgroundColor(): Color = leadingIconBackgroundColor
 
     @Composable
+    internal fun leadingIconBorderColor(): Color = leadingIconBorderColor
+
+    @Composable
     internal fun shimmerBaseColor(): Color = shimmerBaseColor
 
     @Composable
@@ -317,6 +335,8 @@ class ChipSizes internal constructor(
     private val borderWidth: Dp,
     private val roundedCornerSize: Dp,
     private val iconsSize: Dp,
+    private val iconBorderWidth: Dp,
+    private val iconPadding: Dp,
 ) {
     @Composable
     internal fun borderWidth(): Dp = borderWidth
@@ -326,6 +346,12 @@ class ChipSizes internal constructor(
 
     @Composable
     internal fun iconsSize(): Dp = iconsSize
+
+    @Composable
+    internal fun iconBorderWidth(): Dp = iconBorderWidth
+
+    @Composable
+    internal fun iconPadding(): Dp = iconPadding
 }
 
 @UiModePreviews
@@ -346,8 +372,8 @@ private fun ChipLeadingIconAndNotDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
-            leadingIconVector = Icons.Filled.Person,
-            canBeDeleted = false
+            leadingIconVector = Icons.Filled.AccountCircle,
+            canBeDeleted = false,
         )
     }
 }
@@ -370,10 +396,18 @@ private fun ChipLeadingIconAndDeletablePreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
-            leadingIconVector = Icons.Filled.AccountCircle,
+            leadingIconVector = Icons.Filled.Person,
             canBeDeleted = true,
             textStyle = MaterialTheme.typography.titleMedium,
-            sizes = ChipDefaults.chipSizes(iconsSize = 32.dp),
+            colors = ChipDefaults.chipColors(
+                leadingIconBackgroundColor = Color.Gray,
+                leadingIconBorderColor = Color.Red
+            ),
+            sizes = ChipDefaults.chipSizes(
+                iconsSize = 32.dp,
+                iconBorderWidth = 1.dp,
+                iconPadding = 3.dp,
+            ),
             contentPadding = PaddingValues(vertical = 12.dp),
         )
     }
