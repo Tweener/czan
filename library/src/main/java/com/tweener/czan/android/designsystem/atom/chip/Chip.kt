@@ -232,6 +232,7 @@ private fun InputChip(
         ),
         border = InputChipDefaults.inputChipBorder(
             borderColor = colors.borderColor(),
+            selectedBorderColor = colors.selectedBorderColor(),
             borderWidth = sizes.borderWidth()
         ),
         leadingIcon = { leadingIcon?.invoke() },
@@ -267,6 +268,7 @@ object ChipDefaults {
         labelColor: Color = MaterialTheme.colorScheme.onSurface,
         disabledLabelColor: Color = MaterialTheme.colorScheme.onSurface,
         borderColor: Color = MaterialTheme.colorScheme.outline,
+        selectedBorderColor: Color = MaterialTheme.colorScheme.primary,
         leadingIconColor: Color = MaterialTheme.colorScheme.primary,
         leadingIconBackgroundColor: Color = MaterialTheme.colorScheme.background,
         leadingIconBorderColor: Color = MaterialTheme.colorScheme.primary,
@@ -278,6 +280,7 @@ object ChipDefaults {
         labelColor = labelColor,
         disabledLabelColor = disabledLabelColor,
         borderColor = borderColor,
+        selectedBorderColor = selectedBorderColor,
         leadingIconColor = leadingIconColor,
         leadingIconBackgroundColor = leadingIconBackgroundColor,
         leadingIconBorderColor = leadingIconBorderColor,
@@ -308,6 +311,7 @@ class ChipColors internal constructor(
     private val labelColor: Color,
     private val disabledLabelColor: Color,
     private val borderColor: Color,
+    private val selectedBorderColor: Color,
     private val leadingIconColor: Color,
     private val leadingIconBackgroundColor: Color,
     private val leadingIconBorderColor: Color,
@@ -328,6 +332,9 @@ class ChipColors internal constructor(
 
     @Composable
     internal fun borderColor(): Color = borderColor
+
+    @Composable
+    internal fun selectedBorderColor(): Color = selectedBorderColor
 
     @Composable
     internal fun leadingIconColor(): Color = leadingIconColor
