@@ -44,6 +44,7 @@ import com.tweener.czan.android.preview.UiModePreviews
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
+    selected: Boolean = false,
     colors: ChipColors = ChipDefaults.chipColors(),
     sizes: ChipSizes = ChipDefaults.chipSizes(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
@@ -54,6 +55,7 @@ fun Chip(
     InputChip(
         modifier = modifier,
         title = title,
+        selected = selected,
         colors = colors,
         sizes = sizes,
         textStyle = textStyle,
@@ -67,6 +69,7 @@ fun Chip(
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
+    selected: Boolean = false,
     leadingIconVector: ImageVector? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
     sizes: ChipSizes = ChipDefaults.chipSizes(),
@@ -78,6 +81,7 @@ fun Chip(
     InputChip(
         modifier = modifier,
         title = title,
+        selected = selected,
         colors = colors,
         sizes = sizes,
         textStyle = textStyle,
@@ -106,6 +110,7 @@ fun Chip(
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
+    selected: Boolean = false,
     leadingIconBitmap: ImageBitmap? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
     sizes: ChipSizes = ChipDefaults.chipSizes(),
@@ -117,6 +122,7 @@ fun Chip(
     InputChip(
         modifier = modifier,
         title = title,
+        selected = selected,
         colors = colors,
         sizes = sizes,
         textStyle = textStyle,
@@ -145,6 +151,7 @@ fun Chip(
 fun Chip(
     title: String,
     modifier: Modifier = Modifier,
+    selected: Boolean = false,
     leadingIconUrl: String? = null,
     @DrawableRes placeholder: Int = 0,
     colors: ChipColors = ChipDefaults.chipColors(),
@@ -157,6 +164,7 @@ fun Chip(
     InputChip(
         modifier = modifier,
         title = title,
+        selected = selected,
         colors = colors,
         sizes = sizes,
         textStyle = textStyle,
@@ -203,6 +211,7 @@ fun Chip(
 @Composable
 private fun InputChip(
     title: String,
+    selected: Boolean,
     modifier: Modifier = Modifier,
     leadingIcon: (@Composable () -> Unit)? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
@@ -222,16 +231,18 @@ private fun InputChip(
                 style = textStyle,
             )
         },
-        selected = false,
+        selected = selected,
         shape = RoundedCornerShape(sizes.roundedCornerSize()),
         colors = InputChipDefaults.inputChipColors(
             containerColor = colors.containerColor(),
+            selectedContainerColor = colors.selectedContainerColor(),
             disabledContainerColor = colors.disabledContainerColor(),
             labelColor = colors.labelColor(),
             disabledLabelColor = colors.disabledLabelColor(),
         ),
         border = InputChipDefaults.inputChipBorder(
             borderColor = colors.borderColor(),
+            selectedBorderColor = colors.selectedBorderColor(),
             borderWidth = sizes.borderWidth()
         ),
         leadingIcon = { leadingIcon?.invoke() },
@@ -263,10 +274,12 @@ object ChipDefaults {
     @Composable
     fun chipColors(
         containerColor: Color = MaterialTheme.colorScheme.surface,
+        selectedContainerColor: Color = containerColor.copy(alpha = 0.1f),
         disabledContainerColor: Color = MaterialTheme.colorScheme.surface,
         labelColor: Color = MaterialTheme.colorScheme.onSurface,
         disabledLabelColor: Color = MaterialTheme.colorScheme.onSurface,
         borderColor: Color = MaterialTheme.colorScheme.outline,
+        selectedBorderColor: Color = MaterialTheme.colorScheme.primary,
         leadingIconColor: Color = MaterialTheme.colorScheme.primary,
         leadingIconBackgroundColor: Color = MaterialTheme.colorScheme.background,
         leadingIconBorderColor: Color = MaterialTheme.colorScheme.primary,
@@ -274,10 +287,12 @@ object ChipDefaults {
         shimmerHighlightColor: Color = Color.Transparent,
     ): ChipColors = ChipColors(
         containerColor = containerColor,
+        selectedContainerColor = selectedContainerColor,
         disabledContainerColor = disabledContainerColor,
         labelColor = labelColor,
         disabledLabelColor = disabledLabelColor,
         borderColor = borderColor,
+        selectedBorderColor = selectedBorderColor,
         leadingIconColor = leadingIconColor,
         leadingIconBackgroundColor = leadingIconBackgroundColor,
         leadingIconBorderColor = leadingIconBorderColor,
@@ -304,10 +319,12 @@ object ChipDefaults {
 @Immutable
 class ChipColors internal constructor(
     private val containerColor: Color,
+    private val selectedContainerColor: Color,
     private val disabledContainerColor: Color,
     private val labelColor: Color,
     private val disabledLabelColor: Color,
     private val borderColor: Color,
+    private val selectedBorderColor: Color,
     private val leadingIconColor: Color,
     private val leadingIconBackgroundColor: Color,
     private val leadingIconBorderColor: Color,
@@ -316,6 +333,9 @@ class ChipColors internal constructor(
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
+
+    @Composable
+    internal fun selectedContainerColor(): Color = selectedContainerColor
 
     @Composable
     internal fun disabledContainerColor(): Color = disabledContainerColor
@@ -328,6 +348,9 @@ class ChipColors internal constructor(
 
     @Composable
     internal fun borderColor(): Color = borderColor
+
+    @Composable
+    internal fun selectedBorderColor(): Color = selectedBorderColor
 
     @Composable
     internal fun leadingIconColor(): Color = leadingIconColor
@@ -383,12 +406,13 @@ private fun ChipNoLeadingIconAndNotDeletablePreview() {
 
 @UiModePreviews
 @Composable
-private fun ChipLeadingIconAndNotDeletablePreview() {
+private fun ChipLeadingIconAndNotDeletableAndSelectedPreview() {
     CzanThemePreview {
         Chip(
             title = "Chip title",
             leadingIconVector = Icons.Filled.AccountCircle,
             canBeDeleted = false,
+            selected = true,
         )
     }
 }
