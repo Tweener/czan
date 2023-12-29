@@ -243,7 +243,8 @@ private fun InputChip(
         border = InputChipDefaults.inputChipBorder(
             borderColor = colors.borderColor(),
             selectedBorderColor = colors.selectedBorderColor(),
-            borderWidth = sizes.borderWidth()
+            borderWidth = sizes.borderWidth(),
+            selectedBorderWidth = sizes.selectedBorderWidth(),
         ),
         leadingIcon = { leadingIcon?.invoke() },
         trailingIcon = {
@@ -273,8 +274,8 @@ object ChipDefaults {
 
     @Composable
     fun chipColors(
-        containerColor: Color = MaterialTheme.colorScheme.surface,
-        selectedContainerColor: Color = containerColor.copy(alpha = 0.1f),
+        containerColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+        selectedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
         disabledContainerColor: Color = MaterialTheme.colorScheme.surface,
         labelColor: Color = MaterialTheme.colorScheme.onSurface,
         disabledLabelColor: Color = MaterialTheme.colorScheme.onSurface,
@@ -303,12 +304,14 @@ object ChipDefaults {
     @Composable
     fun chipSizes(
         borderWidth: Dp = 1.dp,
+        selectedBorderWidth: Dp = 1.dp,
         roundedCornerSize: Dp = 300.dp,
         iconsSize: Dp = IconsSize,
         iconBorderWidth: Dp = 0.dp,
         iconPadding: Dp = 0.dp,
     ): ChipSizes = ChipSizes(
         borderWidth = borderWidth,
+        selectedBorderWidth = selectedBorderWidth,
         roundedCornerSize = roundedCornerSize,
         iconsSize = iconsSize,
         iconBorderWidth = iconBorderWidth,
@@ -371,6 +374,7 @@ class ChipColors internal constructor(
 @Immutable
 class ChipSizes internal constructor(
     private val borderWidth: Dp,
+    private val selectedBorderWidth: Dp,
     private val roundedCornerSize: Dp,
     private val iconsSize: Dp,
     private val iconBorderWidth: Dp,
@@ -378,6 +382,9 @@ class ChipSizes internal constructor(
 ) {
     @Composable
     internal fun borderWidth(): Dp = borderWidth
+
+    @Composable
+    internal fun selectedBorderWidth(): Dp = selectedBorderWidth
 
     @Composable
     internal fun roundedCornerSize(): Dp = roundedCornerSize
