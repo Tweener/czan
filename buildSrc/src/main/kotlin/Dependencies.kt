@@ -9,6 +9,18 @@ object Dependencies {
 
     object Versions {
 
+        const val kotlin = "1.9.21"
+        const val gradle = "8.1.4"
+        const val composeMultiplatform = "1.5.11"
+        const val dokka = "1.9.10"
+        const val composeCompilerExtension = "1.5.3"
+        const val compose = "1.6.0-alpha03"
+        const val activityCompose = "1.7.2"
+        const val navigationCompose = "2.7.2"
+        const val desugarJdkLibs = "2.0.3"
+        const val accompanist = "0.32.0"
+        const val glide = "2.2.11"
+
         object Czan {
             const val packageName = "com.tweener.czan"
             const val versionName = "1.2"
@@ -29,19 +41,6 @@ object Dependencies {
             val javaCompatibility = JavaVersion.VERSION_17
         }
 
-        const val kotlin = "1.9.21"
-        const val gradle = "8.1.4"
-        const val composeMultiplatform = "1.5.11"
-        const val dokka = "1.9.10"
-        const val napier = "2.6.1"
-        const val composeCompilerExtension = "1.5.3"
-        const val compose = "1.6.0-alpha03"
-        const val activityCompose = "1.7.2"
-        const val navigationCompose = "2.7.2"
-        const val desugarJdkLibs = "2.0.3"
-        const val accompanist = "0.32.0"
-        const val glide = "2.2.11"
-
         object Tweener {
             object Android {
                 const val common = "2.0.8"
@@ -59,7 +58,6 @@ object Dependencies {
     object Libraries {
 
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
-        const val napier = "io.github.aakira:napier:${Versions.napier}"
         const val glide = "com.github.skydoves:landscapist-glide:${Versions.glide}"
         const val glidePlaceholder = "com.github.skydoves:landscapist-placeholder:${Versions.glide}"
 
@@ -71,7 +69,6 @@ object Dependencies {
         }
 
         object Android {
-
             object AndroidX {
                 const val material3 = "androidx.compose.material3:material3:${Versions.AndroidX.material3}"
                 const val activity = "androidx.activity:activity-ktx:${Versions.AndroidX.activity}"
