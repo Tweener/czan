@@ -193,8 +193,8 @@ publishing {
 }
 
 signing {
-    val signingKey = findProperty("signing.key") as String?
-    val signingPassword = findProperty("signing.password") as String?
+    val signingKey = gradleLocalProperties(rootDir).getProperty("signing.key") ?: System.getenv("SIGNING_KEY")
+    val signingPassword = gradleLocalProperties(rootDir).getProperty("signing.password") ?: System.getenv("SIGNING_PASSWORD")
 
     if (signingKey != null && signingPassword != null) {
         useInMemoryPgpKeys(signingKey, signingPassword)
