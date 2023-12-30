@@ -38,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/.lock') }}
 
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@ce999babab2de1c4b649dc15f0ee67e6246c994f
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: ${{ matrix.target }}
 
@@ -75,14 +75,14 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/.lock') }}
 
       - name: Gradle publish
-        uses: gradle/gradle-build-action@ce999babab2de1c4b649dc15f0ee67e6246c994f
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: |
             ${{ matrix.target }}
-            -PsonatypeUsername=${{ secrets.SONATYPE_USERNAME }}
-            -PsonatypePassword=${{ secrets.SONATYPE_PASSWORD }}
-            -Psigning.gnupg.keyName=${{ secrets.SIGNING_KEY }}
-            -Psigning.gnupg.passphrase=${{ secrets.SIGNING_PASSWORD }}
+            -PSONATYPE_USERNAME=${{ secrets.SONATYPE_USERNAME }}
+            -PSONATYPE_USERNAME=${{ secrets.SONATYPE_PASSWORD }}
+            -PSIGNING_KEY=${{ secrets.SIGNING_KEY }}
+            -PSIGNING_PASSWORD=${{ secrets.SIGNING_PASSWORD }}
 #
 #      - name: Publish library to Sonatype with Gradle
 #        run: ./gradlew publishAllPublicationsToOSSRepository --no-configuration-cache
