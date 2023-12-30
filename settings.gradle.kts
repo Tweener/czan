@@ -15,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "C·ZAN"
+rootProject.name = "C-ZAN"
 include(":library")

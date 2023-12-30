@@ -156,8 +156,8 @@ publishing {
 //            artifactId = Dependencies.Versions.Czan.Maven.artifactId
 
             pom {
-                name.set("C·ZAN Library")
-                description.set("C·ZAN Kotlin Multiplatform and Compose Multiplatform SDK")
+                name.set("C-ZAN Library")
+                description.set("C-ZAN Kotlin Multiplatform and Compose Multiplatform SDK")
                 url.set(Dependencies.Versions.Czan.Maven.packageUrl)
 
                 licenses {
