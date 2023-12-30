@@ -124,9 +124,6 @@ kotlin {
 
 // region Publishing
 
-//group = Dependencies.Versions.Czan.Maven.group
-//version = Dependencies.Versions.Czan.versionName
-
 // Dokka configuration
 tasks.dokkaHtml {
     outputDirectory.set(file("$buildDir/dokka"))

@@ -13,8 +13,6 @@ jobs:
         include:
           - target: iosSimulatorArm64Test
             os: macos-latest
-          - target: testDebugUnitTest
-            os: ubuntu-latest
           - target: testReleaseUnitTest
             os: ubuntu-latest
     runs-on: ${{ matrix.os }}
@@ -50,11 +48,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - target: publishIosArm64PublicationToSonatypeRepository
+          - target: publishIosArm64PublicationToOSSRepository
             os: macos-latest
-          - target: publishAndroidReleasePublicationToSonatypeRepository
+          - target: publishAndroidReleasePublicationToOSSRepository
             os: ubuntu-latest
-          - target: publishKotlinMultiplatformPublicationToSonatypeRepository
+          - target: publishKotlinMultiplatformPublicationToOSSRepository
             os: ubuntu-latest
     runs-on: ${{ matrix.os }}
 
