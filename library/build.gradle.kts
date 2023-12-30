@@ -195,7 +195,8 @@ signing {
     val signingKey = gradleLocalProperties(rootDir).getProperty("signing.gnupg.keyName") ?: System.getenv("SIGNING_KEY")
     val signingPassword = gradleLocalProperties(rootDir).getProperty("signing.gnupg.password") ?: System.getenv("SIGNING_PASSWORD")
 
-    if (signingKey != null && signingPassword != null) {
+//    if (signingKey != null && signingPassword != null) {
+    if (project.hasProperty("signing.gnupg.keyName")) {
         useGpgCmd()
 //        useInMemoryPgpKeys(signingKey, signingPassword)
         sign(publishing.publications["mavenKotlin"])
