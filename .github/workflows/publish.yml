@@ -7,16 +7,7 @@ on:
 
 jobs:
   build-and-publish:
-    strategy:
-      matrix:
-        include:
-          - target: publishIosArm64PublicationToSonatypeRepository
-            os: macos-latest
-          - target: publishAndroidReleasePublicationToSonatypeRepository
-            os: ubuntu-latest
-          - target: publishKotlinMultiplatformPublicationToSonatypeRepository
-            os: ubuntu-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
