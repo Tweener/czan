@@ -79,7 +79,6 @@ jobs:
         with:
           arguments: |
             ${{ matrix.target }}
-            closeSonatypeStagingRepository
             -Psigning.gnupg.keyName='${{secrets.SIGNING_KEY}}'
             -Psigning.gnupg.passphrase='${{secrets.SIGNING_PASSWORD}}'
             -PsonatypeUsername='${{secrets.SONATYPE_USERNAME}}'
