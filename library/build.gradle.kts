@@ -124,8 +124,8 @@ kotlin {
 
 // region Publishing
 
-group = Dependencies.Versions.Czan.Maven.group
-version = Dependencies.Versions.Czan.versionName
+//group = Dependencies.Versions.Czan.Maven.group
+//version = Dependencies.Versions.Czan.versionName
 
 // Dokka configuration
 tasks.dokkaHtml {
@@ -151,12 +151,16 @@ publishing {
     }
 
     publications {
-        publications.configureEach {
-            if (this is MavenPublication) {
+        kotlin.targets.forEach { target ->
+            create<MavenPublication>("${target.name}Publication") {
                 artifact(dokkaJar)
 
+                groupId = Dependencies.Versions.Czan.Maven.group
+                artifactId = Dependencies.Versions.Czan.Maven.artifactId
+                version = Dependencies.Versions.Czan.versionName
+
                 pom {
-                    name.set(Dependencies.Versions.Czan.Maven.artifactId)
+                    name.set("C·ZAN Library")
                     description.set("C·ZAN Kotlin Multiplatform and Compose Multiplatform SDK")
                     url.set(Dependencies.Versions.Czan.Maven.packageUrl)
 
@@ -189,16 +193,16 @@ publishing {
             }
         }
     }
+}
 
-//    publications {
-//        create<MavenPublication>("maven") {
-//            groupId = Dependencies.Versions.Czan.Maven.group
-//            artifactId = Dependencies.Versions.Czan.Maven.artifactId
-//            version = Dependencies.Versions.Czan.versionName
-//
-//            from(components["kotlin"])
-//        }
-//    }
+signing {
+    val signingKey = findProperty("signing.key") as String?
+    val signingPassword = findProperty("signing.password") as String?
+
+    if (signingKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign(publishing.publications)
+    }
 }
 
 // endregion Publishing
