@@ -124,22 +124,25 @@ kotlin {
 
 // region Publishing
 
-// Dokka configuration
-tasks.dokkaHtml {
-    outputDirectory.set(file("$buildDir/dokka"))
-}
+group = Dependencies.Versions.Czan.Maven.group
+version = Dependencies.Versions.Czan.versionName
 
-val dokkaJar by tasks.creating(Jar::class) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
+// Dokka configuration
+val dokkaOutputDir = buildDir.resolve("dokka")
+tasks.dokkaHtml { outputDirectory.set(file(dokkaOutputDir)) }
+val deleteDokkaOutputDir by tasks.register<Delete>("deleteDokkaOutputDirectory") { delete(dokkaOutputDir) }
+val javadocJar = tasks.create<Jar>("javadocJar") {
     archiveClassifier.set("javadoc")
-    from(tasks.dokkaHtml)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn(deleteDokkaOutputDir, tasks.dokkaHtml)
+    from(dokkaOutputDir)
 }
 
 publishing {
     repositories {
         maven {
             name = "OSS"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
                 username = gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("SONATYPE_USERNAME")
                 password = gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("SONATYPE_PASSWORD")
@@ -150,11 +153,9 @@ publishing {
     publications {
         publications.configureEach {
             if (this is MavenPublication) {
-                artifact(dokkaJar)
+                artifact(javadocJar)
 
-                groupId = Dependencies.Versions.Czan.Maven.group
                 artifactId = Dependencies.Versions.Czan.Maven.artifactId
-                version = Dependencies.Versions.Czan.versionName
 
                 pom {
                     name.set("C·ZAN Library")

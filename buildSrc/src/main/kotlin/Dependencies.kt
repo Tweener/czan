@@ -29,7 +29,7 @@ object Dependencies {
             const val minSDK = 24
 
             object Maven {
-                const val group = "com.tweener"
+                const val group = "io.github.tweener"
                 const val artifactId = "czan"
                 const val packageUrl = "https://github.com/Tweener/c-zan"
                 const val gitUrl = "github.com:Tweener/rc-zan.git"
