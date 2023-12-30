@@ -80,14 +80,6 @@ jobs:
           arguments: |
             ${{ matrix.target }}
             -PSONATYPE_USERNAME=${{ secrets.SONATYPE_USERNAME }}
-            -PSONATYPE_USERNAME=${{ secrets.SONATYPE_PASSWORD }}
+            -PSONATYPE_PASSWORD=${{ secrets.SONATYPE_PASSWORD }}
             -PSIGNING_KEY=${{ secrets.SIGNING_KEY }}
             -PSIGNING_PASSWORD=${{ secrets.SIGNING_PASSWORD }}
-#
-#      - name: Publish library to Sonatype with Gradle
-#        run: ./gradlew publishAllPublicationsToOSSRepository --no-configuration-cache
-#        env:
-#          OSSRH_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-#          OSSRH_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-#          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-#          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
