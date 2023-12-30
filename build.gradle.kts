@@ -17,17 +17,17 @@ group = Dependencies.Versions.Czan.Maven.group
 version = Dependencies.Versions.Czan.versionName
 
 nexusPublishing {
-    println(gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("OSSRH_USERNAME"))
-    println(gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("OSSRH_PASSWORD"))
-    println(gradleLocalProperties(rootDir).getProperty("sonatype.stagingProfileId") ?: System.getenv("OSSRH_STAGING_PROFILE_ID"))
+    println(gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("sonatypeUsername"))
+    println(gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("sonatypePassword"))
+    println(gradleLocalProperties(rootDir).getProperty("sonatype.stagingProfileId") ?: System.getenv("sonatypeStagingProfileId"))
 
     repositories {
         sonatype {
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            username.set(gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("OSSRH_USERNAME"))
-            password.set(gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("OSSRH_PASSWORD"))
-            stagingProfileId.set(gradleLocalProperties(rootDir).getProperty("sonatype.stagingProfileId") ?: System.getenv("OSSRH_STAGING_PROFILE_ID"))
+            username.set(gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("sonatypeUsername"))
+            password.set(gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("sonatypePassword"))
+            stagingProfileId.set(gradleLocalProperties(rootDir).getProperty("sonatype.stagingProfileId") ?: System.getenv("sonatypeStagingProfileId"))
         }
     }
 }

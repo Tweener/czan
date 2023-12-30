@@ -1,4 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
@@ -136,24 +135,10 @@ val javadocJar = tasks.create<Jar>("javadocJar") {
 }
 
 publishing {
-//    repositories {
-//        maven {
-//            name = "OSS"
-//            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-//            credentials {
-//                username = gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("SONATYPE_USERNAME")
-//                password = gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("SONATYPE_PASSWORD")
-//            }
-//        }
-//    }
-
     publications {
         create<MavenPublication>("mavenKotlin") {
             from(components["kotlin"])
-//            publications.withType<MavenPublication> {
 //            artifact(javadocJar)
-
-//            artifactId = Dependencies.Versions.Czan.Maven.artifactId
 
             pom {
                 name.set("C-ZAN Library")
@@ -186,19 +171,13 @@ publishing {
                     url.set(Dependencies.Versions.Czan.Maven.packageUrl)
                 }
             }
-//            }
         }
     }
 }
 
 signing {
-    val signingKey = gradleLocalProperties(rootDir).getProperty("signing.gnupg.keyName") ?: System.getenv("SIGNING_KEY")
-    val signingPassword = gradleLocalProperties(rootDir).getProperty("signing.gnupg.password") ?: System.getenv("SIGNING_PASSWORD")
-
-//    if (signingKey != null && signingPassword != null) {
     if (project.hasProperty("signing.gnupg.keyName")) {
         useGpgCmd()
-//        useInMemoryPgpKeys(signingKey, signingPassword)
         sign(publishing.publications["mavenKotlin"])
     }
 }
