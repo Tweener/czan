@@ -79,10 +79,10 @@ jobs:
         with:
           arguments: |
             ${{ matrix.target }}
-            -Psigning.gnupg.keyName='${{secrets.SIGNING_KEY}}'
-            -Psigning.gnupg.passphrase='${{secrets.SIGNING_PASSWORD}}'
-            -PsonatypeUsername='${{secrets.SONATYPE_USERNAME}}'
-            -PsonatypePassword='${{secrets.SONATYPE_PASSWORD}}'
+            -PsonatypeUsername=${{ secrets.SONATYPE_USERNAME }}
+            -PsonatypePassword=${{ secrets.SONATYPE_PASSWORD }}
+            -Psigning.gnupg.keyName=${{ secrets.SIGNING_KEY }}
+            -Psigning.gnupg.passphrase=${{ secrets.SIGNING_PASSWORD }}
 #
 #      - name: Publish library to Sonatype with Gradle
 #        run: ./gradlew publishAllPublicationsToOSSRepository --no-configuration-cache
