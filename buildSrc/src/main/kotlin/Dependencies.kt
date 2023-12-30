@@ -11,6 +11,7 @@ object Dependencies {
 
         const val kotlin = "1.9.21"
         const val gradle = "8.1.4"
+        const val nexusSonatype = "2.0.0-rc-1"
         const val composeMultiplatform = "1.5.11"
         const val dokka = "1.9.10"
         const val composeCompilerExtension = "1.5.3"

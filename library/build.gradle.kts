@@ -124,9 +124,6 @@ kotlin {
 
 // region Publishing
 
-group = Dependencies.Versions.Czan.Maven.group
-version = Dependencies.Versions.Czan.versionName
-
 // Dokka configuration
 val dokkaOutputDir = buildDir.resolve("dokka")
 tasks.dokkaHtml { outputDirectory.set(file(dokkaOutputDir)) }
@@ -139,67 +136,69 @@ val javadocJar = tasks.create<Jar>("javadocJar") {
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "OSS"
-            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("SONATYPE_USERNAME")
-                password = gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("SONATYPE_PASSWORD")
-            }
-        }
-    }
+//    repositories {
+//        maven {
+//            name = "OSS"
+//            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+//            credentials {
+//                username = gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("SONATYPE_USERNAME")
+//                password = gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("SONATYPE_PASSWORD")
+//            }
+//        }
+//    }
 
     publications {
-        publications.configureEach {
-            if (this is MavenPublication) {
-                artifact(javadocJar)
+        create<MavenPublication>("mavenKotlin") {
+            from(components["kotlin"])
+//            publications.withType<MavenPublication> {
+//            artifact(javadocJar)
 
-                artifactId = Dependencies.Versions.Czan.Maven.artifactId
+//            artifactId = Dependencies.Versions.Czan.Maven.artifactId
 
-                pom {
-                    name.set("C·ZAN Library")
-                    description.set("C·ZAN Kotlin Multiplatform and Compose Multiplatform SDK")
-                    url.set(Dependencies.Versions.Czan.Maven.packageUrl)
+            pom {
+                name.set("C·ZAN Library")
+                description.set("C·ZAN Kotlin Multiplatform and Compose Multiplatform SDK")
+                url.set(Dependencies.Versions.Czan.Maven.packageUrl)
 
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-
-                    issueManagement {
-                        system.set("GitHub Issues")
-                        url.set("${Dependencies.Versions.Czan.Maven.packageUrl}/issues")
-                    }
-
-                    developers {
-                        developer {
-                            id.set("Tweener")
-                            name.set("Vivien Mahé")
-                            email.set("vivien@tweener-labs.com")
-                        }
-                    }
-
-                    scm {
-                        connection.set("scm:git:git://${Dependencies.Versions.Czan.Maven.gitUrl}")
-                        developerConnection.set("scm:git:ssh://${Dependencies.Versions.Czan.Maven.gitUrl}")
-                        url.set(Dependencies.Versions.Czan.Maven.packageUrl)
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
+
+                issueManagement {
+                    system.set("GitHub Issues")
+                    url.set("${Dependencies.Versions.Czan.Maven.packageUrl}/issues")
+                }
+
+                developers {
+                    developer {
+                        id.set("Tweener")
+                        name.set("Vivien Mahé")
+                        email.set("vivien@tweener-labs.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://${Dependencies.Versions.Czan.Maven.gitUrl}")
+                    developerConnection.set("scm:git:ssh://${Dependencies.Versions.Czan.Maven.gitUrl}")
+                    url.set(Dependencies.Versions.Czan.Maven.packageUrl)
+                }
             }
+//            }
         }
     }
 }
 
 signing {
-    val signingKey = gradleLocalProperties(rootDir).getProperty("signing.key") ?: System.getenv("SIGNING_KEY")
-    val signingPassword = gradleLocalProperties(rootDir).getProperty("signing.password") ?: System.getenv("SIGNING_PASSWORD")
+    val signingKey = gradleLocalProperties(rootDir).getProperty("signing.gnupg.keyName") ?: System.getenv("SIGNING_KEY")
+    val signingPassword = gradleLocalProperties(rootDir).getProperty("signing.gnupg.password") ?: System.getenv("SIGNING_PASSWORD")
 
     if (signingKey != null && signingPassword != null) {
-        useInMemoryPgpKeys(signingKey, signingPassword)
-        sign(publishing.publications)
+        useGpgCmd()
+//        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign(publishing.publications["mavenKotlin"])
     }
 }
 
