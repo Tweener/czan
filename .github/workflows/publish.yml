@@ -39,9 +39,6 @@ jobs:
 
       - name: Publish library to Sonatype with Gradle
         run: ./gradlew publish
-        with:
-          arguments: |
-            ${{ matrix.target }}
         env:
           OSSRH_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
