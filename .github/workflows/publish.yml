@@ -52,8 +52,6 @@ jobs:
             os: macos-latest
           - target: publishAndroidReleasePublicationToOSSRepository
             os: ubuntu-latest
-          - target: publishKotlinMultiplatformPublicationToOSSRepository
-            os: ubuntu-latest
     runs-on: ${{ matrix.os }}
 
     steps:
