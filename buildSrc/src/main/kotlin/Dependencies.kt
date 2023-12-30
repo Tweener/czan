@@ -11,14 +11,16 @@ object Dependencies {
 
         object Czan {
             const val packageName = "com.tweener.czan"
-            const val versionName = "1.0"
+            const val versionName = "1.2"
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
 
-            object Jitpack {
-                const val group = "com.github.Tweener"
-                const val artifactId = "czan-android"
+            object Maven {
+                const val group = "com.tweener"
+                const val artifactId = "czan"
+                const val packageUrl = "https://github.com/Tweener/c-zan"
+                const val gitUrl = "github.com:Tweener/rc-zan.git"
             }
         }
 
@@ -27,8 +29,10 @@ object Dependencies {
             val javaCompatibility = JavaVersion.VERSION_17
         }
 
-        const val kotlin = "1.9.10"
-        const val gradle = "8.1.1"
+        const val kotlin = "1.9.21"
+        const val gradle = "8.1.4"
+        const val composeMultiplatform = "1.5.11"
+        const val dokka = "1.9.10"
         const val napier = "2.6.1"
         const val composeCompilerExtension = "1.5.3"
         const val compose = "1.6.0-alpha03"
@@ -66,26 +70,29 @@ object Dependencies {
             }
         }
 
-        object AndroidX {
-            const val material3 = "androidx.compose.material3:material3:${Versions.AndroidX.material3}"
-            const val activity = "androidx.activity:activity-ktx:${Versions.AndroidX.activity}"
+        object Android {
 
-            object Compose {
-                const val ui = "androidx.compose.ui:ui:${Versions.compose}"
-                const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
-                const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
-                const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
-                const val material = "androidx.compose.material:material:${Versions.compose}"
-                const val materialIconsCore = "androidx.compose.material:material-icons-core:${Versions.compose}"
-                const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
-                const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
-                const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
-                const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.AndroidX.lifecycle}"
+            object AndroidX {
+                const val material3 = "androidx.compose.material3:material3:${Versions.AndroidX.material3}"
+                const val activity = "androidx.activity:activity-ktx:${Versions.AndroidX.activity}"
+
+                object Compose {
+                    const val ui = "androidx.compose.ui:ui:${Versions.compose}"
+                    const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+                    const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
+                    const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+                    const val material = "androidx.compose.material:material:${Versions.compose}"
+                    const val materialIconsCore = "androidx.compose.material:material-icons-core:${Versions.compose}"
+                    const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
+                    const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
+                    const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+                    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.AndroidX.lifecycle}"
+                }
             }
-        }
 
-        object Accompanist {
-            const val systemUIController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist}"
+            object Accompanist {
+                const val systemUIController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist}"
+            }
         }
     }
 }

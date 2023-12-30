@@ -1,8 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version Dependencies.Versions.gradle apply false
-    id("com.android.library") version Dependencies.Versions.gradle apply false
-    kotlin("android") version Dependencies.Versions.kotlin apply false
+    kotlin("multiplatform").version(Dependencies.Versions.kotlin).apply(false)
+    id("com.android.library").version(Dependencies.Versions.gradle).apply(false)
+    id("org.jetbrains.compose").version(Dependencies.Versions.composeMultiplatform).apply(false)
+    id("org.jetbrains.dokka").version(Dependencies.Versions.dokka).apply(false)
 }
 
 tasks.register("clean", Delete::class) {
