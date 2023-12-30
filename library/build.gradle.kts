@@ -148,8 +148,8 @@ publishing {
     }
 
     publications {
-        kotlin.targets.forEach { target ->
-            create<MavenPublication>("${target.name}Publication") {
+        publications.configureEach {
+            if (this is MavenPublication) {
                 artifact(dokkaJar)
 
                 groupId = Dependencies.Versions.Czan.Maven.group
