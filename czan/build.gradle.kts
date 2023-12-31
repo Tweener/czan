@@ -92,6 +92,15 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
             implementation(compose.components.resources)
+
+            implementation(Dependencies.Libraries.ComposeMultiplatform.material3)
+
+            implementation(Dependencies.Libraries.annotations)
+
+            // Image fetcher
+            implementation(Dependencies.Libraries.Coil.compose)
+            implementation(Dependencies.Libraries.Coil.network)
+            implementation(Dependencies.Libraries.ktor)
         }
 
         androidMain.dependencies {
@@ -100,7 +109,6 @@ kotlin {
             implementation(Dependencies.Libraries.Tweener.Android.placeholder)
 
             // Android
-            implementation(Dependencies.Libraries.Android.AndroidX.material3)
             implementation(Dependencies.Libraries.Android.AndroidX.activity)
 
             // Accompanist

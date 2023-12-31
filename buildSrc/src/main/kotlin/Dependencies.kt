@@ -21,6 +21,9 @@ object Dependencies {
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.32.0"
         const val glide = "2.2.11"
+        const val coil = "3.0.0-alpha01"
+        const val ktor = "2.3.4"
+        const val annotations = "1.7.1"
 
         object Czan {
             const val packageName = "com.tweener.czan"
@@ -31,7 +34,6 @@ object Dependencies {
 
             object Maven {
                 const val group = "io.github.tweener"
-                const val artifactId = "czan"
                 const val packageUrl = "https://github.com/Tweener/c-zan"
                 const val gitUrl = "github.com:Tweener/rc-zan.git"
             }
@@ -61,6 +63,13 @@ object Dependencies {
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
         const val glide = "com.github.skydoves:landscapist-glide:${Versions.glide}"
         const val glidePlaceholder = "com.github.skydoves:landscapist-placeholder:${Versions.glide}"
+        const val ktor = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
+        const val annotations = "androidx.annotation:annotation:${Versions.annotations}"
+
+        object Coil {
+            const val compose = "io.coil-kt.coil3:coil-compose:${Versions.coil}"
+            const val network = "io.coil-kt.coil3:coil-network:${Versions.coil}"
+        }
 
         object Tweener {
             object Android {
@@ -69,9 +78,12 @@ object Dependencies {
             }
         }
 
+        object ComposeMultiplatform {
+            const val material3 = "org.jetbrains.compose.material3:material3:${Versions.composeMultiplatform}"
+        }
+
         object Android {
             object AndroidX {
-                const val material3 = "androidx.compose.material3:material3:${Versions.AndroidX.material3}"
                 const val activity = "androidx.activity:activity-ktx:${Versions.AndroidX.activity}"
 
                 object Compose {

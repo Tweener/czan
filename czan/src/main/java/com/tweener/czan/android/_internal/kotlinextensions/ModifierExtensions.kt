@@ -27,46 +27,40 @@ fun Modifier.shimmer(
     color: Color,
     highlightColor: Color,
 ): Modifier =
-    composed {
-        this.placeholder(
-            visible = refreshing,
-            shape = shape,
-            highlight = PlaceholderHighlight.shimmer(highlightColor = highlightColor),
-            color = color
-        )
-    }
+    this.placeholder(
+        visible = refreshing,
+        shape = shape,
+        highlight = PlaceholderHighlight.shimmer(highlightColor = highlightColor),
+        color = color
+    )
 
 fun Modifier.verticalGradientBackground(
     color: Color,
     startAlpha: Float = 1f,
     endAlpha: Float = 0f
 ): Modifier =
-    composed {
-        this.background(
-            brush = Brush.verticalGradient(
-                colors = listOf(
-                    color.copy(alpha = startAlpha),
-                    color.copy(alpha = endAlpha)
-                ),
-            )
+    this.background(
+        brush = Brush.verticalGradient(
+            colors = listOf(
+                color.copy(alpha = startAlpha),
+                color.copy(alpha = endAlpha)
+            ),
         )
-    }
+    )
 
 fun Modifier.horizontalGradientBackground(
     color: Color,
     startAlpha: Float = 1f,
     endAlpha: Float = 0f
 ): Modifier =
-    composed {
-        this.background(
-            brush = Brush.horizontalGradient(
-                colors = listOf(
-                    color.copy(alpha = startAlpha),
-                    color.copy(alpha = endAlpha)
-                ),
-            )
+    this.background(
+        brush = Brush.horizontalGradient(
+            colors = listOf(
+                color.copy(alpha = startAlpha),
+                color.copy(alpha = endAlpha)
+            ),
         )
-    }
+    )
 
 fun Modifier.bottomBorder(
     width: Dp,
