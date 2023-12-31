@@ -46,10 +46,11 @@ jobs:
     needs: build
 
     env:
-      SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-      SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-      SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-      SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+      OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+      OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      OSSRH_STAGING_PROFILE_ID: ${{ secrets.OSSRH_STAGING_PROFILE_ID }}
+      OSSRH_GPG_SECRET_KEY_ID: ${{ secrets.OSSRH_GPG_SECRET_KEY_ID }}
+      OSSRH_GPG_SECRET_KEY_PASSWORD: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
 
     strategy:
       matrix:
@@ -81,19 +82,17 @@ jobs:
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v5
         with:
-          gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
-          passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          gpg_private_key: ${{ env.OSSRH_GPG_SECRET_KEY }}
+          passphrase: ${{ env.OSSRH_GPG_SECRET_KEY_PASSWORD }}
 
       - name: Gradle publish
         uses: gradle/gradle-build-action@ce999babab2de1c4b649dc15f0ee67e6246c994f
         with:
-          # Try echo/println ${{ secrets.OSSRH_USERNAME }} to see if we actually get the value
           arguments: |
-            echo ${{ secrets.OSSRH_USERNAME }}
             ${{ matrix.target }}
             closeSonatypeStagingRepository
-            -Psigning.gnupg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-            -Psigning.gnupg.keyName=${{ secrets.OSSRH_GPG_SECRET_KEY_ID }}
-            -PsonatypeUsername=${{ secrets.OSSRH_USERNAME }}
-            -PsonatypePassword=${{ secrets.OSSRH_PASSWORD }}
-            -PsonatypeStagingProfileId=${{ secrets.OSSRH_STAGING_PROFILE_ID }}
+            -Psigning.gnupg.passphrase=${{ env.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+            -Psigning.gnupg.keyName=${{ env.OSSRH_GPG_SECRET_KEY_ID }}
+            -PsonatypeUsername=${{ env.OSSRH_USERNAME }}
+            -PsonatypePassword=${{ env.OSSRH_PASSWORD }}
+            -PsonatypeStagingProfileId=${{ env.OSSRH_STAGING_PROFILE_ID }}
