@@ -134,14 +134,17 @@ val javadocJar = tasks.create<Jar>("javadocJar") {
     from(dokkaOutputDir)
 }
 
+group = Dependencies.Versions.Czan.Maven.group
+version = Dependencies.Versions.Czan.versionName
+
 publishing {
     publications {
         publications.withType<MavenPublication> {
             artifact(javadocJar)
 
-            group = Dependencies.Versions.Czan.Maven.group
-            artifactId = Dependencies.Versions.Czan.Maven.artifactId
-            version = Dependencies.Versions.Czan.versionName
+//            group = Dependencies.Versions.Czan.Maven.group
+//            artifactId = Dependencies.Versions.Czan.Maven.artifactId
+//            version = Dependencies.Versions.Czan.versionName
 
             pom {
                 name.set("C-ZAN")
