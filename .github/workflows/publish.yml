@@ -87,7 +87,9 @@ jobs:
       - name: Gradle publish
         uses: gradle/gradle-build-action@ce999babab2de1c4b649dc15f0ee67e6246c994f
         with:
+          # Try echo/println ${{ secrets.OSSRH_USERNAME }} to see if we actually get the value
           arguments: |
+            echo ${{ secrets.OSSRH_USERNAME }}
             ${{ matrix.target }}
             closeSonatypeStagingRepository
             -Psigning.gnupg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
