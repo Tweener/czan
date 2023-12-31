@@ -82,11 +82,12 @@ jobs:
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v5
         with:
-          gpg_private_key: ${{ env.OSSRH_GPG_SECRET_KEY }}
-          passphrase: ${{ env.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+          passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
 
       - name: Gradle publish
         uses: gradle/gradle-build-action@ce999babab2de1c4b649dc15f0ee67e6246c994f
+        run: echo ${{ env.OSSRH_USERNAME }}
         with:
           arguments: |
             ${{ matrix.target }}
