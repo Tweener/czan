@@ -175,7 +175,7 @@ publishing {
 }
 
 signing {
-    if (System.getenv("OSSRH_GPG_SECRET_KEY_ID") != null) {
+    if (project.hasProperty("signing.gnupg.keyName")) {
         println("Signing lib...")
         useGpgCmd()
         sign(publishing.publications)
