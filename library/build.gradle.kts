@@ -176,7 +176,8 @@ publishing {
 }
 
 signing {
-    if (project.hasProperty("signing.gnupg.keyName")) {
+    if (System.getenv("OSSRH_GPG_SECRET_KEY_ID") != null) {
+        println("Signing lib...")
         useGpgCmd()
         sign(publishing.publications["mavenKotlin"])
     }
