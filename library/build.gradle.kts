@@ -139,6 +139,10 @@ publishing {
         publications.withType<MavenPublication> {
             artifact(javadocJar)
 
+            group = Dependencies.Versions.Czan.Maven.group
+            artifactId = Dependencies.Versions.Czan.Maven.artifactId
+            version = Dependencies.Versions.Czan.versionName
+
             pom {
                 name.set("C-ZAN Library")
                 description.set("C-ZAN Kotlin Multiplatform and Compose Multiplatform SDK")

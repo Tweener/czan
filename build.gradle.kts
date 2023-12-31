@@ -13,9 +13,6 @@ tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
 
-group = Dependencies.Versions.Czan.Maven.group
-version = Dependencies.Versions.Czan.versionName
-
 nexusPublishing {
     repositories {
         sonatype {
