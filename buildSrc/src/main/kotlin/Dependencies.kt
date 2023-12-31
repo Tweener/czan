@@ -66,16 +66,30 @@ object Dependencies {
         const val ktor = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
         const val annotations = "androidx.annotation:annotation:${Versions.annotations}"
 
-        object Coil {
-            const val compose = "io.coil-kt.coil3:coil-compose:${Versions.coil}"
-            const val network = "io.coil-kt.coil3:coil-network:${Versions.coil}"
-        }
-
         object Tweener {
             object Android {
                 const val common = "com.github.Tweener:common-android:${Versions.Tweener.Android.common}"
                 const val placeholder = "com.github.Tweener:placeholder-material3:${Versions.Tweener.Android.placeholder}"
             }
+        }
+
+        object Coil {
+            const val compose = "io.coil-kt.coil3:coil-compose:${Versions.coil}"
+            const val network = "io.coil-kt.coil3:coil-network:${Versions.coil}"
+        }
+
+        object Ktor {
+            object Client {
+                object Android {
+                    const val okhttp = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
+                }
+
+                object iOS {
+                    const val client = "io.ktor:ktor-client-darwin:${Versions.ktor}"
+                }
+            }
+
+            const val serializationJson = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
         }
 
         object ComposeMultiplatform {
