@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
@@ -110,18 +109,19 @@ fun Image(
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalPlatformContext.current)
             .data(imageUrl)
+//            .placeholder(coil3.Image(placeholderRes))
             .apply {
                 if (imageSize != null) {
                     size(imageSize.width, imageSize.height) // Set the target size to load the image at.
                 }
             }
-            .build()
+            .build(),
     )
 
-    AsyncImage(
+    Image(
         modifier = modifier.apply { if (circleCrop) clip(CircleShape) },
-        model = painter,
-        placeholder = placeholderRes?.let { painterResource(res = it) },
+        painter = painter,
+//        placeholder = placeholderRes?.let { painterResource(res = it) },
         contentScale = contentScale,
         alignment = alignment,
         contentDescription = null,
