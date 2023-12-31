@@ -17,9 +17,9 @@ group = Dependencies.Versions.Czan.Maven.group
 version = Dependencies.Versions.Czan.versionName
 
 nexusPublishing {
-    println(gradleLocalProperties(rootDir).getProperty("sonatype.username") ?: System.getenv("sonatypeUsername"))
-    println(gradleLocalProperties(rootDir).getProperty("sonatype.password") ?: System.getenv("sonatypePassword"))
-    println(gradleLocalProperties(rootDir).getProperty("sonatype.stagingProfileId") ?: System.getenv("sonatypeStagingProfileId"))
+    println(System.getenv("OSSRH_USERNAME"))
+    println(System.getenv("OSSRH_PASSWORD"))
+    println(System.getenv("OSSRH_STAGING_PROFILE_ID"))
 
     repositories {
         sonatype {
