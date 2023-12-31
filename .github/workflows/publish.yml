@@ -1,5 +1,8 @@
 name: Publish to Maven Central
 
+permissions:
+  contents: read
+  
 on:
   workflow_dispatch:
 
@@ -87,7 +90,6 @@ jobs:
 
       - name: Gradle publish
         uses: gradle/gradle-build-action@ce999babab2de1c4b649dc15f0ee67e6246c994f
-        run: echo ${{ env.OSSRH_USERNAME }}
         with:
           arguments: |
             ${{ matrix.target }}
