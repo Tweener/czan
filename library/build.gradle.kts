@@ -136,9 +136,8 @@ val javadocJar = tasks.create<Jar>("javadocJar") {
 
 publishing {
     publications {
-        create<MavenPublication>("mavenKotlin") {
-            from(components["kotlin"])
-//            artifact(javadocJar)
+        publications.withType<MavenPublication> {
+            artifact(javadocJar)
 
             pom {
                 name.set("C-ZAN Library")
@@ -179,7 +178,7 @@ signing {
     if (System.getenv("OSSRH_GPG_SECRET_KEY_ID") != null) {
         println("Signing lib...")
         useGpgCmd()
-        sign(publishing.publications["mavenKotlin"])
+        sign(publishing.publications)
     }
 }
 
