@@ -144,8 +144,8 @@ publishing {
             version = Dependencies.Versions.Czan.versionName
 
             pom {
-                name.set("C-ZAN Library")
-                description.set("C-ZAN Kotlin Multiplatform and Compose Multiplatform SDK")
+                name.set("C-ZAN")
+                description.set("C-ZAN Design System for Kotlin Multiplatform and Compose Multiplatform")
                 url.set(Dependencies.Versions.Czan.Maven.packageUrl)
 
                 licenses {
