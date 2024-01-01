@@ -7,32 +7,26 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
-import com.tweener.placeholder.material3.PlaceholderHighlight
-import com.tweener.placeholder.material3.placeholder
-import com.tweener.placeholder.material3.shimmer
 
 /**
  * @author Vivien Mahe
  * @since 15/11/2023
  */
 
-
-fun Modifier.shimmer(
-    refreshing: Boolean,
-    shape: Shape = RectangleShape,
-    color: Color,
-    highlightColor: Color,
-): Modifier =
-    this.placeholder(
-        visible = refreshing,
-        shape = shape,
-        highlight = PlaceholderHighlight.shimmer(highlightColor = highlightColor),
-        color = color
-    )
+//fun Modifier.shimmer(
+//    refreshing: Boolean,
+//    shape: Shape = RectangleShape,
+//    color: Color,
+//    highlightColor: Color,
+//): Modifier =
+//    this.placeholder(
+//        visible = refreshing,
+//        shape = shape,
+//        highlight = PlaceholderHighlight.shimmer(highlightColor = highlightColor),
+//        color = color
+//    )
 
 fun Modifier.verticalGradientBackground(
     color: Color,

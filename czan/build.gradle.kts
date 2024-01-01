@@ -85,6 +85,9 @@ kotlin {
 
         @OptIn(ExperimentalComposeLibrary::class)
         commonMain.dependencies {
+            implementation(Dependencies.Libraries.annotations)
+            implementation(Dependencies.Libraries.shimmer)
+
             // Compose
             implementation(compose.ui)
             implementation(compose.foundation)
@@ -92,10 +95,7 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
             implementation(compose.components.resources)
-
             implementation(Dependencies.Libraries.ComposeMultiplatform.material3)
-
-            implementation(Dependencies.Libraries.annotations)
 
             // Image fetcher
             implementation(Dependencies.Libraries.Coil.compose)

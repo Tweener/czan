@@ -20,10 +20,10 @@ object Dependencies {
         const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.32.0"
-        const val glide = "2.2.11"
         const val coil = "3.0.0-alpha01"
         const val ktor = "2.3.4"
         const val annotations = "1.7.1"
+        const val shimmer = "1.2.0"
 
         object Czan {
             const val packageName = "com.tweener.czan"
@@ -61,8 +61,7 @@ object Dependencies {
     object Libraries {
 
         const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
-        const val glide = "com.github.skydoves:landscapist-glide:${Versions.glide}"
-        const val glidePlaceholder = "com.github.skydoves:landscapist-placeholder:${Versions.glide}"
+        const val shimmer = "com.valentinilk.shimmer:compose-shimmer:${Versions.shimmer}"
         const val ktor = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
         const val annotations = "androidx.annotation:annotation:${Versions.annotations}"
 

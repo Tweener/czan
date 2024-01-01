@@ -4,6 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,7 +21,9 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.CachePolicy
 import coil3.request.ImageRequest
+import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.theme.CzanUiDefaults
+import com.valentinilk.shimmer.shimmer
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -102,6 +108,8 @@ fun Image(
     imageSize: ImageSize? = null,
     circleCrop: Boolean = false,
 ) {
+    var isLoading by remember { mutableStateOf(false) }
+
     val model = ImageRequest.Builder(LocalPlatformContext.current)
         .data(imageUrl)
         .memoryCachePolicy(policy = CachePolicy.ENABLED)
@@ -115,25 +123,22 @@ fun Image(
         .build()
 
     AsyncImage(
-        modifier = modifier.apply { if (circleCrop) clip(CircleShape) },
+        modifier = modifier
+            .apply { if (circleCrop) clip(CircleShape) }
+            .conditional(isLoading, { shimmer() }),
         model = model,
         placeholder = placeholderRes?.let { painterResource(res = it) },
         contentScale = contentScale,
         alignment = alignment,
         contentDescription = null,
-//        requestOptions = {
-//            var requestOptions = RequestOptions()
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//        },
+        onLoading = { isLoading = true },
+        onSuccess = { isLoading = false },
+        onError = { isLoading = false },
 //        component = imageComponent {
 //            +ShimmerPlugin(
 //                baseColor = colors.shimmerBaseColor(),
 //                highlightColor = colors.shimmerHighlightColor()
 //            )
-//
-//            if (placeholder != 0) {
-//                +PlaceholderPlugin.Failure(painterResource(id = placeholder))
-//            }
 //        }
     )
 }
