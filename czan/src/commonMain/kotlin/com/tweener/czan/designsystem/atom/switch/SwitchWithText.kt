@@ -44,19 +44,3 @@ fun SwitchWithText(
         )
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun SwitchWithTextCheckedPreview() {
-//    CzanThemePreview {
-//        SwitchWithText(text = "Switch checked with text", isChecked = true)
-//    }
-//}
-//
-//@PreviewLightDark
-//@Composable
-//private fun SwitchWithTextNotCheckedPreview() {
-//    CzanThemePreview {
-//        SwitchWithText(text = "Switch not checked with text", isChecked = false)
-//    }
-//}

@@ -44,19 +44,3 @@ fun AlertDialog(
         onDismissRequest = onDismiss
     )
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun AlertDialogPreview() {
-//    CzanThemePreview {
-//        AlertDialog(
-//            title = "AlertDialog title",
-//            confirmButtonLabel = "Confirm",
-//            dismissButtonLabel = "Cancel",
-//            onConfirmButtonClicked = {},
-//            onDismiss = {},
-//        ) {
-//            Text(text = "This is a Text component.")
-//        }
-//    }
-//}

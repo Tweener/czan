@@ -63,16 +63,3 @@ fun OutlineText(
         )
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun OutlineTextPreview() {
-//    CzanThemePreview {
-//        OutlineText(
-//            text = "This is an outline text",
-//            color = Color.Black,
-//            outlineColor = Color.White,
-//            outlineOffset = 4.dp
-//        )
-//    }
-//}

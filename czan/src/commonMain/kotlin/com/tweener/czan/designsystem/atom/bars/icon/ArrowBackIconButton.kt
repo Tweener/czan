@@ -27,11 +27,3 @@ fun ArrowBackIconButton(
         )
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun ArrowBackIconButtonPreview() {
-//    CzanThemePreview {
-//        ArrowBackIconButton()
-//    }
-//}

@@ -1,4 +1,4 @@
-package com.tweener.czan.designsystem.molecule.carousel
+package com.tweener.czan.carousel
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -25,14 +25,3 @@ fun CarouselDots(
         }
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun CarouselDotsPreview() {
-//    CzanThemePreview {
-//        CarouselDots(
-//            pageCount = 3,
-//            currentPage = 1
-//        )
-//    }
-//}

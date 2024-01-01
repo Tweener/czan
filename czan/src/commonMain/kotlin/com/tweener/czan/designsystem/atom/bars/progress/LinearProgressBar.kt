@@ -26,19 +26,3 @@ fun LinearProgressBar(
         trackColor = selectedColor
     )
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun LinearProgressBarProgressNonePreview() {
-//    CzanThemePreview {
-//        LinearProgressBar(progress = 0f)
-//    }
-//}
-//
-//@PreviewLightDark
-//@Composable
-//private fun LinearProgressBarProgress30Preview() {
-//    CzanThemePreview {
-//        LinearProgressBar(progress = 0.3f)
-//    }
-//}

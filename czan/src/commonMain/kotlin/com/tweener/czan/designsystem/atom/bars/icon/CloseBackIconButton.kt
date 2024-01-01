@@ -27,11 +27,3 @@ fun CloseBackIconButton(
         )
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun CloseBackIconButtonPreview() {
-//    CzanThemePreview {
-//        CloseBackIconButton()
-//    }
-//}

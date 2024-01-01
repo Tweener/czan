@@ -77,19 +77,3 @@ fun StepProgressBar(
         }
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun ProgressBarNoSelectionPreview() {
-//    CzanThemePreview {
-//        StepProgressBar(stepsCount = 5)
-//    }
-//}
-//
-//@PreviewLightDark
-//@Composable
-//private fun ProgressBarSecondSelectedPreview() {
-//    CzanThemePreview {
-//        StepProgressBar(stepsCount = 5, selectedIndex = 1)
-//    }
-//}

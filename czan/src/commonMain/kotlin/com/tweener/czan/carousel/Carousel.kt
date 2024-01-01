@@ -1,4 +1,4 @@
-package com.tweener.czan.designsystem.molecule.carousel
+package com.tweener.czan.carousel
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
@@ -73,28 +73,3 @@ fun Carousel(
         }
     }
 }
-
-//@OptIn(ExperimentalFoundationApi::class)
-//@PreviewLightDark
-//@Composable
-//private fun CarouselWithDotsPreview() {
-//    CzanThemePreview {
-//        Carousel(pagerState = rememberPagerState { 4 }) {
-//            Text("Page $it")
-//        }
-//    }
-//}
-//
-//@OptIn(ExperimentalFoundationApi::class)
-//@PreviewLightDark
-//@Composable
-//private fun CarouselWithoutDotsPreview() {
-//    CzanThemePreview {
-//        Carousel(
-//            pagerState = rememberPagerState { 4 },
-//            showDots = false
-//        ) {
-//            Text("Page $it")
-//        }
-//    }
-//}

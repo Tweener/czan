@@ -30,11 +30,3 @@ fun FloatingActionButton(
         )
     }
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun FloatingActionButtonPreview() {
-//    CzanThemePreview {
-//        FloatingActionButton(icon = Icons.Default.Add)
-//    }
-//}

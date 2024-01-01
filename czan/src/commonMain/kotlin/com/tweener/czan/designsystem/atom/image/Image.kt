@@ -104,15 +104,15 @@ fun Image(
 ) {
     val model = ImageRequest.Builder(LocalPlatformContext.current)
         .data(imageUrl)
+        .memoryCachePolicy(policy = CachePolicy.ENABLED)
         .diskCachePolicy(policy = CachePolicy.ENABLED)
+        .networkCachePolicy(policy = CachePolicy.ENABLED)
         .apply {
             if (imageSize != null) {
                 size(imageSize.width, imageSize.height) // Set the target size to load the image at.
             }
         }
         .build()
-
-//    val painter = rememberAsyncImagePainter(model = model)
 
     AsyncImage(
         modifier = modifier.apply { if (circleCrop) clip(CircleShape) },

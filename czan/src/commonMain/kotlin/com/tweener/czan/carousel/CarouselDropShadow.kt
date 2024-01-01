@@ -1,4 +1,4 @@
-package com.tweener.czan.designsystem.molecule.carousel
+package com.tweener.czan.carousel
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

@@ -40,13 +40,3 @@ fun SearchInput(
         }
     )
 }
-
-//@PreviewLightDark
-//@Composable
-//private fun SearchInputPreview() {
-//    CzanThemePreview {
-//        SearchInput(
-//            placeholderText = "Search mood or category"
-//        )
-//    }
-//}
