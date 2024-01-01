@@ -1,10 +1,5 @@
 package com.tweener.czan.designsystem.atom.image
 
-/**
- * @author Vivien Mahe
- * @since 31/12/2023
- */
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
@@ -18,8 +13,9 @@ import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
-import coil3.compose.rememberAsyncImagePainter
+import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import com.tweener.czan.theme.CzanUiDefaults
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -106,22 +102,22 @@ fun Image(
     imageSize: ImageSize? = null,
     circleCrop: Boolean = false,
 ) {
-    val painter = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalPlatformContext.current)
-            .data(imageUrl)
-//            .placeholder(coil3.Image(placeholderRes))
-            .apply {
-                if (imageSize != null) {
-                    size(imageSize.width, imageSize.height) // Set the target size to load the image at.
-                }
+    val model = ImageRequest.Builder(LocalPlatformContext.current)
+        .data(imageUrl)
+        .diskCachePolicy(policy = CachePolicy.ENABLED)
+        .apply {
+            if (imageSize != null) {
+                size(imageSize.width, imageSize.height) // Set the target size to load the image at.
             }
-            .build(),
-    )
+        }
+        .build()
 
-    Image(
+//    val painter = rememberAsyncImagePainter(model = model)
+
+    AsyncImage(
         modifier = modifier.apply { if (circleCrop) clip(CircleShape) },
-        painter = painter,
-//        placeholder = placeholderRes?.let { painterResource(res = it) },
+        model = model,
+        placeholder = placeholderRes?.let { painterResource(res = it) },
         contentScale = contentScale,
         alignment = alignment,
         contentDescription = null,
