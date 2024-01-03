@@ -122,8 +122,6 @@ kotlin {
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.lifecycleRuntime)
 
             // Image fetcher
-//            implementation(Dependencies.Libraries.glide)
-//            implementation(Dependencies.Libraries.glidePlaceholder)
             implementation(Dependencies.Libraries.Ktor.Client.Android.okhttp) // HTTPClient to use with Coil to fetch images
         }
 

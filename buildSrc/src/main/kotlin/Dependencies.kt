@@ -87,8 +87,6 @@ object Dependencies {
                     const val client = "io.ktor:ktor-client-darwin:${Versions.ktor}"
                 }
             }
-
-            const val serializationJson = "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
         }
 
         object ComposeMultiplatform {
