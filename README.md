@@ -5,7 +5,7 @@
 [![Website](https://img.shields.io/badge/Author-vivienmahe.com-orange)](https://vivienmahe.com/)
 [![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
 
-[![](https://jitpack.io/v/Tweener/c-zan.svg)](https://jitpack.io/#Tweener/c-zan)
+[![](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fs01.oss.sonatype.org%2Fservice%2Flocal%2Frepo_groups%2Fpublic%2Fcontent%2Fio%2Fgithub%2Ftweener%2Fczan%2Fmaven-metadata.xml)](https://central.sonatype.com/artifact/io.github.tweener/czan)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
 ![gradle-version](https://img.shields.io/badge/gradle-8.1.1-blue?logo=gradle)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -26,34 +26,23 @@ use to build your app.
 
 # 💾 Installation
 
-We are using [Jitpack](https://jitpack.io/) to publish the library.
-
-Add the following block in your root `build.gradle.kts` at the end of repositories, (or in your `settings.gradle.kts` if you have one):
+Add the dependency in your common module's commonMain sourceSet:
 
 ```groovy
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url 'https://jitpack.io' } // <- This line
-    }
-}
+implementation('io.github.tweener:czan:$czan_version')
 ```
 
-Then add C·ZAN dependency to your app `build.gradle.ktx`:
-
-```groovy
-implementation('com.github.Tweener:c-zan-android:$czan_version')
-```
-
-The latest version is: [![](https://jitpack.io/v/Tweener/c-zan-android.svg)](https://jitpack.io/#Tweener/c-zan-android)
+The latest version
+is: [![](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fs01.oss.sonatype.org%2Fservice%2Flocal%2Frepo_groups%2Fpublic%2Fcontent%2Fio%2Fgithub%2Ftweener%2Fczan%2Fmaven-metadata.xml)](https://central.sonatype.com/artifact/io.github.tweener/czan)
 
 🔄 Sync Project with Gradle files and that's it!
 
 # ⚙️ Usage
 
 ### 1. Theme configuration
-First, you must configure your theme and define your color palette, typography and shape, as explained in the official [documentation](https://developer.android.com/jetpack/compose/designsystems/material3#material-theming) for Material 3 with Jetpack Compose.
+
+First, you must configure your theme and define your color palette, typography and shape, as explained in the
+official [documentation](https://developer.android.com/jetpack/compose/designsystems/material3#material-theming) for Material 3 with Jetpack Compose.
 
 - Colors:
 
@@ -74,10 +63,11 @@ val MyAppLightColorScheme = darkColorScheme(
 ```
 
 - Typography:
+
 ```
 val MyAppTypography = Typography(
     labelLarge = TextStyle(
-        fontFamily = MontserratFont,
+        fontWeight = FontWeight.Medium,
         ...
     )
     ...
@@ -85,6 +75,7 @@ val MyAppTypography = Typography(
 ````
 
 - Shapes:
+
 ```
 val MyAppShapes = Shapes(
     small = RoundedCornerShape(4.dp),
@@ -94,9 +85,11 @@ val MyAppShapes = Shapes(
 )
 
 ```
+
 </br>
 
 ### 2. Theme declaration
+
 Then, declare your app theme using `CzanTheme` as follows:
 
 ```
@@ -115,25 +108,24 @@ fun MyAppTheme(
     )
 }
 ```
+
 _Note: if your app does not need a dark theme, use `darkColorScheme = null`._
 
 ### 3. Theme usage
-And finally, use it in your `MainActivity`:
-```
-class MainActivity : ComponentActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    
-        setContent {
-            Surface {
-                MyAppTheme {
-                    Scaffold(
-                        ...
-                    ) { innerPadding ->
-                        ...
-                    }
-                }
+And finally, use it in your shared root Composable:
+
+```
+@Composable
+fun App(
+  modifier: Modifier = Modifier
+) {
+    Surface {
+        MyAppTheme {
+            Scaffold(
+                ...
+            ) { innerPadding ->
+                ...
             }
         }
     }
@@ -141,15 +133,16 @@ class MainActivity : ComponentActivity() {
 ```
 
 ### 4. Light & Dark mode
+
 If you declared a `darkColorScheme` in step 2, C·ZAN will automatically adapts the theme to light or dark mode depending on the device's settings.
 
-If you want to override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/c-zan/blob/main/library/src/main/java/com/tweener/czan/android/theme/ThemeType.kt) as follows:
+To override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/c-zan/blob/main/library/src/main/java/com/tweener/czan/android/theme/ThemeType.kt) as follows:
+
 ```
-val themeType: ThemeType = ThemeType.DARK // If you want to use the ThemeType directly from the MainActivity
+val themeType: ThemeType = ThemeType.DARK // If you want to use a ThemeType directly from your main Composable
 // or
 val themeType by viewModel.themeType.collectAsState() // If the ThemeType is provided by the ViewModel 
 
-ApplyTheme(themeType = themeType)
 MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
     ...
 }
