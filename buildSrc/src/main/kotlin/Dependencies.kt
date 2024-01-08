@@ -27,7 +27,7 @@ object Dependencies {
 
         object Czan {
             const val packageName = "com.tweener.czan"
-            const val versionName = "1.2.2"
+            const val versionName = "2.0.0"
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
