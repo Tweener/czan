@@ -1,0 +1,19 @@
+package com.tweener.czan.preview.designsystem.atom.bars.icon
+
+import androidx.compose.runtime.Composable
+import com.tweener.czan.preview.UiModePreviews
+import com.tweener.czan.designsystem.atom.bars.icon.ArrowBackIconButton
+import com.tweener.czan.preview.CzanThemePreview
+
+/**
+ * @author Vivien Mahe
+ * @since 01/01/2024
+ */
+
+@UiModePreviews
+@Composable
+private fun ArrowBackIconButtonPreview() {
+    CzanThemePreview {
+        ArrowBackIconButton()
+    }
+}

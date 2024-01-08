@@ -8,8 +8,6 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-
     repositories {
         google()
         mavenCentral()
@@ -17,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "C·ZAN"
-include(":library")
+rootProject.name = "czan"
+include(":czan")
