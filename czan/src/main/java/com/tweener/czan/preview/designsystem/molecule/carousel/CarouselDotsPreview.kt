@@ -2,7 +2,7 @@ package com.tweener.czan.preview.designsystem.molecule.carousel
 
 import androidx.compose.runtime.Composable
 import com.tweener.czan.preview.UiModePreviews
-import com.tweener.czan.carousel.CarouselDots
+import com.tweener.czan.designsystem.molecule.carousel.CarouselDots
 import com.tweener.czan.preview.CzanThemePreview
 
 /**

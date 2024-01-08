@@ -5,7 +5,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.designsystem.atom.text.Text
-import com.tweener.czan.carousel.Carousel
+import com.tweener.czan.designsystem.molecule.carousel.Carousel
 import com.tweener.czan.preview.CzanThemePreview
 
 /**

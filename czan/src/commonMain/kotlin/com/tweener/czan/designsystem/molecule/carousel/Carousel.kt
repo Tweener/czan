@@ -1,4 +1,4 @@
-package com.tweener.czan.carousel
+package com.tweener.czan.designsystem.molecule.carousel
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
