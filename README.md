@@ -153,7 +153,7 @@ MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
 The C·ZAN design system, still in its early stages, has an exciting journey of development ahead. Checkout the [roadmap](https://github.com/users/Tweener/projects/1/views/1) to know all about the
 upcoming tasks, presented in no specific order and without set deadlines.
 
-Feel free to check out the range of `Composable`s that are already available [here](https://github.com/Tweener/c-zan/tree/main/library/src/main/java/com/tweener/czan/android/designsystem)!
+Feel free to check out the range of `Composable`s that are already available [here](https://github.com/Tweener/c-zan/tree/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem)!
 
 # 👨‍💻 Contributing
 
