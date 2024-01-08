@@ -1,6 +1,6 @@
 ![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
 
-<h2 align="center">Design System library for apps running on Jetpack Compose</h2>
+<h2 align="center">Design System library for apps running on Compose Multiplatform</h2>
 
 [![Website](https://img.shields.io/badge/Author-vivienmahe.com-orange)](https://vivienmahe.com/)
 [![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
@@ -17,7 +17,7 @@
 Introducing the **C·ZAN** design system, named in honor of [Paul Cezanne](https://en.wikipedia.org/wiki/Paul_C%C3%A9zanne), a renowned painter from Aix-en-Provence, France.
 
 This framework is a wrapper of [Material 3](https://m3.material.io/), Google's
-open-source design system, and is specifically adapted for apps running on [Jetpack Compose](https://developer.android.com/jetpack/compose).
+open-source design system, and is specifically adapted for apps running on [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/).
 
 This system is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can
 use to build your app.
