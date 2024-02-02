@@ -14,7 +14,7 @@ object Dependencies {
         const val nexusSonatype = "2.0.0-rc-1"
         const val composeMultiplatform = "1.5.11"
         const val dokka = "1.9.10"
-        const val composeCompilerExtension = "1.5.3"
+        const val composeCompilerExtension = "1.5.7"
         const val compose = "1.6.0-alpha03"
         const val activityCompose = "1.7.2"
         const val navigationCompose = "2.7.2"
