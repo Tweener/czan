@@ -35,7 +35,7 @@ object Dependencies {
             object Maven {
                 const val group = "io.github.tweener"
                 const val packageUrl = "https://github.com/Tweener/c-zan"
-                const val gitUrl = "github.com:Tweener/rc-zan.git"
+                const val gitUrl = "github.com:Tweener/c-zan.git"
             }
         }
 
@@ -52,7 +52,6 @@ object Dependencies {
         }
 
         object AndroidX {
-            const val material3 = "1.1.1"
             const val activity = "1.8.0-alpha07"
             const val lifecycle = "2.6.2"
         }
