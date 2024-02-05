@@ -1,5 +1,3 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -49,7 +47,13 @@ android {
     }
 
     dependencies {
-        coreLibraryDesugaring(Dependencies.Libraries.desugarJdkLibs)
+        coreLibraryDesugaring(Dependencies.Libraries.Android.desugarJdkLibs)
+
+        api(compose.preview)
+        api(compose.uiTooling)
+        api(compose.components.resources)
+        implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiTooling)
+        implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiToolingPreview)
     }
 }
 
@@ -79,7 +83,6 @@ kotlin {
 
     sourceSets {
 
-        @OptIn(ExperimentalComposeLibrary::class)
         commonMain.dependencies {
             implementation(Dependencies.Libraries.annotations)
             implementation(Dependencies.Libraries.shimmer)
@@ -100,7 +103,7 @@ kotlin {
 
         androidMain.dependencies {
             // Tweener
-            implementation(Dependencies.Libraries.Tweener.Android.common)
+            implementation(Dependencies.Libraries.Tweener.common)
             implementation(Dependencies.Libraries.Tweener.Android.placeholder)
 
             // Android
@@ -112,6 +115,8 @@ kotlin {
             // Compose
             api(compose.preview)
             api(compose.uiTooling)
+            implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiTooling)
+            implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiToolingPreview)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.materialIconsCore)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.activity)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.lifecycleRuntime)

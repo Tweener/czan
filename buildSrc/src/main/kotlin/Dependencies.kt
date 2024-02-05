@@ -17,7 +17,6 @@ object Dependencies {
         const val composeCompilerExtension = "1.5.7"
         const val compose = "1.6.0-alpha03"
         const val activityCompose = "1.7.2"
-        const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.34.0"
         const val coil = "3.0.0-alpha01"
         const val ktor = "2.3.4"
@@ -30,6 +29,12 @@ object Dependencies {
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
+
+            object Android {
+                const val applicationId = "$packageName.sample"
+                const val targetSDK = compileSDK
+                const val versionCode = 1
+            }
 
             object Maven {
                 const val group = "io.github.tweener"
@@ -44,28 +49,36 @@ object Dependencies {
         }
 
         object Tweener {
+            const val czan = "2.0.1"
+            const val common = "1.0.0"
+
             object Android {
-                const val common = "2.0.8"
                 const val placeholder = "1.0.0"
             }
         }
 
-        object AndroidX {
-            const val activity = "1.8.0-alpha07"
-            const val lifecycle = "2.6.2"
+        object Android {
+            const val desugarJdkLibs = "2.0.3"
+
+            object AndroidX {
+                const val material3 = "1.2.0-alpha10"
+                const val activity = "1.8.0-alpha07"
+                const val lifecycle = "2.6.2"
+            }
         }
     }
 
     object Libraries {
 
-        const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
         const val shimmer = "com.valentinilk.shimmer:compose-shimmer:${Versions.shimmer}"
         const val ktor = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
         const val annotations = "androidx.annotation:annotation:${Versions.annotations}"
 
         object Tweener {
+            const val czan = "io.github.tweener:czan:${Versions.Tweener.czan}"
+            const val common = "io.github.tweener:kmp-common:${Versions.Tweener.common}"
+
             object Android {
-                const val common = "com.github.Tweener:common-android:${Versions.Tweener.Android.common}"
                 const val placeholder = "com.github.Tweener:placeholder-material3:${Versions.Tweener.Android.placeholder}"
             }
         }
@@ -92,8 +105,12 @@ object Dependencies {
         }
 
         object Android {
+            const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.Android.desugarJdkLibs}"
+
             object AndroidX {
-                const val activity = "androidx.activity:activity-ktx:${Versions.AndroidX.activity}"
+                const val material3 = "androidx.compose.material3:material3:${Versions.Android.AndroidX.material3}"
+                const val activity = "androidx.activity:activity-ktx:${Versions.Android.AndroidX.activity}"
+                const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Android.AndroidX.lifecycle}"
 
                 object Compose {
                     const val ui = "androidx.compose.ui:ui:${Versions.compose}"
@@ -104,7 +121,7 @@ object Dependencies {
                     const val materialIconsCore = "androidx.compose.material:material-icons-core:${Versions.compose}"
                     const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
                     const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
-                    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.AndroidX.lifecycle}"
+                    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.Android.AndroidX.lifecycle}"
                 }
             }
 
