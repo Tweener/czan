@@ -17,7 +17,6 @@ object Dependencies {
         const val composeCompilerExtension = "1.5.7"
         const val compose = "1.6.0-alpha03"
         const val activityCompose = "1.7.2"
-        const val navigationCompose = "2.7.2"
         const val desugarJdkLibs = "2.0.3"
         const val accompanist = "0.34.0"
         const val coil = "3.0.0-alpha01"
@@ -105,7 +104,6 @@ object Dependencies {
                     const val materialIconsCore = "androidx.compose.material:material-icons-core:${Versions.compose}"
                     const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
                     const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
-                    const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
                     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.AndroidX.lifecycle}"
                 }
             }

@@ -3,14 +3,25 @@ package com.tweener.czan.preview.designsystem.atom.image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.designsystem.atom.image.Image
 import com.tweener.czan.preview.CzanThemePreview
+import com.tweener.czan.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
  * @since 01/01/2024
  */
+
+@UiModePreviews
+@Composable
+private fun ImageFromResourcePreview() {
+    CzanThemePreview {
+        Image(
+            modifier = Modifier.fillMaxSize(),
+            resource = "profile_header_background.png",
+        )
+    }
+}
 
 @UiModePreviews
 @Composable

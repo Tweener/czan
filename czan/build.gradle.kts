@@ -51,9 +51,6 @@ android {
 
     dependencies {
         coreLibraryDesugaring(Dependencies.Libraries.desugarJdkLibs)
-
-        // Compose
-        debugImplementation(Dependencies.Libraries.Android.AndroidX.Compose.uiTooling)
     }
 }
 
@@ -114,11 +111,10 @@ kotlin {
             implementation(Dependencies.Libraries.Android.Accompanist.systemUIController)
 
             // Compose
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiTooling)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiToolingPreview)
+            api(compose.preview)
+            api(compose.uiTooling)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.materialIconsCore)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.activity)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.navigation)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.lifecycleRuntime)
 
             // Image fetcher
