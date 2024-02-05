@@ -24,6 +24,7 @@ import coil3.request.ImageRequest
 import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.theme.CzanUiDefaults
 import com.valentinilk.shimmer.shimmer
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -57,7 +58,7 @@ fun Image(
 @Composable
 fun Image(
     modifier: Modifier = Modifier,
-    resource: String,
+    resource: DrawableResource,
     contentScale: ContentScale = ContentScale.Crop,
     alignment: Alignment = Alignment.Center,
     contentDescription: String? = null,
@@ -66,7 +67,7 @@ fun Image(
 ) {
     Image(
         modifier = modifier,
-        painter = painterResource(res = resource),
+        painter = painterResource(resource = resource),
         contentScale = contentScale,
         alignment = alignment,
         contentDescription = contentDescription,
@@ -102,7 +103,7 @@ fun Image(
     modifier: Modifier = Modifier,
     imageUrl: String? = null,
     colors: ImageColors = ImageDefaults.imageColors(),
-    placeholderRes: String? = null,
+    placeholderRes: DrawableResource? = null,
     contentScale: ContentScale = ContentScale.Crop,
     alignment: Alignment = Alignment.Center,
     imageSize: ImageSize? = null,
@@ -127,7 +128,7 @@ fun Image(
             .apply { if (circleCrop) clip(CircleShape) }
             .conditional(isLoading, { shimmer() }),
         model = model,
-        placeholder = placeholderRes?.let { painterResource(res = it) },
+        placeholder = placeholderRes?.let { painterResource(resource = it) },
         contentScale = contentScale,
         alignment = alignment,
         contentDescription = null,

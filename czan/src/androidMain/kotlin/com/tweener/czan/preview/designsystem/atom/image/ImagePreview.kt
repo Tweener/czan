@@ -6,23 +6,27 @@ import androidx.compose.ui.Modifier
 import com.tweener.czan.designsystem.atom.image.Image
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
+import io.github.tweener.czan.generated.resources.Res
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
  * @since 01/01/2024
  */
 
+@OptIn(ExperimentalResourceApi::class)
 @UiModePreviews
 @Composable
 private fun ImageFromResourcePreview() {
     CzanThemePreview {
         Image(
             modifier = Modifier.fillMaxSize(),
-            resource = "profile_header_background.png",
+            resource = Res.drawable.profile_header_background,
         )
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @UiModePreviews
 @Composable
 private fun ImageFromUrlPreview() {

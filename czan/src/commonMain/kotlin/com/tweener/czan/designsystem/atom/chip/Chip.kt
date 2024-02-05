@@ -29,6 +29,8 @@ import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.designsystem.atom.image.Image
 import com.tweener.czan.designsystem.atom.image.ImageDefaults
 import com.tweener.czan.designsystem.atom.text.Text
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
@@ -142,10 +144,11 @@ fun Chip(
     )
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Chip(
     title: String,
-    placeholderRes: String,
+    placeholderRes: DrawableResource,
     modifier: Modifier = Modifier,
     selected: Boolean = false,
     leadingIconUrl: String? = null,

@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -33,13 +34,13 @@ fun Icon(
 @Composable
 fun Icon(
     modifier: Modifier = Modifier,
-    resourceName: String,
+    resource: DrawableResource,
     tint: Color = LocalContentColor.current,
     contentDescription: String? = null,
 ) {
     Icon(
         modifier = modifier,
-        painter = painterResource(res = resourceName),
+        painter = painterResource(resource = resource),
         tint = tint,
         contentDescription = contentDescription,
     )
