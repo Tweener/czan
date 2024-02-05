@@ -9,13 +9,16 @@ on:
   release:
     types: [ released ]
 
+env:
+  MAC_OS_VERSION: macos-14
+
 jobs:
   build:
     strategy:
       matrix:
         include:
           - target: iosSimulatorArm64Test
-            os: macos-latest
+            os: $MAC_OS_VERSION
           - target: testReleaseUnitTest
             os: ubuntu-latest
     runs-on: ${{ matrix.os }}
@@ -57,11 +60,11 @@ jobs:
       matrix:
         include:
           - target: publishIosArm64PublicationToSonatypeRepository
-            os: macos-latest
+            os: $MAC_OS_VERSION
           - target: publishIosSimulatorArm64PublicationToSonatypeRepository
-            os: macos-latest
+            os: $MAC_OS_VERSION
           - target: publishIosX64PublicationToSonatypeRepository
-            os: macos-latest
+            os: $MAC_OS_VERSION
           - target: publishAndroidReleasePublicationToSonatypeRepository
             os: ubuntu-latest
           - target: publishKotlinMultiplatformPublicationToSonatypeRepository
