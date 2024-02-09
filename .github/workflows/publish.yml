@@ -10,11 +10,13 @@ on:
     types: [ released ]
 
 jobs:
-  build:
-    uses: ./.github/workflows/buildDebug.yml
-    
+  build-release:
+    uses: ./.github/workflows/buildRelease.yml
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
   publish:
-    needs: build
+    needs: build-release
 
     env:
       OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
@@ -25,11 +27,11 @@ jobs:
       matrix:
         include:
           - target: publishIosArm64PublicationToSonatypeRepository
-            os: macos-14
+            os: macos-latest
           - target: publishIosSimulatorArm64PublicationToSonatypeRepository
-            os: macos-14
+            os: macos-latest
           - target: publishIosX64PublicationToSonatypeRepository
-            os: macos-14
+            os: macos-latest
           - target: publishAndroidReleasePublicationToSonatypeRepository
             os: ubuntu-latest
           - target: publishKotlinMultiplatformPublicationToSonatypeRepository
@@ -57,7 +59,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/.lock') }}
 
       - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v5
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
