@@ -11,13 +11,9 @@ android {
     namespace = Dependencies.Versions.Czan.namespace
     compileSdk = Dependencies.Versions.Czan.compileSDK
 
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-
     defaultConfig {
         minSdk = Dependencies.Versions.Czan.minSDK
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -42,18 +38,6 @@ android {
     compileOptions {
         sourceCompatibility = Dependencies.Versions.Compiler.javaCompatibility
         targetCompatibility = Dependencies.Versions.Compiler.javaCompatibility
-
-        isCoreLibraryDesugaringEnabled = true
-    }
-
-    dependencies {
-        coreLibraryDesugaring(Dependencies.Libraries.Android.desugarJdkLibs)
-
-        api(compose.preview)
-        api(compose.uiTooling)
-        api(compose.components.resources)
-        implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiTooling)
-        implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiToolingPreview)
     }
 }
 
@@ -76,7 +60,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "C-ZANLib"
+            baseName = "czan"
             isStatic = true
         }
     }
@@ -106,18 +90,12 @@ kotlin {
             implementation(Dependencies.Libraries.Tweener.common)
             implementation(Dependencies.Libraries.Tweener.Android.placeholder)
 
-            // Android
-            implementation(Dependencies.Libraries.Android.AndroidX.activity)
-
             // Accompanist
             implementation(Dependencies.Libraries.Android.Accompanist.systemUIController)
 
             // Compose
             api(compose.preview)
             api(compose.uiTooling)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiTooling)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.uiToolingPreview)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.materialIconsCore)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.activity)
             implementation(Dependencies.Libraries.Android.AndroidX.Compose.lifecycleRuntime)
 

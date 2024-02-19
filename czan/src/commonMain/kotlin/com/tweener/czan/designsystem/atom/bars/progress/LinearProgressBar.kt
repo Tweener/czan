@@ -21,7 +21,7 @@ fun LinearProgressBar(
 ) {
     LinearProgressIndicator(
         modifier = modifier,
-        progress = progress,
+        progress = { progress },
         color = color,
         trackColor = selectedColor
     )

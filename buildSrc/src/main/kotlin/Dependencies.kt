@@ -62,8 +62,6 @@ object Dependencies {
             const val desugarJdkLibs = "2.0.3"
 
             object AndroidX {
-                const val material3 = "1.2.0-alpha10"
-                const val activity = "1.8.0-alpha07"
                 const val lifecycle = "2.6.2"
             }
         }
@@ -109,17 +107,7 @@ object Dependencies {
             const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.Android.desugarJdkLibs}"
 
             object AndroidX {
-                const val material3 = "androidx.compose.material3:material3:${Versions.Android.AndroidX.material3}"
-                const val activity = "androidx.activity:activity-ktx:${Versions.Android.AndroidX.activity}"
-                const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Android.AndroidX.lifecycle}"
-
                 object Compose {
-                    const val ui = "androidx.compose.ui:ui:${Versions.compose}"
-                    const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
-                    const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
-                    const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
-                    const val material = "androidx.compose.material:material:${Versions.compose}"
-                    const val materialIconsCore = "androidx.compose.material:material-icons-core:${Versions.compose}"
                     const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
                     const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
                     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.Android.AndroidX.lifecycle}"

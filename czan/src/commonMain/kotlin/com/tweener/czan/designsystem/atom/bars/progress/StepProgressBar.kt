@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -56,7 +56,7 @@ fun StepProgressBar(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(progressBarHeight),
-            progress = animatedProgress,
+            progress = { animatedProgress },
             color = color,
             trackColor = selectedColor
         )
@@ -67,7 +67,7 @@ fun StepProgressBar(
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 for (stepIndex in 0..<stepsCount - 1) {
-                    Divider(
+                    HorizontalDivider(
                         modifier = Modifier.width(dashWidth),
                         thickness = progressBarHeight,
                         color = dashColor
