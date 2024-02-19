@@ -13,7 +13,7 @@ object Dependencies {
         const val gradle = "8.2.2"
         const val dependencyVersionsPlugin = "0.51.0"
         const val nexusSonatype = "2.0.0-rc-1"
-        const val composeMultiplatform = "1.6.0-beta01"
+        const val composeMultiplatform = "1.6.0-rc02"
         const val dokka = "1.9.10"
         const val composeCompilerExtension = "1.5.7"
         const val compose = "1.6.0-alpha03"

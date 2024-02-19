@@ -7,6 +7,7 @@ import com.tweener.czan.designsystem.atom.image.Image
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
 import io.github.tweener.czan.generated.resources.Res
+import io.github.tweener.czan.generated.resources.profile_header_background
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**

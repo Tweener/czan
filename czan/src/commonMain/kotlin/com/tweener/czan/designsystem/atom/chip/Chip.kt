@@ -205,12 +205,12 @@ fun Chip(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun InputChip(
     title: String,
     selected: Boolean,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     leadingIcon: (@Composable () -> Unit)? = null,
     colors: ChipColors = ChipDefaults.chipColors(),
     sizes: ChipSizes = ChipDefaults.chipSizes(),
@@ -239,6 +239,8 @@ private fun InputChip(
             disabledLabelColor = colors.disabledLabelColor(),
         ),
         border = InputChipDefaults.inputChipBorder(
+            enabled = enabled,
+            selected = selected,
             borderColor = colors.borderColor(),
             selectedBorderColor = colors.selectedBorderColor(),
             borderWidth = sizes.borderWidth(),
