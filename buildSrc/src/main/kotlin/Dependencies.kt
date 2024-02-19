@@ -15,7 +15,7 @@ object Dependencies {
         const val nexusSonatype = "2.0.0-rc-1"
         const val composeMultiplatform = "1.6.0-rc02"
         const val dokka = "1.9.10"
-        const val composeCompilerExtension = "1.5.7"
+        const val composeCompilerExtension = "1.5.9"
         const val compose = "1.6.0-alpha03"
         const val activityCompose = "1.7.2"
         const val accompanist = "0.34.0"
@@ -51,7 +51,7 @@ object Dependencies {
 
         object Tweener {
             const val czan = "2.0.1"
-            const val common = "1.0.0"
+            const val common = "1.0.2"
 
             object Android {
                 const val placeholder = "1.0.0"
