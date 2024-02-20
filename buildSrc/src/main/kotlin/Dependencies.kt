@@ -23,10 +23,11 @@ object Dependencies {
         const val ktor = "2.3.4"
         const val annotations = "1.7.1"
         const val shimmer = "1.2.0"
+        const val cupertinoCompose = "0.1.0-alpha03"
 
         object Czan {
             const val packageName = "com.tweener.czan"
-            const val versionName = "2.0.2"
+            const val versionName = "2.1.0"
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
@@ -72,6 +73,7 @@ object Dependencies {
         const val shimmer = "com.valentinilk.shimmer:compose-shimmer:${Versions.shimmer}"
         const val ktor = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
         const val annotations = "androidx.annotation:annotation:${Versions.annotations}"
+        const val cupertinoCompose = "io.github.alexzhirkevich:cupertino-adaptive:${Versions.cupertinoCompose}"
 
         object Tweener {
             const val czan = "io.github.tweener:czan:${Versions.Tweener.czan}"

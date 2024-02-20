@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +22,8 @@ import com.tweener.czan.designsystem.atom.bars.icon.CloseBackIconButton
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.CzanUiDefaults
 import com.tweener.czan.theme.Size
+import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTopAppBar
+import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 
 /**
  * @author Vivien Mahe
@@ -120,7 +121,7 @@ fun TopBarWithCloseButton(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAdaptiveApi::class)
 @Composable
 private fun TopBarWithIcon(
     title: String,
@@ -129,12 +130,16 @@ private fun TopBarWithIcon(
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
-    TopAppBar(
+    AdaptiveTopAppBar(
         modifier = modifier,
         title = { Text(text = title, style = style) },
         navigationIcon = navigationIcon,
         actions = actions,
-        colors = TopAppBarDefaults.topAppBarColors(),
-        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+        adaptation = {
+            material {
+                colors = TopAppBarDefaults.topAppBarColors()
+            }
+        },
+//        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     )
 }

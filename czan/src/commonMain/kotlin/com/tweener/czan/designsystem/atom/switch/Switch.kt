@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,12 +17,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveSwitch
+import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 
 /**
  * @author Vivien Mahe
  * @since 29/08/2023
  */
 
+@OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 fun Switch(
     modifier: Modifier = Modifier,
@@ -34,7 +36,7 @@ fun Switch(
     var checked by remember { mutableStateOf(isChecked) }
     val iconVector = if (checked) Icons.Outlined.Check else Icons.Outlined.Close
 
-    Switch(
+    AdaptiveSwitch(
         modifier = modifier,
         checked = checked,
         onCheckedChange = {
@@ -48,13 +50,17 @@ fun Switch(
                 contentDescription = null,
             )
         },
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = style.checkedThumbColor,
-            uncheckedThumbColor = style.uncheckedThumbColor,
-            checkedTrackColor = style.checkedTrackColor,
-            uncheckedTrackColor = style.uncheckedTrackColor,
-            checkedIconColor = style.checkedIconColor,
-            uncheckedIconColor = style.uncheckedIconColor,
-        )
+        adaptation = {
+            material {
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = style.checkedThumbColor,
+                    uncheckedThumbColor = style.uncheckedThumbColor,
+                    checkedTrackColor = style.checkedTrackColor,
+                    uncheckedTrackColor = style.uncheckedTrackColor,
+                    checkedIconColor = style.checkedIconColor,
+                    uncheckedIconColor = style.uncheckedIconColor,
+                )
+            }
+        },
     )
 }
