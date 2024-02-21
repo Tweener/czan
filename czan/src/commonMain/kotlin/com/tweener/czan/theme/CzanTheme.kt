@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTheme
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 import io.github.alexzhirkevich.cupertino.adaptive.Theme
+import io.github.alexzhirkevich.cupertino.theme.CupertinoTheme
 
 /**
  * @author Vivien Mahe
@@ -34,10 +35,44 @@ fun CzanTheme(
                 colorScheme = if (darkTheme && darkColorScheme != null) darkColorScheme else lightColorScheme,
                 typography = typography,
                 shapes = shapes,
-                content = content
+                content = it
+            )
+        },
+        cupertino = {
+            CupertinoTheme(
+                colorScheme = if (darkTheme && darkColorScheme != null) mapDarkColorSchemeToCupertino(darkColorScheme) else mapLightColorSchemeToCupertino(lightColorScheme),
+                shapes = mapShapesToCupertino(materialShapes = shapes),
+                content = it,
             )
         },
         target = theme,
         content = content,
     )
 }
+
+@Composable
+private fun mapLightColorSchemeToCupertino(materialColorScheme: ColorScheme) = io.github.alexzhirkevich.cupertino.theme.lightColorScheme(
+    accent = materialColorScheme.primary,
+//    label = materialColorScheme.onPrimary,
+//    secondaryLabel = materialColorScheme.onSecondary,
+//    tertiaryLabel = materialColorScheme.onTertiary,
+    // Define the color mapping between Material and Cupertino for light colors
+)
+
+@Composable
+private fun mapDarkColorSchemeToCupertino(materialColorScheme: ColorScheme) = io.github.alexzhirkevich.cupertino.theme.darkColorScheme(
+    accent = materialColorScheme.primary,
+//    label = materialColorScheme.onPrimary,
+//    secondaryLabel = materialColorScheme.onSecondary,
+//    tertiaryLabel = materialColorScheme.onTertiary,
+    // Define the color mapping between Material and Cupertino for light colors
+)
+
+@Composable
+private fun mapShapesToCupertino(materialShapes: Shapes) = io.github.alexzhirkevich.cupertino.theme.Shapes(
+    extraSmall = materialShapes.extraSmall,
+    small = materialShapes.small,
+    medium = materialShapes.medium,
+    large = materialShapes.large,
+    extraLarge = materialShapes.extraLarge,
+)
