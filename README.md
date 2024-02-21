@@ -16,10 +16,11 @@
 
 Introducing the **C·ZAN** design system, named in honor of [Paul Cezanne](https://en.wikipedia.org/wiki/Paul_C%C3%A9zanne), a renowned painter from Aix-en-Provence, France.
 
-This framework is a wrapper of [Material 3](https://m3.material.io/), Google's
-open-source design system, and is specifically adapted for apps running on [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/).
+This framework is specifically adapted for apps running on [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) and will apply a specific look & feel for the targeted platforms:
+- Android: [Material 3](https://m3.material.io/), Google's open-source design system
+- iOS: Cupertino, Apple's design system
 
-This system is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can
+**C·ZAN** is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can
 use to build your app.
 
 ➡️ Be sure to show your support by starring ⭐️ this repository, and feel free to [contribute](#-contributing) if you're interested!
@@ -34,8 +35,6 @@ implementation('io.github.tweener:czan:$czan_version')
 
 The latest version
 is: [![](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fs01.oss.sonatype.org%2Fservice%2Flocal%2Frepo_groups%2Fpublic%2Fcontent%2Fio%2Fgithub%2Ftweener%2Fczan%2Fmaven-metadata.xml)](https://central.sonatype.com/artifact/io.github.tweener/czan)
-
-🔄 Sync Project with Gradle files and that's it!
 
 # ⚙️ Usage
 
