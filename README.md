@@ -45,7 +45,7 @@ official [documentation](https://developer.android.com/jetpack/compose/designsys
 
 - Colors:
 
-```
+```kotlin
 val md_theme_light_primary = Color(0xFF123456)
 
 val MyAppLightColorScheme = lightColorScheme(
@@ -63,7 +63,7 @@ val MyAppLightColorScheme = darkColorScheme(
 
 - Typography:
 
-```
+```kotlin
 val MyAppTypography = Typography(
     labelLarge = TextStyle(
         fontWeight = FontWeight.Medium,
@@ -75,7 +75,7 @@ val MyAppTypography = Typography(
 
 - Shapes:
 
-```
+```kotlin
 val MyAppShapes = Shapes(
     small = RoundedCornerShape(4.dp),
     medium = RoundedCornerShape(8.dp),
@@ -85,13 +85,11 @@ val MyAppShapes = Shapes(
 
 ```
 
-</br>
-
 ### 2. Theme declaration
 
 Then, declare your app theme using `CzanTheme` as follows:
 
-```
+```kotlin
 @Composable
 fun MyAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -112,9 +110,16 @@ _Note: if your app does not need a dark theme, use `darkColorScheme = null`._
 
 ### 3. Theme usage
 
-And finally, use it in your shared root Composable:
+C·ZAN wraps some default Material 3 classes to properly adapt the look & feel to the targeted platform. Make sure to use the following ones:
+- `androidx.compose.material3.Scaffold` -> `com.tweener.czan.designsystem.atom.scaffold.Scaffold`
+- `androidx.compose.material3.NavigationBar` -> `com.tweener.czan.designsystem.atom.bars.NavigationBar`
+- `androidx.compose.material3.NavigationBarItem` -> `com.tweener.czan.designsystem.atom.bars.NavigationBarItem`
 
-```
+```kotlin
+import com.tweener.czan.designsystem.atom.scaffold.Scaffold
+import com.tweener.czan.designsystem.atom.bars.NavigationBar
+import com.tweener.czan.designsystem.atom.bars.NavigationBarItem
+
 @Composable
 fun App(
   modifier: Modifier = Modifier
@@ -122,6 +127,13 @@ fun App(
     Surface {
         MyAppTheme {
             Scaffold(
+                navigationBar = {
+                    NavigationBar {
+                        NavigationBarItem(...)
+                        NavigationBarItem(...)
+                        NavigationBarItem(...)
+                    }
+                },
                 ...
             ) { innerPadding ->
                 ...
@@ -137,7 +149,7 @@ If you declared a `darkColorScheme` in step 2, C·ZAN will automatically adapts 
 
 To override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/c-zan/blob/main/library/src/main/java/com/tweener/czan/android/theme/ThemeType.kt) as follows:
 
-```
+```kotlin
 val themeType: ThemeType = ThemeType.DARK // If you want to use a ThemeType directly from your main Composable
 // or
 val themeType by viewModel.themeType.collectAsState() // If the ThemeType is provided by the ViewModel 
