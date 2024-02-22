@@ -22,7 +22,6 @@ expect fun determineTheme(): Theme
 @Composable
 fun CzanTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    theme: Theme = determineTheme(),
     lightColorScheme: ColorScheme = MaterialTheme.colorScheme,
     darkColorScheme: ColorScheme? = null,
     typography: Typography = MaterialTheme.typography,
@@ -45,7 +44,7 @@ fun CzanTheme(
                 content = it,
             )
         },
-        target = theme,
+        target = determineTheme(),
         content = content,
     )
 }
