@@ -1,6 +1,6 @@
 ![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
 
-<h2 align="center">Design System library for apps running on Compose Multiplatform</h2>
+<h2 align="center">Design System library for apps running on Kotlin/Compose Multiplatform</h2>
 
 [![Website](https://img.shields.io/badge/Author-vivienmahe.com-orange)](https://vivienmahe.com/)
 [![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
