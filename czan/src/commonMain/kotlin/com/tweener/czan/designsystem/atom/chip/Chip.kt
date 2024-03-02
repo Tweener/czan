@@ -9,7 +9,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.InputChip
 import androidx.compose.material3.InputChipDefaults
@@ -261,7 +260,6 @@ private fun InputChip(
 
 object ChipDefaults {
 
-    @OptIn(ExperimentalMaterial3Api::class)
     val IconsSize = InputChipDefaults.AvatarSize
 
     private val ChipHorizontalPadding = 0.dp

@@ -13,7 +13,7 @@ object Dependencies {
         const val gradle = "8.2.2"
         const val dependencyVersionsPlugin = "0.51.0"
         const val nexusSonatype = "2.0.0-rc-1"
-        const val composeMultiplatform = "1.6.0-rc02"
+        const val composeMultiplatform = "1.6.0"
         const val dokka = "1.9.10"
         const val composeCompilerExtension = "1.5.9"
         const val compose = "1.6.0-alpha03"
@@ -31,12 +31,6 @@ object Dependencies {
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
-
-            object Android {
-                const val applicationId = "$packageName.sample"
-                const val targetSDK = compileSDK
-                const val versionCode = 1
-            }
 
             object Maven {
                 const val group = "io.github.tweener"
