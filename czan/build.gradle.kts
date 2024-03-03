@@ -90,8 +90,10 @@ kotlin {
 
         androidMain.dependencies {
             // Tweener
-            implementation(Dependencies.Libraries.Tweener.common)
             implementation(Dependencies.Libraries.Tweener.Android.placeholder)
+
+            implementation(project.dependencies.platform(Dependencies.Libraries.Tweener.bom))
+            implementation(Dependencies.Libraries.Tweener.common)
 
             // Accompanist
             implementation(Dependencies.Libraries.Android.Accompanist.systemUIController)
