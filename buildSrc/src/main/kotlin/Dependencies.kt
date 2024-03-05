@@ -47,10 +47,6 @@ object Dependencies {
         object Tweener {
             const val czan = "2.0.1"
             const val bom = "1.0.0"
-
-            object Android {
-                const val placeholder = "1.0.0"
-            }
         }
 
         object Android {
@@ -74,10 +70,6 @@ object Dependencies {
 
             const val bom = "io.github.tweener:kmp-bom:${Versions.Tweener.bom}"
             const val common = "io.github.tweener:kmp-common"
-
-            object Android {
-                const val placeholder = "com.github.Tweener:placeholder-material3:${Versions.Tweener.Android.placeholder}"
-            }
         }
 
         object Coil {
