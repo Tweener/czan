@@ -45,6 +45,7 @@ fun ExpandableCard(
     contentPadding: Dp = Size.Padding.Default,
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
+    hideableContent: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
     var showContent by remember { mutableStateOf(expanded) }
@@ -77,6 +78,18 @@ fun ExpandableCard(
                 imageVector = collapsedIcon,
                 tint = colors.chevronTintColor(),
             )
+        }
+
+        if (hideableContent != null) {
+            AnimatedVisibility(showContent.not()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(contentPadding)
+                ) {
+                    hideableContent.invoke()
+                }
+            }
         }
 
         AnimatedVisibility(showContent) {

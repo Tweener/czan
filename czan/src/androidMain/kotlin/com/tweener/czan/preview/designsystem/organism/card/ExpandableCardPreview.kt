@@ -38,6 +38,7 @@ private fun ExpandableCardCollapsedPreview() {
                 contentPadding = Size.Padding.Small,
                 header = { Text(text = "This is a header") },
                 footer = { Text(text = "This is a footer") },
+                hideableContent = { Text(text = "This is some hideable content") },
             ) {
                 Text(text = "This is a Card with a simple Text")
             }
