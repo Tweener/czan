@@ -1,6 +1,5 @@
 package com.tweener.czan.preview.designsystem.organism.card
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,7 +30,8 @@ private fun CardPreview() {
         ) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                elevation = 4.dp,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                elevation = 0.dp,
                 contentPadding = Size.Padding.Small,
             ) {
                 Text(text = "This is a Card with a simple Text")
@@ -96,7 +96,6 @@ private fun CardWithHeaderAndFooterPreview() {
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
                 elevation = 4.dp,
-                border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.onPrimaryContainer),
                 contentPadding = Size.Padding.Small,
                 header = { Text(text = "This is a header") },
                 footer = { Text(text = "This is a footer") },
