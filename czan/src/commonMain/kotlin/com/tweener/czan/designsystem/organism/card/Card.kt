@@ -48,7 +48,7 @@ fun Card(
                     header()
                 }
 
-                HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = MaterialTheme.colorScheme.outline)
+                HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
             }
 
             // Content
@@ -58,7 +58,7 @@ fun Card(
 
             // Footer, if provided
             if (footer != null) {
-                HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = MaterialTheme.colorScheme.outline)
+                HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
 
                 Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
                     footer()
@@ -77,15 +77,21 @@ object CardDefaults {
     @Composable
     fun cardColors(
         containerColor: Color = MaterialTheme.colorScheme.background,
+        dividerColor: Color = MaterialTheme.colorScheme.outline,
     ): CardColors = CardColors(
         containerColor = containerColor,
+        dividerColor = dividerColor,
     )
 }
 
 @Immutable
 class CardColors internal constructor(
     private val containerColor: Color,
+    private val dividerColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
+
+    @Composable
+    internal fun dividerColor(): Color = dividerColor
 }
