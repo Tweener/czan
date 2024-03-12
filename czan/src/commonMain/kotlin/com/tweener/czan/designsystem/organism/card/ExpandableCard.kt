@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,7 +41,7 @@ fun ExpandableCard(
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
     elevation: Dp = CardDefaults.elevation,
-    border: BorderStroke? = null,
+    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
     contentPadding: Dp = Size.Padding.Default,
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
@@ -51,13 +51,7 @@ fun ExpandableCard(
     var showContent by remember { mutableStateOf(expanded) }
     val iconRotation by animateFloatAsState(targetValue = if (showContent) 180f else 0f)
 
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        shape = shape,
-        colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
-        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
-        border = border,
-    ) {
+    val cardContent = @Composable {
         // Header
         Row(
             modifier = Modifier
@@ -107,6 +101,31 @@ fun ExpandableCard(
                         footer()
                     }
                 }
+            }
+        }
+    }
+
+    when (elevation) {
+        0.dp -> {
+            androidx.compose.material3.Card(
+                modifier = modifier.fillMaxWidth(),
+                shape = shape,
+                colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
+                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
+                border = BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()),
+            ) {
+                cardContent()
+            }
+        }
+
+        else -> {
+            ElevatedCard(
+                modifier = modifier.fillMaxWidth(),
+                shape = shape,
+                colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
+                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
+            ) {
+                cardContent()
             }
         }
     }
