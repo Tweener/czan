@@ -3,6 +3,7 @@ package com.tweener.czan.designsystem.organism.card
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -59,7 +59,10 @@ fun ExpandableCard(
     ) {
         // Header
         Row(
-            modifier = Modifier.fillMaxWidth().padding(contentPadding),
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { showContent = !showContent }
+                .padding(contentPadding),
             horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -67,17 +70,13 @@ fun ExpandableCard(
                 header()
             }
 
-            IconButton(
+            Icon(
                 modifier = Modifier
                     .size(24.dp)
                     .rotate(iconRotation),
-                onClick = { showContent = !showContent }
-            ) {
-                Icon(
-                    imageVector = collapsedIcon,
-                    tint = colors.chevronTintColor(),
-                )
-            }
+                imageVector = collapsedIcon,
+                tint = colors.chevronTintColor(),
+            )
         }
 
         AnimatedVisibility(showContent) {
