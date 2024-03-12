@@ -78,9 +78,11 @@ object CardDefaults {
     fun cardColors(
         containerColor: Color = MaterialTheme.colorScheme.background,
         dividerColor: Color = MaterialTheme.colorScheme.outline,
+        chevronTintColor: Color = MaterialTheme.colorScheme.onBackground,
     ): CardColors = CardColors(
         containerColor = containerColor,
         dividerColor = dividerColor,
+        chevronTintColor = chevronTintColor,
     )
 }
 
@@ -88,10 +90,14 @@ object CardDefaults {
 class CardColors internal constructor(
     private val containerColor: Color,
     private val dividerColor: Color,
+    private val chevronTintColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
 
     @Composable
     internal fun dividerColor(): Color = dividerColor
+
+    @Composable
+    internal fun chevronTintColor(): Color = chevronTintColor
 }
