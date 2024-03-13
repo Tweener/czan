@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.atom.bars.icon.ArrowBackIconButton
 import com.tweener.czan.designsystem.atom.bars.icon.CloseBackIconButton
 import com.tweener.czan.designsystem.atom.text.Text
-import com.tweener.czan.theme.CzanUiDefaults
 import com.tweener.czan.theme.Size
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTopAppBar
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
@@ -37,8 +39,7 @@ fun CenterAlignedTopAppBar(
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
     logo: Painter? = null,
-    backgroundColor: Color = CzanUiDefaults.TopBar.backgroundColor,
-    contentColor: Color = CzanUiDefaults.TopBar.contentColor,
+    colors: TopBarColors = TopBarDefaults.colors(),
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
@@ -52,22 +53,24 @@ fun CenterAlignedTopAppBar(
                     Image(
                         modifier = Modifier.size(42.dp),
                         painter = logo,
-                        colorFilter = ColorFilter.tint(color = contentColor),
+                        colorFilter = ColorFilter.tint(color = colors.contentColor()),
                         contentDescription = null
                     )
                 }
 
                 Text(
                     text = title,
-                    color = contentColor,
+                    color = colors.contentColor(),
                     style = textStyle
                 )
             }
         },
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = backgroundColor,
-            actionIconContentColor = contentColor
+            containerColor = colors.containerColor(),
+            actionIconContentColor = colors.contentColor(),
+            titleContentColor = colors.contentColor(),
+            navigationIconContentColor = colors.contentColor(),
         )
     )
 }
@@ -77,12 +80,14 @@ fun SimpleTopBar(
     title: String,
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
+    colors: TopBarColors = TopBarDefaults.colors(),
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopBarWithIcon(
         modifier = modifier,
         title = title,
         style = textStyle,
+        topBarColors = colors,
         actions = actions
     )
 }
@@ -92,6 +97,7 @@ fun TopBarWithBackButton(
     title: String,
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
+    colors: TopBarColors = TopBarDefaults.colors(),
     actions: @Composable RowScope.() -> Unit = {},
     onBackClicked: (() -> Unit)? = null
 ) {
@@ -99,6 +105,7 @@ fun TopBarWithBackButton(
         modifier = modifier,
         title = title,
         style = textStyle,
+        topBarColors = colors,
         navigationIcon = { ArrowBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -109,6 +116,7 @@ fun TopBarWithCloseButton(
     title: String,
     textStyle: TextStyle,
     modifier: Modifier = Modifier,
+    colors: TopBarColors = TopBarDefaults.colors(),
     actions: @Composable RowScope.() -> Unit = {},
     onBackClicked: (() -> Unit)? = null
 ) {
@@ -116,6 +124,7 @@ fun TopBarWithCloseButton(
         modifier = modifier,
         title = title,
         style = textStyle,
+        topBarColors = colors,
         navigationIcon = { CloseBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -127,6 +136,7 @@ private fun TopBarWithIcon(
     title: String,
     modifier: Modifier = Modifier,
     style: TextStyle = LocalTextStyle.current,
+    topBarColors: TopBarColors = TopBarDefaults.colors(),
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
@@ -137,9 +147,38 @@ private fun TopBarWithIcon(
         actions = actions,
         adaptation = {
             material {
-                colors = TopAppBarDefaults.topAppBarColors()
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = topBarColors.containerColor(),
+                    actionIconContentColor = topBarColors.contentColor(),
+                    titleContentColor = topBarColors.contentColor(),
+                    navigationIconContentColor = topBarColors.contentColor(),
+                )
             }
         },
 //        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     )
+}
+
+object TopBarDefaults {
+
+    @Composable
+    fun colors(
+        containerColor: Color = MaterialTheme.colorScheme.surface,
+        contentColor: Color = MaterialTheme.colorScheme.contentColorFor(containerColor),
+    ): TopBarColors = TopBarColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+    )
+}
+
+@Immutable
+class TopBarColors internal constructor(
+    private val containerColor: Color,
+    private val contentColor: Color,
+) {
+    @Composable
+    internal fun containerColor(): Color = containerColor
+
+    @Composable
+    internal fun contentColor(): Color = contentColor
 }
