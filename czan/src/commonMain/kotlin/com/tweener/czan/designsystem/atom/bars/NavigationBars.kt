@@ -2,11 +2,11 @@ package com.tweener.czan.designsystem.atom.bars
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBarDefaults
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.tweener.czan.designsystem.atom.icon.Icon
@@ -24,6 +24,7 @@ import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 @Composable
 fun NavigationBar(
     modifier: Modifier = Modifier,
+    colors: NavigationBarColors = NavigationBarDefaults.colors(),
     content: @Composable RowScope.() -> Unit,
 ) {
     AdaptiveNavigationBar(
@@ -31,8 +32,8 @@ fun NavigationBar(
         content = content,
         adaptation = {
             material {
-                containerColor = NavigationBarDefaults.containerColor
-                contentColor = MaterialTheme.colorScheme.contentColorFor(containerColor)
+                containerColor = colors.containerColor()
+                contentColor = colors.contentColor()
             }
         }
     )
@@ -44,6 +45,7 @@ fun RowScope.NavigationBarItem(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    colors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
     icon: ImageVector? = null,
 ) {
     NavigationBarIem(
@@ -51,6 +53,7 @@ fun RowScope.NavigationBarItem(
         label = label,
         selected = selected,
         onClick = onClick,
+        itemColors = colors,
         icon = { icon?.let { Icon(imageVector = it, contentDescription = label) } },
     )
 }
@@ -61,6 +64,7 @@ fun RowScope.NavigationBarItem(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    colors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
     icon: Painter? = null,
 ) {
     NavigationBarIem(
@@ -68,6 +72,7 @@ fun RowScope.NavigationBarItem(
         label = label,
         selected = selected,
         onClick = onClick,
+        itemColors = colors,
         icon = { icon?.let { Icon(painter = it, contentDescription = label) } },
     )
 }
@@ -80,6 +85,7 @@ private fun RowScope.NavigationBarIem(
     onClick: () -> Unit,
     icon: @Composable () -> Unit,
     modifier: Modifier = Modifier,
+    itemColors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
 ) {
     AdaptiveNavigationBarItem(
         modifier = modifier,
@@ -89,14 +95,80 @@ private fun RowScope.NavigationBarIem(
         label = { Text(text = label) },
         adaptation = {
             material {
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                    selectedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                    indicatorColor = MaterialTheme.colorScheme.secondaryContainer,
+                colors = androidx.compose.material3.NavigationBarItemDefaults.colors(
+                    selectedIconColor = itemColors.selectedIconColor(),
+                    unselectedIconColor = itemColors.unselectedIconColor(),
+                    selectedTextColor = itemColors.selectedTextColor(),
+                    unselectedTextColor = itemColors.unselectedTextColor(),
+                    indicatorColor = itemColors.indicatorColor(),
                 )
             }
         },
     )
+}
+
+object NavigationBarDefaults {
+
+    @Composable
+    fun colors(
+        containerColor: Color = MaterialTheme.colorScheme.surface,
+        contentColor: Color = MaterialTheme.colorScheme.contentColorFor(containerColor),
+    ): NavigationBarColors = NavigationBarColors(
+        containerColor = containerColor,
+        contentColor = contentColor,
+    )
+}
+
+@Immutable
+class NavigationBarColors internal constructor(
+    private val containerColor: Color,
+    private val contentColor: Color,
+) {
+    @Composable
+    internal fun containerColor(): Color = containerColor
+
+    @Composable
+    internal fun contentColor(): Color = contentColor
+}
+
+object NavigationBarItemDefaults {
+
+    @Composable
+    fun colors(
+        selectedIconColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
+        unselectedIconColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+        selectedTextColor: Color = MaterialTheme.colorScheme.onSurface,
+        unselectedTextColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+        indicatorColor: Color = MaterialTheme.colorScheme.secondaryContainer,
+    ): NavigationBarItemColors = NavigationBarItemColors(
+        selectedIconColor = selectedIconColor,
+        unselectedIconColor = unselectedIconColor,
+        selectedTextColor = selectedTextColor,
+        unselectedTextColor = unselectedTextColor,
+        indicatorColor = indicatorColor,
+    )
+}
+
+@Immutable
+class NavigationBarItemColors internal constructor(
+    private val selectedIconColor: Color,
+    private val unselectedIconColor: Color,
+    private val selectedTextColor: Color,
+    private val unselectedTextColor: Color,
+    private val indicatorColor: Color,
+) {
+    @Composable
+    internal fun selectedIconColor(): Color = selectedIconColor
+
+    @Composable
+    internal fun unselectedIconColor(): Color = unselectedIconColor
+
+    @Composable
+    internal fun selectedTextColor(): Color = selectedTextColor
+
+    @Composable
+    internal fun unselectedTextColor(): Color = unselectedTextColor
+
+    @Composable
+    internal fun indicatorColor(): Color = indicatorColor
 }
