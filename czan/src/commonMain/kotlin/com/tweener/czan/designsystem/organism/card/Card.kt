@@ -67,7 +67,10 @@ fun Card(
             Card(
                 modifier = modifier.fillMaxWidth(),
                 shape = shape,
-                colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
+                colors = androidx.compose.material3.CardDefaults.cardColors(
+                    containerColor = colors.containerColor(),
+                    contentColor = colors.contentColor(),
+                ),
                 elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
                 border = BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()),
             ) {
@@ -79,7 +82,10 @@ fun Card(
             ElevatedCard(
                 modifier = modifier.fillMaxWidth(),
                 shape = shape,
-                colors = androidx.compose.material3.CardDefaults.elevatedCardColors(containerColor = colors.containerColor()),
+                colors = androidx.compose.material3.CardDefaults.cardColors(
+                    containerColor = colors.containerColor(),
+                    contentColor = colors.contentColor(),
+                ),
                 elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
             ) {
                 cardContent()
@@ -99,11 +105,13 @@ object CardDefaults {
     @Composable
     fun cardColors(
         containerColor: Color = MaterialTheme.colorScheme.background,
+        contentColor: Color = MaterialTheme.colorScheme.onBackground,
         borderStrokeColor: Color = Color.Transparent,
         dividerColor: Color = MaterialTheme.colorScheme.outline,
         chevronTintColor: Color = MaterialTheme.colorScheme.onBackground,
     ): CardColors = CardColors(
         containerColor = containerColor,
+        contentColor = contentColor,
         borderStrokeColor = borderStrokeColor,
         dividerColor = dividerColor,
         chevronTintColor = chevronTintColor,
@@ -113,12 +121,16 @@ object CardDefaults {
 @Immutable
 class CardColors internal constructor(
     private val containerColor: Color,
+    private val contentColor: Color,
     private val borderStrokeColor: Color,
     private val dividerColor: Color,
     private val chevronTintColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
+
+    @Composable
+    internal fun contentColor(): Color = contentColor
 
     @Composable
     internal fun borderStrokeColor(): Color = borderStrokeColor

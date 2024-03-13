@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -107,10 +108,13 @@ fun ExpandableCard(
 
     when (elevation) {
         0.dp -> {
-            androidx.compose.material3.Card(
+            Card(
                 modifier = modifier.fillMaxWidth(),
                 shape = shape,
-                colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
+                colors = androidx.compose.material3.CardDefaults.cardColors(
+                    containerColor = colors.containerColor(),
+                    contentColor = colors.contentColor(),
+                ),
                 elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
                 border = BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()),
             ) {
@@ -122,7 +126,10 @@ fun ExpandableCard(
             ElevatedCard(
                 modifier = modifier.fillMaxWidth(),
                 shape = shape,
-                colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
+                colors = androidx.compose.material3.CardDefaults.cardColors(
+                    containerColor = colors.containerColor(),
+                    contentColor = colors.contentColor(),
+                ),
                 elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
             ) {
                 cardContent()
