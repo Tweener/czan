@@ -97,10 +97,9 @@ fun Card(
 object CardDefaults {
 
     val shape: Shape @Composable get() = MaterialTheme.shapes.large
-
     val elevation: Dp = 0.dp
-
     val borderStrokeWidth: Dp = 0.dp
+    val headerIconSize: Dp = 24.dp
 
     @Composable
     fun cardColors(

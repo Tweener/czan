@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.theme.Size
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
@@ -37,6 +39,85 @@ import com.tweener.czan.theme.Size
 @Composable
 fun ExpandableCard(
     collapsedIcon: ImageVector,
+    modifier: Modifier = Modifier,
+    expanded: Boolean = false,
+    shape: Shape = CardDefaults.shape,
+    colors: CardColors = CardDefaults.cardColors(),
+    elevation: Dp = CardDefaults.elevation,
+    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
+    contentPadding: Dp = Size.Padding.Default,
+    header: @Composable () -> Unit,
+    footer: @Composable (() -> Unit)? = null,
+    hideableContent: @Composable (() -> Unit)? = null,
+    content: @Composable () -> Unit,
+) {
+    ExpandableCard(
+        modifier = modifier,
+        collapsedIcon = { iconRotation ->
+            Icon(
+                modifier = Modifier
+                    .size(CardDefaults.headerIconSize)
+                    .rotate(iconRotation),
+                imageVector = collapsedIcon,
+                tint = colors.chevronTintColor(),
+            )
+        },
+        expanded = expanded,
+        shape = shape,
+        colors = colors,
+        elevation = elevation,
+        borderStrokeWidth = borderStrokeWidth,
+        contentPadding = contentPadding,
+        header = header,
+        footer = footer,
+        hideableContent = hideableContent,
+        content = content,
+    )
+}
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+fun ExpandableCard(
+    collapsedIcon: DrawableResource,
+    modifier: Modifier = Modifier,
+    expanded: Boolean = false,
+    shape: Shape = CardDefaults.shape,
+    colors: CardColors = CardDefaults.cardColors(),
+    elevation: Dp = CardDefaults.elevation,
+    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
+    contentPadding: Dp = Size.Padding.Default,
+    header: @Composable () -> Unit,
+    footer: @Composable (() -> Unit)? = null,
+    hideableContent: @Composable (() -> Unit)? = null,
+    content: @Composable () -> Unit,
+) {
+    ExpandableCard(
+        modifier = modifier,
+        collapsedIcon = { iconRotation ->
+            Icon(
+                modifier = Modifier
+                    .size(CardDefaults.headerIconSize)
+                    .rotate(iconRotation),
+                resource = collapsedIcon,
+                tint = colors.chevronTintColor(),
+            )
+        },
+        expanded = expanded,
+        shape = shape,
+        colors = colors,
+        elevation = elevation,
+        borderStrokeWidth = borderStrokeWidth,
+        contentPadding = contentPadding,
+        header = header,
+        footer = footer,
+        hideableContent = hideableContent,
+        content = content,
+    )
+}
+
+@Composable
+private fun ExpandableCard(
+    collapsedIcon: @Composable (Float) -> Unit,
     modifier: Modifier = Modifier,
     expanded: Boolean = false,
     shape: Shape = CardDefaults.shape,
@@ -66,13 +147,7 @@ fun ExpandableCard(
                 header()
             }
 
-            Icon(
-                modifier = Modifier
-                    .size(24.dp)
-                    .rotate(iconRotation),
-                imageVector = collapsedIcon,
-                tint = colors.chevronTintColor(),
-            )
+            collapsedIcon(iconRotation)
         }
 
         if (hideableContent != null) {
