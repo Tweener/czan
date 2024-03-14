@@ -2,6 +2,12 @@ package com.tweener.czan.designsystem.organism.card
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -151,7 +157,11 @@ private fun ExpandableCard(
         }
 
         if (hideableContent != null) {
-            AnimatedVisibility(showContent.not()) {
+            AnimatedVisibility(
+                visible = showContent.not(),
+                enter = slideInVertically() + expandVertically() + fadeIn(),
+                exit = slideOutVertically() + shrinkVertically() + fadeOut(),
+            ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -162,7 +172,11 @@ private fun ExpandableCard(
             }
         }
 
-        AnimatedVisibility(showContent) {
+        AnimatedVisibility(
+            visible = showContent,
+            enter = slideInVertically() + expandVertically() + fadeIn(),
+            exit = slideOutVertically() + shrinkVertically() + fadeOut(),
+        ) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 // Content
                 Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
