@@ -165,7 +165,7 @@ private fun ExpandableCard(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(contentPadding)
+                        .padding(start = contentPadding, end = contentPadding, bottom = contentPadding, top = Size.Padding.ExtraSmall)
                 ) {
                     hideableContent.invoke()
                 }
