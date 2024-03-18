@@ -52,7 +52,11 @@ private fun CardWithHeaderPreview() {
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.extraLarge,
-                elevation = 4.dp,
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    dividerColor = MaterialTheme.colorScheme.outline,
+                ),
+                elevation = 10.dp,
                 contentPadding = Size.Padding.Small,
                 header = { Text(text = "This is a header") },
             ) {
