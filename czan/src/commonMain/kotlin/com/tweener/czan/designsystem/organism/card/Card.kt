@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -39,6 +40,8 @@ fun Card(
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
+    val verticalPadding = Size.Padding.ExtraSmall
+
     val cardContent = @Composable {
         Column(
             modifier = Modifier
@@ -48,30 +51,37 @@ fun Card(
                     ifTrue = { background(colors.containerBrush()!!) },
                     ifFalse = { background(colors.containerColor()) },
                 )
+                .padding(contentPadding),
         ) {
             // Header, if provided
             if (header != null) {
-                Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
+                Box(modifier = Modifier.fillMaxWidth()) {
                     header()
                 }
 
                 if (showDividers) {
+                    Spacer(modifier = Modifier.padding(vertical = verticalPadding))
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
                 }
+
+                Spacer(modifier = Modifier.padding(vertical = verticalPadding))
             }
 
             // Content
-            Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
+            Box(modifier = Modifier.fillMaxWidth()) {
                 content()
             }
 
             // Footer, if provided
             if (footer != null) {
+                Spacer(modifier = Modifier.padding(vertical = verticalPadding))
+
                 if (showDividers) {
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
+                    Spacer(modifier = Modifier.padding(vertical = verticalPadding))
                 }
 
-                Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
+                Box(modifier = Modifier.fillMaxWidth()) {
                     footer()
                 }
             }
@@ -81,12 +91,12 @@ fun Card(
     when (elevation) {
         0.dp -> {
             Card(
-                modifier = modifier.fillMaxWidth(),
+                modifier = modifier,
                 shape = shape,
-//                colors = androidx.compose.material3.CardDefaults.cardColors(
-//                    containerColor = colors.containerColor(),
-//                    contentColor = colors.contentColor(),
-//                ),
+                colors = androidx.compose.material3.CardDefaults.cardColors(
+                    containerColor = colors.containerColor(),
+                    contentColor = colors.contentColor(),
+                ),
                 elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
                 border = BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()),
             ) {
@@ -96,13 +106,13 @@ fun Card(
 
         else -> {
             ElevatedCard(
-                modifier = modifier.fillMaxWidth(),
+                modifier = modifier,
                 shape = shape,
-//                colors = androidx.compose.material3.CardDefaults.cardColors(
-//                    containerColor = colors.containerColor(),
-//                    contentColor = colors.contentColor(),
-//                ),
-                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
+                colors = androidx.compose.material3.CardDefaults.elevatedCardColors(
+                    containerColor = colors.containerColor(),
+                    contentColor = colors.contentColor(),
+                ),
+                elevation = androidx.compose.material3.CardDefaults.elevatedCardElevation(defaultElevation = elevation),
             ) {
                 cardContent()
             }

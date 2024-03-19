@@ -23,11 +23,7 @@ import com.tweener.czan.theme.Size
 @Composable
 private fun CardPreview() {
     CzanThemePreview {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Size.Padding.Default)
-        ) {
+        Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
@@ -44,13 +40,8 @@ private fun CardPreview() {
 @Composable
 private fun CardWithHeaderPreview() {
     CzanThemePreview {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Size.Padding.Default)
-        ) {
+        Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
-                modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.extraLarge,
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -70,11 +61,7 @@ private fun CardWithHeaderPreview() {
 @Composable
 private fun CardWithFooterPreview() {
     CzanThemePreview {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Size.Padding.Default)
-        ) {
+        Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 elevation = 4.dp,
@@ -91,11 +78,7 @@ private fun CardWithFooterPreview() {
 @Composable
 private fun CardWithHeaderAndFooterPreview() {
     CzanThemePreview {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Size.Padding.Default)
-        ) {
+        Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
