@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -41,8 +40,18 @@ fun Card(
     content: @Composable () -> Unit,
 ) {
     val verticalPadding = Size.Padding.ExtraSmall
+    val cardBorder = if (elevation == 0.dp) BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()) else null
 
-    val cardContent = @Composable {
+    Card(
+        modifier = modifier,
+        shape = shape,
+        colors = androidx.compose.material3.CardDefaults.cardColors(
+            containerColor = colors.containerColor(),
+            contentColor = colors.contentColor(),
+        ),
+        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
+        border = cardBorder,
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -51,11 +60,11 @@ fun Card(
                     ifTrue = { background(colors.containerBrush()!!) },
                     ifFalse = { background(colors.containerColor()) },
                 )
-                .padding(contentPadding),
+                .padding(vertical = contentPadding),
         ) {
             // Header, if provided
             if (header != null) {
-                Box(modifier = Modifier.fillMaxWidth()) {
+                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = contentPadding)) {
                     header()
                 }
 
@@ -68,7 +77,7 @@ fun Card(
             }
 
             // Content
-            Box(modifier = Modifier.fillMaxWidth()) {
+            Box(modifier = Modifier.fillMaxWidth().padding(horizontal = contentPadding)) {
                 content()
             }
 
@@ -81,40 +90,9 @@ fun Card(
                     Spacer(modifier = Modifier.padding(vertical = verticalPadding))
                 }
 
-                Box(modifier = Modifier.fillMaxWidth()) {
+                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = contentPadding)) {
                     footer()
                 }
-            }
-        }
-    }
-
-    when (elevation) {
-        0.dp -> {
-            Card(
-                modifier = modifier,
-                shape = shape,
-                colors = androidx.compose.material3.CardDefaults.cardColors(
-                    containerColor = colors.containerColor(),
-                    contentColor = colors.contentColor(),
-                ),
-                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
-                border = BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()),
-            ) {
-                cardContent()
-            }
-        }
-
-        else -> {
-            ElevatedCard(
-                modifier = modifier,
-                shape = shape,
-                colors = androidx.compose.material3.CardDefaults.elevatedCardColors(
-                    containerColor = colors.containerColor(),
-                    contentColor = colors.contentColor(),
-                ),
-                elevation = androidx.compose.material3.CardDefaults.elevatedCardElevation(defaultElevation = elevation),
-            ) {
-                cardContent()
             }
         }
     }
