@@ -1,6 +1,11 @@
 package com.tweener.czan._internal.kotlinextensions
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
@@ -91,3 +96,15 @@ fun Modifier.topBorder(
             )
         }
     }
+
+@Composable
+fun Modifier.clickableRipple(
+    enabled: Boolean = true,
+    onClick: () -> Unit
+): Modifier =
+    this.clickable(
+        enabled = enabled,
+        onClick = onClick,
+        interactionSource = remember { MutableInteractionSource() },
+        indication = rememberRipple()
+    )
