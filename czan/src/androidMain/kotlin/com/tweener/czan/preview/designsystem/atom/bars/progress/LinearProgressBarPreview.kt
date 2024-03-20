@@ -1,9 +1,10 @@
 package com.tweener.czan.preview.designsystem.atom.bars.progress
 
 import androidx.compose.runtime.Composable
-import com.tweener.czan.preview.UiModePreviews
+import androidx.compose.ui.graphics.Color
 import com.tweener.czan.designsystem.atom.bars.progress.LinearProgressBar
 import com.tweener.czan.preview.CzanThemePreview
+import com.tweener.czan.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
@@ -22,6 +23,10 @@ private fun LinearProgressBarProgressNonePreview() {
 @Composable
 private fun LinearProgressBarProgress30Preview() {
     CzanThemePreview {
-        LinearProgressBar(progress = 0.3f)
+        LinearProgressBar(
+            progress = 0.3f,
+            color = Color.Red,
+            trackColor = Color.Red.copy(alpha = 0.5f)
+        )
     }
 }

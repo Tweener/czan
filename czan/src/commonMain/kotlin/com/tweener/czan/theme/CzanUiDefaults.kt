@@ -21,7 +21,7 @@ object CzanUiDefaults {
     }
 
     object ProgressBar {
-        val color: Color @Composable get() = MaterialTheme.colorScheme.primaryContainer
+        val trackColor: Color @Composable get() = MaterialTheme.colorScheme.primaryContainer
 
         val selectedColor: Color @Composable get() = MaterialTheme.colorScheme.primary
 

@@ -33,7 +33,7 @@ fun StepProgressBar(
     stepsCount: Int,
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
-    color: Color = CzanUiDefaults.ProgressBar.color,
+    color: Color = CzanUiDefaults.ProgressBar.trackColor,
     selectedColor: Color = CzanUiDefaults.ProgressBar.selectedColor,
     dashColor: Color = CzanUiDefaults.ProgressBar.dashColor,
     dashWidth: Dp = 10.dp
