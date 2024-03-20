@@ -9,7 +9,6 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +31,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.theme.Size
 import org.jetbrains.compose.resources.DrawableResource
@@ -144,7 +144,7 @@ private fun ExpandableCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { showContent = !showContent }
+                .clickableRipple { showContent = !showContent }
                 .padding(contentPadding),
             horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
             verticalAlignment = Alignment.CenterVertically,
