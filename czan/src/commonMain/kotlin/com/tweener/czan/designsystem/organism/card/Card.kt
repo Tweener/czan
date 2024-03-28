@@ -87,10 +87,9 @@ fun Card(
 
                 if (showDividers) {
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
-                    Spacer(modifier = Modifier.padding(vertical = verticalPadding))
                 }
 
-                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = contentPadding)) {
+                Box(modifier = Modifier.fillMaxWidth()) {
                     footer()
                 }
             }

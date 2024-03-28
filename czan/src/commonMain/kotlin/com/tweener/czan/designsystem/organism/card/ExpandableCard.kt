@@ -22,7 +22,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,6 +47,7 @@ fun ExpandableCard(
     collapsedIcon: ImageVector,
     modifier: Modifier = Modifier,
     expanded: Boolean = false,
+    enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
     elevation: Dp = CardDefaults.elevation,
@@ -69,6 +70,7 @@ fun ExpandableCard(
             )
         },
         expanded = expanded,
+        enabled = enabled,
         shape = shape,
         colors = colors,
         elevation = elevation,
@@ -87,6 +89,7 @@ fun ExpandableCard(
     collapsedIcon: DrawableResource,
     modifier: Modifier = Modifier,
     expanded: Boolean = false,
+    enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
     elevation: Dp = CardDefaults.elevation,
@@ -109,6 +112,7 @@ fun ExpandableCard(
             )
         },
         expanded = expanded,
+        enabled = enabled,
         shape = shape,
         colors = colors,
         elevation = elevation,
@@ -126,6 +130,7 @@ private fun ExpandableCard(
     collapsedIcon: @Composable (Float) -> Unit,
     modifier: Modifier = Modifier,
     expanded: Boolean = false,
+    enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
     elevation: Dp = CardDefaults.elevation,
@@ -136,7 +141,7 @@ private fun ExpandableCard(
     hideableContent: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-    var showContent by remember { mutableStateOf(expanded) }
+    var showContent by rememberSaveable { mutableStateOf(expanded) }
     val iconRotation by animateFloatAsState(targetValue = if (showContent) 180f else 0f)
 
     val cardContent = @Composable {
@@ -144,7 +149,7 @@ private fun ExpandableCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickableRipple { showContent = !showContent }
+                .clickableRipple(enabled = enabled) { showContent = !showContent }
                 .padding(contentPadding),
             horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
             verticalAlignment = Alignment.CenterVertically,
@@ -153,7 +158,9 @@ private fun ExpandableCard(
                 header()
             }
 
-            collapsedIcon(iconRotation)
+            if (enabled) {
+                collapsedIcon(iconRotation)
+            }
         }
 
         if (hideableContent != null) {
@@ -187,7 +194,7 @@ private fun ExpandableCard(
                 if (footer != null) {
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
 
-                    Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
+                    Box(modifier = Modifier.fillMaxWidth()) {
                         footer()
                     }
                 }
