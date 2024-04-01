@@ -1,5 +1,6 @@
 package com.tweener.czan.designsystem.atom.menu.contextmenu
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
+import com.tweener.czan.theme.Size
 import io.github.alexzhirkevich.cupertino.CupertinoDropdownMenu
 import io.github.alexzhirkevich.cupertino.CupertinoIcon
 import io.github.alexzhirkevich.cupertino.CupertinoText
@@ -34,9 +36,44 @@ import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
  * @since 01/04/2024
  */
 
-@OptIn(ExperimentalAdaptiveApi::class, ExperimentalCupertinoApi::class)
+@OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 fun ContextMenu(
+    modifier: Modifier = Modifier,
+    shown: Boolean = true,
+    onDismiss: (() -> Unit)? = null,
+    textStyle: TextStyle = LocalTextStyle.current,
+    fontWeight: FontWeight? = null,
+    colors: ContextMenuColors = ContextMenuDefaults.colors(),
+    sizes: ContextMenuSizes = ContextMenuDefaults.sizes(),
+    items: List<ContextMenuItemModel>,
+    onItemClick: ((ContextMenuItemModel) -> Unit)? = null,
+) {
+    AdaptiveContextMenu(
+        modifier = modifier,
+        shown = shown,
+        onDismiss = onDismiss,
+        textStyle = textStyle,
+        fontWeight = fontWeight,
+        sizes = sizes,
+        items = items,
+        onItemClick = onItemClick,
+        adaptation = {
+            material {
+                this.colors = MenuDefaults.itemColors(
+                    textColor = colors.contentColor(),
+                    disabledTextColor = colors.disabledContentColor(),
+                    leadingIconColor = colors.contentColor(),
+                    disabledLeadingIconColor = colors.disabledContentColor(),
+                )
+            }
+        },
+    )
+}
+
+@OptIn(ExperimentalAdaptiveApi::class, ExperimentalCupertinoApi::class)
+@Composable
+private fun AdaptiveContextMenu(
     modifier: Modifier = Modifier,
     shown: Boolean = true,
     onDismiss: (() -> Unit)? = null,
@@ -58,7 +95,7 @@ fun ContextMenu(
             ) {
                 items.forEach { item ->
                     DropdownMenuItem(
-                        modifier = modifier,
+                        modifier = Modifier,
                         text = { Text(text = item.title, style = textStyle, fontWeight = fontWeight) },
                         enabled = item.enabled,
                         colors = it.colors,
@@ -80,12 +117,14 @@ fun ContextMenu(
             CupertinoDropdownMenu(
                 modifier = modifier,
                 expanded = shown,
+                elevation = 6.dp,
+                paddingValues = PaddingValues(Size.Padding.ExtraSmall),
                 onDismissRequest = { onDismiss?.invoke() },
             ) {
                 items.forEach { item ->
                     MenuAction(
-                        onClick = { onItemClick?.invoke(item) },
                         contentColor = it.colors.contentColor(enabled = item.enabled).value,
+                        enabled = item.enabled,
                         icon = {
                             item.icon?.let { imageVector ->
                                 CupertinoIcon(
@@ -96,10 +135,10 @@ fun ContextMenu(
                                 )
                             }
                         },
+                        onClick = { onItemClick?.invoke(item) },
                     ) {
                         CupertinoText(
                             text = item.title,
-//                            color = it.colors.contentColor(item.enabled).value,
                             style = textStyle,
                             fontWeight = fontWeight,
                         )
