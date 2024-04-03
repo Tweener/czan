@@ -1,10 +1,10 @@
-package com.tweener.czan.preview.designsystem.atom.menu.contextmenu
+package com.tweener.czan.preview.designsystem.molecule.menu.contextmenu
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import com.tweener.czan.designsystem.atom.menu.contextmenu.ContextMenu
-import com.tweener.czan.designsystem.atom.menu.contextmenu.ContextMenuDefaults
-import com.tweener.czan.designsystem.atom.menu.contextmenu.ContextMenuItemModel
+import com.tweener.czan.designsystem.molecule.menu.contextmenu.ContextMenu
+import com.tweener.czan.designsystem.molecule.menu.contextmenu.ContextMenuDefaults
+import com.tweener.czan.designsystem.molecule.menu.contextmenu.ContextMenuItemModel
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
 

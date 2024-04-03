@@ -1,4 +1,4 @@
-package com.tweener.czan.designsystem.atom.menu.contextmenu
+package com.tweener.czan.designsystem.molecule.menu.contextmenu
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
