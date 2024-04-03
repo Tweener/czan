@@ -20,10 +20,10 @@ object CupertinoMenuContextDefaults {
     @ReadOnlyComposable
     fun colors(
         contentColor: Color = MaterialTheme.colorScheme.onSurface,
-        disabledContextColor: Color = MaterialTheme.colorScheme.outline,
+        disabledContentColor: Color = MaterialTheme.colorScheme.outline,
     ): CupertinoMenuItemColors = CupertinoMenuItemColors(
         contentColor = contentColor,
-        disabledContentColor = disabledContextColor,
+        disabledContentColor = disabledContentColor,
     )
 }
 

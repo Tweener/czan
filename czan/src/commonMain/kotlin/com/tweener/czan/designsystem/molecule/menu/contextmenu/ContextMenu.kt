@@ -170,9 +170,7 @@ private class ContextMenuAdaptation :
         val colors = CupertinoMenuContextDefaults.colors()
 
         return remember(colors) {
-            CupertinoContextMenuAdaptation(
-                colors = colors
-            )
+            CupertinoContextMenuAdaptation(colors = colors)
         }
     }
 
@@ -182,7 +180,7 @@ private class ContextMenuAdaptation :
         val colors = MenuDefaults.itemColors()
 
         return remember(colors) {
-            MaterialContextMenuAdaptation(colors)
+            MaterialContextMenuAdaptation(colors = colors)
         }
     }
 }
