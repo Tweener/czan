@@ -2,6 +2,7 @@ package com.tweener.czan.designsystem.atom.textfield
 
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Visibility
@@ -21,7 +22,8 @@ enum class TextFieldType {
     EMAIL,
     PASSWORD_VISIBLE,
     PASSWORD_HIDDEN,
-    SEARCH;
+    SEARCH,
+    DROPDOWN;
 
     val leadingIcon: ImageVector?
         get() = when (this) {
@@ -31,6 +33,7 @@ enum class TextFieldType {
             PASSWORD_VISIBLE -> null
             PASSWORD_HIDDEN -> null
             SEARCH -> Icons.Default.Search
+            DROPDOWN -> null
         }
 
     val trailingIcon: ImageVector?
@@ -41,6 +44,7 @@ enum class TextFieldType {
             PASSWORD_VISIBLE -> Icons.Outlined.VisibilityOff
             PASSWORD_HIDDEN -> Icons.Outlined.Visibility
             SEARCH -> Icons.Default.Close
+            DROPDOWN -> Icons.Default.ArrowDropDown
         }
 
     val visualTransformation: VisualTransformation
@@ -51,6 +55,7 @@ enum class TextFieldType {
             PASSWORD_VISIBLE -> VisualTransformation.None
             PASSWORD_HIDDEN -> PasswordVisualTransformation()
             SEARCH -> VisualTransformation.None
+            DROPDOWN -> VisualTransformation.None
         }
 
     val keyboardOptions: KeyboardOptions
@@ -61,5 +66,6 @@ enum class TextFieldType {
             PASSWORD_VISIBLE -> KeyboardOptions.Default
             PASSWORD_HIDDEN -> KeyboardOptions(keyboardType = KeyboardType.Password)
             SEARCH -> KeyboardOptions.Default
+            DROPDOWN -> KeyboardOptions.Default
         }
 }

@@ -1,6 +1,8 @@
 package com.tweener.czan.designsystem.atom.textfield
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -15,7 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
@@ -33,9 +35,9 @@ import com.tweener.czan.theme.CzanUiDefaults
 fun TextField(
     text: String,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge, // Used for both text and placeholder
     label: String? = null,
     placeholderText: String? = null,
+    size: TextFieldSize = TextFieldSize.REGULAR,
     type: TextFieldType = TextFieldType.TEXT,
     enabled: Boolean = true,
     singleLine: Boolean = false,
@@ -59,20 +61,21 @@ fun TextField(
 
     TextField(
         modifier = modifier
+            .height(size.height)
             .onFocusChanged { focusState -> hasFocus = focusState.isFocused }
-            .applyBorder(hasFocus = hasFocus),
+            .applyBorder(hasFocus = hasFocus, shape = size.shape),
         value = inputValue,
-        placeholder = placeholderText?.let { { Text(it, style = textStyle) } },
+        placeholder = placeholderText?.let { { Text(it, style = size.textStyle) } },
         onValueChange = { inputValueChanged(it) },
         label = label?.let { { Text(it) } },
         enabled = enabled,
-        textStyle = textStyle,
+        textStyle = size.textStyle,
         singleLine = singleLine,
         visualTransformation = visualTransformation,
         keyboardOptions = inputType.keyboardOptions.copy(imeAction = imeAction),
         keyboardActions = keyboardActions,
-        shape = TextFieldDefaults.shape(),
-        leadingIcon = inputType.leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+        shape = size.shape,
+        leadingIcon = inputType.leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
         trailingIcon = inputType.trailingIcon?.let {
             {
                 IconButton(onClick = {
@@ -83,7 +86,7 @@ fun TextField(
                         else -> Unit // Nothing to do for the other types
                     }
                 }) {
-                    Icon(imageVector = it, contentDescription = null)
+                    Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null)
                 }
             }
         },
@@ -95,9 +98,9 @@ fun TextField(
 fun TextField(
     text: TextFieldValue,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.bodyLarge, // Used for both text and placeholder
     label: String? = null,
     placeholderText: String? = null,
+    size: TextFieldSize = TextFieldSize.REGULAR,
     type: TextFieldType = TextFieldType.TEXT,
     enabled: Boolean = true,
     singleLine: Boolean = false,
@@ -115,20 +118,21 @@ fun TextField(
 
     TextField(
         modifier = modifier
+            .height(size.height)
             .onFocusChanged { focusState -> hasFocus = focusState.isFocused }
-            .applyBorder(hasFocus = hasFocus),
+            .applyBorder(hasFocus = hasFocus, shape = size.shape),
         value = text,
-        placeholder = placeholderText?.let { { Text(it, style = textStyle) } },
+        placeholder = placeholderText?.let { { Text(it, style = size.textStyle) } },
         onValueChange = { if (text != it) onValueChanged?.invoke(it) },
         label = label?.let { { Text(it) } },
         enabled = enabled,
-        textStyle = textStyle,
+        textStyle = size.textStyle,
         singleLine = singleLine,
         visualTransformation = visualTransformation,
         keyboardOptions = inputType.keyboardOptions.copy(imeAction = imeAction),
         keyboardActions = keyboardActions,
-        shape = TextFieldDefaults.shape(),
-        leadingIcon = inputType.leadingIcon?.let { { Icon(imageVector = it, contentDescription = null) } },
+        shape = size.shape,
+        leadingIcon = inputType.leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
         trailingIcon = inputType.trailingIcon?.let {
             {
                 IconButton(onClick = {
@@ -138,7 +142,7 @@ fun TextField(
                         else -> Unit // Nothing to do for the other types
                     }
                 }) {
-                    Icon(imageVector = it, contentDescription = null)
+                    Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null)
                 }
             }
         },
@@ -149,11 +153,11 @@ fun TextField(
 private object TextFieldDefaults {
 
     @Composable
-    fun Modifier.applyBorder(hasFocus: Boolean) =
+    fun Modifier.applyBorder(hasFocus: Boolean, shape: Shape = shape()) =
         this.border(
             width = if (hasFocus) 2.dp else 1.dp,
             color = if (hasFocus) MaterialTheme.colorScheme.inversePrimary else MaterialTheme.colorScheme.outlineVariant,
-            shape = shape()
+            shape = shape
         )
 
     @Composable
