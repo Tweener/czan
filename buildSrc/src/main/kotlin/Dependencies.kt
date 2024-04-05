@@ -13,8 +13,8 @@ object Dependencies {
         const val gradle = "8.2.2"
         const val dependencyVersionsPlugin = "0.51.0"
         const val nexusSonatype = "2.0.0-rc-1"
-        const val composeMultiplatform = "1.6.0"
         const val dokka = "1.9.10"
+        const val composeMultiplatform = "1.6.0"
         const val composeCompilerExtension = "1.5.9"
         const val compose = "1.6.0-alpha03"
         const val activityCompose = "1.7.2"
@@ -27,7 +27,7 @@ object Dependencies {
 
         object Czan {
             const val packageName = "com.tweener.czan"
-            const val versionName = "2.1.2"
+            const val versionName = "2.2.0"
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
@@ -45,7 +45,6 @@ object Dependencies {
         }
 
         object Tweener {
-            const val czan = "2.0.1"
             const val bom = "1.0.0"
         }
 
@@ -66,8 +65,6 @@ object Dependencies {
         const val cupertinoCompose = "io.github.alexzhirkevich:cupertino-adaptive:${Versions.cupertinoCompose}"
 
         object Tweener {
-            const val czan = "io.github.tweener:czan:${Versions.Tweener.czan}"
-
             const val bom = "io.github.tweener:kmp-bom:${Versions.Tweener.bom}"
             const val common = "io.github.tweener:kmp-common"
         }
