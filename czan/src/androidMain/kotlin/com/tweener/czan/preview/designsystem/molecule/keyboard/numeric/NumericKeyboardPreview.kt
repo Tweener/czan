@@ -33,7 +33,8 @@ private fun NumericKeyboardWithDigitsPreview() {
             NumericKeyboard(
                 modifier = Modifier.fillMaxWidth(),
                 colors = NumericKeyboardDefaults.colors(keyColor = Color.Gray),
-                allowDigits = true,
+                maxDecimals = 2,
+                allowDecimals = true,
                 onNumberUpdated = { number = it },
             )
         }
@@ -56,7 +57,7 @@ private fun NumericKeyboardWithoutDigitsPreview() {
                     contentColor = MaterialTheme.colorScheme.onPrimary,
                     keyColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
                 ),
-                allowDigits = false,
+                allowDecimals = false,
                 onNumberUpdated = { number = it },
             )
         }

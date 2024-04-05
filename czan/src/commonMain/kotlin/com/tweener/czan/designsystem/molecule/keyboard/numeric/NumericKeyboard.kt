@@ -44,24 +44,39 @@ fun NumericKeyboard(
     onNumberUpdated: (String) -> Unit,
     modifier: Modifier = Modifier,
     value: String = "",
+    maxDecimals: Int = Int.MAX_VALUE,
     textStyle: TextStyle = MaterialTheme.typography.titleLarge,
     colors: NumericKeyboardColors = NumericKeyboardDefaults.colors(),
     sizes: NumericKeyboardSizes = NumericKeyboardDefaults.sizes(),
-    allowDigits: Boolean = true,
-    digitsSeparator: String = ".",
+    allowDecimals: Boolean = true,
+    decimalsSeparator: String = ".",
 ) {
     val keys = listOf("1", "2", "3", "4", "5", "6", "7", "8", "9")
     val key0 = "0"
     var number by remember { mutableStateOf(value) }
 
     LaunchedEffect(number) {
-        // Make sure there is always a dot as a digits separator so converting this string to a Double is possible
-        onNumberUpdated(number.replace(digitsSeparator, "."))
+        try {
+            // Make sure there is always a dot as a decimals separator so converting this string to a Double is possible
+            var correctAmount = number.replace(decimalsSeparator, ".")
+
+            // Make sure the requirement for the maximum number of digits is met
+            if (correctAmount.contains(decimalsSeparator)) {
+                val digits = correctAmount.substring(correctAmount.indexOf(decimalsSeparator))
+                if (digits.length > maxDecimals + 1) correctAmount = correctAmount.dropLast(1)
+            }
+
+            number = correctAmount
+
+            onNumberUpdated(correctAmount)
+        } catch (throwable: Throwable) {
+            // newValue is empty, so we don't do anything
+        }
     }
 
     val onAddCharacter: (String) -> Unit = { character ->
-        // Allow only one digits separator
-        if (character != digitsSeparator || number.contains(digitsSeparator).not()) {
+        // Allow only one decimals separator
+        if (character != decimalsSeparator || number.contains(decimalsSeparator).not()) {
             number += character
         }
     }
@@ -76,8 +91,8 @@ fun NumericKeyboard(
         items(keys) { key -> TextKey(text = key, textStyle = textStyle, colors = colors, sizes = sizes) { onAddCharacter(key) } }
 
         item {
-            when (allowDigits) {
-                true -> TextKey(text = digitsSeparator, textStyle = textStyle, colors = colors, sizes = sizes) { onAddCharacter(digitsSeparator) }
+            when (allowDecimals) {
+                true -> TextKey(text = decimalsSeparator, textStyle = textStyle, colors = colors, sizes = sizes) { onAddCharacter(decimalsSeparator) }
                 false -> Spacer(modifier = Modifier.fillMaxWidth())
             }
         }
