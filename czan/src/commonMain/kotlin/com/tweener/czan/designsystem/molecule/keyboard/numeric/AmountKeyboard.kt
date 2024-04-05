@@ -55,7 +55,8 @@ fun NumericKeyboard(
     var number by remember { mutableStateOf(value) }
 
     LaunchedEffect(number) {
-        onNumberUpdated(number)
+        // Make sure there is always a dot as a digits separator so converting this string to a Double is possible
+        onNumberUpdated(number.replace(digitsSeparator, "."))
     }
 
     val onAddCharacter: (String) -> Unit = { character ->
