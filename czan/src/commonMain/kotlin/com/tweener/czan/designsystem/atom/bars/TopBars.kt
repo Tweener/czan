@@ -132,7 +132,7 @@ fun TopBarWithCloseButton(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAdaptiveApi::class)
 @Composable
-private fun TopBarWithIcon(
+fun TopBarWithIcon(
     title: String,
     modifier: Modifier = Modifier,
     style: TextStyle = LocalTextStyle.current,
