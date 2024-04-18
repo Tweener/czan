@@ -107,12 +107,23 @@ private fun CzanButton(
     onClick: (() -> Unit)? = null
 ) {
     val shouldUseIconPadding = (leadingIcon != null || trailingIcon != null) && text != null
+    val contentPadding = when {
+        text != null -> {
+            when {
+                leadingIcon != null -> size.contentWithLeadingIconPadding
+                trailingIcon != null -> size.contentWithTrailingIconPadding
+                else -> size.contentPadding
+            }
+        }
+
+        else -> size.contentPadding
+    }
 
     Button(
         modifier = modifier.height(size.height),
         enabled = enabled,
         onClick = { onClick?.invoke() },
-        contentPadding = if (shouldUseIconPadding) size.contentWithIconPadding else size.contentPadding,
+        contentPadding = contentPadding,
         shape = size.shape,
         colors = ButtonDefaults.buttonColors(
             containerColor = if (outlined) Color.Transparent else style.containerColor,

@@ -31,6 +31,9 @@ enum class ButtonSize {
 
         private val BigButtonShape = RoundedCornerShape(36.dp)
 
+        private val BigButtonWithTrailingIconHorizontalEndPadding = 16.dp
+        private val BigButtonHorizontalPadding = 24.dp
+        private val BigButtonVerticalPadding = 8.dp
         private val SmallButtonHorizontalPadding = 14.dp
         private val SmallButtonVerticalPadding = 8.dp
         private val SmallButtonWithIconHorizontalStartPadding = 12.dp
@@ -75,12 +78,38 @@ enum class ButtonSize {
             )
         }
 
-    val contentWithIconPadding: PaddingValues
+    val contentWithLeadingIconPadding: PaddingValues
         @Composable
         @ReadOnlyComposable
         get() = when (this) {
             BIG -> ButtonDefaults.ButtonWithIconContentPadding
             REGULAR -> ButtonDefaults.ButtonWithIconContentPadding
+            SMALL -> PaddingValues(
+                start = SmallButtonWithIconHorizontalStartPadding,
+                top = SmallButtonVerticalPadding,
+                end = SmallButtonHorizontalPadding,
+                bottom = SmallButtonVerticalPadding
+            )
+        }
+
+    val contentWithTrailingIconPadding: PaddingValues
+        @Composable
+        @ReadOnlyComposable
+        get() = when (this) {
+            BIG -> PaddingValues(
+                start = BigButtonHorizontalPadding,
+                top = BigButtonVerticalPadding,
+                end = BigButtonWithTrailingIconHorizontalEndPadding,
+                bottom = BigButtonVerticalPadding
+            )
+
+            REGULAR -> PaddingValues(
+                start = BigButtonHorizontalPadding,
+                top = BigButtonVerticalPadding,
+                end = BigButtonWithTrailingIconHorizontalEndPadding,
+                bottom = BigButtonVerticalPadding
+            )
+
             SMALL -> PaddingValues(
                 start = SmallButtonWithIconHorizontalStartPadding,
                 top = SmallButtonVerticalPadding,
