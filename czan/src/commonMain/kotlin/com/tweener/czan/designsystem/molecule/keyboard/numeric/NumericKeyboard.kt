@@ -80,7 +80,10 @@ fun NumericKeyboard(
             number += character
         }
     }
-    val onRemoveCharacter: () -> Unit = { number = number.dropLast(1) }
+    val onRemoveCharacter: () -> Unit = {
+        number = number.dropLast(1) // Remove last character
+        if (number.lastOrNull()?.toString() == decimalsSeparator) number = number.dropLast(1) // Remove decimals separator if it's the last character
+    }
 
     LazyVerticalGrid(
         modifier = modifier.background(colors.containerColor()),
