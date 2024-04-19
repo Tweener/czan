@@ -1,7 +1,6 @@
 package com.tweener.czan.designsystem.atom.dialog
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.tweener.czan.designsystem.atom.text.Text
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveAlertDialog
@@ -21,7 +20,6 @@ fun AlertDialog(
     confirmButtonLabel: String,
     onConfirmButtonClicked: () -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
     dismissButtonLabel: String? = null,
     icon: ImageVector? = null,
     content: @Composable () -> Unit,

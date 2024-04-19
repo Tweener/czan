@@ -106,7 +106,6 @@ private fun CzanButton(
     trailingIcon: @Composable (() -> Unit)? = null,
     onClick: (() -> Unit)? = null
 ) {
-    val shouldUseIconPadding = (leadingIcon != null || trailingIcon != null) && text != null
     val contentPadding = when {
         text != null -> {
             when {
