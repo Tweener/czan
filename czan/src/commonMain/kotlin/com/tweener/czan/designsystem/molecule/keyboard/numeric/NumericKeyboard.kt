@@ -57,18 +57,27 @@ fun NumericKeyboard(
 
     LaunchedEffect(number) {
         try {
-            // Make sure there is always a dot as a decimals separator so converting this string to a Double is possible
-            var correctAmount = number.replace(decimalsSeparator, ".")
+            when (allowDecimals) {
+                true -> {
+                    // Make sure there is always a dot as a decimals separator so converting this string to a Double is possible
+                    var correctAmount = number.replace(decimalsSeparator, ".")
 
-            // Make sure the requirement for the maximum number of digits is met
-            if (correctAmount.contains(decimalsSeparator)) {
-                val digits = correctAmount.substring(correctAmount.indexOf(decimalsSeparator))
-                if (digits.length > maxDecimals + 1) correctAmount = correctAmount.dropLast(1)
+                    // Make sure the requirement for the maximum number of digits is met
+                    if (correctAmount.contains(decimalsSeparator)) {
+                        val digits = correctAmount.substring(correctAmount.indexOf(decimalsSeparator))
+                        if (digits.length > maxDecimals + 1) correctAmount = correctAmount.dropLast(1)
+                    }
+
+                    number = correctAmount
+                }
+
+                false -> {
+                    // Remove any decimals part when decimals are not allowed
+                    number = number.split(decimalsSeparator)[0]
+                }
             }
 
-            number = correctAmount
-
-            onNumberUpdated(correctAmount)
+            onNumberUpdated(number)
         } catch (throwable: Throwable) {
             // newValue is empty, so we don't do anything
         }
