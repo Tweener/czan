@@ -192,10 +192,14 @@ object NumericKeyboardDefaults {
         containerColor: Color = MaterialTheme.colorScheme.surface,
         contentColor: Color = MaterialTheme.colorScheme.onSurface,
         keyColor: Color = Color.Unspecified,
+        buttonColor: Color = MaterialTheme.colorScheme.primary,
+        buttonContentColor: Color = MaterialTheme.colorScheme.onPrimary,
     ): NumericKeyboardColors = NumericKeyboardColors(
         containerColor = containerColor,
         contentColor = contentColor,
         keyColor = keyColor,
+        buttonColor=buttonColor,
+        buttonContentColor=buttonContentColor,
     )
 
     @Composable
@@ -213,6 +217,8 @@ class NumericKeyboardColors internal constructor(
     private val contentColor: Color,
     private val containerColor: Color,
     private val keyColor: Color,
+    private val buttonColor: Color,
+    private val buttonContentColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
@@ -222,6 +228,12 @@ class NumericKeyboardColors internal constructor(
 
     @Composable
     internal fun keyColor(): Color = keyColor
+
+    @Composable
+    internal fun buttonColor(): Color = buttonColor
+
+    @Composable
+    internal fun buttonContentColor(): Color = buttonContentColor
 }
 
 @Immutable
