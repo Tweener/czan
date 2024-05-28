@@ -9,14 +9,13 @@ object Dependencies {
 
     object Versions {
 
-        const val kotlin = "1.9.21"
+        const val kotlin = "2.0.0"
         const val gradle = "8.2.2"
         const val dependencyVersionsPlugin = "0.51.0"
         const val nexusSonatype = "2.0.0-rc-1"
         const val dokka = "1.9.10"
-        const val composeMultiplatform = "1.6.0"
-        const val composeCompilerExtension = "1.5.9"
-        const val compose = "1.6.0-alpha03"
+        const val composeMultiplatform = "1.6.10"
+        const val compose = "1.6.7"
         const val activityCompose = "1.7.2"
         const val accompanist = "0.34.0"
         const val coil = "3.0.0-alpha01"
@@ -27,7 +26,7 @@ object Dependencies {
 
         object Czan {
             const val packageName = "com.tweener.czan"
-            const val versionName = "2.2.1"
+            const val versionName = "2.3.0"
             const val namespace = "$packageName.android"
             const val compileSDK = 34
             const val minSDK = 24
@@ -45,12 +44,10 @@ object Dependencies {
         }
 
         object Tweener {
-            const val bom = "1.0.0"
+            const val bom = "2.0.0"
         }
 
         object Android {
-            const val desugarJdkLibs = "2.0.3"
-
             object AndroidX {
                 const val lifecycle = "2.6.2"
             }
@@ -91,8 +88,6 @@ object Dependencies {
         }
 
         object Android {
-            const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.Android.desugarJdkLibs}"
-
             object AndroidX {
                 object Compose {
                     const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"

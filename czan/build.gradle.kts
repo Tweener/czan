@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.dokka")
     id("maven-publish")
     id("signing")
@@ -29,10 +30,6 @@ android {
 
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.Versions.composeCompilerExtension
     }
 
     compileOptions {

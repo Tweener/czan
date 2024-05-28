@@ -5,6 +5,7 @@ plugins {
     kotlin("multiplatform").version(Dependencies.Versions.kotlin).apply(false)
     id("com.android.library").version(Dependencies.Versions.gradle).apply(false)
     id("org.jetbrains.compose").version(Dependencies.Versions.composeMultiplatform).apply(false)
+    id("org.jetbrains.kotlin.plugin.compose").version(Dependencies.Versions.kotlin).apply(false)
     id("org.jetbrains.dokka").version(Dependencies.Versions.dokka).apply(false)
     id("io.github.gradle-nexus.publish-plugin").version(Dependencies.Versions.nexusSonatype)
     id("com.github.ben-manes.versions").version(Dependencies.Versions.dependencyVersionsPlugin) // ./gradlew dependencyUpdates
