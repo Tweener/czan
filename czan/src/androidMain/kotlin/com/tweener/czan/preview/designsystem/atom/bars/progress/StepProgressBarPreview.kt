@@ -1,9 +1,9 @@
 package com.tweener.czan.preview.designsystem.atom.bars.progress
 
 import androidx.compose.runtime.Composable
-import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.designsystem.atom.bars.progress.StepProgressBar
 import com.tweener.czan.preview.CzanThemePreview
+import com.tweener.czan.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
@@ -12,7 +12,7 @@ import com.tweener.czan.preview.CzanThemePreview
 
 @UiModePreviews
 @Composable
-private fun ProgressBarNoSelectionPreview() {
+private fun SetProgressBarNoSelectionPreview() {
     CzanThemePreview {
         StepProgressBar(stepsCount = 5)
     }
@@ -20,7 +20,7 @@ private fun ProgressBarNoSelectionPreview() {
 
 @UiModePreviews
 @Composable
-private fun ProgressBarSecondSelectedPreview() {
+private fun SetProgressBarSecondSelectedPreview() {
     CzanThemePreview {
         StepProgressBar(stepsCount = 5, selectedIndex = 1)
     }
