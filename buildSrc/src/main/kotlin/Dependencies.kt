@@ -44,10 +44,12 @@ object Dependencies {
         }
 
         object Tweener {
-            const val bom = "2.0.0"
+            const val bom = "2.0.1"
         }
 
         object Android {
+            const val desugarJdkLibs = "2.0.3"
+
             object AndroidX {
                 const val lifecycle = "2.6.2"
             }
@@ -88,6 +90,8 @@ object Dependencies {
         }
 
         object Android {
+            const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.Android.desugarJdkLibs}"
+
             object AndroidX {
                 object Compose {
                     const val materialIconsExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
