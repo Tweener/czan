@@ -21,27 +21,41 @@ import androidx.compose.ui.unit.dp
  * @since 07/06/2024
  */
 
+enum class CarouselDashState {
+    NOT_STARTED,
+    IN_PROGRESS,
+    FINISHED;
+}
+
 @Composable
 fun CarouselDash(
     foregroundColor: Color,
     modifier: Modifier = Modifier,
     backgroundColor: Color = foregroundColor.copy(alpha = 0.16f),
     thickness: Dp = 4.dp,
-    initialProgress: Float = 0f,
+    state: CarouselDashState = CarouselDashState.NOT_STARTED,
     durationMillis: Int = 5000,
     paused: Boolean = false,
     onFinished: (() -> Unit)? = null,
 ) {
-    val progress = remember { Animatable(initialProgress) }
+    val progressAnimation = remember { Animatable(0f) }
+
+    LaunchedEffect(state) {
+        when (state) {
+            CarouselDashState.NOT_STARTED -> progressAnimation.snapTo(0f)
+            CarouselDashState.IN_PROGRESS -> progressAnimation.snapTo(0f)
+            CarouselDashState.FINISHED -> progressAnimation.snapTo(1f)
+        }
+    }
 
     LaunchedEffect(paused) {
         when (paused) {
-            true -> progress.stop()
+            true -> progressAnimation.stop()
             false -> {
-                progress.animateTo(
+                progressAnimation.animateTo(
                     targetValue = 1f,
                     animationSpec = tween(
-                        durationMillis = (durationMillis * (1f - progress.value)).toInt(),
+                        durationMillis = (durationMillis * (1f - progressAnimation.value)).toInt(),
                         easing = LinearEasing,
                     ),
                 )
@@ -53,10 +67,10 @@ fun CarouselDash(
 
     LinearProgressIndicator(
         modifier = modifier
-            .fillMaxWidth(progress.value)
+            .fillMaxWidth()
             .height(thickness)
             .clip(shape = MaterialTheme.shapes.large),
-        progress = { progress.value },
+        progress = { progressAnimation.value },
         color = foregroundColor,
         trackColor = backgroundColor,
     )

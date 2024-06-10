@@ -18,7 +18,6 @@ private fun CarouselDashesPreview() {
     CzanThemePreview {
         CarouselDashes(
             pageCount = 4,
-            initialPage = 0,
             foregroundColor = MaterialTheme.colorScheme.primary,
             backgroundColor = MaterialTheme.colorScheme.background,
             thickness = 8.dp,
