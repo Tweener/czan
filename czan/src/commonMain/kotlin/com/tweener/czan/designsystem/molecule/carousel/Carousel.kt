@@ -1,6 +1,9 @@
 package com.tweener.czan.designsystem.molecule.carousel
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,12 +17,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import com.tweener.czan.theme.CzanUiDefaults
 import com.tweener.czan.theme.Size
 import kotlin.time.Duration
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * @author Vivien Mahe
@@ -31,12 +37,16 @@ import kotlinx.coroutines.delay
 fun Carousel(
     modifier: Modifier = Modifier,
     userScrollEnabled: Boolean = true,
+    userTapHalfScreenEnabled: Boolean = false,
     showDots: Boolean = true,
     animationType: CarouselAnimationType = CarouselAnimationType.NONE,
     slideDuration: Duration = CzanUiDefaults.Carousel.slideDuration(),
     pagerState: PagerState = rememberPagerState { 0 },
+    onScreenPressed: ((Boolean) -> Unit)? = null,
     itemContent: @Composable (index: Int) -> Unit,
 ) {
+    val tapDelayMillis = 200
+    val scope = rememberCoroutineScope()
     val isDragged by pagerState.interactionSource.collectIsDraggedAsState()
     var pageIndex by remember { mutableIntStateOf(0) }
 
@@ -52,7 +62,47 @@ fun Carousel(
         }
     }
 
-    Column(modifier = modifier.fillMaxWidth()) {
+    val goToNextStep: () -> Unit = {
+        if (pagerState.currentPage - 1 < pagerState.pageCount) {
+            scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
+        }
+    }
+
+    val goToPreviousStep: () -> Unit = {
+        if (pagerState.currentPage > 0) {
+            scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
+        }
+    }
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .pointerInput(Unit) {
+                awaitEachGesture {
+                    awaitFirstDown().also { down ->
+                        down.consume()
+                        onScreenPressed?.invoke(true)
+                    }
+                    waitForUpOrCancellation()?.also { up ->
+                        up.consume()
+                        onScreenPressed?.invoke(false)
+
+                        // Only use the "tap half screen" feature is requested
+                        if (userTapHalfScreenEnabled) {
+                            val pressTime = up.previousUptimeMillis
+                            val releaseTime = up.uptimeMillis
+                            val pressDuration = releaseTime - pressTime
+
+                            if (pressDuration < tapDelayMillis) {
+                                // Press is considered as a tap
+                                if (up.position.x >= this@pointerInput.size.width / 2) goToNextStep()
+                                else goToPreviousStep()
+                            }
+                        }
+                    }
+                }
+            }
+    ) {
         HorizontalPager(
             modifier = Modifier.fillMaxWidth(),
             state = pagerState,

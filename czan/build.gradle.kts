@@ -74,6 +74,9 @@ kotlin {
     sourceSets {
 
         commonMain.dependencies {
+            implementation(project.dependencies.platform(Dependencies.Libraries.Tweener.bom))
+            implementation(Dependencies.Libraries.Tweener.common)
+
             implementation(Dependencies.Libraries.annotations)
             implementation(Dependencies.Libraries.shimmer)
 
@@ -95,9 +98,6 @@ kotlin {
         }
 
         androidMain.dependencies {
-            implementation(project.dependencies.platform(Dependencies.Libraries.Tweener.bom))
-            implementation(Dependencies.Libraries.Tweener.common)
-
             // Accompanist
             implementation(Dependencies.Libraries.Android.Accompanist.systemUIController)
 
