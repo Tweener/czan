@@ -1,7 +1,6 @@
 [versions]
 kotlin = "2.0.0"
 gradle = "8.2.2"
-compose = "1.6.8"
 composeMultiplatform = "1.6.11"
 dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
@@ -24,7 +23,6 @@ androidAccompanist = "0.34.0"
 
 [libraries]
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
-android-annotations = { group = "androidx.annotation", name = "annotation", version.ref = "androidAnnotations" }
 cupertino-compose = { group = "io.github.alexzhirkevich", name = "cupertino-adaptive", version.ref = "cupertinoCompose" }
 compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "composeMultiplatform" }
 
@@ -45,6 +43,7 @@ android-desugarjdklibs = { group = "com.android.tools", name = "desugar_jdk_libs
 android-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivityCompose" }
 android-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidLifecycleCompose" }
 android-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "androidAccompanist" }
+android-annotations = { group = "androidx.annotation", name = "annotation", version.ref = "androidAnnotations" }
 
 [bundles]
 coil = ["coil-compose", "coil-network"]
