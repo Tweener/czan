@@ -2,17 +2,17 @@ import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    kotlin("multiplatform").version(Dependencies.Versions.kotlin).apply(false)
-    id("com.android.library").version(Dependencies.Versions.gradle).apply(false)
-    id("org.jetbrains.compose").version(Dependencies.Versions.composeMultiplatform).apply(false)
-    id("org.jetbrains.kotlin.plugin.compose").version(Dependencies.Versions.kotlin).apply(false)
-    id("org.jetbrains.dokka").version(Dependencies.Versions.dokka).apply(false)
-    id("io.github.gradle-nexus.publish-plugin").version(Dependencies.Versions.nexusSonatype)
-    id("com.github.ben-manes.versions").version(Dependencies.Versions.dependencyVersionsPlugin) // ./gradlew dependencyUpdates
+    alias(libs.plugins.kotlin.multiplatform).apply(false)
+    alias(libs.plugins.android.library).apply(false)
+    alias(libs.plugins.jetbrains.compose).apply(false)
+    alias(libs.plugins.jetbrains.compose.compiler).apply(false)
+    alias(libs.plugins.dokka).apply(false)
+    alias(libs.plugins.nexus.sonatype)
+    alias(libs.plugins.dependency.versions) // ./gradlew dependencyUpdates
 }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }
 
 nexusPublishing {

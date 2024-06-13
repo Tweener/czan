@@ -2,21 +2,21 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.compose")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("org.jetbrains.dokka")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.jetbrains.compose.compiler)
+    alias(libs.plugins.dokka)
     id("maven-publish")
     id("signing")
 }
 
 android {
-    namespace = Dependencies.Versions.Czan.namespace
-    compileSdk = Dependencies.Versions.Czan.compileSDK
+    namespace = ProjectConfiguration.Czan.namespace
+    compileSdk = ProjectConfiguration.Czan.compileSDK
 
     defaultConfig {
-        minSdk = Dependencies.Versions.Czan.minSDK
+        minSdk = ProjectConfiguration.Czan.minSDK
 
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -36,14 +36,14 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = Dependencies.Versions.Compiler.javaCompatibility
-        targetCompatibility = Dependencies.Versions.Compiler.javaCompatibility
+        sourceCompatibility = ProjectConfiguration.Compiler.javaCompatibility
+        targetCompatibility = ProjectConfiguration.Compiler.javaCompatibility
 
         isCoreLibraryDesugaringEnabled = true
     }
 
     dependencies {
-        coreLibraryDesugaring(Dependencies.Libraries.Android.desugarJdkLibs)
+        coreLibraryDesugaring(libs.android.desugarjdklibs)
     }
 }
 
@@ -56,7 +56,7 @@ kotlin {
 
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.fromTarget(Dependencies.Versions.Compiler.jvmTarget))
+            jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
         }
     }
 
@@ -74,11 +74,11 @@ kotlin {
     sourceSets {
 
         commonMain.dependencies {
-            implementation(project.dependencies.platform(Dependencies.Libraries.Tweener.bom))
-            implementation(Dependencies.Libraries.Tweener.common)
+            implementation(project.dependencies.platform(libs.tweener.bom))
+            implementation(libs.tweener.common)
 
-            implementation(Dependencies.Libraries.annotations)
-            implementation(Dependencies.Libraries.shimmer)
+            implementation(libs.android.annotations)
+            implementation(libs.shimmer)
 
             // Compose
             implementation(compose.ui)
@@ -87,33 +87,32 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
             implementation(compose.components.resources)
-            implementation(Dependencies.Libraries.ComposeMultiplatform.material3)
+            implementation(libs.compose.multiplatform.material3)
 
-            // Image fetcher
-            implementation(Dependencies.Libraries.Coil.compose)
-            implementation(Dependencies.Libraries.Coil.network)
+            // Coil (Image fetcher)
+            implementation(libs.bundles.coil)
 
             // Cupertino Compose: iOS look & feel
-            implementation(Dependencies.Libraries.cupertinoCompose)
+            implementation(libs.cupertino.compose)
         }
 
         androidMain.dependencies {
             // Accompanist
-            implementation(Dependencies.Libraries.Android.Accompanist.systemUIController)
+            implementation(libs.android.accompanist.systemuicontroller)
 
             // Compose
             api(compose.preview)
             api(compose.uiTooling)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.activity)
-            implementation(Dependencies.Libraries.Android.AndroidX.Compose.lifecycleRuntime)
+            implementation(libs.android.activity.compose)
+            implementation(libs.android.lifecycle.compose)
 
             // Image fetcher
-            implementation(Dependencies.Libraries.Ktor.Client.Android.okhttp) // HTTPClient to use with Coil to fetch images
+            implementation(libs.ktor.client.android) // HTTPClient to use with Coil to fetch images
         }
 
         iosMain.dependencies {
             // Image fetcher
-            implementation(Dependencies.Libraries.Ktor.Client.iOS.client) // HTTPClient to use with Coil to fetch images
+            implementation(libs.ktor.client.ios) // HTTPClient to use with Coil to fetch images
         }
     }
 }
@@ -121,7 +120,7 @@ kotlin {
 // region Publishing
 
 // Dokka configuration
-val dokkaOutputDir = buildDir.resolve("dokka")
+val dokkaOutputDir = rootProject.layout.buildDirectory.asFile.get().resolve("dokka")
 tasks.dokkaHtml { outputDirectory.set(file(dokkaOutputDir)) }
 val deleteDokkaOutputDir by tasks.register<Delete>("deleteDokkaOutputDirectory") { delete(dokkaOutputDir) }
 val javadocJar = tasks.create<Jar>("javadocJar") {
@@ -131,8 +130,8 @@ val javadocJar = tasks.create<Jar>("javadocJar") {
     from(dokkaOutputDir)
 }
 
-group = Dependencies.Versions.Czan.Maven.group
-version = Dependencies.Versions.Czan.versionName
+group = ProjectConfiguration.Czan.Maven.group
+version = ProjectConfiguration.Czan.versionName
 
 publishing {
     publications {
@@ -142,7 +141,7 @@ publishing {
             pom {
                 name.set("C-ZAN")
                 description.set("C-ZAN Design System for Kotlin Multiplatform and Compose Multiplatform")
-                url.set(Dependencies.Versions.Czan.Maven.packageUrl)
+                url.set(ProjectConfiguration.Czan.Maven.packageUrl)
 
                 licenses {
                     license {
@@ -153,7 +152,7 @@ publishing {
 
                 issueManagement {
                     system.set("GitHub Issues")
-                    url.set("${Dependencies.Versions.Czan.Maven.packageUrl}/issues")
+                    url.set("${ProjectConfiguration.Czan.Maven.packageUrl}/issues")
                 }
 
                 developers {
@@ -165,9 +164,9 @@ publishing {
                 }
 
                 scm {
-                    connection.set("scm:git:git://${Dependencies.Versions.Czan.Maven.gitUrl}")
-                    developerConnection.set("scm:git:ssh://${Dependencies.Versions.Czan.Maven.gitUrl}")
-                    url.set(Dependencies.Versions.Czan.Maven.packageUrl)
+                    connection.set("scm:git:git://${ProjectConfiguration.Czan.Maven.gitUrl}")
+                    developerConnection.set("scm:git:ssh://${ProjectConfiguration.Czan.Maven.gitUrl}")
+                    url.set(ProjectConfiguration.Czan.Maven.packageUrl)
                 }
             }
         }

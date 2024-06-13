@@ -1,0 +1,59 @@
+[versions]
+kotlin = "2.0.0"
+gradle = "8.2.2"
+compose = "1.6.8"
+composeMultiplatform = "1.6.11"
+dependencyVersionsPlugin = "0.51.0"
+nexusSonatype = "2.0.0"
+dokka = "1.9.20"
+androidAnnotations = "1.8.0"
+coroutines = "1.8.1"
+shimmer = "1.2.0"
+cupertinoCompose = "0.1.0-alpha03"
+ktor = "2.3.11"
+coil = "3.0.0-alpha01"
+
+# Tweener
+tweenerBom = "2.0.1"
+
+# Android
+androidDesugarJdkLibs = "2.0.4"
+androidActivityCompose = "1.9.0"
+androidLifecycleCompose = "2.8.2"
+androidAccompanist = "0.34.0"
+
+[libraries]
+shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
+android-annotations = { group = "androidx.annotation", name = "annotation", version.ref = "androidAnnotations" }
+cupertino-compose = { group = "io.github.alexzhirkevich", name = "cupertino-adaptive", version.ref = "cupertinoCompose" }
+compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "composeMultiplatform" }
+
+# Tweener
+tweener-bom = { group = "io.github.tweener", name = "kmp-bom", version.ref = "tweenerBom" }
+tweener-common = { group = "io.github.tweener", name = "kmp-common" }
+
+# Coil
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network = { group = "io.coil-kt.coil3", name = "coil-network", version.ref = "coil" }
+
+# Ktor
+ktor-client-android = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-ios = { group = "io.ktor", name = "ktor-client-ios", version.ref = "ktor" }
+
+# Android
+android-desugarjdklibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
+android-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivityCompose" }
+android-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidLifecycleCompose" }
+android-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "androidAccompanist" }
+
+[bundles]
+coil = ["coil-compose", "coil-network"]
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "gradle" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+dependency-versions = { id = "com.github.ben-manes.versions", version.ref = "dependencyVersionsPlugin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+nexus-sonatype = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexusSonatype" }
