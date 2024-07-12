@@ -6,7 +6,6 @@ dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
 dokka = "1.9.20"
 androidAnnotations = "1.8.0"
-coroutines = "1.8.1"
 shimmer = "1.2.0"
 cupertinoCompose = "0.1.0-alpha03"
 ktor = "2.3.11"
@@ -18,7 +17,7 @@ tweenerBom = "2.0.1"
 # Android
 androidDesugarJdkLibs = "2.0.4"
 androidActivityCompose = "1.9.0"
-androidLifecycleCompose = "2.8.2"
+androidLifecycleCompose = "2.8.3"
 androidAccompanist = "0.34.0"
 
 [libraries]

@@ -15,7 +15,6 @@ import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.Size
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
@@ -43,7 +42,6 @@ fun Button(
     )
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Button(
     modifier: Modifier = Modifier,
