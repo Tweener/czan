@@ -265,10 +265,7 @@ object ChipDefaults {
     private val ChipHorizontalPadding = 0.dp
     private val ChipVerticalPadding = 0.dp
 
-    val ContentPadding = PaddingValues(
-        horizontal = ChipHorizontalPadding,
-        vertical = ChipVerticalPadding,
-    )
+    val ContentPadding = PaddingValues(horizontal = ChipHorizontalPadding, vertical = ChipVerticalPadding)
 
     @Composable
     fun chipColors(
