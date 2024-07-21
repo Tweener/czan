@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +24,6 @@ import androidx.compose.material3.SecondaryTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -54,46 +54,45 @@ class TabItem(
 @Composable
 fun PrimaryTabs(
     tabItems: List<TabItem>,
+    tabsContents: List<@Composable () -> Unit>,
     modifier: Modifier = Modifier,
     colors: TabsColors = TabsDefaults.colors(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     shape: Shape = RoundedCornerShape(Size.Padding.Small),
     contentPadding: PaddingValues = TabsDefaults.ContentPadding,
     showDivider: Boolean = false,
-    onTabSelected: ((index: Int) -> Unit)? = null,
 ) {
-    var state by remember { mutableIntStateOf(0) }
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
 
-    LaunchedEffect(state) {
-        onTabSelected?.invoke(state)
-    }
+    Column(modifier = modifier.fillMaxWidth()) {
+        PrimaryTabRow(
+            selectedTabIndex = selectedTabIndex,
+            containerColor = colors.containerColor(),
+            contentColor = colors.contentColor(),
+            divider = { if (showDivider) CzanTabHorizontalDivider(color = colors.contentColor(), horizontalPadding = contentPadding) },
+            indicator = {
+                CzanTabIndicator(
+                    modifier = Modifier.tabIndicatorOffset(selectedTabIndex),
+                    containerColor = colors.selectedTabContainerColor(),
+                    shape = shape,
+                    contentPadding = contentPadding,
+                )
+            }
+        ) {
+            tabItems.forEachIndexed { index, tabItem ->
+                CzanTab(
+                    tabItem = tabItem,
+                    selected = selectedTabIndex == index,
+                    shape = shape,
+                    textStyle = textStyle,
+                    selectedContentColor = colors.selectedTabContentColor(),
+                    unselectedContentColor = colors.contentColor(),
+                    onClick = { selectedTabIndex = index },
+                )
+            }
+        }
 
-    PrimaryTabRow(
-        modifier = modifier,
-        selectedTabIndex = state,
-        containerColor = colors.containerColor(),
-        contentColor = colors.contentColor(),
-        divider = { if (showDivider) CzanTabHorizontalDivider(color = colors.contentColor(), horizontalPadding = contentPadding) },
-        indicator = {
-            CzanTabIndicator(
-                modifier = Modifier.tabIndicatorOffset(state),
-                containerColor = colors.selectedTabContainerColor(),
-                shape = shape,
-                contentPadding = contentPadding,
-            )
-        }
-    ) {
-        tabItems.forEachIndexed { index, tabItem ->
-            CzanTab(
-                tabItem = tabItem,
-                selected = state == index,
-                shape = shape,
-                textStyle = textStyle,
-                selectedContentColor = colors.selectedTabContentColor(),
-                unselectedContentColor = colors.contentColor(),
-                onClick = { state = index },
-            )
-        }
+        tabsContents.getOrNull(selectedTabIndex)?.invoke()
     }
 }
 
@@ -101,46 +100,45 @@ fun PrimaryTabs(
 @Composable
 fun SecondaryTabs(
     tabItems: List<TabItem>,
+    tabsContents: List<@Composable () -> Unit>,
     modifier: Modifier = Modifier,
     colors: TabsColors = TabsDefaults.colors(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     shape: Shape = RoundedCornerShape(Size.Padding.Small),
     contentPadding: PaddingValues = TabsDefaults.ContentPadding,
     showDivider: Boolean = false,
-    onTabSelected: ((index: Int) -> Unit)? = null,
 ) {
-    var state by remember { mutableIntStateOf(0) }
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
 
-    LaunchedEffect(state) {
-        onTabSelected?.invoke(state)
-    }
+    Column(modifier = modifier.fillMaxWidth()) {
+        SecondaryTabRow(
+            selectedTabIndex = selectedTabIndex,
+            containerColor = colors.containerColor(),
+            contentColor = colors.contentColor(),
+            divider = { if (showDivider) CzanTabHorizontalDivider(color = colors.contentColor(), horizontalPadding = contentPadding) },
+            indicator = {
+                CzanTabIndicator(
+                    modifier = Modifier.tabIndicatorOffset(selectedTabIndex),
+                    containerColor = colors.selectedTabContainerColor(),
+                    shape = shape,
+                    contentPadding = contentPadding,
+                )
+            }
+        ) {
+            tabItems.forEachIndexed { index, tabItem ->
+                CzanTab(
+                    tabItem = tabItem,
+                    selected = selectedTabIndex == index,
+                    shape = shape,
+                    textStyle = textStyle,
+                    selectedContentColor = colors.selectedTabContentColor(),
+                    unselectedContentColor = colors.contentColor(),
+                    onClick = { selectedTabIndex = index },
+                )
+            }
+        }
 
-    SecondaryTabRow(
-        modifier = modifier,
-        selectedTabIndex = state,
-        containerColor = colors.containerColor(),
-        contentColor = colors.contentColor(),
-        divider = { if (showDivider) CzanTabHorizontalDivider(color = colors.contentColor(), horizontalPadding = contentPadding) },
-        indicator = {
-            CzanTabIndicator(
-                modifier = Modifier.tabIndicatorOffset(state),
-                containerColor = colors.selectedTabContainerColor(),
-                shape = shape,
-                contentPadding = contentPadding,
-            )
-        }
-    ) {
-        tabItems.forEachIndexed { index, tabItem ->
-            CzanTab(
-                tabItem = tabItem,
-                selected = state == index,
-                shape = shape,
-                textStyle = textStyle,
-                selectedContentColor = colors.selectedTabContentColor(),
-                unselectedContentColor = colors.contentColor(),
-                onClick = { state = index },
-            )
-        }
+        tabsContents.getOrNull(selectedTabIndex)?.invoke()
     }
 }
 
