@@ -53,7 +53,6 @@ kotlin {
     androidTarget {
         publishLibraryVariants("release")
 
-
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
@@ -72,7 +71,6 @@ kotlin {
     }
 
     sourceSets {
-
         commonMain.dependencies {
             implementation(project.dependencies.platform(libs.tweener.bom))
             implementation(libs.tweener.common)

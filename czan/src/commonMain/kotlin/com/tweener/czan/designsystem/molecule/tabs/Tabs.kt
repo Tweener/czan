@@ -46,6 +46,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
 class TabItem(
+    val id: String,
     val title: StringResource,
     val icon: DrawableResource? = null,
 )
@@ -54,13 +55,13 @@ class TabItem(
 @Composable
 fun PrimaryTabs(
     tabItems: List<TabItem>,
-    tabsContents: List<@Composable () -> Unit>,
     modifier: Modifier = Modifier,
     colors: TabsColors = TabsDefaults.colors(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     shape: Shape = RoundedCornerShape(Size.Padding.Small),
     contentPadding: PaddingValues = TabsDefaults.ContentPadding,
     showDivider: Boolean = false,
+    onTabChanged: (@Composable (String) -> Unit)? = null,
 ) {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
@@ -92,7 +93,7 @@ fun PrimaryTabs(
             }
         }
 
-        tabsContents.getOrNull(selectedTabIndex)?.invoke()
+        onTabChanged?.invoke(tabItems[selectedTabIndex].id)
     }
 }
 
@@ -100,13 +101,13 @@ fun PrimaryTabs(
 @Composable
 fun SecondaryTabs(
     tabItems: List<TabItem>,
-    tabsContents: List<@Composable () -> Unit>,
     modifier: Modifier = Modifier,
     colors: TabsColors = TabsDefaults.colors(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     shape: Shape = RoundedCornerShape(Size.Padding.Small),
     contentPadding: PaddingValues = TabsDefaults.ContentPadding,
     showDivider: Boolean = false,
+    onTabChanged: (@Composable (String) -> Unit)? = null,
 ) {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
@@ -138,7 +139,7 @@ fun SecondaryTabs(
             }
         }
 
-        tabsContents.getOrNull(selectedTabIndex)?.invoke()
+        onTabChanged?.invoke(tabItems[selectedTabIndex].id)
     }
 }
 
