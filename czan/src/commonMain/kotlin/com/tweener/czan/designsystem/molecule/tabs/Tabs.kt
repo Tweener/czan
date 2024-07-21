@@ -10,7 +10,9 @@ import androidx.compose.foundation.interaction.Interaction
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +34,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
@@ -69,7 +73,7 @@ fun PrimaryTabs(
         selectedTabIndex = state,
         containerColor = colors.containerColor(),
         contentColor = colors.contentColor(),
-        divider = { if (showDivider) HorizontalDivider() },
+        divider = { if (showDivider) CzanTabHorizontalDivider(color = colors.contentColor(), horizontalPadding = contentPadding) },
         indicator = {
             CzanTabIndicator(
                 modifier = Modifier.tabIndicatorOffset(state),
@@ -116,7 +120,7 @@ fun SecondaryTabs(
         selectedTabIndex = state,
         containerColor = colors.containerColor(),
         contentColor = colors.contentColor(),
-        divider = { if (showDivider) HorizontalDivider() },
+        divider = { if (showDivider) CzanTabHorizontalDivider(color = colors.contentColor(), horizontalPadding = contentPadding) },
         indicator = {
             CzanTabIndicator(
                 modifier = Modifier.tabIndicatorOffset(state),
@@ -138,6 +142,21 @@ fun SecondaryTabs(
             )
         }
     }
+}
+
+@Composable
+private fun CzanTabHorizontalDivider(
+    color: Color,
+    horizontalPadding: PaddingValues,
+    modifier: Modifier = Modifier,
+) {
+    HorizontalDivider(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = horizontalPadding.calculateStartPadding(LayoutDirection.Ltr)),
+        thickness = 1.dp,
+        color = color,
+    )
 }
 
 @Composable
@@ -200,11 +219,13 @@ object TabsDefaults {
         contentColor: Color = MaterialTheme.colorScheme.onBackground,
         selectedTabContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
         selectedTabContentColor: Color = MaterialTheme.colorScheme.onPrimary,
+        tabDividerColor: Color = contentColor,
     ): TabsColors = TabsColors(
         containerColor = containerColor,
         contentColor = contentColor,
         selectedTabContainerColor = selectedTabContainerColor,
         selectedTabContentColor = selectedTabContentColor,
+        tabDividerColor = tabDividerColor,
     )
 }
 
@@ -214,6 +235,7 @@ class TabsColors internal constructor(
     private val contentColor: Color,
     private val selectedTabContainerColor: Color,
     private val selectedTabContentColor: Color,
+    private val tabDividerColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
@@ -226,6 +248,9 @@ class TabsColors internal constructor(
 
     @Composable
     internal fun selectedTabContentColor(): Color = selectedTabContentColor
+
+    @Composable
+    internal fun tabDividerColor(): Color = tabDividerColor
 }
 
 private class DisabledInteractionSource : MutableInteractionSource {
