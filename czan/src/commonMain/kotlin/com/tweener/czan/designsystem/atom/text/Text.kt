@@ -12,11 +12,42 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * @author Vivien Mahe
  * @since 23/08/2023
  */
+
+@Composable
+fun Text(
+    text: StringResource,
+    modifier: Modifier = Modifier,
+    style: TextStyle = LocalTextStyle.current,
+    color: Color = Color.Unspecified,
+    fontStyle: FontStyle? = null,
+    fontWeight: FontWeight? = null,
+    textAlign: TextAlign? = null,
+    overflow: TextOverflow = TextOverflow.Clip,
+    lines: Int? = null,
+    maxLines: Int = Int.MAX_VALUE,
+    minLines: Int = 1,
+) {
+    Text(
+        modifier = modifier,
+        text = stringResource(resource = text),
+        style = style,
+        color = color,
+        fontStyle = fontStyle,
+        fontWeight = fontWeight,
+        textAlign = textAlign,
+        overflow = overflow,
+        lines = lines,
+        maxLines = lines ?: maxLines,
+        minLines = lines ?: minLines,
+    )
+}
 
 @Composable
 fun Text(
