@@ -33,6 +33,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -58,6 +59,7 @@ fun PrimaryTabs(
     modifier: Modifier = Modifier,
     colors: TabsColors = TabsDefaults.colors(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    fontWeight: FontWeight = FontWeight.Normal,
     shape: Shape = RoundedCornerShape(Size.Padding.Small),
     contentPadding: PaddingValues = TabsDefaults.ContentPadding,
     showDivider: Boolean = false,
@@ -86,6 +88,7 @@ fun PrimaryTabs(
                     selected = selectedTabIndex == index,
                     shape = shape,
                     textStyle = textStyle,
+                    fontWeight = fontWeight,
                     selectedContentColor = colors.selectedTabContentColor(),
                     unselectedContentColor = colors.contentColor(),
                     onClick = { selectedTabIndex = index },
@@ -104,6 +107,7 @@ fun SecondaryTabs(
     modifier: Modifier = Modifier,
     colors: TabsColors = TabsDefaults.colors(),
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    fontWeight: FontWeight = FontWeight.Normal,
     shape: Shape = RoundedCornerShape(Size.Padding.Small),
     contentPadding: PaddingValues = TabsDefaults.ContentPadding,
     showDivider: Boolean = false,
@@ -132,6 +136,7 @@ fun SecondaryTabs(
                     selected = selectedTabIndex == index,
                     shape = shape,
                     textStyle = textStyle,
+                    fontWeight = fontWeight,
                     selectedContentColor = colors.selectedTabContentColor(),
                     unselectedContentColor = colors.contentColor(),
                     onClick = { selectedTabIndex = index },
@@ -179,6 +184,7 @@ private fun CzanTab(
     selected: Boolean,
     shape: Shape,
     textStyle: TextStyle,
+    fontWeight: FontWeight,
     selectedContentColor: Color,
     unselectedContentColor: Color,
     modifier: Modifier = Modifier,
@@ -196,6 +202,7 @@ private fun CzanTab(
             Text(
                 text = tabItem.title,
                 style = textStyle,
+                fontWeight = fontWeight,
                 lines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
