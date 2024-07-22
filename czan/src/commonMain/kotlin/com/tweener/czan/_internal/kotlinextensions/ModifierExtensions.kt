@@ -1,5 +1,9 @@
 package com.tweener.czan._internal.kotlinextensions
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -14,6 +18,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.defaultShimmerTheme
+import com.valentinilk.shimmer.rememberShimmer
+import com.valentinilk.shimmer.shimmer
 
 /**
  * @author Vivien Mahe
@@ -108,3 +116,25 @@ fun Modifier.clickableRipple(
         interactionSource = remember { MutableInteractionSource() },
         indication = rememberRipple()
     )
+
+@Composable
+fun Modifier.shimmer(
+    durationMillis: Int = 800,
+    delayMillis: Int = 1_500,
+): Modifier = composed {
+    val shimmer = rememberShimmer(
+        shimmerBounds = ShimmerBounds.View,
+        theme = defaultShimmerTheme.copy(
+            animationSpec = infiniteRepeatable(
+                animation = tween(
+                    durationMillis = durationMillis,
+                    delayMillis = delayMillis,
+                    easing = LinearEasing,
+                ),
+                repeatMode = RepeatMode.Restart,
+            ),
+        ),
+    )
+
+    shimmer(customShimmer = shimmer)
+}
