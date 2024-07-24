@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Authentication buttons -->
+    <string name="button_google_signup">Sign up with Google</string>
+    <string name="button_google_login">Continue with Google</string>
+    <string name="button_apple_signup">Sign up with Apple</string>
+    <string name="button_apple_login">Continue with Apple</string>
+    <string name="button_email_signup">Sign up with your email</string>
+    <string name="button_email_login">Continue with your email</string>
+
+</resources>
