@@ -25,7 +25,6 @@ import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.theme.CzanUiDefaults
 import com.valentinilk.shimmer.shimmer
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 /**
@@ -54,7 +53,6 @@ fun Image(
     )
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Image(
     modifier: Modifier = Modifier,
@@ -97,7 +95,6 @@ fun Image(
     )
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Image(
     modifier: Modifier = Modifier,
