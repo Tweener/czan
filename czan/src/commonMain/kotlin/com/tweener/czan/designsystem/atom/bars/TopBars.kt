@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
@@ -18,14 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.atom.bars.icon.ArrowBackIconButton
 import com.tweener.czan.designsystem.atom.bars.icon.CloseBackIconButton
+import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.Size
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTopAppBar
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
+import org.jetbrains.compose.resources.DrawableResource
 
 /**
  * @author Vivien Mahe
@@ -157,6 +161,51 @@ fun TopBarWithIcon(
         },
 //        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     )
+}
+
+@Composable
+fun RowScope.TopBarAction(
+    icon: DrawableResource,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    contentDescription: String? = null
+) {
+    IconButton(
+        modifier = modifier,
+        onClick = onClick,
+    ) {
+        Icon(resource = icon, contentDescription = contentDescription)
+    }
+}
+
+@Composable
+fun RowScope.TopBarAction(
+    icon: ImageVector,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    contentDescription: String? = null
+) {
+    IconButton(
+        modifier = modifier,
+        onClick = onClick,
+    ) {
+        Icon(imageVector = icon, contentDescription = contentDescription)
+    }
+}
+
+@Composable
+fun RowScope.TopBarAction(
+    icon: Painter,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    contentDescription: String? = null
+) {
+    IconButton(
+        modifier = modifier,
+        onClick = onClick,
+    ) {
+        Icon(painter = icon, contentDescription = contentDescription)
+    }
 }
 
 object TopBarDefaults {
