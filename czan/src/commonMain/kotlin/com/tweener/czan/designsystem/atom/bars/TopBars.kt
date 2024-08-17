@@ -97,6 +97,22 @@ fun SimpleTopBar(
 }
 
 @Composable
+fun NoTitleTopBarWithBackButton(
+    modifier: Modifier = Modifier,
+    colors: TopBarColors = TopBarDefaults.colors(),
+    actions: @Composable RowScope.() -> Unit = {},
+    onBackClicked: (() -> Unit)? = null
+) {
+    TopBarWithIcon(
+        modifier = modifier,
+        title = "",
+        topBarColors = colors,
+        navigationIcon = { ArrowBackIconButton(onClick = onBackClicked) },
+        actions = actions
+    )
+}
+
+@Composable
 fun TopBarWithBackButton(
     title: String,
     textStyle: TextStyle,
@@ -111,6 +127,22 @@ fun TopBarWithBackButton(
         style = textStyle,
         topBarColors = colors,
         navigationIcon = { ArrowBackIconButton(onClick = onBackClicked) },
+        actions = actions
+    )
+}
+
+@Composable
+fun NoTitleTopBarWithCloseButton(
+    modifier: Modifier = Modifier,
+    colors: TopBarColors = TopBarDefaults.colors(),
+    actions: @Composable RowScope.() -> Unit = {},
+    onBackClicked: (() -> Unit)? = null
+) {
+    TopBarWithIcon(
+        modifier = modifier,
+        title = "",
+        topBarColors = colors,
+        navigationIcon = { CloseBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
 }
