@@ -1,10 +1,10 @@
 package com.tweener.czan.preview.designsystem.atom.switch
 
 import androidx.compose.runtime.Composable
-import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.designsystem.atom.switch.Switch
 import com.tweener.czan.designsystem.atom.switch.SwitchStyle
 import com.tweener.czan.preview.CzanThemePreview
+import com.tweener.czan.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
@@ -17,7 +17,7 @@ import com.tweener.czan.preview.CzanThemePreview
 @Composable
 private fun SwitchPrimaryCheckedPreview() {
     CzanThemePreview {
-        Switch(isChecked = true)
+        Switch(checked = true)
     }
 }
 
@@ -25,7 +25,7 @@ private fun SwitchPrimaryCheckedPreview() {
 @Composable
 private fun SwitchPrimaryNotCheckedPreview() {
     CzanThemePreview {
-        Switch(isChecked = false)
+        Switch(checked = false)
     }
 }
 
@@ -37,7 +37,7 @@ private fun SwitchPrimaryNotCheckedPreview() {
 @Composable
 private fun SwitchSecondaryCheckedPreview() {
     CzanThemePreview {
-        Switch(isChecked = true, style = SwitchStyle.SECONDARY)
+        Switch(checked = true, style = SwitchStyle.SECONDARY)
     }
 }
 
@@ -45,7 +45,7 @@ private fun SwitchSecondaryCheckedPreview() {
 @Composable
 private fun SwitchSecondaryNotCheckedPreview() {
     CzanThemePreview {
-        Switch(isChecked = false, style = SwitchStyle.SECONDARY)
+        Switch(checked = false, style = SwitchStyle.SECONDARY)
     }
 }
 
@@ -57,7 +57,7 @@ private fun SwitchSecondaryNotCheckedPreview() {
 @Composable
 private fun SwitchTertiaryCheckedPreview() {
     CzanThemePreview {
-        Switch(isChecked = true, style = SwitchStyle.TERTIARY)
+        Switch(checked = true, style = SwitchStyle.TERTIARY)
     }
 }
 
@@ -65,7 +65,7 @@ private fun SwitchTertiaryCheckedPreview() {
 @Composable
 private fun SwitchTertiaryNotCheckedPreview() {
     CzanThemePreview {
-        Switch(isChecked = false, style = SwitchStyle.TERTIARY)
+        Switch(checked = false, style = SwitchStyle.TERTIARY)
     }
 }
 

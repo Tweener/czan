@@ -22,7 +22,7 @@ import com.tweener.czan.theme.Size
 fun SwitchWithText(
     text: String,
     modifier: Modifier = Modifier,
-    isChecked: Boolean = false,
+    checked: Boolean = false,
     onCheckedChange: ((Boolean) -> Unit)? = null
 ) {
     Row(
@@ -39,7 +39,7 @@ fun SwitchWithText(
         Spacer(modifier = Modifier.padding(horizontal = Size.Padding.Default))
 
         Switch(
-            isChecked = isChecked,
+            checked = checked,
             onCheckedChange = { onCheckedChange?.invoke(it) },
         )
     }

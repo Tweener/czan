@@ -12,10 +12,6 @@ import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveSwitch
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
@@ -30,19 +26,15 @@ import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 fun Switch(
     modifier: Modifier = Modifier,
     style: SwitchStyle = SwitchStyle.PRIMARY,
-    isChecked: Boolean = false,
+    checked: Boolean = false,
     onCheckedChange: ((Boolean) -> Unit)? = null
 ) {
-    var checked by remember { mutableStateOf(isChecked) }
     val iconVector = if (checked) Icons.Outlined.Check else Icons.Outlined.Close
 
     AdaptiveSwitch(
         modifier = modifier,
         checked = checked,
-        onCheckedChange = {
-            checked = it
-            onCheckedChange?.invoke(it)
-        },
+        onCheckedChange = { onCheckedChange?.invoke(it) },
         thumbContent = {
             Icon(
                 modifier = Modifier.size(SwitchDefaults.IconSize),

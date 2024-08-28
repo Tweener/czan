@@ -14,7 +14,7 @@ import com.tweener.czan.preview.CzanThemePreview
 @Composable
 private fun SwitchWithTextCheckedPreview() {
     CzanThemePreview {
-        SwitchWithText(text = "Switch checked with text", isChecked = true)
+        SwitchWithText(text = "Switch checked with text", checked = true)
     }
 }
 
@@ -22,6 +22,6 @@ private fun SwitchWithTextCheckedPreview() {
 @Composable
 private fun SwitchWithTextNotCheckedPreview() {
     CzanThemePreview {
-        SwitchWithText(text = "Switch not checked with text", isChecked = false)
+        SwitchWithText(text = "Switch not checked with text", checked = false)
     }
 }
