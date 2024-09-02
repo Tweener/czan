@@ -6,6 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTheme
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 import io.github.alexzhirkevich.cupertino.adaptive.Theme
@@ -15,6 +16,10 @@ import io.github.alexzhirkevich.cupertino.theme.CupertinoTheme
  * @author Vivien Mahe
  * @since 26/09/2023
  */
+
+@Composable
+fun colorResource(colorLight: Color, colorDark: Color = Color.Unspecified) =
+    if (isSystemInDarkTheme()) colorDark else colorLight
 
 expect fun determineTheme(): Theme
 
