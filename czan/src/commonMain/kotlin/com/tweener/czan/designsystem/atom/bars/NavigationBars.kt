@@ -41,50 +41,50 @@ fun NavigationBar(
 
 @Composable
 fun RowScope.NavigationBarItem(
-    label: String,
+    icon: ImageVector,
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    label: String? = null,
     colors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
-    icon: ImageVector? = null,
 ) {
     NavigationBarIem(
         modifier = modifier,
+        icon = { Icon(imageVector = icon, contentDescription = label) },
         label = label,
         selected = selected,
         onClick = onClick,
         itemColors = colors,
-        icon = { icon?.let { Icon(imageVector = it, contentDescription = label) } },
     )
 }
 
 @Composable
 fun RowScope.NavigationBarItem(
-    label: String,
+    icon: Painter,
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    label: String? = null,
     colors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
-    icon: Painter? = null,
 ) {
     NavigationBarIem(
         modifier = modifier,
+        icon = { Icon(painter = icon, contentDescription = label) },
         label = label,
         selected = selected,
         onClick = onClick,
         itemColors = colors,
-        icon = { icon?.let { Icon(painter = it, contentDescription = label) } },
     )
 }
 
 @OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 private fun RowScope.NavigationBarIem(
-    label: String,
+    icon: @Composable () -> Unit,
     selected: Boolean,
     onClick: () -> Unit,
-    icon: @Composable () -> Unit,
     modifier: Modifier = Modifier,
+    label: String? = null,
     itemColors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
 ) {
     AdaptiveNavigationBarItem(
@@ -92,7 +92,7 @@ private fun RowScope.NavigationBarIem(
         selected = selected,
         onClick = onClick,
         icon = icon,
-        label = { Text(text = label) },
+        label = label?.let { { Text(text = label) } },
         adaptation = {
             material {
                 colors = androidx.compose.material3.NavigationBarItemDefaults.colors(
