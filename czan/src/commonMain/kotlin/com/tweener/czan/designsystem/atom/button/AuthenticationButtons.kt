@@ -135,7 +135,7 @@ private fun AuthenticationButton(
             .fillMaxWidth()
             .height(ButtonSize.BIG.height)
             .clip(shape = shape)
-            .border(width = 1.dp, color = MaterialTheme.colorScheme.onBackground, shape = shape)
+            .border(width = 1.dp, color = MaterialTheme.colorScheme.outline, shape = shape)
             .background(containerColor)
             .clickableRipple { onClick?.invoke() },
         horizontalArrangement = Arrangement.spacedBy(space = Size.Padding.Small, alignment = Alignment.CenterHorizontally),
