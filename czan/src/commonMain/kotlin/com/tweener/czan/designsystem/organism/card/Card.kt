@@ -54,7 +54,6 @@ fun Card(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
                 .conditional(
                     condition = colors.containerBrush() != null,
                     ifTrue = { background(colors.containerBrush()!!) },
@@ -77,7 +76,7 @@ fun Card(
             }
 
             // Content
-            Box(modifier = Modifier.fillMaxWidth().padding(horizontal = contentPadding)) {
+            Box(modifier = Modifier.padding(horizontal = contentPadding)) {
                 content()
             }
 
