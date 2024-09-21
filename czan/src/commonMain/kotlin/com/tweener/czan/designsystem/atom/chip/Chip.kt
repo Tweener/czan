@@ -24,12 +24,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.designsystem.atom.image.Image
 import com.tweener.czan.designsystem.atom.image.ImageDefaults
 import com.tweener.czan.designsystem.atom.text.Text
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
@@ -46,7 +46,8 @@ fun Chip(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
-    onDismiss: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
 ) {
     InputChip(
         modifier = modifier,
@@ -57,7 +58,8 @@ fun Chip(
         textStyle = textStyle,
         contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
-        onDismiss = onDismiss,
+        onClick = onClick,
+        onCloseClick = onCloseClick,
     )
 }
 
@@ -72,7 +74,8 @@ fun Chip(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
-    onDismiss: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
 ) {
     InputChip(
         modifier = modifier,
@@ -83,7 +86,8 @@ fun Chip(
         textStyle = textStyle,
         contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
-        onDismiss = onDismiss,
+        onClick = onClick,
+        onCloseClick = onCloseClick,
         leadingIcon = {
             leadingIconVector?.let {
                 Image(
@@ -113,7 +117,8 @@ fun Chip(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
-    onDismiss: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
 ) {
     InputChip(
         modifier = modifier,
@@ -124,7 +129,8 @@ fun Chip(
         textStyle = textStyle,
         contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
-        onDismiss = onDismiss,
+        onClick = onClick,
+        onCloseClick = onCloseClick,
         leadingIcon = {
             leadingIconBitmap?.let {
                 Image(
@@ -143,7 +149,6 @@ fun Chip(
     )
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Chip(
     title: String,
@@ -156,7 +161,8 @@ fun Chip(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
-    onDismiss: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
 ) {
     InputChip(
         modifier = modifier,
@@ -167,7 +173,8 @@ fun Chip(
         textStyle = textStyle,
         contentPadding = contentPadding,
         canBeDeleted = canBeDeleted,
-        onDismiss = onDismiss,
+        onClick = onClick,
+        onCloseClick = onCloseClick,
         leadingIcon = {
             leadingIconUrl
                 ?.let {
@@ -216,11 +223,12 @@ private fun InputChip(
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     contentPadding: PaddingValues = ChipDefaults.ContentPadding,
     canBeDeleted: Boolean = false,
-    onDismiss: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
 ) {
     InputChip(
         modifier = modifier,
-        onClick = { onDismiss?.invoke() },
+        onClick = { onClick?.invoke() },
         label = {
             Text(
                 modifier = Modifier.padding(contentPadding),
@@ -250,7 +258,7 @@ private fun InputChip(
         trailingIcon = {
             if (canBeDeleted) {
                 Icon(
-                    modifier = Modifier.size(sizes.iconsSize()),
+                    modifier = Modifier.size(sizes.iconsSize()).clickableRipple { onCloseClick?.invoke() },
                     imageVector = Icons.Default.Close,
                     contentDescription = "Chip delete icon",
                 )
