@@ -235,6 +235,7 @@ private fun InputChip(
             selectedContainerColor = colors.selectedContainerColor(),
             disabledContainerColor = colors.disabledContainerColor(),
             labelColor = colors.labelColor(),
+            selectedLabelColor = colors.selectedLabelColor(),
             disabledLabelColor = colors.disabledLabelColor(),
         ),
         border = InputChipDefaults.inputChipBorder(
@@ -273,6 +274,7 @@ object ChipDefaults {
         selectedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
         disabledContainerColor: Color = MaterialTheme.colorScheme.surface,
         labelColor: Color = MaterialTheme.colorScheme.onSurface,
+        selectedLabelColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
         disabledLabelColor: Color = MaterialTheme.colorScheme.onSurface,
         borderColor: Color = MaterialTheme.colorScheme.outline,
         selectedBorderColor: Color = MaterialTheme.colorScheme.primary,
@@ -286,6 +288,7 @@ object ChipDefaults {
         selectedContainerColor = selectedContainerColor,
         disabledContainerColor = disabledContainerColor,
         labelColor = labelColor,
+        selectedLabelColor = selectedLabelColor,
         disabledLabelColor = disabledLabelColor,
         borderColor = borderColor,
         selectedBorderColor = selectedBorderColor,
@@ -320,6 +323,7 @@ class ChipColors internal constructor(
     private val selectedContainerColor: Color,
     private val disabledContainerColor: Color,
     private val labelColor: Color,
+    private val selectedLabelColor: Color,
     private val disabledLabelColor: Color,
     private val borderColor: Color,
     private val selectedBorderColor: Color,
@@ -340,6 +344,9 @@ class ChipColors internal constructor(
 
     @Composable
     internal fun labelColor(): Color = labelColor
+
+    @Composable
+    internal fun selectedLabelColor(): Color = selectedLabelColor
 
     @Composable
     internal fun disabledLabelColor(): Color = disabledLabelColor
