@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.theme.Size
 
@@ -35,6 +36,7 @@ fun Card(
     borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
     contentPadding: Dp = Size.Padding.Default,
     showDividers: Boolean = true,
+    onClick: (() -> Unit)? = null,
     header: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
@@ -59,6 +61,7 @@ fun Card(
                     ifTrue = { background(colors.containerBrush()!!) },
                     ifFalse = { background(colors.containerColor()) },
                 )
+                .clickableRipple(enabled = onClick != null) { onClick?.invoke() }
                 .padding(vertical = contentPadding),
         ) {
             // Header, if provided
