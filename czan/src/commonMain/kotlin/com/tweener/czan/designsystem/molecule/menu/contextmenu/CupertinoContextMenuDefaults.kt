@@ -27,6 +27,7 @@ object CupertinoMenuContextDefaults {
     )
 }
 
+@ConsistentCopyVisibility
 @Immutable
 data class CupertinoMenuItemColors internal constructor(
     private val contentColor: Color,
