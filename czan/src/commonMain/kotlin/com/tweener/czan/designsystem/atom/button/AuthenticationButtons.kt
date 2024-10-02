@@ -41,7 +41,7 @@ import org.jetbrains.compose.resources.StringResource
 @Composable
 fun GoogleSignUpButton(
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
@@ -56,7 +56,7 @@ fun GoogleSignUpButton(
 @Composable
 fun GoogleLogInButton(
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
@@ -71,7 +71,7 @@ fun GoogleLogInButton(
 @Composable
 fun AppleSignUpButton(
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
@@ -86,7 +86,7 @@ fun AppleSignUpButton(
 @Composable
 fun AppleLogInButton(
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
@@ -102,7 +102,7 @@ fun AppleLogInButton(
 fun EmailSignUpButton(
     emailIcon: DrawableResource,
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
@@ -119,7 +119,7 @@ fun EmailSignUpButton(
 fun EmailLogInButton(
     emailIcon: DrawableResource,
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
@@ -137,7 +137,7 @@ private fun AuthenticationButton(
     title: StringResource,
     icon: DrawableResource,
     modifier: Modifier = Modifier,
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     containerColor: Color = MaterialTheme.colorScheme.background,
     onClick: (() -> Unit)? = null,
 ) {
