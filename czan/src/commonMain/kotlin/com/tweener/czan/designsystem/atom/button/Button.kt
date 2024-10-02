@@ -320,7 +320,8 @@ private fun ButtonLoadingContent(
             delay(index * 100L) // Add delay between each animation
 
             animatable.animateTo(
-                targetValue = 1f, animationSpec = infiniteRepeatable(
+                targetValue = 1f,
+                animationSpec = infiniteRepeatable(
                     animation = tween(
                         durationMillis = when (loadingStyle) {
                             ButtonLoadingStyle.BOUNCE -> ButtonDefaults.BounceAnimationDurationMills
@@ -328,7 +329,7 @@ private fun ButtonLoadingContent(
                         }
                     ),
                     repeatMode = RepeatMode.Reverse,
-                )
+                ),
             )
         }
     }

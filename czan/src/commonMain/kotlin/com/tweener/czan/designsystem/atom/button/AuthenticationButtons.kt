@@ -41,12 +41,14 @@ import org.jetbrains.compose.resources.StringResource
 @Composable
 fun GoogleSignUpButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_google_signup,
         icon = Res.drawable.google_logo,
+        enabled = enabled,
         onClick = onClick,
     )
 }
@@ -54,12 +56,14 @@ fun GoogleSignUpButton(
 @Composable
 fun GoogleLogInButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_google_login,
         icon = Res.drawable.google_logo,
+        enabled = enabled,
         onClick = onClick,
     )
 }
@@ -67,12 +71,14 @@ fun GoogleLogInButton(
 @Composable
 fun AppleSignUpButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_apple_signup,
         icon = Res.drawable.apple_logo,
+        enabled = enabled,
         onClick = onClick,
     )
 }
@@ -80,12 +86,14 @@ fun AppleSignUpButton(
 @Composable
 fun AppleLogInButton(
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_apple_login,
         icon = Res.drawable.apple_logo,
+        enabled = enabled,
         onClick = onClick,
     )
 }
@@ -94,12 +102,14 @@ fun AppleLogInButton(
 fun EmailSignUpButton(
     emailIcon: DrawableResource,
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_email_signup,
         icon = emailIcon,
+        enabled = enabled,
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
         onClick = onClick,
     )
@@ -109,12 +119,14 @@ fun EmailSignUpButton(
 fun EmailLogInButton(
     emailIcon: DrawableResource,
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     onClick: (() -> Unit)? = null,
 ) {
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_email_login,
         icon = emailIcon,
+        enabled = enabled,
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
         onClick = onClick,
     )
@@ -125,6 +137,7 @@ private fun AuthenticationButton(
     title: StringResource,
     icon: DrawableResource,
     modifier: Modifier = Modifier,
+    enabled: Boolean = false,
     containerColor: Color = MaterialTheme.colorScheme.background,
     onClick: (() -> Unit)? = null,
 ) {
@@ -137,7 +150,7 @@ private fun AuthenticationButton(
             .clip(shape = shape)
             .border(width = 1.dp, color = MaterialTheme.colorScheme.outline, shape = shape)
             .background(containerColor)
-            .clickableRipple { onClick?.invoke() },
+            .clickableRipple(enabled = enabled) { onClick?.invoke() },
         horizontalArrangement = Arrangement.spacedBy(space = Size.Padding.Small, alignment = Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
     ) {
