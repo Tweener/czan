@@ -1,14 +1,16 @@
-![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
+<h1 align="center">Design System library for Kotlin/Compose Multiplatform</h1>
 
-<h2 align="center">Design System library for apps running on Kotlin/Compose Multiplatform</h2>
-
-[![Website](https://img.shields.io/badge/Author-vivienmahe.com-orange)](https://vivienmahe.com/)
-[![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
-
-[![](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fs01.oss.sonatype.org%2Fservice%2Flocal%2Frepo_groups%2Fpublic%2Fcontent%2Fio%2Fgithub%2Ftweener%2Fczan%2Fmaven-metadata.xml)](https://central.sonatype.com/artifact/io.github.tweener/czan)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.tweener/czan?color=orange)](https://central.sonatype.com/artifact/io.github.tweener/czan)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
 ![gradle-version](https://img.shields.io/badge/gradle-8.5.2-blue?logo=gradle)
+[![Compose](https://img.shields.io/badge/compose-1.6.11-blue.svg?logo=jetpackcompose)](https://www.jetbrains.com/lp/compose-multiplatform)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Website](https://img.shields.io/badge/Author-vivienmahe.com-purple)](https://vivienmahe.com/)
+[![X/Twitter](https://img.shields.io/twitter/follow/VivienMahe)](https://twitter.com/VivienMahe)
+
+<br>
+
+![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
 
 ---
 
