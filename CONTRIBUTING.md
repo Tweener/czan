@@ -30,5 +30,5 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under its Apache-2.0 license. See [LICENCE](https://github.com/Tweener/c-zan-android?tab=Apache-2.0-1-ov-file#readme) for more
+By contributing, you agree that your contributions will be licensed under its Apache-2.0 license. See [LICENCE](https://github.com/Tweener/czan?tab=Apache-2.0-1-ov-file#readme) for more
 details.

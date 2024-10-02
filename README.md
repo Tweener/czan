@@ -1,4 +1,4 @@
-![Logo   text](https://github.com/Tweener/c-zan-android/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
+![Logo   text](https://github.com/Tweener/czan/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
 
 <h2 align="center">Design System library for apps running on Kotlin/Compose Multiplatform</h2>
 
@@ -147,7 +147,7 @@ fun App(
 
 If you declared a `darkColorScheme` in step 2, C·ZAN will automatically adapts the theme to light or dark mode depending on the device's settings.
 
-To override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/c-zan/blob/main/library/src/main/java/com/tweener/czan/android/theme/ThemeType.kt) as follows:
+To override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/theme/ThemeType.kt) as follows:
 
 ```kotlin
 val themeType: ThemeType = ThemeType.DARK // If you want to use a ThemeType directly from your main Composable
@@ -164,12 +164,12 @@ MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
 The C·ZAN design system, still in its early stages, has an exciting journey of development ahead. Checkout the [roadmap](https://github.com/users/Tweener/projects/1/views/1) to know all about the
 upcoming tasks, presented in no specific order and without set deadlines.
 
-Feel free to check out the range of `Composable`s that are already available [here](https://github.com/Tweener/c-zan/tree/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem)!
+Feel free to check out the range of `Composable`s that are already available [here](https://github.com/Tweener/czan/tree/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem)!
 
 # 👨‍💻 Contributing
 
-We love your input and welcome any contributions! Please read our [contribution guidelines](https://github.com/Tweener/c-zan-android/blob/master/CONTRIBUTING.md) before submitting a pull request.
+We love your input and welcome any contributions! Please read our [contribution guidelines](https://github.com/Tweener/czan/blob/master/CONTRIBUTING.md) before submitting a pull request.
 
 # 🪪 Licence
 
-C·ZAN is licensed under the [Apache-2.0](https://github.com/Tweener/c-zan-android?tab=Apache-2.0-1-ov-file#readme).
+C·ZAN is licensed under the [Apache-2.0](https://github.com/Tweener/czan?tab=Apache-2.0-1-ov-file#readme).

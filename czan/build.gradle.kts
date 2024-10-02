@@ -137,8 +137,8 @@ publishing {
             artifact(javadocJar)
 
             pom {
-                name.set("C-ZAN")
-                description.set("C-ZAN Design System for Kotlin Multiplatform and Compose Multiplatform")
+                name.set("CZAN")
+                description.set("CZAN Design System for Kotlin Multiplatform and Compose Multiplatform")
                 url.set(ProjectConfiguration.Czan.Maven.packageUrl)
 
                 licenses {

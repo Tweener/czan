@@ -16,8 +16,8 @@ object ProjectConfiguration {
 
         object Maven {
             const val group = "io.github.tweener"
-            const val packageUrl = "https://github.com/Tweener/c-zan"
-            const val gitUrl = "github.com:Tweener/c-zan.git"
+            const val packageUrl = "https://github.com/Tweener/czan"
+            const val gitUrl = "github.com:Tweener/czan.git"
         }
     }
 

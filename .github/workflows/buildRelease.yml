@@ -1,4 +1,4 @@
-name: C-ZAN build
+name: CZAN build
 
 on:
   workflow_call:
