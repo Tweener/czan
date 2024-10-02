@@ -269,11 +269,9 @@ private fun InputChip(
 
 object ChipDefaults {
 
-    val IconsSize = InputChipDefaults.AvatarSize
-
+    private val IconsSize = InputChipDefaults.AvatarSize
     private val ChipHorizontalPadding = 0.dp
     private val ChipVerticalPadding = 0.dp
-
     val ContentPadding = PaddingValues(horizontal = ChipHorizontalPadding, vertical = ChipVerticalPadding)
 
     @Composable

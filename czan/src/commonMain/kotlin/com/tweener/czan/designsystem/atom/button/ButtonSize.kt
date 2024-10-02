@@ -22,11 +22,11 @@ enum class ButtonSize {
 
     companion object {
         private val BigButtonHeight = 52.dp
-        private val ButtonHeight = 40.dp
+        private val RegularButtonHeight = 40.dp
         private val SmallButtonHeight = 32.dp
 
         private val BigButtonIconSize = 22.dp
-        private val ButtonIconSize = 18.dp
+        private val RegularButtonIconSize = 18.dp
         private val SmallButtonIconSize = 10.dp
 
         private val BigButtonShape = RoundedCornerShape(36.dp)
@@ -37,6 +37,18 @@ enum class ButtonSize {
         private val SmallButtonHorizontalPadding = 14.dp
         private val SmallButtonVerticalPadding = 8.dp
         private val SmallButtonWithIconHorizontalStartPadding = 12.dp
+
+        private val BigButtonLoadingDotSize = 12.dp
+        private val RegularButtonLoadingDotSize = 8.dp
+        private val SmallBigButtonLoadingDotSize = 6.dp
+
+        private val BigButtonLoadingDotGap = 12.dp
+        private val RegularButtonLoadingDotGap = 8.dp
+        private val SmallBigButtonLoadingDotGap = 4.dp
+
+        private val BigButtonLoadingDotYTranslation = 8.dp
+        private val RegularButtonLoadingDotYTranslation = 6.dp
+        private val SmallBigButtonLoadingDotYTranslation = 4.dp
     }
 
     val height: Dp
@@ -44,7 +56,7 @@ enum class ButtonSize {
         @ReadOnlyComposable
         get() = when (this) {
             BIG -> BigButtonHeight
-            REGULAR -> ButtonHeight
+            REGULAR -> RegularButtonHeight
             SMALL -> SmallButtonHeight
         }
 
@@ -123,7 +135,34 @@ enum class ButtonSize {
         @ReadOnlyComposable
         get() = when (this) {
             BIG -> BigButtonIconSize
-            REGULAR -> ButtonIconSize
+            REGULAR -> RegularButtonIconSize
             SMALL -> SmallButtonIconSize
+        }
+
+    val loadingDotSize: Dp
+        @Composable
+        @ReadOnlyComposable
+        get() = when (this) {
+            BIG -> BigButtonLoadingDotSize
+            REGULAR -> RegularButtonLoadingDotSize
+            SMALL -> SmallBigButtonLoadingDotSize
+        }
+
+    val loadingDotGap: Dp
+        @Composable
+        @ReadOnlyComposable
+        get() = when (this) {
+            BIG -> BigButtonLoadingDotGap
+            REGULAR -> RegularButtonLoadingDotGap
+            SMALL -> SmallBigButtonLoadingDotGap
+        }
+
+    val loadingDotYTranslation: Dp
+        @Composable
+        @ReadOnlyComposable
+        get() = when (this) {
+            BIG -> BigButtonLoadingDotYTranslation
+            REGULAR -> RegularButtonLoadingDotYTranslation
+            SMALL -> SmallBigButtonLoadingDotYTranslation
         }
 }

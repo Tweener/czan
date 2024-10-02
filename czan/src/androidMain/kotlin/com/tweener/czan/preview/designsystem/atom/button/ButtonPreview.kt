@@ -3,7 +3,12 @@ package com.tweener.czan.preview.designsystem.atom.button
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.tweener.czan.designsystem.atom.button.Button
+import com.tweener.czan.designsystem.atom.button.ButtonLoadingStyle
 import com.tweener.czan.designsystem.atom.button.ButtonSize
 import com.tweener.czan.designsystem.atom.button.ButtonStyle
 import com.tweener.czan.preview.CzanThemePreview
@@ -19,11 +24,17 @@ import com.tweener.czan.preview.UiModePreviews
 @UiModePreviews
 @Composable
 private fun PrimaryButtonBigEnabledPreview() {
+    var loading by remember { mutableStateOf(false) }
+
     CzanThemePreview {
         Button(
+//            text = "Big enormous long text button Enabled",
             text = "Enabled",
             enabled = true,
-            size = ButtonSize.BIG,
+            size = ButtonSize.SMALL,
+            loading = loading,
+            loadingStyle = ButtonLoadingStyle.BOUNCE,
+            onClick = { loading = loading.not() }
         )
     }
 }
