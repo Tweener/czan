@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -260,7 +261,7 @@ private fun CzanButton(
             disabledContainerColor = style.disabledContainerColor,
             disabledContentColor = style.disabledContentColor
         ),
-        border = if (outlined) BorderStroke(1.dp, style.containerColor) else null
+        border = if (outlined) BorderStroke(1.dp, MaterialTheme.colorScheme.outline) else null
     ) {
         val loadingAlpha by animateFloatAsState(targetValue = if (loading) 1f else 0f)
 
