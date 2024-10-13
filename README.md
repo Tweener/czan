@@ -18,13 +18,13 @@
 
 # ⭐️ Introduction
 
-Introducing the **C·ZAN** design system, named in honor of [Paul Cezanne](https://en.wikipedia.org/wiki/Paul_C%C3%A9zanne), a renowned painter from Aix-en-Provence, France.
+Introducing the **CZAN** design system, named in honor of [Paul Cezanne](https://en.wikipedia.org/wiki/Paul_C%C3%A9zanne), a renowned painter from Aix-en-Provence, France.
 
 This framework is specifically adapted for apps running on [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) and will apply a specific look & feel for the targeted platforms:
 - Android: [Material 3](https://m3.material.io/), Google's open-source design system
 - iOS: Cupertino, Apple's design system
 
-**C·ZAN** is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can
+**CZAN** is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can
 use to build your app.
 
 ➡️ Be sure to show your support by starring ⭐️ this repository, and feel free to [contribute](#-contributing) if you're interested!
@@ -114,7 +114,7 @@ _Note: if your app does not need a dark theme, use `darkColorScheme = null`._
 
 ### 3. Theme usage
 
-C·ZAN wraps some default Material 3 classes to properly adapt the look & feel to the targeted platform. Make sure to use the following ones:
+CZAN wraps some default Material 3 classes to properly adapt the look & feel to the targeted platform. Make sure to use the following ones:
 - `androidx.compose.material3.Scaffold` -> `com.tweener.czan.designsystem.atom.scaffold.Scaffold`
 - `androidx.compose.material3.NavigationBar` -> `com.tweener.czan.designsystem.atom.bars.NavigationBar`
 - `androidx.compose.material3.NavigationBarItem` -> `com.tweener.czan.designsystem.atom.bars.NavigationBarItem`
@@ -149,7 +149,7 @@ fun App(
 
 ### 4. Light & Dark mode
 
-If you declared a `darkColorScheme` in step 2, C·ZAN will automatically adapts the theme to light or dark mode depending on the device's settings.
+If you declared a `darkColorScheme` in step 2, CZAN will automatically adapts the theme to light or dark mode depending on the device's settings.
 
 To override it, you can achieve it by using [`ThemeType`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/theme/ThemeType.kt) as follows:
 
@@ -165,7 +165,7 @@ MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
 
 # 🗺️ Roadmap
 
-The C·ZAN design system, still in its early stages, has an exciting journey of development ahead. Checkout the [roadmap](https://github.com/users/Tweener/projects/1/views/1) to know all about the
+The CZAN design system, still in its early stages, has an exciting journey of development ahead. Checkout the [roadmap](https://github.com/users/Tweener/projects/1/views/1) to know all about the
 upcoming tasks, presented in no specific order and without set deadlines.
 
 Feel free to check out the range of `Composable`s that are already available [here](https://github.com/Tweener/czan/tree/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem)!
@@ -176,4 +176,4 @@ We love your input and welcome any contributions! Please read our [contribution 
 
 # 🪪 Licence
 
-C·ZAN is licensed under the [Apache-2.0](https://github.com/Tweener/czan?tab=Apache-2.0-1-ov-file#readme).
+CZAN is licensed under the [Apache-2.0](https://github.com/Tweener/czan?tab=Apache-2.0-1-ov-file#readme).
