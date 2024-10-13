@@ -11,8 +11,8 @@
 
 <br>
 
-![CZAN logo](https://github.com/user-attachments/assets/c1283997-6d56-4257-8f6f-ffbcaf301e1e#gh-light-mode-only)
-![CZAN logo](https://github.com/user-attachments/assets/984f3478-33ff-4101-b8e7-dad4f7484765#gh-dark-mode-only)
+![CZAN logo](https://github.com/user-attachments/assets/98b75c88-3f92-4b7e-915f-b0fc5b1ddc5a#gh-light-mode-only)
+![CZAN logo](https://github.com/user-attachments/assets/2fbcb69a-c6a3-4954-a1eb-d513135bd527#gh-dark-mode-only)
 
 ---
 
