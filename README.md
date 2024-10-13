@@ -11,7 +11,8 @@
 
 <br>
 
-![Logo   text](https://github.com/Tweener/czan/assets/596985/45ee247c-c8da-461a-8544-2e08578882db)
+![CZAN logo](https://github.com/user-attachments/assets/c1283997-6d56-4257-8f6f-ffbcaf301e1e#gh-light-mode-only)
+![CZAN logo](https://github.com/user-attachments/assets/984f3478-33ff-4101-b8e7-dad4f7484765#gh-dark-mode-only)
 
 ---
 
