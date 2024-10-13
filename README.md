@@ -1,4 +1,4 @@
-<h1 align="center">Design System library for Kotlin/Compose Multiplatform</h1>
+<h1 align="center">Design System library for Compose Multiplatform</h1>
 
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.tweener/czan?color=orange)](https://central.sonatype.com/artifact/io.github.tweener/czan)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
