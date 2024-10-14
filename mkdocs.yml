@@ -1,4 +1,53 @@
-site_name: My Docs
+site_name: "CZAN"
+site_description: "CZAN is an atomic design system for Compose Multiplatform."
 site_url: https://www.czan.dev/
+docs_dir: "docs"
+
+repo_name: "CZAN"
+repo_url: https://github.com/Tweener/czan/
+
+extra: 
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Tweener/
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/VivienMahe
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/vivienmahe/
+
 theme:
   name: material
+  favicon: assets/favicon.ico
+  logo: assets/logo.png
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: "white"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: "black"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - 'Overview': index.md
+  - 'Setup': setup.md
