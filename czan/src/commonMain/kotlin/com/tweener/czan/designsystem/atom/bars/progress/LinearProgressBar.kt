@@ -1,6 +1,5 @@
 package com.tweener.czan.designsystem.atom.bars.progress
 
-import androidx.annotation.FloatRange
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -24,7 +23,7 @@ fun LinearProgressBar(
     modifier: Modifier = Modifier,
     animated: Boolean = false,
     animationDurationMillis: Int = 300,
-    @FloatRange(from = 0.0, to = 1.0) progress: Float = 0f,
+    progress: Float = 0f, // Between 0.0 and 1.0
     color: Color = CzanUiDefaults.ProgressBar.selectedColor,
     trackColor: Color = CzanUiDefaults.ProgressBar.trackColor,
     strokeCap: StrokeCap = ProgressIndicatorDefaults.LinearStrokeCap,

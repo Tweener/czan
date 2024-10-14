@@ -70,12 +70,15 @@ kotlin {
         }
     }
 
+    js(IR) {
+        browser()
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(project.dependencies.platform(libs.tweener.bom))
             implementation(libs.tweener.common)
 
-            implementation(libs.android.annotations)
             implementation(libs.shimmer)
 
             // Compose

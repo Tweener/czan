@@ -11,10 +11,6 @@ plugins {
     alias(libs.plugins.dependency.versions) // ./gradlew dependencyUpdates
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.layout.buildDirectory)
-}
-
 nexusPublishing {
     repositories {
         sonatype {

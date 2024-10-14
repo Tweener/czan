@@ -1,18 +1,17 @@
 [versions]
-kotlin = "2.0.20"
+kotlin = "2.0.21"
 gradle = "8.5.2"
 composeMultiplatform = "1.6.11"
 dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
 dokka = "1.9.20"
-androidAnnotations = "1.8.2"
 shimmer = "1.3.0"
 cupertinoCompose = "0.1.0-alpha03"
 ktor = "2.3.12"
 coil = "3.0.0-alpha01"
 
 # Tweener
-tweenerBom = "2.0.1"
+tweenerBom = "2.0.6"
 
 # Android
 androidDesugarJdkLibs = "2.1.2"
@@ -42,7 +41,6 @@ android-desugarjdklibs = { group = "com.android.tools", name = "desugar_jdk_libs
 android-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivityCompose" }
 android-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidLifecycleCompose" }
 android-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "androidAccompanist" }
-android-annotations = { group = "androidx.annotation", name = "annotation", version.ref = "androidAnnotations" }
 
 [bundles]
 coil = ["coil-compose", "coil-network"]
