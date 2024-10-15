@@ -1,6 +1,8 @@
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.net.URL
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -133,24 +135,33 @@ kotlin {
 
 // region Publishing
 
-// Dokka configuration
-val dokkaOutputDir = rootProject.layout.buildDirectory.asFile.get().resolve("dokka")
-tasks.dokkaHtml { outputDirectory.set(file(dokkaOutputDir)) }
-val deleteDokkaOutputDir by tasks.register<Delete>("deleteDokkaOutputDirectory") { delete(dokkaOutputDir) }
-val javadocJar = tasks.create<Jar>("javadocJar") {
-    archiveClassifier.set("javadoc")
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    dependsOn(deleteDokkaOutputDir, tasks.dokkaHtml)
-    from(dokkaOutputDir)
-}
-
 group = ProjectConfiguration.Czan.Maven.group
 version = ProjectConfiguration.Czan.versionName
+
+// Dokka configuration
+tasks.register<Jar>("dokkaJavadocJar") {
+    dependsOn(tasks.dokkaHtml)
+    from(tasks.dokkaHtml.flatMap { it.outputDirectory })
+    archiveClassifier.set("javadoc")
+}
+
+tasks.withType<DokkaTask>().configureEach {
+    dokkaSourceSets.configureEach {
+        jdkVersion.set(ProjectConfiguration.Compiler.jvmTarget.toInt())
+        languageVersion.set(libs.versions.kotlin)
+
+        sourceLink {
+            localDirectory.set(rootProject.projectDir)
+            remoteUrl.set(URL(ProjectConfiguration.Czan.Maven.packageUrl + "/tree/main"))
+            remoteLineSuffix.set("#L")
+        }
+    }
+}
 
 publishing {
     publications {
         publications.withType<MavenPublication> {
-            artifact(javadocJar)
+            artifact(tasks["dokkaJavadocJar"])
 
             pom {
                 name.set("CZAN")
@@ -196,3 +207,13 @@ signing {
 }
 
 // endregion Publishing
+
+// region Demo samples
+
+tasks.register<Copy>("copyDemoSamples") {
+    dependsOn("jsBrowserDistribution")
+    from(layout.buildDirectory.dir("dist/js/productionExecutable"))
+    into(layout.projectDirectory.dir("../docs/demo"))
+}
+
+// endregion Demo samples
