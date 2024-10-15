@@ -11,7 +11,7 @@ ktor = "2.3.12"
 coil = "3.0.0-alpha10"
 
 # Tweener
-tweenerBom = "2.1.0"
+tweenerBom = "2.1.1"
 
 # Android
 androidDesugarJdkLibs = "2.1.2"
