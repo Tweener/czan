@@ -35,3 +35,4 @@ google-services.json
 
 # Kotlin
 /.kotlin/
+.vercel
