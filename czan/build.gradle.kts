@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -70,8 +71,23 @@ kotlin {
         }
     }
 
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser {
+            commonWebpackConfig {
+                outputFileName = "czan.js"
+            }
+        }
+        binaries.executable()
+    }
+
     js(IR) {
-        browser()
+        browser {
+            commonWebpackConfig {
+                outputFileName = "czan.js"
+            }
+        }
+        binaries.executable()
     }
 
     sourceSets {
@@ -98,9 +114,6 @@ kotlin {
         }
 
         androidMain.dependencies {
-            // Accompanist
-            implementation(libs.android.accompanist.systemuicontroller)
-
             // Compose
             api(compose.preview)
             api(compose.uiTooling)

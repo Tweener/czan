@@ -8,9 +8,9 @@ import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTheme
+import io.github.alexzhirkevich.cupertino.adaptive.CupertinoThemeSpec
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
-import io.github.alexzhirkevich.cupertino.adaptive.Theme
-import io.github.alexzhirkevich.cupertino.theme.CupertinoTheme
+import io.github.alexzhirkevich.cupertino.adaptive.MaterialThemeSpec
 
 /**
  * @author Vivien Mahe
@@ -20,8 +20,6 @@ import io.github.alexzhirkevich.cupertino.theme.CupertinoTheme
 @Composable
 fun colorResource(colorLight: Color, colorDark: Color = Color.Unspecified) =
     if (isSystemInDarkTheme()) colorDark else colorLight
-
-expect fun determineTheme(): Theme
 
 @OptIn(ExperimentalAdaptiveApi::class)
 @Composable
@@ -34,22 +32,15 @@ fun CzanTheme(
     content: @Composable () -> Unit
 ) {
     AdaptiveTheme(
-        material = {
-            MaterialTheme(
-                colorScheme = if (darkTheme && darkColorScheme != null) darkColorScheme else lightColorScheme,
-                typography = typography,
-                shapes = shapes,
-                content = it
-            )
-        },
-        cupertino = {
-            CupertinoTheme(
-                colorScheme = if (darkTheme && darkColorScheme != null) mapDarkColorSchemeToCupertino(darkColorScheme) else mapLightColorSchemeToCupertino(lightColorScheme),
-                shapes = mapShapesToCupertino(materialShapes = shapes),
-                content = it,
-            )
-        },
-        target = determineTheme(),
+        material = MaterialThemeSpec(
+            colorScheme = if (darkTheme && darkColorScheme != null) darkColorScheme else lightColorScheme,
+            typography = typography,
+            shapes = shapes,
+        ),
+        cupertino = CupertinoThemeSpec(
+            colorScheme = if (darkTheme && darkColorScheme != null) mapDarkColorSchemeToCupertino(darkColorScheme) else mapLightColorSchemeToCupertino(lightColorScheme),
+            shapes = mapShapesToCupertino(materialShapes = shapes),
+        ),
         content = content,
     )
 }

@@ -28,7 +28,6 @@ private fun PrimaryButtonBigEnabledPreview() {
 
     CzanThemePreview {
         Button(
-//            text = "Big enormous long text button Enabled",
             text = "Enabled",
             enabled = true,
             size = ButtonSize.SMALL,

@@ -1,0 +1,7 @@
+version:0
+string|button_apple_login|Q29udGludWUgd2l0aCBBcHBsZQ==
+string|button_apple_signup|U2lnbiB1cCB3aXRoIEFwcGxl
+string|button_email_login|Q29udGludWUgd2l0aCB5b3VyIGVtYWls
+string|button_email_signup|U2lnbiB1cCB3aXRoIHlvdXIgZW1haWw=
+string|button_google_login|Q29udGludWUgd2l0aCBHb29nbGU=
+string|button_google_signup|U2lnbiB1cCB3aXRoIEdvb2dsZQ==
