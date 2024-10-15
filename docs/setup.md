@@ -36,7 +36,7 @@ Then add CZAN dependency to your module:
 
 The latest version is: [![](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fs01.oss.sonatype.org%2Fservice%2Flocal%2Frepo_groups%2Fpublic%2Fcontent%2Fio%2Fgithub%2Ftweener%2Fczan%2Fmaven-metadata.xml)](https://central.sonatype.com/artifact/io.github.tweener/czan)
 
-## Theme configuration
+## Theme customization
 
 First, you must configure your theme and define your color palette, typography and shape, as explained in the
 official [documentation](https://developer.android.com/jetpack/compose/designsystems/material3#material-theming) for Material 3 with Jetpack Compose.
@@ -85,9 +85,9 @@ val MyAppShapes = Shapes(
 
 ```
 
-## Declare your theme
+## Theme configuration
 
-Once you've configured your colors, typographies and shapes, you can declare your theme using `CzanTheme`. **CZAN** automatically handles light and dark modes if both color schemes are provided, depending on the device's settings.
+Once you've customized your theme with colors, typographies and shapes, you can configure it using `CzanTheme`. **CZAN** automatically handles light and dark modes if both color schemes are provided, depending on the device's settings.
 
 === "No dark mode"
     ```kotlin
@@ -123,19 +123,19 @@ Once you've configured your colors, typographies and shapes, you can declare you
     }
     ```
 
-!!! note "Force specific theme"
+    !!! note "Force specific theme"
 
-    In some cases, you may need to force usage of light or dark mode on specific Composables or screens. _(For instance: a custom splash screen which always looks the same on both light and dark modes.)_<br/><br/>
-    You can achieve this by using `ThemeType`.
+        In some cases, you may need to force usage of light or dark mode on specific Composables or screens. _(For instance: a custom splash screen which always looks the same on both light and dark modes.)_<br/><br/>
+        You can achieve this by using `ThemeType`.
 
-    ```kotlin
-    val themeType: ThemeType = ThemeType.DARK // If you want to use a ThemeType directly from your main Composable
-    // or
-    val themeType by viewModel.themeType.collectAsState() // If the ThemeType is provided by the ViewModel 
+        ```kotlin
+        val themeType: ThemeType = ThemeType.DARK // If you want to use a ThemeType directly from your main Composable
+        // or
+        val themeType by viewModel.themeType.collectAsState() // If the ThemeType is provided by the ViewModel 
 
-    MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
-        MyScreen {
-            ...
+        MyAppTheme(darkTheme = shouldUseDarkTheme(themeType = themeType)) {
+            MyScreen {
+                ...
+            }
         }
-    }
-    ```
+        ```

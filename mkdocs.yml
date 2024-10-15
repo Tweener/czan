@@ -49,5 +49,7 @@ markdown_extensions:
       alternate_style: true
 
 nav:
-  - 'Overview': index.md
-  - 'Setup': setup.md
+  - "Overview": index.md
+  - "Setup": setup.md
+  - "Atoms":
+    - "Button": atoms/button.md
