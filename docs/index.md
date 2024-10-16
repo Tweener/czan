@@ -30,22 +30,21 @@ use to build your app.
 
 The **Atomic Design System** is a methodology for creating scalable, consistent, and reusable user interfaces by breaking down the UI into fundamental building blocks. It organizes components into five hierarchical levels:
 
-1. [**Atoms**](#atoms)
-   The basic building blocks, such as buttons, icons, text inputs, and colors. These are the smallest indivisible elements of a UI.
+1. [**Atoms**](#atoms): The basic building blocks, such as buttons, icons, text inputs, and colors. These are the smallest indivisible elements of a UI.
 
-2. [**Molecules**](#molecules)
-   Simple combinations of atoms that work together, such as a search input with a button.
+2. [**Molecules**](#molecules): Simple combinations of atoms that work together, such as a search input with a button.
 
-3. [**Organisms**](#organisms)
-   More complex components composed of molecules and atoms, such as a header or a product card.
+3. [**Organisms**](#organisms): More complex components composed of molecules and atoms, such as a header or a product card.
 
-4. **Templates**  
-   Layouts that arrange organisms in a specific structure, providing a blueprint for pages.
+4. **Templates**: Layouts that arrange organisms in a specific structure, providing a blueprint for pages.
 
-5. **Pages**  
-   Fully-realized templates populated with real content, forming complete screens in an application.
+5. **Pages**: Fully-realized templates populated with real content, forming complete screens in an application.
 
 The atomic design system emphasizes **modularity** and **reusability**, making it easier to maintain, scale, and adapt the UI across different platforms while ensuring a consistent user experience.
+
+!!! info "About Templates and Pages"
+
+    `Templates` and `Pages` levels are not managed by **CZAN**, as they represent screens, which are the responsibility of the library user to implement.
 
 #### Atoms
 
@@ -53,11 +52,11 @@ Atoms are the basic building blocks of the user interface. They represent the si
 
 Examples:
 
-- Text
 - [Button](atoms/button.md)
-- Text field
+- Chip
 - Icon
-- Chip, etc.
+- Text
+- TextField, etc.
 
 #### Molecules
 

@@ -38,6 +38,7 @@ theme:
         name: Switch to light mode
   features:
     - content.code.copy
+    - navigation.expand
 
 markdown_extensions:
   - admonition
@@ -55,3 +56,13 @@ nav:
   - "Setup": setup.md
   - "Atoms":
       - "Button": atoms/button.md
+      - "Chip": atoms/chip.md
+      - "Icon": atoms/icon.md
+      - "Text": atoms/text.md
+      - "TextField": atoms/textfield.md
+  - "Molecules":
+      - "CardTip": molecules/cardtip.md
+      - "NumericKeyboard": molecules/numerickeyboard.md
+      - "Tabs": molecules/tabs.md
+  - "Organisms":
+      - "Card": organisms/card.md
