@@ -15,8 +15,9 @@
 
 This framework is specifically adapted for apps running on [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) and will apply a specific look & feel for the targeted platforms:
 
-- 🤖 Android: [Material 3](https://m3.material.io/), Google's open-source design system
-- 🍎 iOS: Cupertino, Apple's design system
+- 🤖 **Android**: [Material 3](https://m3.material.io/), Google's open-source design system
+- 🍎 **iOS**: Cupertino, Apple's design system
+- 🌍 **Web**: Material 3
 
 ---
 

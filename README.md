@@ -1,7 +1,7 @@
 <h1 align="center">Design System library for Compose Multiplatform</h1>
 
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.tweener/czan?color=orange)](https://central.sonatype.com/artifact/io.github.tweener/czan)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.0.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
 ![gradle-version](https://img.shields.io/badge/gradle-8.5.2-blue?logo=gradle)
 [![Compose](https://img.shields.io/badge/compose-1.6.11-blue.svg?logo=jetpackcompose)](https://www.jetbrains.com/lp/compose-multiplatform)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -21,8 +21,9 @@
 **CZAN** is a design system, named in honor of [Paul Cezanne](https://en.wikipedia.org/wiki/Paul_C%C3%A9zanne), a renowned painter from Aix-en-Provence, France, the developer's hometown.
 
 This framework is specifically adapted for apps running on [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) and will apply a specific look & feel for the targeted platforms:
-- Android: [Material 3](https://m3.material.io/), Google's open-source design system
-- iOS: Cupertino, Apple's design system
+- 🤖 **Android**: [Material 3](https://m3.material.io/), Google's open-source design system
+- 🍎 **iOS**: Cupertino, Apple's design system
+- 🌍 **Web**: Material 3
 
 **CZAN** is following the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) methodology, where atoms, molecules, organisms and templates are the different levels of design you can
 use to build your app.
