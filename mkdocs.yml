@@ -6,8 +6,10 @@ docs_dir: "docs"
 repo_name: "CZAN"
 repo_url: https://github.com/Tweener/czan/
 
-extra: 
+extra:
   social:
+    - icon: simple/buymeacoffee
+      link: https://buymeacoffee.com/vivienmahe
     - icon: fontawesome/brands/github
       link: https://github.com/Tweener/
     - icon: fontawesome/brands/x-twitter
@@ -52,4 +54,4 @@ nav:
   - "Overview": index.md
   - "Setup": setup.md
   - "Atoms":
-    - "Button": atoms/button.md
+      - "Button": atoms/button.md
