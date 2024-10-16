@@ -9,7 +9,7 @@ object ProjectConfiguration {
 
     object Czan {
         const val packageName = "com.tweener.czan"
-        const val versionName = "2.3.4"
+        const val versionName = "2.4.0"
         const val namespace = "$packageName.android"
         const val compileSDK = 34
         const val minSDK = 24
