@@ -14,7 +14,7 @@ import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -128,7 +128,7 @@ fun Modifier.clickableRipple(
         enabled = enabled,
         onClick = onClick,
         interactionSource = remember { MutableInteractionSource() },
-        indication = rememberRipple()
+        indication = ripple()
     )
 
 @Composable
