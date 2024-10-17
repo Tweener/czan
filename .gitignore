@@ -36,3 +36,6 @@ google-services.json
 # Kotlin
 /.kotlin/
 .vercel
+
+# MkDocs - Ignore copied demo files since CI will do it
+docs/demo/
