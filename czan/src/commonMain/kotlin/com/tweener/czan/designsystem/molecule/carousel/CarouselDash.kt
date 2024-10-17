@@ -73,5 +73,7 @@ fun CarouselDash(
         progress = { progressAnimation.value },
         color = foregroundColor,
         trackColor = backgroundColor,
+        gapSize = (-24).dp,
+        drawStopIndicator = {},
     )
 }
