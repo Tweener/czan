@@ -1,6 +1,5 @@
 package com.tweener.czan.designsystem.molecule.carousel
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
@@ -21,24 +20,25 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.Dp
 import com.tweener.czan.theme.CzanUiDefaults
 import com.tweener.czan.theme.Size
-import kotlin.time.Duration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration
 
 /**
  * @author Vivien Mahe
  * @since 13/05/2023
  */
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Carousel(
     modifier: Modifier = Modifier,
     userScrollEnabled: Boolean = true,
     userTapHalfScreenEnabled: Boolean = false,
     showDots: Boolean = true,
+    pageSpacing: Dp = Size.Padding.Default,
     animationType: CarouselAnimationType = CarouselAnimationType.NONE,
     slideDuration: Duration = CzanUiDefaults.Carousel.slideDuration(),
     pagerState: PagerState = rememberPagerState { 0 },
@@ -106,7 +106,7 @@ fun Carousel(
         HorizontalPager(
             modifier = Modifier.fillMaxWidth(),
             state = pagerState,
-            pageSpacing = Size.Padding.Default,
+            pageSpacing = pageSpacing,
             userScrollEnabled = userScrollEnabled
         ) { index ->
             itemContent(index)
