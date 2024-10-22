@@ -8,14 +8,12 @@ import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
 import io.github.tweener.czan.generated.resources.Res
 import io.github.tweener.czan.generated.resources.profile_header_background
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
  * @since 01/01/2024
  */
 
-@OptIn(ExperimentalResourceApi::class)
 @UiModePreviews
 @Composable
 private fun ImageFromResourcePreview() {
@@ -27,7 +25,6 @@ private fun ImageFromResourcePreview() {
     }
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @UiModePreviews
 @Composable
 private fun ImageFromUrlPreview() {

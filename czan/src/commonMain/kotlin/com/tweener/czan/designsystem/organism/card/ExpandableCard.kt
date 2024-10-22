@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,13 +31,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.theme.Size
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 /**
  * @author Vivien Mahe
@@ -50,9 +51,7 @@ fun ExpandableCard(
     enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
-    elevation: Dp = CardDefaults.elevation,
-    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
-    contentPadding: Dp = Size.Padding.Default,
+    sizes: CardSizes = CardDefaults.cardSizes(),
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
     hideableContent: @Composable (() -> Unit)? = null,
@@ -73,9 +72,7 @@ fun ExpandableCard(
         enabled = enabled,
         shape = shape,
         colors = colors,
-        elevation = elevation,
-        borderStrokeWidth = borderStrokeWidth,
-        contentPadding = contentPadding,
+        sizes = sizes,
         header = header,
         footer = footer,
         hideableContent = hideableContent,
@@ -83,7 +80,6 @@ fun ExpandableCard(
     )
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun ExpandableCard(
     collapsedIcon: DrawableResource,
@@ -92,9 +88,7 @@ fun ExpandableCard(
     enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
-    elevation: Dp = CardDefaults.elevation,
-    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
-    contentPadding: Dp = Size.Padding.Default,
+    sizes: CardSizes = CardDefaults.cardSizes(),
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
     hideableContent: @Composable (() -> Unit)? = null,
@@ -115,9 +109,7 @@ fun ExpandableCard(
         enabled = enabled,
         shape = shape,
         colors = colors,
-        elevation = elevation,
-        borderStrokeWidth = borderStrokeWidth,
-        contentPadding = contentPadding,
+        sizes = sizes,
         header = header,
         footer = footer,
         hideableContent = hideableContent,
@@ -133,9 +125,7 @@ private fun ExpandableCard(
     enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
-    elevation: Dp = CardDefaults.elevation,
-    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
-    contentPadding: Dp = Size.Padding.Default,
+    sizes: CardSizes = CardDefaults.cardSizes(),
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
     hideableContent: @Composable (() -> Unit)? = null,
@@ -150,7 +140,7 @@ private fun ExpandableCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickableRipple(enabled = enabled) { showContent = !showContent }
-                .padding(contentPadding),
+                .padding(sizes.contentPadding()),
             horizontalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -172,7 +162,12 @@ private fun ExpandableCard(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = contentPadding, end = contentPadding, bottom = contentPadding, top = Size.Padding.ExtraSmall)
+                        .padding(
+                            start = sizes.contentPadding().calculateStartPadding(layoutDirection = LayoutDirection.Ltr),
+                            end = sizes.contentPadding().calculateEndPadding(layoutDirection = LayoutDirection.Ltr),
+                            bottom = sizes.contentPadding().calculateBottomPadding(),
+                            top = Size.Padding.ExtraSmall,
+                        )
                 ) {
                     hideableContent.invoke()
                 }
@@ -186,7 +181,7 @@ private fun ExpandableCard(
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
                 // Content
-                Box(modifier = Modifier.fillMaxWidth().padding(contentPadding)) {
+                Box(modifier = Modifier.fillMaxWidth().padding(sizes.contentPadding())) {
                     content()
                 }
 
@@ -202,7 +197,7 @@ private fun ExpandableCard(
         }
     }
 
-    when (elevation) {
+    when (sizes.elevation()) {
         0.dp -> {
             Card(
                 modifier = modifier.fillMaxWidth(),
@@ -211,8 +206,8 @@ private fun ExpandableCard(
                     containerColor = colors.containerColor(),
                     contentColor = colors.contentColor(),
                 ),
-                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
-                border = BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()),
+                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = sizes.elevation()),
+                border = BorderStroke(width = sizes.borderStrokeWidth(), color = colors.borderStrokeColor()),
             ) {
                 cardContent()
             }
@@ -226,7 +221,7 @@ private fun ExpandableCard(
                     containerColor = colors.containerColor(),
                     contentColor = colors.contentColor(),
                 ),
-                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
+                elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = sizes.elevation()),
             ) {
                 cardContent()
             }

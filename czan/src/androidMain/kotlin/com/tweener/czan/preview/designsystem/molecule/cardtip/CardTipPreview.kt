@@ -1,5 +1,6 @@
 package com.tweener.czan.preview.designsystem.molecule.cardtip
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material3.MaterialTheme
@@ -36,14 +37,16 @@ private fun CardTipChangePropertiesPreview() {
             icon = Icons.Default.Lightbulb,
             textStyle = MaterialTheme.typography.titleSmall,
             shape = MaterialTheme.shapes.extraLarge,
-            iconTint = MaterialTheme.colorScheme.tertiary,
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 borderStrokeColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                iconTint = MaterialTheme.colorScheme.tertiary,
             ),
-            borderStrokeWidth = 1.dp,
-            contentPadding = Size.Padding.ExtraLarge,
+            sizes = CardDefaults.cardSizes(
+                borderStrokeWidth = 1.dp,
+                contentPadding = PaddingValues(Size.Padding.Large),
+            ),
         )
     }
 }

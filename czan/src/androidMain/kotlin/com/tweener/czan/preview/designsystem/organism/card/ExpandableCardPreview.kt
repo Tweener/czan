@@ -1,6 +1,7 @@
 package com.tweener.czan.preview.designsystem.organism.card
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -34,8 +35,10 @@ private fun ExpandableCardCollapsedPreview() {
                 collapsedIcon = Icons.Outlined.ExpandCircleDown,
                 expanded = false,
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                elevation = 4.dp,
-                contentPadding = Size.Padding.Small,
+                sizes = CardDefaults.cardSizes(
+                    elevation = 4.dp,
+                    contentPadding = PaddingValues(Size.Padding.Small),
+                ),
                 header = { Text(text = "This is a header") },
                 footer = { Text(text = "This is a footer") },
                 hideableContent = { Text(text = "This is some hideable content") },
@@ -59,8 +62,10 @@ private fun ExpandableCardExpandedPreview() {
                 collapsedIcon = Icons.Outlined.ExpandCircleDown,
                 expanded = true,
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                elevation = 4.dp,
-                contentPadding = Size.Padding.Small,
+                sizes = CardDefaults.cardSizes(
+                    elevation = 4.dp,
+                    contentPadding = PaddingValues(Size.Padding.Small),
+                ),
                 header = { Text(text = "This is a header") },
                 footer = { Text(text = "This is a footer") },
             ) {

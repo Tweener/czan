@@ -4,7 +4,9 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -17,6 +19,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan._internal.kotlinextensions.conditional
@@ -32,17 +35,15 @@ fun Card(
     modifier: Modifier = Modifier,
     shape: Shape = CardDefaults.shape,
     colors: CardColors = CardDefaults.cardColors(),
-    elevation: Dp = CardDefaults.elevation,
-    borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
-    contentPadding: Dp = Size.Padding.Default,
+    sizes: CardSizes = CardDefaults.cardSizes(),
     showDividers: Boolean = true,
     onClick: (() -> Unit)? = null,
     header: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-    val verticalPadding = Size.Padding.ExtraSmall
-    val cardBorder = if (elevation == 0.dp) BorderStroke(width = borderStrokeWidth, color = colors.borderStrokeColor()) else null
+    val cardBorder = if (sizes.elevation() == 0.dp) BorderStroke(width = sizes.borderStrokeWidth(), color = colors.borderStrokeColor()) else null
+    val headerBottomPadding = if (sizes.dividerVerticalPadding() == 0.dp) Size.Padding.Default else 0.dp
 
     Card(
         modifier = modifier,
@@ -51,7 +52,7 @@ fun Card(
             containerColor = colors.containerColor(),
             contentColor = colors.contentColor(),
         ),
-        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = elevation),
+        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = sizes.elevation()),
         border = cardBorder,
     ) {
         Column(
@@ -62,30 +63,36 @@ fun Card(
                     ifFalse = { background(colors.containerColor()) },
                 )
                 .clickableRipple(enabled = onClick != null) { onClick?.invoke() }
-                .padding(vertical = contentPadding),
+                .padding(top = sizes.contentPadding().calculateTopPadding(), bottom = sizes.contentPadding().calculateBottomPadding()),
         ) {
             // Header, if provided
             if (header != null) {
-                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = contentPadding)) {
+                Box(
+                    modifier = Modifier.fillMaxWidth().padding(
+                        start = sizes.contentPadding().calculateStartPadding(layoutDirection = LayoutDirection.Ltr),
+                        end = sizes.contentPadding().calculateStartPadding(layoutDirection = LayoutDirection.Ltr),
+                        bottom = headerBottomPadding,
+                    )
+                ) {
                     header()
                 }
 
                 if (showDividers) {
-                    Spacer(modifier = Modifier.padding(vertical = verticalPadding))
+                    Spacer(modifier = Modifier.padding(vertical = sizes.dividerVerticalPadding()))
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
                 }
 
-                Spacer(modifier = Modifier.padding(vertical = verticalPadding))
+                Spacer(modifier = Modifier.padding(vertical = sizes.dividerVerticalPadding()))
             }
 
             // Content
-            Box(modifier = Modifier.padding(horizontal = contentPadding)) {
+            Box(modifier = Modifier.padding(horizontal = sizes.contentPadding().calculateStartPadding(layoutDirection = LayoutDirection.Ltr))) {
                 content()
             }
 
             // Footer, if provided
             if (footer != null) {
-                Spacer(modifier = Modifier.padding(vertical = verticalPadding))
+                Spacer(modifier = Modifier.padding(vertical = sizes.dividerVerticalPadding()))
 
                 if (showDividers) {
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
@@ -114,6 +121,7 @@ object CardDefaults {
         borderStrokeColor: Color = Color.Transparent,
         dividerColor: Color = MaterialTheme.colorScheme.outline,
         chevronTintColor: Color = MaterialTheme.colorScheme.onBackground,
+        iconTint: Color = contentColor,
     ): CardColors = CardColors(
         containerColor = containerColor,
         containerBrush = containerBrush,
@@ -121,6 +129,20 @@ object CardDefaults {
         borderStrokeColor = borderStrokeColor,
         dividerColor = dividerColor,
         chevronTintColor = chevronTintColor,
+        iconTint = iconTint,
+    )
+
+    @Composable
+    fun cardSizes(
+        contentPadding: PaddingValues = PaddingValues(all = Size.Padding.Default),
+        elevation: Dp = CardDefaults.elevation,
+        borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
+        dividerVerticalPadding: Dp = Size.Padding.ExtraSmall,
+    ): CardSizes = CardSizes(
+        contentPadding = contentPadding,
+        elevation = elevation,
+        borderStrokeWidth = borderStrokeWidth,
+        dividerVerticalPadding = dividerVerticalPadding,
     )
 }
 
@@ -132,6 +154,7 @@ class CardColors internal constructor(
     private val borderStrokeColor: Color,
     private val dividerColor: Color,
     private val chevronTintColor: Color,
+    private val iconTint: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
@@ -150,4 +173,27 @@ class CardColors internal constructor(
 
     @Composable
     internal fun chevronTintColor(): Color = chevronTintColor
+
+    @Composable
+    internal fun iconTint(): Color = iconTint
+}
+
+@Immutable
+class CardSizes internal constructor(
+    private val contentPadding: PaddingValues,
+    private val elevation: Dp,
+    private val borderStrokeWidth: Dp,
+    private val dividerVerticalPadding: Dp,
+) {
+    @Composable
+    internal fun contentPadding(): PaddingValues = contentPadding
+
+    @Composable
+    internal fun elevation(): Dp = elevation
+
+    @Composable
+    internal fun borderStrokeWidth(): Dp = borderStrokeWidth
+
+    @Composable
+    internal fun dividerVerticalPadding(): Dp = dividerVerticalPadding
 }

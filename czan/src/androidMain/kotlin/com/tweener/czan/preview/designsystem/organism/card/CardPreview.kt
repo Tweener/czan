@@ -1,6 +1,7 @@
 package com.tweener.czan.preview.designsystem.organism.card
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -27,8 +28,10 @@ private fun CardPreview() {
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                elevation = 0.dp,
-                contentPadding = Size.Padding.Small,
+                sizes = CardDefaults.cardSizes(
+                    elevation = 0.dp,
+                    contentPadding = PaddingValues(Size.Padding.Small),
+                ),
             ) {
                 Text(text = "This is a Card with a simple Text")
             }
@@ -47,8 +50,10 @@ private fun CardWithHeaderPreview() {
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     dividerColor = MaterialTheme.colorScheme.outline,
                 ),
-                elevation = 10.dp,
-                contentPadding = Size.Padding.Small,
+                sizes = CardDefaults.cardSizes(
+                    elevation = 10.dp,
+                    contentPadding = PaddingValues(Size.Padding.Small),
+                ),
                 header = { Text(text = "This is a header") },
             ) {
                 Text(text = "This is a Card with a simple Text")
@@ -64,8 +69,10 @@ private fun CardWithFooterPreview() {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                elevation = 4.dp,
-                contentPadding = Size.Padding.Small,
+                sizes = CardDefaults.cardSizes(
+                    elevation = 4.dp,
+                    contentPadding = PaddingValues(Size.Padding.Small),
+                ),
                 footer = { Text(text = "This is a footer") },
             ) {
                 Text(text = "This is a Card with a simple Text")
@@ -82,8 +89,10 @@ private fun CardWithHeaderAndFooterPreview() {
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                elevation = 4.dp,
-                contentPadding = Size.Padding.Small,
+                sizes = CardDefaults.cardSizes(
+                    elevation = 4.dp,
+                    contentPadding = PaddingValues(Size.Padding.Small),
+                ),
                 header = { Text(text = "This is a header") },
                 footer = { Text(text = "This is a footer") },
             ) {

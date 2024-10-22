@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 /**
@@ -31,7 +30,6 @@ fun Icon(
     )
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Icon(
     modifier: Modifier = Modifier,
