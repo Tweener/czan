@@ -57,14 +57,14 @@ fun CenterAlignedTopAppBar(
                     Image(
                         modifier = Modifier.size(42.dp),
                         painter = logo,
-                        colorFilter = ColorFilter.tint(color = colors.contentColor()),
+                        colorFilter = ColorFilter.tint(color = colors.titleColor()),
                         contentDescription = null
                     )
                 }
 
                 Text(
                     text = title,
-                    color = colors.contentColor(),
+                    color = colors.titleColor(),
                     style = textStyle
                 )
             }
@@ -72,9 +72,9 @@ fun CenterAlignedTopAppBar(
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = colors.containerColor(),
-            actionIconContentColor = colors.contentColor(),
-            titleContentColor = colors.contentColor(),
-            navigationIconContentColor = colors.contentColor(),
+            actionIconContentColor = colors.titleColor(),
+            titleContentColor = colors.titleColor(),
+            navigationIconContentColor = colors.titleColor(),
         )
     )
 }
@@ -90,8 +90,8 @@ fun SimpleTopBar(
     TopBarWithIcon(
         modifier = modifier,
         title = title,
-        style = textStyle,
-        topBarColors = colors,
+        textStyle = textStyle,
+        colors = colors,
         actions = actions
     )
 }
@@ -106,7 +106,7 @@ fun NoTitleTopBarWithBackButton(
     TopBarWithIcon(
         modifier = modifier,
         title = "",
-        topBarColors = colors,
+        colors = colors,
         navigationIcon = { ArrowBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -124,8 +124,8 @@ fun TopBarWithBackButton(
     TopBarWithIcon(
         modifier = modifier,
         title = title,
-        style = textStyle,
-        topBarColors = colors,
+        textStyle = textStyle,
+        colors = colors,
         navigationIcon = { ArrowBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -141,7 +141,7 @@ fun NoTitleTopBarWithCloseButton(
     TopBarWithIcon(
         modifier = modifier,
         title = "",
-        topBarColors = colors,
+        colors = colors,
         navigationIcon = { CloseBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
@@ -159,39 +159,62 @@ fun TopBarWithCloseButton(
     TopBarWithIcon(
         modifier = modifier,
         title = title,
-        style = textStyle,
-        topBarColors = colors,
+        textStyle = textStyle,
+        colors = colors,
         navigationIcon = { CloseBackIconButton(onClick = onBackClicked) },
         actions = actions
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAdaptiveApi::class)
 @Composable
-fun TopBarWithIcon(
+fun TopBarWithCustomIcon(
     title: String,
     modifier: Modifier = Modifier,
-    style: TextStyle = LocalTextStyle.current,
-    topBarColors: TopBarColors = TopBarDefaults.colors(),
+    textStyle: TextStyle = LocalTextStyle.current,
+    colors: TopBarColors = TopBarDefaults.colors(),
+    navigationIcon: DrawableResource,
+    onIconClicked: (() -> Unit)? = null,
+    actions: @Composable RowScope.() -> Unit = {},
+) {
+    TopBarWithIcon(
+        modifier = modifier,
+        title = title,
+        textStyle = textStyle,
+        colors = colors,
+        navigationIcon = {
+            IconButton(onClick = { onIconClicked?.invoke() }) {
+                Icon(resource = navigationIcon, tint = colors.navigationIconColor())
+            }
+        },
+        actions = actions,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAdaptiveApi::class)
+@Composable
+internal fun TopBarWithIcon(
+    title: String,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = LocalTextStyle.current,
+    colors: TopBarColors = TopBarDefaults.colors(),
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     AdaptiveTopAppBar(
         modifier = modifier,
-        title = { Text(text = title, style = style) },
+        title = { Text(text = title, style = textStyle) },
         navigationIcon = navigationIcon,
         actions = actions,
         adaptation = {
             material {
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = topBarColors.containerColor(),
-                    actionIconContentColor = topBarColors.contentColor(),
-                    titleContentColor = topBarColors.contentColor(),
-                    navigationIconContentColor = topBarColors.contentColor(),
+                this.colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = colors.containerColor(),
+                    titleContentColor = colors.titleColor(),
+                    navigationIconContentColor = colors.navigationIconColor(),
+                    actionIconContentColor = colors.actionIconColor(),
                 )
             }
         },
-//        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     )
 }
 
@@ -245,21 +268,33 @@ object TopBarDefaults {
     @Composable
     fun colors(
         containerColor: Color = MaterialTheme.colorScheme.surface,
-        contentColor: Color = MaterialTheme.colorScheme.contentColorFor(containerColor),
+        titleColor: Color = MaterialTheme.colorScheme.contentColorFor(containerColor),
+        navigationIconColor: Color = titleColor,
+        actionIconColor: Color = titleColor,
     ): TopBarColors = TopBarColors(
         containerColor = containerColor,
-        contentColor = contentColor,
+        titleColor = titleColor,
+        navigationIconColor = navigationIconColor,
+        actionIconColor = actionIconColor,
     )
 }
 
 @Immutable
 class TopBarColors internal constructor(
     private val containerColor: Color,
-    private val contentColor: Color,
+    private val titleColor: Color,
+    private val navigationIconColor: Color,
+    private val actionIconColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
 
     @Composable
-    internal fun contentColor(): Color = contentColor
+    internal fun titleColor(): Color = titleColor
+
+    @Composable
+    internal fun navigationIconColor(): Color = navigationIconColor
+
+    @Composable
+    internal fun actionIconColor(): Color = actionIconColor
 }

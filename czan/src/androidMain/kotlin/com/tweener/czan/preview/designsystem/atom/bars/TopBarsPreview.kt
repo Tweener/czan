@@ -8,8 +8,11 @@ import com.tweener.czan.designsystem.atom.bars.SimpleTopBar
 import com.tweener.czan.designsystem.atom.bars.TopBarDefaults
 import com.tweener.czan.designsystem.atom.bars.TopBarWithBackButton
 import com.tweener.czan.designsystem.atom.bars.TopBarWithCloseButton
+import com.tweener.czan.designsystem.atom.bars.TopBarWithCustomIcon
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
+import io.github.tweener.czan.generated.resources.Res
+import io.github.tweener.czan.generated.resources.email
 
 /**
  * @author Vivien Mahe
@@ -25,7 +28,7 @@ private fun TopLevelScreenTopBarPreview() {
             textStyle = MaterialTheme.typography.titleLarge,
             colors = TopBarDefaults.colors(
                 containerColor = Color.Red.copy(alpha = 0.3f),
-                contentColor = Color.Green,
+                titleColor = Color.Green,
             ),
         )
     }
@@ -44,6 +47,18 @@ private fun SimpleTopBarPreview() {
 
 @UiModePreviews
 @Composable
+private fun SimpleTopBarWithCustomIconPreview() {
+    CzanThemePreview {
+        TopBarWithCustomIcon(
+            title = "App name",
+            textStyle = MaterialTheme.typography.titleLarge,
+            navigationIcon = Res.drawable.email,
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
 private fun TopBarWithBackButtonPreview() {
     CzanThemePreview {
         TopBarWithBackButton(
@@ -51,7 +66,7 @@ private fun TopBarWithBackButtonPreview() {
             textStyle = MaterialTheme.typography.titleLarge,
             colors = TopBarDefaults.colors(
                 containerColor = Color.Red.copy(alpha = 0.3f),
-                contentColor = Color.Blue,
+                titleColor = Color.Blue,
             ),
         )
     }
