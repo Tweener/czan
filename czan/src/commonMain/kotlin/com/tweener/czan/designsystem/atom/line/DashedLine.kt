@@ -6,7 +6,10 @@ package com.tweener.czan.designsystem.atom.line
  */
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -18,17 +21,37 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DashedLine(
+fun HorizontalDashedLine(
     modifier: Modifier = Modifier,
     colors: LineColors = LineDefaults.lineColors(),
     sizes: LineSizes = LineDefaults.lineSizes(),
 ) {
-    Canvas(modifier = modifier.fillMaxWidth()) {
+    Canvas(modifier = modifier.fillMaxWidth().height(sizes.thickness())) {
         drawLine(
             color = colors.strokeColor(),
-            strokeWidth = sizes.strokeWidth().toPx(),
-            start = Offset(0f, 0f),
-            end = Offset(size.width, 0f),
+            strokeWidth = sizes.thickness().toPx(),
+            start = Offset(0f, sizes.thickness().toPx() / 2),
+            end = Offset(size.width, sizes.thickness().toPx() / 2),
+            pathEffect = PathEffect.dashPathEffect(
+                intervals = floatArrayOf(sizes.dashOn().toPx(), sizes.dashOff().toPx()),
+                phase = 0f,
+            ),
+        )
+    }
+}
+
+@Composable
+fun VerticalDashedLine(
+    modifier: Modifier = Modifier,
+    colors: LineColors = LineDefaults.lineColors(),
+    sizes: LineSizes = LineDefaults.lineSizes(),
+) {
+    Canvas(modifier = modifier.fillMaxHeight().width(sizes.thickness())) {
+        drawLine(
+            color = colors.strokeColor(),
+            strokeWidth = sizes.thickness().toPx(),
+            start = Offset(sizes.thickness().toPx() / 2, 0f),
+            end = Offset(sizes.thickness().toPx() / 2, size.height),
             pathEffect = PathEffect.dashPathEffect(
                 intervals = floatArrayOf(sizes.dashOn().toPx(), sizes.dashOff().toPx()),
                 phase = 0f,
@@ -50,11 +73,11 @@ object LineDefaults {
     fun lineSizes(
         dashOn: Dp = 4.dp,
         dashOff: Dp = 4.dp,
-        strokeWidth: Dp = 1.dp,
+        thickness: Dp = 1.dp,
     ): LineSizes = LineSizes(
         dashOn = dashOn,
         dashOff = dashOff,
-        strokeWidth = strokeWidth,
+        thickness = thickness,
     )
 }
 
@@ -69,11 +92,11 @@ class LineColors internal constructor(
 class LineSizes internal constructor(
     private val dashOn: Dp,
     private val dashOff: Dp,
-    private val strokeWidth: Dp,
+    private val thickness: Dp,
 ) {
     internal fun dashOn(): Dp = dashOn
 
     internal fun dashOff(): Dp = dashOff
 
-    internal fun strokeWidth(): Dp = strokeWidth
+    internal fun thickness(): Dp = thickness
 }
