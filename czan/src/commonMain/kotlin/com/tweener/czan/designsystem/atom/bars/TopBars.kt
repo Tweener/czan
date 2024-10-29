@@ -27,6 +27,7 @@ import com.tweener.czan.designsystem.atom.bars.icon.CloseBackIconButton
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.Size
+import io.github.alexzhirkevich.cupertino.CupertinoTopAppBarDefaults
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTopAppBar
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 import org.jetbrains.compose.resources.DrawableResource
@@ -213,6 +214,16 @@ internal fun TopBarWithIcon(
                     navigationIconContentColor = colors.navigationIconColor(),
                     actionIconContentColor = colors.actionIconColor(),
                 )
+            }
+
+            cupertino {
+                this.colors = CupertinoTopAppBarDefaults.topAppBarColors(
+                    containerColor = colors.containerColor(),
+                    titleContentColor = colors.titleColor(),
+                    navigationIconContentColor = colors.navigationIconColor(),
+                    actionIconContentColor = colors.actionIconColor(),
+                )
+                this.divider = {}
             }
         },
     )
