@@ -36,6 +36,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Actualize yarn lock file
+        run: ./gradlew kotlinUpgradeYarnLock
+
       - name: Build with Gradle
         run: ./gradlew copyDemoSamples
 
