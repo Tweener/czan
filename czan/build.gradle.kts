@@ -164,8 +164,8 @@ publishing {
             artifact(tasks["dokkaJavadocJar"])
 
             pom {
-                name.set("CZAN")
-                description.set("CZAN Design System for Kotlin Multiplatform and Compose Multiplatform")
+                name.set(ProjectConfiguration.Czan.Maven.name)
+                description.set(ProjectConfiguration.Czan.Maven.description)
                 url.set(ProjectConfiguration.Czan.Maven.packageUrl)
 
                 licenses {

@@ -15,6 +15,8 @@ object ProjectConfiguration {
         const val minSDK = 24
 
         object Maven {
+            const val name = "CZAN"
+            const val description = "CZAN Atomic Design System for Kotlin Multiplatform and Compose Multiplatform"
             const val group = "io.github.tweener"
             const val packageUrl = "https://github.com/Tweener/czan"
             const val gitUrl = "github.com:Tweener/czan.git"
