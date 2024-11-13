@@ -17,7 +17,7 @@ Then add CZAN dependency to your module:
     czan = "2.3.3" // Check latest version
 
     [libraries]
-    czan = { group = "io.github.tweener", name = "czan", version.ref = "tweenerCzan" }
+    czan = { group = "io.github.tweener", name = "czan", version.ref = "czan" }
     ```
 
     ```kotlin title="build.gradle.ktx"
