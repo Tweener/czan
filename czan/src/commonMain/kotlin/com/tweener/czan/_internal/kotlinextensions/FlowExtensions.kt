@@ -2,11 +2,7 @@ package com.tweener.czan._internal.kotlinextensions
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
 
 /**
  * @author Vivien Mahe
@@ -17,12 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 inline fun <T> SharedFlow<T>.subscribe(crossinline action: (T) -> Unit) {
     with(this) {
         LaunchedEffect(this) {
-            this@with.collect { action.invoke(it) }
+            this@with.collect { action(it) }
         }
     }
 }
-
-@Composable
-expect fun <T> StateFlow<T>.collectAsStateMultiplatform(
-    context: CoroutineContext = EmptyCoroutineContext,
-): State<T>
