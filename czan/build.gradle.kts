@@ -107,6 +107,7 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.components.resources)
             implementation(libs.compose.multiplatform.material3)
+            implementation(libs.compose.multiplatform.lifecycle)
 
             // Coil (Image fetcher)
             implementation(libs.bundles.coil)
@@ -120,7 +121,6 @@ kotlin {
             api(compose.preview)
             api(compose.uiTooling)
             implementation(libs.android.activity.compose)
-            implementation(libs.android.lifecycle.compose)
 
             // Image fetcher
             implementation(libs.ktor.client.android) // HTTPClient to use with Coil to fetch images
