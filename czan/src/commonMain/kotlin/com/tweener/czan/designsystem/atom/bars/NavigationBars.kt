@@ -11,6 +11,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
+import io.github.alexzhirkevich.cupertino.CupertinoNavigationBarDefaults
+import io.github.alexzhirkevich.cupertino.ExperimentalCupertinoApi
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveNavigationBar
 import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveNavigationBarItem
 import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
@@ -77,7 +79,7 @@ fun RowScope.NavigationBarItem(
     )
 }
 
-@OptIn(ExperimentalAdaptiveApi::class)
+@OptIn(ExperimentalAdaptiveApi::class, ExperimentalCupertinoApi::class)
 @Composable
 private fun RowScope.NavigationBarIem(
     icon: @Composable () -> Unit,
@@ -101,6 +103,15 @@ private fun RowScope.NavigationBarIem(
                     selectedTextColor = itemColors.selectedTextColor(),
                     unselectedTextColor = itemColors.unselectedTextColor(),
                     indicatorColor = itemColors.indicatorColor(),
+                )
+            }
+
+            cupertino {
+                colors = CupertinoNavigationBarDefaults.itemColors(
+                    selectedIconColor = itemColors.selectedIconColor(),
+                    unselectedIconColor = itemColors.unselectedIconColor(),
+                    selectedTextColor = itemColors.selectedTextColor(),
+                    unselectedTextColor = itemColors.unselectedTextColor(),
                 )
             }
         },
