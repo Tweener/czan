@@ -8,11 +8,11 @@ dokka = "1.9.20"
 shimmer = "1.3.0"
 cupertinoCompose = "0.1.0-alpha04"
 ktor = "3.0.1"
-coil = "3.0.2"
+coil = "3.0.4"
 composeLifecycle = "2.8.4"
 
 # Tweener
-tweenerBom = "2.1.1"
+tweenerBom = "2.2.0"
 
 # Android
 androidDesugarJdkLibs = "2.1.3"
