@@ -111,9 +111,6 @@ kotlin {
 
             // Coil (Image fetcher)
             implementation(libs.bundles.coil)
-
-            // Cupertino Compose: iOS look & feel
-            implementation(libs.cupertino.compose)
         }
 
         androidMain.dependencies {

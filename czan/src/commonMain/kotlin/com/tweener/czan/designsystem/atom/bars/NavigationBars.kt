@@ -1,43 +1,38 @@
 package com.tweener.czan.designsystem.atom.bars
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
-import io.github.alexzhirkevich.cupertino.CupertinoNavigationBarDefaults
-import io.github.alexzhirkevich.cupertino.ExperimentalCupertinoApi
-import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveNavigationBar
-import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveNavigationBarItem
-import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 
 /**
  * @author Vivien Mahe
  * @since 20/02/2024
  */
 
-@OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 fun NavigationBar(
     modifier: Modifier = Modifier,
     colors: NavigationBarColors = NavigationBarDefaults.colors(),
     content: @Composable RowScope.() -> Unit,
 ) {
-    AdaptiveNavigationBar(
+    NavigationBar(
         modifier = modifier,
+        containerColor = colors.containerColor(),
+        contentColor = colors.contentColor(),
+        windowInsets = androidx.compose.material3.NavigationBarDefaults.windowInsets,
         content = content,
-        adaptation = {
-            material {
-                containerColor = colors.containerColor()
-                contentColor = colors.contentColor()
-            }
-        }
     )
 }
 
@@ -79,42 +74,33 @@ fun RowScope.NavigationBarItem(
     )
 }
 
-@OptIn(ExperimentalAdaptiveApi::class, ExperimentalCupertinoApi::class)
 @Composable
 private fun RowScope.NavigationBarIem(
     icon: @Composable () -> Unit,
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     label: String? = null,
+    alwaysShowLabel: Boolean = true,
     itemColors: NavigationBarItemColors = NavigationBarItemDefaults.colors(),
 ) {
-    AdaptiveNavigationBarItem(
-        modifier = modifier,
+    NavigationBarItem(
         selected = selected,
         onClick = onClick,
         icon = icon,
+        modifier = modifier,
+        enabled = enabled,
         label = label?.let { { Text(text = label) } },
-        adaptation = {
-            material {
-                colors = androidx.compose.material3.NavigationBarItemDefaults.colors(
-                    selectedIconColor = itemColors.selectedIconColor(),
-                    unselectedIconColor = itemColors.unselectedIconColor(),
-                    selectedTextColor = itemColors.selectedTextColor(),
-                    unselectedTextColor = itemColors.unselectedTextColor(),
-                    indicatorColor = itemColors.indicatorColor(),
-                )
-            }
-
-            cupertino {
-                colors = CupertinoNavigationBarDefaults.itemColors(
-                    selectedIconColor = itemColors.selectedIconColor(),
-                    unselectedIconColor = itemColors.unselectedIconColor(),
-                    selectedTextColor = itemColors.selectedTextColor(),
-                    unselectedTextColor = itemColors.unselectedTextColor(),
-                )
-            }
-        },
+        alwaysShowLabel = alwaysShowLabel,
+        colors = androidx.compose.material3.NavigationBarItemDefaults.colors(
+            selectedIconColor = itemColors.selectedIconColor(),
+            unselectedIconColor = itemColors.unselectedIconColor(),
+            selectedTextColor = itemColors.selectedTextColor(),
+            unselectedTextColor = itemColors.unselectedTextColor(),
+            indicatorColor = itemColors.indicatorColor(),
+        ),
+        interactionSource = remember { MutableInteractionSource() },
     )
 }
 

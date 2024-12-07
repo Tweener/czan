@@ -4,20 +4,18 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScaffoldDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveScaffold
-import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 
 /**
  * @author Vivien Mahe
  * @since 20/02/2024
  */
 
-@OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 fun Scaffold(
     modifier: Modifier = Modifier,
@@ -31,15 +29,15 @@ fun Scaffold(
     contentWindowInsets: WindowInsets = ScaffoldDefaults.contentWindowInsets,
     content: @Composable (PaddingValues) -> Unit
 ) {
-    AdaptiveScaffold(
+    Scaffold(
         modifier = modifier,
         topBar = topBar,
         bottomBar = navigationBar,
         snackbarHost = snackbarHost,
         floatingActionButton = floatingActionButton,
         floatingActionButtonPosition = when (floatingActionButtonPosition) {
-            FabPosition.End -> io.github.alexzhirkevich.cupertino.FabPosition.End
-            else -> io.github.alexzhirkevich.cupertino.FabPosition.Center
+            FabPosition.End -> FabPosition.End
+            else -> FabPosition.Center
         },
         containerColor = containerColor,
         contentColor = contentColor,
