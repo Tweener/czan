@@ -5,15 +5,14 @@ package com.tweener.czan.designsystem.atom.slider
  * @since 25/10/2024
  */
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveSlider
-import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 
-@OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 fun Slider(
     value: Float,
@@ -24,22 +23,19 @@ fun Slider(
     valueRange: ClosedFloatingPointRange<Float> = 0f..1f,
     steps: Int = 0,
 ) {
-    AdaptiveSlider(
-        modifier = modifier,
+    androidx.compose.material3.Slider(
         value = value,
         onValueChange = onValueChange,
+        modifier = modifier,
         enabled = enabled,
         valueRange = valueRange,
         steps = steps,
-        adaptation = {
-            material {
-                this.colors = androidx.compose.material3.SliderDefaults.colors(
-                    thumbColor = colors.thumbColor(),
-                    activeTrackColor = colors.activeTrackColor(),
-                    inactiveTrackColor = colors.inactiveTrackColor(),
-                )
-            }
-        },
+        colors = androidx.compose.material3.SliderDefaults.colors(
+            thumbColor = colors.thumbColor(),
+            activeTrackColor = colors.activeTrackColor(),
+            inactiveTrackColor = colors.inactiveTrackColor(),
+        ),
+        interactionSource = remember { MutableInteractionSource() },
     )
 }
 

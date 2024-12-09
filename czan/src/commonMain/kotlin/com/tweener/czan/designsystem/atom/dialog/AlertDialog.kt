@@ -1,19 +1,19 @@
 package com.tweener.czan.designsystem.atom.dialog
 
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.window.DialogProperties
+import com.tweener.czan.designsystem.atom.button.Button
+import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
-import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveAlertDialog
-import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
-import io.github.alexzhirkevich.cupertino.cancel
-import io.github.alexzhirkevich.cupertino.default
 
 /**
  * @author Vivien Mahe
  * @since 01/09/2023
  */
 
-@OptIn(ExperimentalAdaptiveApi::class)
 @Composable
 fun AlertDialog(
     title: String,
@@ -24,23 +24,26 @@ fun AlertDialog(
     icon: ImageVector? = null,
     content: @Composable () -> Unit,
 ) {
-    AdaptiveAlertDialog(
-//        icon = { icon?.let { Icon(it, contentDescription = null) } },
-        title = { Text(text = title) },
-        message = content,
-        buttons = {
-            default(
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            Button(
+                text = confirmButtonLabel,
                 onClick = onConfirmButtonClicked,
-                title = { Text(text = confirmButtonLabel) }
             )
-
-            dismissButtonLabel?.let {
-                cancel(
-                    onClick = onDismiss,
-                    title = { Text(text = it) }
-                )
-            }
         },
-        onDismissRequest = onDismiss
+        dismissButton = {
+            Button(
+                text = dismissButtonLabel,
+                outlined = true,
+                onClick = onDismiss,
+            )
+        },
+        shape = AlertDialogDefaults.shape,
+        title = { Text(text = title) },
+        text = content,
+        icon = icon?.let { { Icon(it) } },
+        containerColor = AlertDialogDefaults.containerColor,
+        properties = DialogProperties(),
     )
 }

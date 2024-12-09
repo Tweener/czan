@@ -6,7 +6,6 @@ dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
 dokka = "1.9.20"
 shimmer = "1.3.0"
-cupertinoCompose = "0.1.0-alpha04"
 ktor = "3.0.1"
 coil = "3.0.4"
 composeLifecycle = "2.8.4"
@@ -20,7 +19,6 @@ androidActivityCompose = "1.9.3"
 
 [libraries]
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
-cupertino-compose = { group = "io.github.alexzhirkevich", name = "cupertino-adaptive", version.ref = "cupertinoCompose" }
 compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "composeMultiplatform" }
 compose-multiplatform-lifecycle = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "composeLifecycle" }
 

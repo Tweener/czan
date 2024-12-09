@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.tweener.czan.designsystem.atom.bars
 
 import androidx.compose.foundation.Image
@@ -10,7 +12,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -27,9 +31,6 @@ import com.tweener.czan.designsystem.atom.bars.icon.CloseBackIconButton
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.Size
-import io.github.alexzhirkevich.cupertino.CupertinoTopAppBarDefaults
-import io.github.alexzhirkevich.cupertino.adaptive.AdaptiveTopAppBar
-import io.github.alexzhirkevich.cupertino.adaptive.ExperimentalAdaptiveApi
 import org.jetbrains.compose.resources.DrawableResource
 
 /**
@@ -191,7 +192,6 @@ fun TopBarWithCustomIcon(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAdaptiveApi::class)
 @Composable
 internal fun TopBarWithIcon(
     title: String,
@@ -200,32 +200,21 @@ internal fun TopBarWithIcon(
     colors: TopBarColors = TopBarDefaults.colors(),
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
+    scrollBehavior: TopAppBarScrollBehavior? = null,
 ) {
-    AdaptiveTopAppBar(
-        modifier = modifier,
+    TopAppBar(
         title = { Text(text = title, style = textStyle) },
+        modifier = modifier,
         navigationIcon = navigationIcon,
         actions = actions,
-        adaptation = {
-            material {
-                this.colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = colors.containerColor(),
-                    titleContentColor = colors.titleColor(),
-                    navigationIconContentColor = colors.navigationIconColor(),
-                    actionIconContentColor = colors.actionIconColor(),
-                )
-            }
-
-            cupertino {
-                this.colors = CupertinoTopAppBarDefaults.topAppBarColors(
-                    containerColor = colors.containerColor(),
-                    titleContentColor = colors.titleColor(),
-                    navigationIconContentColor = colors.navigationIconColor(),
-                    actionIconContentColor = colors.actionIconColor(),
-                )
-                this.divider = {}
-            }
-        },
+        windowInsets = TopAppBarDefaults.windowInsets,
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = colors.containerColor(),
+            titleContentColor = colors.titleColor(),
+            navigationIconContentColor = colors.navigationIconColor(),
+            actionIconContentColor = colors.actionIconColor(),
+        ),
+        scrollBehavior = scrollBehavior,
     )
 }
 

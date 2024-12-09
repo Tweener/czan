@@ -17,8 +17,8 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun Icon(
-    modifier: Modifier = Modifier,
     imageVector: ImageVector,
+    modifier: Modifier = Modifier,
     tint: Color = LocalContentColor.current,
     contentDescription: String? = null,
 ) {
@@ -32,8 +32,8 @@ fun Icon(
 
 @Composable
 fun Icon(
-    modifier: Modifier = Modifier,
     resource: DrawableResource,
+    modifier: Modifier = Modifier,
     tint: Color = LocalContentColor.current,
     contentDescription: String? = null,
 ) {
@@ -47,8 +47,8 @@ fun Icon(
 
 @Composable
 fun Icon(
-    modifier: Modifier = Modifier,
     painter: Painter,
+    modifier: Modifier = Modifier,
     tint: Color = LocalContentColor.current,
     contentDescription: String? = null,
 ) {
