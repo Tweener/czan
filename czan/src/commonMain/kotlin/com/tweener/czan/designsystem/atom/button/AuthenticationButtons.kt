@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan.designsystem.atom.image.Image
 import com.tweener.czan.designsystem.atom.text.Text
+import com.tweener.czan.theme.CzanUiDefaults
 import com.tweener.czan.theme.Size
 import io.github.tweener.czan.generated.resources.Res
 import io.github.tweener.czan.generated.resources.apple_logo
@@ -111,6 +112,7 @@ fun EmailSignUpButton(
         icon = emailIcon,
         enabled = enabled,
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         onClick = onClick,
     )
 }
@@ -128,6 +130,7 @@ fun EmailLogInButton(
         icon = emailIcon,
         enabled = enabled,
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         onClick = onClick,
     )
 }
@@ -139,9 +142,12 @@ private fun AuthenticationButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     containerColor: Color = MaterialTheme.colorScheme.background,
+    contentColor: Color = MaterialTheme.colorScheme.onBackground,
     onClick: (() -> Unit)? = null,
 ) {
     val shape = RoundedCornerShape(36.dp)
+    val backgroundColor = if (enabled) containerColor else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
+    val textColor = if (enabled) contentColor else MaterialTheme.colorScheme.onSurface.copy(alpha = CzanUiDefaults.uiDisabledAlpha())
 
     Row(
         modifier = modifier
@@ -149,7 +155,7 @@ private fun AuthenticationButton(
             .height(ButtonSize.BIG.height)
             .clip(shape = shape)
             .border(width = 1.dp, color = MaterialTheme.colorScheme.outline, shape = shape)
-            .background(containerColor)
+            .background(backgroundColor)
             .clickableRipple(enabled = enabled) { onClick?.invoke() },
         horizontalArrangement = Arrangement.spacedBy(space = Size.Padding.Small, alignment = Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
@@ -161,7 +167,7 @@ private fun AuthenticationButton(
 
         Text(
             text = title,
-            color = MaterialTheme.colorScheme.onBackground,
+            color = textColor,
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center,
