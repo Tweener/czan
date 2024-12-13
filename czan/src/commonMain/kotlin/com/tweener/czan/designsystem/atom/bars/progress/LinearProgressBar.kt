@@ -55,3 +55,20 @@ fun LinearProgressBar(
         drawStopIndicator = {},
     )
 }
+
+
+@Composable
+fun LinearProgressBar(
+    modifier: Modifier = Modifier,
+    color: Color = CzanUiDefaults.ProgressBar.selectedColor,
+    trackColor: Color = CzanUiDefaults.ProgressBar.trackColor,
+    strokeCap: StrokeCap = ProgressIndicatorDefaults.LinearStrokeCap,
+) {
+    LinearProgressIndicator(
+        modifier = modifier,
+        color = color,
+        trackColor = trackColor,
+        strokeCap = strokeCap,
+        gapSize = (-24).dp,
+    )
+}
