@@ -110,6 +110,7 @@ fun TextField(
     enabled: Boolean = true,
     singleLine: Boolean = false,
     imeAction: ImeAction = ImeAction.Default,
+    capitalization: KeyboardCapitalization = KeyboardCapitalization.Sentences,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     onValueChanged: ((TextFieldValue) -> Unit)? = null
 ) {
@@ -134,7 +135,10 @@ fun TextField(
         textStyle = size.textStyle,
         singleLine = singleLine,
         visualTransformation = visualTransformation,
-        keyboardOptions = inputType.keyboardOptions.copy(imeAction = imeAction),
+        keyboardOptions = inputType.keyboardOptions.copy(
+            imeAction = imeAction,
+            capitalization = capitalization,
+        ),
         keyboardActions = keyboardActions,
         shape = size.shape,
         leadingIcon = inputType.leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
