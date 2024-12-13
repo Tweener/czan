@@ -19,6 +19,7 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -42,6 +43,7 @@ fun TextField(
     enabled: Boolean = true,
     singleLine: Boolean = false,
     imeAction: ImeAction = ImeAction.Default,
+    capitalization: KeyboardCapitalization = KeyboardCapitalization.Sentences,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     onValueChanged: ((String) -> Unit)? = null,
 ) {
@@ -72,7 +74,10 @@ fun TextField(
         textStyle = size.textStyle,
         singleLine = singleLine,
         visualTransformation = visualTransformation,
-        keyboardOptions = inputType.keyboardOptions.copy(imeAction = imeAction),
+        keyboardOptions = inputType.keyboardOptions.copy(
+            imeAction = imeAction,
+            capitalization = capitalization,
+        ),
         keyboardActions = keyboardActions,
         shape = size.shape,
         leadingIcon = inputType.leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
