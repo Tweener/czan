@@ -35,7 +35,7 @@ Be sure to show your support by starring ⭐️ this repository, and feel free t
 
 Full documentation is available on the [official website](https://www.czan.dev/).
 
-## 🤝 Contributing
+## 👨‍💻 Contributing
 
 We love your input and welcome any contributions! Please read our [contribution guidelines](https://github.com/Tweener/czan/blob/master/CONTRIBUTING.md) before submitting a pull request.
 
