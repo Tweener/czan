@@ -94,9 +94,6 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project.dependencies.platform(libs.tweener.bom))
-            implementation(libs.tweener.common)
-
             implementation(libs.shimmer)
 
             // Compose
