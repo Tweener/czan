@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.21"
 gradle = "8.5.2"
-composeMultiplatform = "1.7.0"
+composeMultiplatform = "1.7.1"
 dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
 dokka = "1.9.20"
@@ -11,7 +11,7 @@ coil = "3.0.4"
 composeLifecycle = "2.8.4"
 
 # Tweener
-tweenerBom = "2.2.0"
+tweenerBom = "2.2.2"
 
 # Android
 androidDesugarJdkLibs = "2.1.3"
