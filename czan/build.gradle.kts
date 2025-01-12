@@ -125,6 +125,13 @@ kotlin {
             // Image fetcher
             implementation(libs.ktor.client.ios) // HTTPClient to use with Coil to fetch images
         }
+
+        val nonIosMain by creating {
+            dependsOn(commonMain.get())
+            androidMain.get().dependsOn(this)
+            jsMain.get().dependsOn(this)
+            wasmJsMain.get().dependsOn(this)
+        }
     }
 }
 
