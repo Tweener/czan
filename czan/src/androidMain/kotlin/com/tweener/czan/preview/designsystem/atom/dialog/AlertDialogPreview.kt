@@ -12,7 +12,21 @@ import com.tweener.czan.preview.UiModePreviews
 
 @UiModePreviews
 @Composable
-private fun AlertDialogPreview() {
+private fun AlertDialogOnlyConfirmButtonPreview() {
+    CzanThemePreview {
+        AlertDialog(
+            title = "AlertDialog title",
+            message = "This is a Text component.",
+            confirmButtonLabel = "Confirm",
+            onConfirmButtonClicked = {},
+            onDismiss = {},
+        )
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun AlertDialogWithDismissButtonPreview() {
     CzanThemePreview {
         AlertDialog(
             title = "AlertDialog title",

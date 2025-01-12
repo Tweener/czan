@@ -32,12 +32,14 @@ actual fun AlertDialog(
                 onClick = onConfirmButtonClicked,
             )
         },
-        dismissButton = {
-            Button(
-                text = dismissButtonLabel,
-                outlined = true,
-                onClick = onDismiss,
-            )
+        dismissButton = dismissButtonLabel?.let {
+            {
+                Button(
+                    text = it,
+                    outlined = true,
+                    onClick = onDismiss,
+                )
+            }
         },
         shape = AlertDialogDefaults.shape,
         title = { Text(text = title) },

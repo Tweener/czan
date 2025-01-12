@@ -45,8 +45,8 @@ fun App() {
                     message = "Which can include a message",
                     confirmButtonLabel = "Confirm",
                     onConfirmButtonClicked = { showAlertDialog = false },
+                    dismissButtonLabel = "Cancel",
                     onDismiss = { showAlertDialog = false },
-                    dismissButtonLabel = "Dismiss",
                     icon = null,
                 )
             }

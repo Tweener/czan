@@ -2,11 +2,12 @@ package com.tweener.czan.designsystem.atom.dialog
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.tweener.czan.rootViewController
 import platform.UIKit.UIAlertAction
+import platform.UIKit.UIAlertActionStyleCancel
 import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertController
 import platform.UIKit.UIAlertControllerStyleAlert
-import platform.UIKit.UIApplication
 
 /**
  * @author Vivien Mahe
@@ -23,21 +24,31 @@ actual fun AlertDialog(
     dismissButtonLabel: String?,
     icon: ImageVector?,
 ) {
-    UIApplication.sharedApplication.keyWindow?.rootViewController?.let { rootViewController ->
-        val alert = UIAlertController.alertControllerWithTitle(
-            title = title,
-            message = message,
-            preferredStyle = UIAlertControllerStyleAlert
-        )
+    val alert = UIAlertController.alertControllerWithTitle(
+        title = title,
+        message = message,
+        preferredStyle = UIAlertControllerStyleAlert,
+    )
 
-        val action = UIAlertAction.actionWithTitle(
+    // Confirm button
+    alert.addAction(
+        UIAlertAction.actionWithTitle(
             title = confirmButtonLabel,
             style = UIAlertActionStyleDefault,
-            handler = { onDismiss() }
+            handler = { onConfirmButtonClicked() },
         )
+    )
 
-        alert.addAction(action)
-
-        rootViewController.presentViewController(alert, animated = true, completion = null)
+    // Dismiss button
+    dismissButtonLabel?.let {
+        alert.addAction(
+            UIAlertAction.actionWithTitle(
+                title = it,
+                style = UIAlertActionStyleCancel,
+                handler = { onDismiss() },
+            )
+        )
     }
+
+    rootViewController?.presentViewController(alert, animated = true, completion = null)
 }
