@@ -23,6 +23,7 @@ fun CarouselDashes(
     currentPage: Int = 0,
     backgroundColor: Color = foregroundColor.copy(alpha = 0.16f),
     thickness: Dp = 4.dp,
+    animated: Boolean = true,
     durationMillis: Int = 5000,
     paused: Boolean = false,
     onPageFinished: ((Int) -> Unit)? = null,
@@ -35,7 +36,8 @@ fun CarouselDashes(
         repeat(pageCount) { pageIndex ->
             val state = when {
                 pageIndex < currentPage -> CarouselDashState.FINISHED
-                pageIndex == currentPage -> CarouselDashState.IN_PROGRESS
+                pageIndex == currentPage && animated -> CarouselDashState.IN_PROGRESS
+                pageIndex == currentPage && animated.not() -> CarouselDashState.FINISHED
                 else -> CarouselDashState.NOT_STARTED
             }
 

@@ -20,7 +20,7 @@ import com.tweener.czan.theme.Size
 
 @UiModePreviews
 @Composable
-private fun CarouselDashesPreview() {
+private fun CarouselDashesAnimatedPreview() {
     CzanThemePreview {
         Box(modifier = Modifier.background(Color.DarkGray).padding(Size.Padding.Default)) {
             CarouselDashes(
@@ -29,6 +29,24 @@ private fun CarouselDashesPreview() {
                 foregroundColor = MaterialTheme.colorScheme.primary,
                 backgroundColor = MaterialTheme.colorScheme.background,
                 thickness = 8.dp,
+                animated = true,
+            )
+        }
+    }
+}
+
+@UiModePreviews
+@Composable
+private fun CarouselDashesNotAnimatedPreview() {
+    CzanThemePreview {
+        Box(modifier = Modifier.background(Color.DarkGray).padding(Size.Padding.Default)) {
+            CarouselDashes(
+                pageCount = 4,
+                currentPage = 1,
+                foregroundColor = MaterialTheme.colorScheme.primary,
+                backgroundColor = MaterialTheme.colorScheme.background,
+                thickness = 8.dp,
+                animated = false,
             )
         }
     }
