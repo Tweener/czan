@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "czan"
 include(":czan")
+include(":sample:composeApp")

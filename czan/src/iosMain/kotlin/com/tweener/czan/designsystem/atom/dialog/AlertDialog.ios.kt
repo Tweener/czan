@@ -22,7 +22,6 @@ actual fun AlertDialog(
     onDismiss: () -> Unit,
     dismissButtonLabel: String?,
     icon: ImageVector?,
-    content: @Composable () -> Unit,
 ) {
     UIApplication.sharedApplication.keyWindow?.rootViewController?.let { rootViewController ->
         val alert = UIAlertController.alertControllerWithTitle(

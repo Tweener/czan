@@ -11,8 +11,7 @@ coil = "3.0.4"
 composeLifecycle = "2.8.4"
 
 # Android
-androidDesugarJdkLibs = "2.1.4"
-androidActivityCompose = "1.9.3"
+androidActivity = "1.9.3"
 
 [libraries]
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
@@ -28,14 +27,15 @@ ktor-client-android = { group = "io.ktor", name = "ktor-client-okhttp", version.
 ktor-client-ios = { group = "io.ktor", name = "ktor-client-ios", version.ref = "ktor" }
 
 # Android
-android-desugarjdklibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
-android-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivityCompose" }
+android-activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidActivity" }
+android-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidActivity" }
 
 [bundles]
 coil = ["coil-compose", "coil-network-ktor"]
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "gradle" }
+android-application = { id = "com.android.application", version.ref = "gradle" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -23,7 +23,6 @@ actual fun AlertDialog(
     onDismiss: () -> Unit,
     dismissButtonLabel: String?,
     icon: ImageVector?,
-    content: @Composable () -> Unit,
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,

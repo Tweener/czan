@@ -42,12 +42,6 @@ android {
     compileOptions {
         sourceCompatibility = ProjectConfiguration.Compiler.javaCompatibility
         targetCompatibility = ProjectConfiguration.Compiler.javaCompatibility
-
-        isCoreLibraryDesugaringEnabled = true
-    }
-
-    dependencies {
-        coreLibraryDesugaring(libs.android.desugarjdklibs)
     }
 }
 
@@ -57,7 +51,6 @@ kotlin {
     androidTarget {
         publishLibraryVariants("release")
 
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
         }

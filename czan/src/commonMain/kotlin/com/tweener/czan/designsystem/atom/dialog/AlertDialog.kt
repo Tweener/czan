@@ -17,5 +17,4 @@ expect fun AlertDialog(
     onDismiss: () -> Unit,
     dismissButtonLabel: String? = null,
     icon: ImageVector? = null,
-    content: @Composable () -> Unit,
 )
