@@ -20,11 +20,17 @@ object ProjectConfiguration {
             const val group = "io.github.tweener"
             const val packageUrl = "https://github.com/Tweener/czan"
             const val gitUrl = "github.com:Tweener/czan.git"
+
+            object Developer {
+                const val id = "Tweener"
+                const val name = "Vivien Mahé"
+                const val email = "vivien@tweener-labs.com"
+            }
         }
     }
 
     object Compiler {
-        const val jvmTarget = "17"
-        val javaCompatibility = JavaVersion.VERSION_17
+        val javaCompatibility = JavaVersion.VERSION_21
+        val jvmTarget = javaCompatibility.toString()
     }
 }

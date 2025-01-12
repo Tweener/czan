@@ -2,6 +2,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.net.URI
 import java.net.URL
 
 plugins {
@@ -146,7 +147,7 @@ tasks.withType<DokkaTask>().configureEach {
 
         sourceLink {
             localDirectory.set(rootProject.projectDir)
-            remoteUrl.set(URL(ProjectConfiguration.Czan.Maven.packageUrl + "/tree/main"))
+            remoteUrl.set(URI(ProjectConfiguration.Czan.Maven.packageUrl + "/tree/main").toURL())
             remoteLineSuffix.set("#L")
         }
     }
@@ -176,9 +177,9 @@ publishing {
 
                 developers {
                     developer {
-                        id.set("Tweener")
-                        name.set("Vivien Mahé")
-                        email.set("vivien@tweener-labs.com")
+                        id.set(ProjectConfiguration.Czan.Maven.Developer.id)
+                        name.set(ProjectConfiguration.Czan.Maven.Developer.name)
+                        email.set(ProjectConfiguration.Czan.Maven.Developer.email)
                     }
                 }
 
