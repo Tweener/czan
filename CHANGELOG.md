@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.8.1] - January 13, 2025
+- Add support for JVM targets.
+
 ## [2.8.0] - January 12, 2025
 - [AlertDialog](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/dialog/AlertDialog.kt) now uses Material 3 for non-iOS targets and Cupertino for iOS target (via UIKit).
 - [CarouselDashes](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/molecule/carousel/CarouselDashes.kt#L26) - Auto-switch to next dash animation can now be disabled using `animated = false`.
