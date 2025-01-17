@@ -38,9 +38,9 @@ import com.tweener.czan.theme.Size
 @Composable
 fun PaywallProductCard(
     productTitle: String,
-    productHeadline: String,
     productAmount: String,
     modifier: Modifier = Modifier,
+    productHeadline: String? = null,
     productAmountHeadline: String? = null,
     promoTagText: String? = null,
     selected: Boolean = false,
@@ -110,12 +110,14 @@ fun PaywallProductCard(
                         }
                     }
 
-                    Text(
-                        text = productHeadline,
-                        color = colors.productHeadlineColor(),
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Medium,
-                    )
+                    productHeadline?.let {
+                        Text(
+                            text = it,
+                            color = colors.productHeadlineColor(),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Medium,
+                        )
+                    }
                 }
 
                 Column(

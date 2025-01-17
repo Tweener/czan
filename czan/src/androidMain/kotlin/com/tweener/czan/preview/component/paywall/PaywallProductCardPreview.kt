@@ -43,7 +43,6 @@ private fun PaywallProductCardNotSelectedPreview() {
             PaywallProductCard(
                 selected = false,
                 productTitle = "Monthly",
-                productHeadline = "7-day free trial",
                 productAmount = "1.99 €",
                 productAmountHeadline = "per month",
                 colors = PaywallProductCardDefaults.colors(),
