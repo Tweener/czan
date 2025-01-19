@@ -49,13 +49,14 @@ fun PaywallProductCard(
     sizes: PaywallProductCardSizes = PaywallProductCardDefaults.sizes(),
     onClick: (() -> Unit)? = null,
 ) {
+    val cardBorderWidth = if (selected) sizes.selectedBorderStrokeWidth() else sizes.borderStrokeWidth()
     val cardBorderColor = if (selected) colors.selectedBorderStrokeColor() else colors.borderStrokeColor()
 
     Card(
         modifier = modifier,
         shape = shape,
         colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
-        border = BorderStroke(width = sizes.borderStrokeWidth(), color = cardBorderColor),
+        border = BorderStroke(width = cardBorderWidth, color = cardBorderColor),
     ) {
         Row(
             modifier = Modifier
@@ -85,7 +86,6 @@ fun PaywallProductCard(
                             text = productTitle,
                             color = colors.productTitleColor(),
                             style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Medium,
                         )
 
                         promoTagText?.let {
@@ -104,7 +104,6 @@ fun PaywallProductCard(
                                     text = it,
                                     color = colors.promoTagContentColor(),
                                     style = MaterialTheme.typography.titleSmall,
-                                    fontWeight = FontWeight.Medium,
                                 )
                             }
                         }
@@ -151,6 +150,7 @@ object PaywallProductCardDefaults {
 
     val shape: Shape @Composable get() = MaterialTheme.shapes.large
     private val borderStrokeWidth: Dp = 1.dp
+    private val selectedBorderStrokeWidth: Dp = 2.dp
 
     @Composable
     fun colors(
@@ -184,11 +184,13 @@ object PaywallProductCardDefaults {
     fun sizes(
         contentPadding: PaddingValues = PaddingValues(top = Size.Padding.Default, end = Size.Padding.Large, bottom = Size.Padding.Default, start = Size.Padding.Small),
         borderStrokeWidth: Dp = PaywallProductCardDefaults.borderStrokeWidth,
+        selectedBorderStrokeWidth: Dp = PaywallProductCardDefaults.selectedBorderStrokeWidth,
         promoTagRoundedCornerSize: Dp = Size.Padding.Small,
         promoTagPadding: PaddingValues = PaddingValues(horizontal = Size.Padding.ExtraSmall, vertical = Size.Padding.Tiny),
     ): PaywallProductCardSizes = PaywallProductCardSizes(
         contentPadding = contentPadding,
         borderStrokeWidth = borderStrokeWidth,
+        selectedBorderStrokeWidth = selectedBorderStrokeWidth,
         promoTagRoundedCornerSize = promoTagRoundedCornerSize,
         promoTagPadding = promoTagPadding,
     )
@@ -247,6 +249,7 @@ class PaywallProductCardColors internal constructor(
 class PaywallProductCardSizes internal constructor(
     private val contentPadding: PaddingValues,
     private val borderStrokeWidth: Dp,
+    private val selectedBorderStrokeWidth: Dp,
     private val promoTagRoundedCornerSize: Dp,
     private val promoTagPadding: PaddingValues,
 ) {
@@ -255,6 +258,9 @@ class PaywallProductCardSizes internal constructor(
 
     @Composable
     internal fun borderStrokeWidth(): Dp = borderStrokeWidth
+
+    @Composable
+    internal fun selectedBorderStrokeWidth(): Dp = selectedBorderStrokeWidth
 
     @Composable
     internal fun promoTagRoundedCornerSize(): Dp = promoTagRoundedCornerSize

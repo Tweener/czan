@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.unit.dp
 import com.tweener.czan.component.paywall.PaywallProductCard
 import com.tweener.czan.component.paywall.PaywallProductCardDefaults
 import com.tweener.czan.preview.CzanThemePreview
@@ -30,6 +31,7 @@ private fun PaywallProductCardSelectedPreview() {
                 productAmount = "1.99 €",
                 productAmountHeadline = "per month",
                 colors = PaywallProductCardDefaults.colors(),
+                sizes = PaywallProductCardDefaults.sizes(selectedBorderStrokeWidth = 2.dp),
             )
         }
     }
@@ -46,6 +48,7 @@ private fun PaywallProductCardNotSelectedPreview() {
                 productAmount = "1.99 €",
                 productAmountHeadline = "per month",
                 colors = PaywallProductCardDefaults.colors(),
+                sizes = PaywallProductCardDefaults.sizes(borderStrokeWidth = 1.dp),
             )
         }
     }
@@ -80,7 +83,7 @@ private fun PaywallProductCardWithPromoChipBrushPreview() {
             PaywallProductCard(
                 selected = true,
                 productTitle = "Monthly",
-                productHeadline = "7-day free trial",
+                productHeadline = "A very long headline text to see how it behaves",
                 productAmount = "1.99 €",
                 promoTagText = "50% OFF!",
                 colors = PaywallProductCardDefaults.colors(
