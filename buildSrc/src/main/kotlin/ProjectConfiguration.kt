@@ -9,14 +9,14 @@ object ProjectConfiguration {
 
     object Czan {
         const val packageName = "com.tweener.czan"
-        const val versionName = "2.8.1"
+        const val versionName = "2.9.0"
         const val namespace = "$packageName.android"
         const val compileSDK = 35
         const val minSDK = 24
 
         object Maven {
             const val name = "CZAN"
-            const val description = "CZAN Atomic Design System for Kotlin Multiplatform and Compose Multiplatform"
+            const val description = "A Kotlin/Compose Multiplatform design system that allows you to easily create components and screens."
             const val group = "io.github.tweener"
             const val packageUrl = "https://github.com/Tweener/czan"
             const val gitUrl = "github.com:Tweener/czan.git"
