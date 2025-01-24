@@ -14,7 +14,7 @@ import com.tweener.czan.designsystem.atom.text.Text
  * Applies a given [SpanStyle] to specified substrings within the main string, returning an [AnnotatedString].
  * This method is useful for styling clickable text segments in a [Text] composable.
  *
- * Example usage:
+ * ### Example usage:
  * ```
  * val text = "Read the Terms and Privacy Policy."
  * val styledText = text.applySpanStyle(
@@ -40,30 +40,87 @@ import com.tweener.czan.designsystem.atom.text.Text
  */
 fun String.applySpanStyle(spanStyle: SpanStyle, substrings: List<String>, onClick: ((LinkAnnotation) -> Unit)? = null): AnnotatedString =
     buildAnnotatedString {
-        var lastIndex = 0
+        var currentIndex = 0
+        val originalText = this@applySpanStyle
 
-        substrings.forEach { substring ->
-            val startIndex = this@applySpanStyle.indexOf(substring)
+        // Iterate over all substring occurrences while rebuilding the text
+        while (currentIndex < originalText.length) {
+            // Find the next matching substring
+            val nextSubstring = substrings.minByOrNull { substring ->
+                val index = originalText.indexOf(substring, currentIndex)
+                if (index == -1) Int.MAX_VALUE else index
+            }
 
-            if (startIndex != -1) {
-                // Append text before the styled substring
-                append(this@applySpanStyle.substring(lastIndex, startIndex))
+            val startIndex = nextSubstring?.let { originalText.indexOf(it, currentIndex) } ?: -1
 
-                withLink(
-                    link = LinkAnnotation.Clickable(
-                        tag = substring,
-                        styles = TextLinkStyles(spanStyle),
-                        linkInteractionListener = { link -> onClick?.invoke(link) }),
-                ) {
-                    append(substring)
+            if (nextSubstring != null && startIndex != -1) {
+                // Append text before the found substring (keeping original style)
+                append(originalText.substring(currentIndex, startIndex))
+
+                val endIndex = startIndex + nextSubstring.length
+
+                if (onClick != null) {
+                    withLink(
+                        link = LinkAnnotation.Clickable(
+                            tag = nextSubstring,
+                            styles = TextLinkStyles(spanStyle),
+                            linkInteractionListener = { link -> onClick.invoke(link) }
+                        )
+                    ) {
+                        append(nextSubstring)
+                    }
+                } else {
+                    addStyle(spanStyle, startIndex, endIndex)
+                    append(nextSubstring)
                 }
 
-                lastIndex = startIndex + substring.length
+                currentIndex = endIndex
+            } else {
+                // Append remaining text
+                append(originalText.substring(currentIndex))
+                break
             }
         }
+    }
 
-        // Append remaining text after the last styled substring
-        append(this@applySpanStyle.substring(lastIndex, this@applySpanStyle.length))
+/**
+ * Applies a given [SpanStyle] to specified substrings within an [AnnotatedString], allowing for chaining of multiple styles without overriding previous ones.
+ *
+ * ### Example usage:
+ * ```
+ * val annotatedText = AnnotatedString("Read the Terms and Privacy Policy.")
+ * val styledText = annotatedText.applySpanStyle(
+ *     spanStyle = SpanStyle(color = Color.Blue, textDecoration = TextDecoration.Underline),
+ *     substrings = listOf("Terms", "Privacy Policy"),
+ * )
+ * ```
+ *
+ * ### Chaining Example:
+ * ```
+ * val styledText = AnnotatedString("Renewal canceled. Expires on February 20, 2025.")
+ *     .applySpanStyle(SpanStyle(fontWeight = FontWeight.Bold), listOf("February 20, 2025"))
+ *     .applySpanStyle(SpanStyle(color = Color.Red), listOf("Renewal canceled"))
+ * ```
+ *
+ * @param spanStyle The [SpanStyle] to apply to the specified substrings.
+ * @param substrings The list of substrings that should be styled.
+ * @return A new [AnnotatedString] with the specified substrings styled.
+ */
+fun AnnotatedString.applySpanStyle(spanStyle: SpanStyle, substrings: List<String>): AnnotatedString =
+    buildAnnotatedString {
+        append(this@applySpanStyle) // Preserve existing styles
+
+        substrings.forEach { substring ->
+            val startIndex = this@applySpanStyle.text.indexOf(substring)
+
+            if (startIndex != -1) {
+                addStyle(
+                    style = spanStyle,
+                    start = startIndex,
+                    end = startIndex + substring.length
+                )
+            }
+        }
     }
 
 /**
