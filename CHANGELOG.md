@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0] - January 24, 2025
+- Added [`Snackbar`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/snackbar/Snackbar.kt) composable to easily customize the default snackbar.
+- Added [`RadioButton`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/radiobutton/RadioButton.kt) composable with automatic icon toggling when tapping on the radio button.
+- Added [`PaywallProductCard`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/component/paywall/PaywallProductCard.kt) component to easily display the main information of a purchasable product on a paywall.
+- Added `applySpanStyle()` [`String`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/_internal/kotlinextensions/StringExtensions.kt#L41) and [`AnnotatedString`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/_internal/kotlinextensions/StringExtensions.kt#L109) extension functions to apply a given `SpanStyle` to specified substrings within the main string, returning an `AnnotatedString`.
+- Added [`onLifecycleEvents`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/_internal/kotlinextensions/LifecycleOwnerExtensions.kt) `LifecycleOwner` extension function to observe lifecycle events within a Composable and execute corresponding callbacks when events occur.
+
 ## [2.8.1] - January 13, 2025
 - Add support for JVM targets.
 
