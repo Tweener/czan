@@ -7,7 +7,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.molecule.cardtip.CardTip
-import com.tweener.czan.designsystem.organism.card.CardDefaults
+import com.tweener.czan.designsystem.molecule.cardtip.CardTipDefaults
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.theme.Size
@@ -37,13 +37,13 @@ private fun CardTipChangePropertiesPreview() {
             icon = Icons.Default.Lightbulb,
             textStyle = MaterialTheme.typography.titleSmall,
             shape = MaterialTheme.shapes.extraLarge,
-            colors = CardDefaults.cardColors(
+            colors = CardTipDefaults.colors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 borderStrokeColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 iconTint = MaterialTheme.colorScheme.tertiary,
             ),
-            sizes = CardDefaults.cardSizes(
+            sizes = CardTipDefaults.sizes(
                 borderStrokeWidth = 1.dp,
                 contentPadding = PaddingValues(Size.Padding.Large),
             ),

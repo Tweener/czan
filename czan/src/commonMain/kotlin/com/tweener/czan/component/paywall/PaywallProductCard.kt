@@ -5,7 +5,6 @@ package com.tweener.czan.component.paywall
  * @since 16/01/2025
  */
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -29,10 +27,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan._internal.kotlinextensions.conditional
 import com.tweener.czan.designsystem.atom.radiobutton.RadioButton
 import com.tweener.czan.designsystem.atom.text.Text
+import com.tweener.czan.designsystem.organism.card.Card
+import com.tweener.czan.designsystem.organism.card.CardDefaults
 import com.tweener.czan.theme.Size
 
 @Composable
@@ -55,14 +54,18 @@ fun PaywallProductCard(
     Card(
         modifier = modifier,
         shape = shape,
-        colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = colors.containerColor()),
-        border = BorderStroke(width = cardBorderWidth, color = cardBorderColor),
+        colors = CardDefaults.colors(
+            containerColor = colors.containerColor(),
+            borderStrokeColor = cardBorderColor,
+        ),
+        sizes = CardDefaults.sizes(
+            contentPadding = sizes.contentPadding(),
+            borderStrokeWidth = cardBorderWidth,
+        ),
+        onClick = onClick,
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickableRipple { onClick?.invoke() }
-                .padding(sizes.contentPadding()),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(Size.Padding.Small),
             verticalAlignment = Alignment.CenterVertically,
         ) {

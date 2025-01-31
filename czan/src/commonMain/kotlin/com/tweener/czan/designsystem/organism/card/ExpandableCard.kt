@@ -12,6 +12,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
@@ -21,7 +22,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -29,8 +32,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.tweener.czan._internal.kotlinextensions.clickableRipple
@@ -50,8 +56,8 @@ fun ExpandableCard(
     expanded: Boolean = false,
     enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
-    colors: CardColors = CardDefaults.cardColors(),
-    sizes: CardSizes = CardDefaults.cardSizes(),
+    colors: ExpandableCardColors = ExpandableCardDefaults.colors(),
+    sizes: ExpandableCardSizes = ExpandableCardDefaults.sizes(),
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
     hideableContent: @Composable (() -> Unit)? = null,
@@ -62,7 +68,7 @@ fun ExpandableCard(
         collapsedIcon = { iconRotation ->
             Icon(
                 modifier = Modifier
-                    .size(CardDefaults.headerIconSize)
+                    .size(ExpandableCardDefaults.headerIconSize)
                     .rotate(iconRotation),
                 imageVector = collapsedIcon,
                 tint = colors.chevronTintColor(),
@@ -87,8 +93,8 @@ fun ExpandableCard(
     expanded: Boolean = false,
     enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
-    colors: CardColors = CardDefaults.cardColors(),
-    sizes: CardSizes = CardDefaults.cardSizes(),
+    colors: ExpandableCardColors = ExpandableCardDefaults.colors(),
+    sizes: ExpandableCardSizes = ExpandableCardDefaults.sizes(),
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
     hideableContent: @Composable (() -> Unit)? = null,
@@ -99,7 +105,7 @@ fun ExpandableCard(
         collapsedIcon = { iconRotation ->
             Icon(
                 modifier = Modifier
-                    .size(CardDefaults.headerIconSize)
+                    .size(ExpandableCardDefaults.headerIconSize)
                     .rotate(iconRotation),
                 resource = collapsedIcon,
                 tint = colors.chevronTintColor(),
@@ -124,8 +130,8 @@ private fun ExpandableCard(
     expanded: Boolean = false,
     enabled: Boolean = true,
     shape: Shape = CardDefaults.shape,
-    colors: CardColors = CardDefaults.cardColors(),
-    sizes: CardSizes = CardDefaults.cardSizes(),
+    colors: ExpandableCardColors = ExpandableCardDefaults.colors(),
+    sizes: ExpandableCardSizes = ExpandableCardDefaults.sizes(),
     header: @Composable () -> Unit,
     footer: @Composable (() -> Unit)? = null,
     hideableContent: @Composable (() -> Unit)? = null,
@@ -153,6 +159,7 @@ private fun ExpandableCard(
             }
         }
 
+        // Optional content that will be shown only when the whole card is collapsed
         if (hideableContent != null) {
             AnimatedVisibility(
                 visible = showContent.not(),
@@ -174,6 +181,7 @@ private fun ExpandableCard(
             }
         }
 
+        // Content that will be shown only when the whole card is expanded
         AnimatedVisibility(
             visible = showContent,
             enter = slideInVertically() + expandVertically() + fadeIn(),
@@ -189,7 +197,7 @@ private fun ExpandableCard(
                 if (footer != null) {
                     HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
 
-                    Box(modifier = Modifier.fillMaxWidth()) {
+                    Box(modifier = Modifier.fillMaxWidth().padding(sizes.contentPadding())) {
                         footer()
                     }
                 }
@@ -228,3 +236,66 @@ private fun ExpandableCard(
         }
     }
 }
+
+object ExpandableCardDefaults {
+
+    val headerIconSize: Dp = 24.dp
+
+    @Composable
+    fun colors(
+        containerColor: Color = MaterialTheme.colorScheme.background,
+        containerBrush: Brush? = null,
+        contentColor: Color = MaterialTheme.colorScheme.onBackground,
+        borderStrokeColor: Color = Color.Transparent,
+        dividerColor: Color = MaterialTheme.colorScheme.outline,
+        chevronTintColor: Color = MaterialTheme.colorScheme.onBackground,
+    ): ExpandableCardColors = ExpandableCardColors(
+        containerColor = containerColor,
+        containerBrush = containerBrush,
+        contentColor = contentColor,
+        borderStrokeColor = borderStrokeColor,
+        dividerColor = dividerColor,
+        chevronTintColor = chevronTintColor,
+    )
+
+    @Composable
+    fun sizes(
+        contentPadding: PaddingValues = PaddingValues(all = Size.Padding.Default),
+        elevation: Dp = CardDefaults.elevation,
+        borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
+    ): ExpandableCardSizes = ExpandableCardSizes(
+        contentPadding = contentPadding,
+        elevation = elevation,
+        borderStrokeWidth = borderStrokeWidth,
+    )
+}
+
+@Immutable
+class ExpandableCardColors internal constructor(
+    containerColor: Color,
+    containerBrush: Brush?,
+    contentColor: Color,
+    borderStrokeColor: Color,
+    dividerColor: Color,
+    private val chevronTintColor: Color,
+) : CardColors(
+    containerColor = containerColor,
+    containerBrush = containerBrush,
+    contentColor = contentColor,
+    borderStrokeColor = borderStrokeColor,
+    dividerColor = dividerColor,
+) {
+    @Composable
+    internal fun chevronTintColor(): Color = chevronTintColor
+}
+
+@Immutable
+class ExpandableCardSizes internal constructor(
+    contentPadding: PaddingValues,
+    elevation: Dp,
+    borderStrokeWidth: Dp,
+) : CardSizes(
+    contentPadding = contentPadding,
+    elevation = elevation,
+    borderStrokeWidth = borderStrokeWidth,
+)

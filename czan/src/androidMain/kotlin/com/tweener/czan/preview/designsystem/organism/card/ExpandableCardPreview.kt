@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.atom.text.Text
-import com.tweener.czan.designsystem.organism.card.CardDefaults
 import com.tweener.czan.designsystem.organism.card.ExpandableCard
+import com.tweener.czan.designsystem.organism.card.ExpandableCardDefaults
 import com.tweener.czan.preview.CzanThemePreview
 import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.theme.Size
@@ -34,8 +34,8 @@ private fun ExpandableCardCollapsedPreview() {
             ExpandableCard(
                 collapsedIcon = Icons.Outlined.ExpandCircleDown,
                 expanded = false,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                sizes = CardDefaults.cardSizes(
+                colors = ExpandableCardDefaults.colors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                sizes = ExpandableCardDefaults.sizes(
                     elevation = 4.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
@@ -61,8 +61,8 @@ private fun ExpandableCardExpandedPreview() {
             ExpandableCard(
                 collapsedIcon = Icons.Outlined.ExpandCircleDown,
                 expanded = true,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                sizes = CardDefaults.cardSizes(
+                colors = ExpandableCardDefaults.colors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                sizes = ExpandableCardDefaults.sizes(
                     elevation = 4.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),

@@ -27,8 +27,8 @@ private fun CardPreview() {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                sizes = CardDefaults.cardSizes(
+                colors = CardDefaults.colors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                sizes = CardDefaults.sizes(
                     elevation = 0.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
@@ -46,11 +46,11 @@ private fun CardWithHeaderPreview() {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 shape = MaterialTheme.shapes.extraLarge,
-                colors = CardDefaults.cardColors(
+                colors = CardDefaults.colors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     dividerColor = MaterialTheme.colorScheme.outline,
                 ),
-                sizes = CardDefaults.cardSizes(
+                sizes = CardDefaults.sizes(
                     elevation = 10.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
@@ -69,7 +69,7 @@ private fun CardWithFooterPreview() {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                sizes = CardDefaults.cardSizes(
+                sizes = CardDefaults.sizes(
                     elevation = 4.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
@@ -88,8 +88,8 @@ private fun CardWithHeaderAndFooterPreview() {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                sizes = CardDefaults.cardSizes(
+                colors = CardDefaults.colors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                sizes = CardDefaults.sizes(
                     elevation = 4.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
