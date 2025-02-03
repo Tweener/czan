@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.9.1] - February 3rd, 2025
+- **`[BREAKING]`** [`ExpandableCard`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/ExpandableCard.kt) and [`CardTip`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/molecule/cardtip/CardTip.kt) now use their own `Defaults` objects (`ExpandableCardDefaults` and `CardTipDefaults`, respectively) for color and size customization.
+- **`[BREAKING]`** [`Card`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/Card.kt) color and size customization methods have been renamed to `CardDefaults.colors()` and `CardDefaults.sizes()`.
+- **`[FIX]`** [`Card`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/Card.kt) layout has been improved to fix incorrect padding.
+
 ## [2.9.0] - January 24, 2025
 - Added [`Snackbar`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/snackbar/Snackbar.kt) composable to easily customize the default snackbar.
 - Added [`RadioButton`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/radiobutton/RadioButton.kt) composable with automatic icon toggling when tapping on the radio button.
