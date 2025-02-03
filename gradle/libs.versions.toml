@@ -11,7 +11,7 @@ coil = "3.0.4"
 composeLifecycle = "2.8.4"
 
 # Android
-androidActivity = "1.9.3"
+androidActivity = "1.10.0"
 
 [libraries]
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }

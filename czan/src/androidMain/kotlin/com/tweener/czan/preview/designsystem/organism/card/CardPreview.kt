@@ -1,6 +1,7 @@
 package com.tweener.czan.preview.designsystem.organism.card
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,7 +28,10 @@ private fun CardPreview() {
         Box(modifier = Modifier.padding(Size.Padding.Default)) {
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.colors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                colors = CardDefaults.colors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                ),
                 sizes = CardDefaults.sizes(
                     elevation = 0.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
@@ -54,9 +58,16 @@ private fun CardWithHeaderPreview() {
                     elevation = 10.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
-                header = { Text(text = "This is a header") },
+                header = {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(text = "This is a the Card's title")
+                        Text(text = "And this is a the Card's headline")
+                    }
+                },
             ) {
-                Text(text = "This is a Card with a simple Text")
+                Text(text = "This is the Cards' content")
             }
         }
     }
