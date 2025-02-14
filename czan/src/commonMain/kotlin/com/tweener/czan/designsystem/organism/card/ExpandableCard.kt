@@ -68,7 +68,7 @@ fun ExpandableCard(
         collapsedIcon = { iconRotation ->
             Icon(
                 modifier = Modifier
-                    .size(ExpandableCardDefaults.headerIconSize)
+                    .size(ExpandableCardDefaults.headerToggleIconSize)
                     .rotate(iconRotation),
                 imageVector = collapsedIcon,
                 tint = colors.chevronTintColor(),
@@ -105,7 +105,7 @@ fun ExpandableCard(
         collapsedIcon = { iconRotation ->
             Icon(
                 modifier = Modifier
-                    .size(ExpandableCardDefaults.headerIconSize)
+                    .size(ExpandableCardDefaults.headerToggleIconSize)
                     .rotate(iconRotation),
                 resource = collapsedIcon,
                 tint = colors.chevronTintColor(),
@@ -239,7 +239,7 @@ private fun ExpandableCard(
 
 object ExpandableCardDefaults {
 
-    val headerIconSize: Dp = 24.dp
+    val headerToggleIconSize: Dp = 24.dp
 
     @Composable
     fun colors(
