@@ -61,7 +61,7 @@ fun Card(
                 .clickableRipple(enabled = onClick != null) { onClick?.invoke() }
         ) {
             header?.let {
-                Box(modifier = Modifier.fillMaxWidth().padding(sizes.contentPadding())) {
+                Box(modifier = Modifier.fillMaxWidth().padding(sizes.headerPadding())) {
                     header()
                 }
 
@@ -75,7 +75,7 @@ fun Card(
             footer?.let {
                 if (showDividers) HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
 
-                Box(modifier = Modifier.fillMaxWidth().padding(sizes.contentPadding())) {
+                Box(modifier = Modifier.fillMaxWidth().padding(sizes.footerPadding())) {
                     footer()
                 }
             }
@@ -115,10 +115,14 @@ object CardDefaults {
     @Composable
     fun sizes(
         contentPadding: PaddingValues = PaddingValues(all = Size.Padding.Default),
+        headerPadding: PaddingValues = contentPadding,
+        footerPadding: PaddingValues = contentPadding,
         elevation: Dp = CardDefaults.elevation,
         borderStrokeWidth: Dp = CardDefaults.borderStrokeWidth,
     ): CardSizes = CardSizes(
         contentPadding = contentPadding,
+        headerPadding = headerPadding,
+        footerPadding = footerPadding,
         elevation = elevation,
         borderStrokeWidth = borderStrokeWidth,
     )
@@ -155,11 +159,19 @@ open class CardColors internal constructor(
 @Immutable
 open class CardSizes internal constructor(
     private val contentPadding: PaddingValues,
+    private val headerPadding: PaddingValues = contentPadding,
+    private val footerPadding: PaddingValues = contentPadding,
     private val elevation: Dp,
     private val borderStrokeWidth: Dp,
 ) {
     @Composable
     internal fun contentPadding(): PaddingValues = contentPadding
+
+    @Composable
+    internal fun headerPadding(): PaddingValues = headerPadding
+
+    @Composable
+    internal fun footerPadding(): PaddingValues = footerPadding
 
     @Composable
     internal fun elevation(): Dp = elevation
