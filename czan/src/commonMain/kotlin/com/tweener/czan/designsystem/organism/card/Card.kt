@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -42,13 +43,12 @@ fun Card(
     val cardBorder = if (sizes.elevation() == 0.dp) BorderStroke(width = sizes.borderStrokeWidth(), color = colors.borderStrokeColor()) else null
 
     Card(
-        modifier = modifier,
+        modifier = modifier.shadow(elevation = sizes.elevation(), shape = shape, spotColor = colors.shadowColor()),
         shape = shape,
         colors = androidx.compose.material3.CardDefaults.cardColors(
             containerColor = colors.containerColor(),
             contentColor = colors.contentColor(),
         ),
-        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = sizes.elevation()),
         border = cardBorder,
     ) {
         Column(
@@ -89,19 +89,27 @@ object CardDefaults {
     internal val elevation: Dp = 0.dp
     internal val borderStrokeWidth: Dp = 0.dp
 
+    internal val containerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.background
+    internal val contentColorDefault: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+    internal val borderStrokeColorDefault: Color @Composable get() = Color.Transparent
+    internal val dividerColorDefault: Color @Composable get() = MaterialTheme.colorScheme.outline
+    internal val shadowColorDefault: Color @Composable get() = Color.Black.copy(alpha = 0.08f)
+
     @Composable
     fun colors(
-        containerColor: Color = MaterialTheme.colorScheme.background,
+        containerColor: Color = containerColorDefault,
         containerBrush: Brush? = null,
-        contentColor: Color = MaterialTheme.colorScheme.onBackground,
-        borderStrokeColor: Color = Color.Transparent,
-        dividerColor: Color = MaterialTheme.colorScheme.outline,
+        contentColor: Color = contentColorDefault,
+        borderStrokeColor: Color = borderStrokeColorDefault,
+        dividerColor: Color = dividerColorDefault,
+        shadowColor: Color = shadowColorDefault,
     ): CardColors = CardColors(
         containerColor = containerColor,
         containerBrush = containerBrush,
         contentColor = contentColor,
         borderStrokeColor = borderStrokeColor,
         dividerColor = dividerColor,
+        shadowColor = shadowColor,
     )
 
     @Composable
@@ -123,6 +131,7 @@ open class CardColors internal constructor(
     private val contentColor: Color,
     private val borderStrokeColor: Color,
     private val dividerColor: Color,
+    private val shadowColor: Color,
 ) {
     @Composable
     internal fun containerColor(): Color = containerColor
@@ -138,6 +147,9 @@ open class CardColors internal constructor(
 
     @Composable
     internal fun dividerColor(): Color = dividerColor
+
+    @Composable
+    internal fun shadowColor(): Color = shadowColor
 }
 
 @Immutable

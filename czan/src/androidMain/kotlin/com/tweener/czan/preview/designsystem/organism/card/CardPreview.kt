@@ -55,7 +55,7 @@ private fun CardWithHeaderPreview() {
                     dividerColor = MaterialTheme.colorScheme.outline,
                 ),
                 sizes = CardDefaults.sizes(
-                    elevation = 10.dp,
+                    elevation = 12.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
                 ),
                 header = {
@@ -66,6 +66,7 @@ private fun CardWithHeaderPreview() {
                         Text(text = "And this is a the Card's headline")
                     }
                 },
+                showDividers = false,
             ) {
                 Text(text = "This is the Cards' content")
             }

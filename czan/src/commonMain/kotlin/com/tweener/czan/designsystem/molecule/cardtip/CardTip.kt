@@ -20,6 +20,11 @@ import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.designsystem.organism.card.Card
 import com.tweener.czan.designsystem.organism.card.CardColors
 import com.tweener.czan.designsystem.organism.card.CardDefaults
+import com.tweener.czan.designsystem.organism.card.CardDefaults.borderStrokeColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.containerColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.contentColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.dividerColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.shadowColorDefault
 import com.tweener.czan.designsystem.organism.card.CardSizes
 import com.tweener.czan.theme.Size
 import org.jetbrains.compose.resources.DrawableResource
@@ -113,11 +118,12 @@ object CardTipDefaults {
 
     @Composable
     fun colors(
-        containerColor: Color = MaterialTheme.colorScheme.background,
+        containerColor: Color = containerColorDefault,
         containerBrush: Brush? = null,
-        contentColor: Color = MaterialTheme.colorScheme.onBackground,
-        borderStrokeColor: Color = Color.Transparent,
-        dividerColor: Color = MaterialTheme.colorScheme.outline,
+        contentColor: Color = contentColorDefault,
+        borderStrokeColor: Color = borderStrokeColorDefault,
+        dividerColor: Color = dividerColorDefault,
+        shadowColor: Color = shadowColorDefault,
         iconTint: Color = contentColor,
     ): CardTipColors = CardTipColors(
         containerColor = containerColor,
@@ -125,6 +131,7 @@ object CardTipDefaults {
         contentColor = contentColor,
         borderStrokeColor = borderStrokeColor,
         dividerColor = dividerColor,
+        shadowColor = shadowColor,
         iconTint = iconTint,
     )
 
@@ -147,6 +154,7 @@ class CardTipColors internal constructor(
     contentColor: Color,
     borderStrokeColor: Color,
     dividerColor: Color,
+    shadowColor: Color,
     private val iconTint: Color,
 ) : CardColors(
     containerColor = containerColor,
@@ -154,6 +162,7 @@ class CardTipColors internal constructor(
     contentColor = contentColor,
     borderStrokeColor = borderStrokeColor,
     dividerColor = dividerColor,
+    shadowColor = shadowColor,
 ) {
     @Composable
     internal fun iconTint(): Color = iconTint

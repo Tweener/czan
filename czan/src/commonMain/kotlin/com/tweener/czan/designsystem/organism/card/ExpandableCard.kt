@@ -41,6 +41,11 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.tweener.czan._internal.kotlinextensions.clickableRipple
 import com.tweener.czan.designsystem.atom.icon.Icon
+import com.tweener.czan.designsystem.organism.card.CardDefaults.borderStrokeColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.containerColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.contentColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.dividerColorDefault
+import com.tweener.czan.designsystem.organism.card.CardDefaults.shadowColorDefault
 import com.tweener.czan.theme.Size
 import org.jetbrains.compose.resources.DrawableResource
 
@@ -243,11 +248,12 @@ object ExpandableCardDefaults {
 
     @Composable
     fun colors(
-        containerColor: Color = MaterialTheme.colorScheme.background,
+        containerColor: Color = containerColorDefault,
         containerBrush: Brush? = null,
-        contentColor: Color = MaterialTheme.colorScheme.onBackground,
-        borderStrokeColor: Color = Color.Transparent,
-        dividerColor: Color = MaterialTheme.colorScheme.outline,
+        contentColor: Color = contentColorDefault,
+        borderStrokeColor: Color = borderStrokeColorDefault,
+        dividerColor: Color = dividerColorDefault,
+        shadowColor: Color = shadowColorDefault,
         chevronTintColor: Color = MaterialTheme.colorScheme.onBackground,
     ): ExpandableCardColors = ExpandableCardColors(
         containerColor = containerColor,
@@ -255,6 +261,7 @@ object ExpandableCardDefaults {
         contentColor = contentColor,
         borderStrokeColor = borderStrokeColor,
         dividerColor = dividerColor,
+        shadowColor = shadowColor,
         chevronTintColor = chevronTintColor,
     )
 
@@ -277,6 +284,7 @@ class ExpandableCardColors internal constructor(
     contentColor: Color,
     borderStrokeColor: Color,
     dividerColor: Color,
+    shadowColor: Color,
     private val chevronTintColor: Color,
 ) : CardColors(
     containerColor = containerColor,
@@ -284,6 +292,7 @@ class ExpandableCardColors internal constructor(
     contentColor = contentColor,
     borderStrokeColor = borderStrokeColor,
     dividerColor = dividerColor,
+    shadowColor = shadowColor,
 ) {
     @Composable
     internal fun chevronTintColor(): Color = chevronTintColor
