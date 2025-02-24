@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.9.2] - February 24th, 2025
+- **`[BREAKING]`** [`ExpandableCard`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/ExpandableCard.kt) property `headerIconSize` has been renamed to `headerToggleIconSize`.
+- [`Card`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/Card.kt), [`ExpandableCard`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/ExpandableCard.kt) and [`CardTip`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/molecule/cardtip/CardTip.kt) now support customizing the shadow color when elevation is enabled.
+- Padding for the [`Card`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/Card.kt) header and footer can now be customized.
+- Added a new [`Modifier` extension](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/_internal/kotlinextensions/ModifierMeshGradient.kt) to apply a mesh gradient background to a composable.
+
 ## [2.9.1] - February 3rd, 2025
 - **`[BREAKING]`** [`ExpandableCard`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/ExpandableCard.kt) and [`CardTip`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/molecule/cardtip/CardTip.kt) now use their own `Defaults` objects (`ExpandableCardDefaults` and `CardTipDefaults`, respectively) for color and size customization.
 - **`[BREAKING]`** [`Card`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/organism/card/Card.kt) color and size customization methods have been renamed to `CardDefaults.colors()` and `CardDefaults.sizes()`.
