@@ -1,5 +1,6 @@
 package com.tweener.czan._internal.kotlinextensions
 
+import androidx.annotation.FloatRange
 import androidx.compose.ui.graphics.Color
 
 /**
@@ -39,3 +40,14 @@ fun Color.Companion.parseColor(hexColor: String): Color {
         blue = (colorARGB.shr(0) and 0xFF).toInt(),
     )
 }
+
+/**
+ * Darkens the color by the specified factor, where 0.0 is the darkest and 1.0 is the original color.
+ */
+inline fun Color.darken(@FloatRange(from = 0.0, to = 1.0) factor: Float = 1f): Color =
+    copy(
+        red = red * factor,
+        green = green * factor,
+        blue = blue * factor,
+        alpha = alpha,
+    )
