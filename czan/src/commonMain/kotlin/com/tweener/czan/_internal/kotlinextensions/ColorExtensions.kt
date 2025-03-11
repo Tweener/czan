@@ -44,7 +44,7 @@ fun Color.Companion.parseColor(hexColor: String): Color {
 /**
  * Darkens the color by the specified factor, where 0.0 is the darkest and 1.0 is the original color.
  */
-inline fun Color.darken(@FloatRange(from = 0.0, to = 1.0) factor: Float = 1f): Color =
+fun Color.darken(@FloatRange(from = 0.0, to = 1.0) factor: Float = 1f): Color =
     copy(
         red = red * factor,
         green = green * factor,
