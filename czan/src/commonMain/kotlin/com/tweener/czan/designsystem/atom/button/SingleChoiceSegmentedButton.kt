@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,7 +28,7 @@ fun SingleChoiceSegmentedButton(
     colors: SegmentedButtonColors = SegmentedButtonDefaults.colors(),
     onOptionSelected: (Int) -> Unit,
 ) {
-    var selectedIndex by remember { mutableIntStateOf(selectedOption.coerceIn(0, options.size - 1)) }
+    var selectedIndex by rememberSaveable { mutableIntStateOf(selectedOption.coerceIn(0, options.size - 1)) }
 
     SingleChoiceSegmentedButtonRow(modifier = modifier) {
         options.forEachIndexed { index, label ->
