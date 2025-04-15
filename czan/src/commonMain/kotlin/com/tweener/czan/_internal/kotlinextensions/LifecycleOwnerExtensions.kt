@@ -56,7 +56,6 @@ fun LifecycleOwner.onLifecycleEvents(
                 Lifecycle.Event.ON_STOP -> onStop?.invoke()
                 Lifecycle.Event.ON_DESTROY -> onDestroy?.invoke()
                 Lifecycle.Event.ON_ANY -> onAny?.invoke()
-                else -> Unit
             }
         }
 
