@@ -1,7 +1,7 @@
 [versions]
-kotlin = "2.1.20"
+kotlin = "2.1.21"
 gradle = "8.8.2"
-composeMultiplatform = "1.7.3"
+composeMultiplatform = "1.8.0"
 dependencyVersionsPlugin = "0.51.0"
 nexusSonatype = "2.0.0"
 dokka = "1.9.20"
