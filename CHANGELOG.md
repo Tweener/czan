@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.9.5] - May 13, 2025
+- Update Kotlin to 2.1.21.
+- Update Compose Multiplatform to 1.8.0.
+
 ## [2.9.4] - April 15th, 2025
 - Add new composable [HighlightedText](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/text/HighlightedText.kt) to highlight parts of a text.
 - Update Kotlin to 2.1.20.
