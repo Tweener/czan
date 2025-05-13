@@ -1,7 +1,11 @@
 # Changelog
 
+## [2.9.4] - April 15th, 2025
+- Add new composable [HighlightedText](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/text/HighlightedText.kt) to highlight parts of a text.
+- Update Kotlin to 2.1.20.
+
 ## [2.9.3] - March 24th, 2025
-- Added [`Color.darken`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/_internal/kotlinextensions/ColorExtensions.kt#L47)  extension function to darken a color by a specified factor.
+- Added [`Color.darken`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/_internal/kotlinextensions/ColorExtensions.kt#L47) extension function to darken a color by a specified factor.
 - Added [`SingleChoiceSegmentedButton`](https://github.com/Tweener/czan/blob/main/czan/src/commonMain/kotlin/com/tweener/czan/designsystem/atom/button/SingleChoiceSegmentedButton.kt) composable to display a single choice segmented button.
 
 ## [2.9.2] - February 24th, 2025
