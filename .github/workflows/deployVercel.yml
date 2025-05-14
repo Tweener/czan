@@ -20,13 +20,13 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/actions/wrapper-validation@v3
 
-      - name: Set up Java JDK ${{ vars.JAVA_JDK_VERSION }}"
+      - name: Set up Java JDK ${{ vars.JAVA_JDK_VERSION }}
         uses: actions/setup-java@v4
         with:
           java-version: '${{ vars.JAVA_JDK_VERSION }}'
           distribution: "zulu"
 
-      - name: Setup Gradle cache
+      - name: Caching Kotlin/Native tooling
         uses: actions/cache@v3
         with:
           path: |
@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/.lock') }}
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Actualize yarn lock file
         run: ./gradlew kotlinUpgradeYarnLock
