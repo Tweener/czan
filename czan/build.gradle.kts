@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -9,8 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.jetbrains.compose.compiler)
     alias(libs.plugins.dokka)
-    id("maven-publish")
-    id("signing")
+    alias(libs.plugins.maven.publish)
 }
 
 android {
@@ -154,51 +154,45 @@ tasks.withType<DokkaTask>().configureEach {
     }
 }
 
-publishing {
-    publications {
-        publications.withType<MavenPublication> {
-            artifact(tasks["dokkaJavadocJar"])
+mavenPublishing {
+    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    signAllPublications()
+    coordinates(groupId = group.toString(), artifactId = ProjectConfiguration.Czan.Maven.name.lowercase(), version = version.toString())
 
-            pom {
-                name.set(ProjectConfiguration.Czan.Maven.name)
-                description.set(ProjectConfiguration.Czan.Maven.description)
-                url.set(ProjectConfiguration.Czan.Maven.packageUrl)
+    artifacts {
+        this.archives(tasks["dokkaJavadocJar"])
+    }
 
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
+    pom {
+        name = ProjectConfiguration.Czan.Maven.name
+        description = ProjectConfiguration.Czan.Maven.description
+        url = ProjectConfiguration.Czan.Maven.packageUrl
 
-                issueManagement {
-                    system.set("GitHub Issues")
-                    url.set("${ProjectConfiguration.Czan.Maven.packageUrl}/issues")
-                }
-
-                developers {
-                    developer {
-                        id.set(ProjectConfiguration.Czan.Maven.Developer.id)
-                        name.set(ProjectConfiguration.Czan.Maven.Developer.name)
-                        email.set(ProjectConfiguration.Czan.Maven.Developer.email)
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git:git://${ProjectConfiguration.Czan.Maven.gitUrl}")
-                    developerConnection.set("scm:git:ssh://${ProjectConfiguration.Czan.Maven.gitUrl}")
-                    url.set(ProjectConfiguration.Czan.Maven.packageUrl)
-                }
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
-    }
-}
 
-signing {
-    if (project.hasProperty("signing.gnupg.keyName")) {
-        println("Signing lib...")
-        useGpgCmd()
-        sign(publishing.publications)
+        issueManagement {
+            system = "GitHub Issues"
+            url = "${ProjectConfiguration.Czan.Maven.packageUrl}/issues"
+        }
+
+        developers {
+            developer {
+                id = ProjectConfiguration.Czan.Maven.Developer.id
+                name = ProjectConfiguration.Czan.Maven.Developer.name
+                email = ProjectConfiguration.Czan.Maven.Developer.email
+            }
+        }
+
+        scm {
+            connection = "scm:git:git://${ProjectConfiguration.Czan.Maven.gitUrl}"
+            developerConnection = "scm:git:ssh://${ProjectConfiguration.Czan.Maven.gitUrl}"
+            url = ProjectConfiguration.Czan.Maven.packageUrl
+        }
     }
 }
 
