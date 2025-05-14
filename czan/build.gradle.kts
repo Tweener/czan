@@ -1,8 +1,8 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import java.net.URI
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -134,34 +134,16 @@ kotlin {
 group = ProjectConfiguration.Czan.Maven.group
 version = ProjectConfiguration.Czan.versionName
 
-// Dokka configuration
-tasks.register<Jar>("dokkaJavadocJar") {
-    dependsOn(tasks.dokkaHtml)
-    from(tasks.dokkaHtml.flatMap { it.outputDirectory })
-    archiveClassifier.set("javadoc")
-}
-
-tasks.withType<DokkaTask>().configureEach {
-    dokkaSourceSets.configureEach {
-        jdkVersion.set(ProjectConfiguration.Compiler.jvmTarget.toInt())
-        languageVersion.set(libs.versions.kotlin)
-
-        sourceLink {
-            localDirectory.set(rootProject.projectDir)
-            remoteUrl.set(URI(ProjectConfiguration.Czan.Maven.packageUrl + "/tree/main").toURL())
-            remoteLineSuffix.set("#L")
-        }
-    }
-}
-
 mavenPublishing {
     publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
     coordinates(groupId = group.toString(), artifactId = ProjectConfiguration.Czan.Maven.name.lowercase(), version = version.toString())
-
-    artifacts {
-        this.archives(tasks["dokkaJavadocJar"])
-    }
+    configure(
+        platform = KotlinMultiplatform(
+            javadocJar = JavadocJar.Dokka("dokkaHtml"),
+            sourcesJar = true,
+        )
+    )
 
     pom {
         name = ProjectConfiguration.Czan.Maven.name
