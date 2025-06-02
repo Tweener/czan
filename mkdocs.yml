@@ -50,14 +50,27 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - toc:
+      permalink: true
 
 nav:
   - "Overview": index.md
   - "Setup": setup.md
   - "Atoms":
+      - "Bars": atoms/bars.md
+      - "Box": atoms/box.md
       - "Button": atoms/button.md
+      - "Checkbox": atoms/checkbox.md
       - "Chip": atoms/chip.md
+      - "Dialog": atoms/dialog.md
       - "Icon": atoms/icon.md
+      - "Image": atoms/image.md
+      - "Line": atoms/line.md
+      - "Radio button": atoms/radio-button.md
+      - "Search input": atoms/search-input.md
+      - "Slider": atoms/slider.md
+      - "SnackBar": atoms/snackbar.md
+      - "Switch": atoms/switch.md
       - "Text": atoms/text.md
       - "TextField": atoms/textfield.md
   - "Molecules":

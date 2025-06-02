@@ -85,9 +85,9 @@ val MyAppShapes = Shapes(
 
 ```
 
-## Theme configuration
+## Theme usage
 
-Once you've customized your theme with colors, typographies and shapes, you can configure it using `CzanTheme`. **CZAN** automatically handles light and dark modes if both color schemes are provided, depending on the device's settings.
+Once you've customized your theme with colors, typographies and shapes, you can use your theme with `CzanTheme`. **CZAN** automatically handles light and dark modes if both color schemes are provided, depending on the device's settings.
 
 === "No dark mode"
     ```kotlin
