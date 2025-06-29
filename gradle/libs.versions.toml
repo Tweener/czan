@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.1.21"
-gradle = "8.8.2"
+gradle = "8.11.0"
 composeMultiplatform = "1.8.2"
 dependencyVersionsPlugin = "0.51.0"
 mavenPublish = "0.30.0"
