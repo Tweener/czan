@@ -13,13 +13,14 @@ import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.designsystem.molecule.keyboard.numeric.ExpandableNumericKeyboard
 import com.tweener.czan.designsystem.molecule.keyboard.numeric.NumericKeyboardDefaults
 import com.tweener.czan.preview.CzanThemePreview
+import com.tweener.czan.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
  * @since 23/04/2024
  */
 
-@com.tweener.czan.preview.UiModePreviews
+@UiModePreviews
 @Composable
 private fun ExpandableNumericKeyboardPreview() {
     CzanThemePreview {
