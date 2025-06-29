@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.9.6] - June 29, 2025
+- Update Compose Multiplatform to 1.8.2.
+ 
 ## [2.9.5] - May 13, 2025
 - Update Kotlin to 2.1.21.
 - Update Compose Multiplatform to 1.8.0.
