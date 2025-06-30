@@ -3,16 +3,18 @@
  * @since 15/10/2024
  */
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.tweener.czan.designsystem.atom.button.Button
 import com.tweener.czan.designsystem.atom.button.ButtonLoadingStyle
 import com.tweener.czan.designsystem.atom.button.ButtonSize
 import com.tweener.czan.designsystem.atom.button.ButtonStyle
+import com.tweener.czan.designsystem.atom.dialog.AlertDialog
 import com.tweener.czan.preview.CzanThemePreview
-import com.tweener.czan.theme.Size
 import demo._internal.PreviewBox
 import demo._internal.Section
 import demo._internal.SectionFlowContent
@@ -25,7 +27,19 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun ButtonDemo(
     modifier: Modifier = Modifier,
 ) {
+    var showDialog by remember { mutableStateOf(false) }
+
     CzanThemePreview {
+        if (showDialog) {
+            AlertDialog(
+                title = "This is an AlertDialog",
+                message = "You just clicked on a button.",
+                confirmButtonLabel = "Confirm",
+                onConfirmButtonClicked = { showDialog = false },
+                onDismiss = {},
+            )
+        }
+
         PreviewBox(modifier = modifier) {
             Section(title = "Styles") {
                 SectionFlowContent {
@@ -33,6 +47,7 @@ fun ButtonDemo(
                         text = "Primary",
                         style = ButtonStyle.PRIMARY,
                         size = ButtonSize.REGULAR,
+                        onClick = { showDialog = true },
                     )
 
                     Button(
