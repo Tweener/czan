@@ -2,6 +2,7 @@ package demo._internal
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.tweener.czan.theme.Size
@@ -17,7 +18,7 @@ internal fun SectionFlowContent(
     content: @Composable () -> Unit,
 ) {
     FlowRow(
-        modifier = modifier,
+        modifier = modifier.padding(bottom = Size.Padding.Default),
         horizontalArrangement = Arrangement.spacedBy(Size.Padding.Default),
         verticalArrangement = Arrangement.spacedBy(Size.Padding.ExtraSmall),
     ) {

@@ -48,8 +48,6 @@ fun ButtonDemo(
                     )
                 }
 
-                Spacer(modifier = Modifier.padding(vertical = Size.Padding.Small))
-
                 SectionFlowContent {
                     Button(
                         text = "On Primary",
@@ -69,8 +67,6 @@ fun ButtonDemo(
                         size = ButtonSize.REGULAR,
                     )
                 }
-
-                Spacer(modifier = Modifier.padding(vertical = Size.Padding.Small))
 
                 SectionFlowContent {
                     Button(
