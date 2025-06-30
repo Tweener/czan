@@ -18,7 +18,7 @@ import com.tweener.czan.theme.Size
  */
 
 @Composable
-fun Section(
+internal fun Section(
     title: String,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
