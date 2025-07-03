@@ -4,6 +4,7 @@ import ButtonDemo
 import androidx.compose.runtime.Composable
 import demo.box.BoxWithAnimatedBorderDemo
 import demo.checkbox.CheckboxDemo
+import demo.chip.ChipDemo
 
 /**
  * @author Vivien Mahe
@@ -16,6 +17,7 @@ fun Demo(demoId: String? = null) {
         "box" -> BoxWithAnimatedBorderDemo()
         "button" -> ButtonDemo()
         "checkbox" -> CheckboxDemo()
+        "chip" -> ChipDemo()
         else -> Unit // Nothing to display for unknown demoId
     }
 }

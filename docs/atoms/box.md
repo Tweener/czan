@@ -1,5 +1,7 @@
 # Box
 
+Here you will find the list of different boxes available.
+
 ## BoxWithAnimatedBorder
 
 The `BoxWithAnimatedBorder` is a regular `Box` component that includes an animated border. It is useful for creating visually appealing containers that draw attention to their content.

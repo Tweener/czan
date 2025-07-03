@@ -9,7 +9,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +16,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
@@ -57,9 +57,11 @@ fun BoxWithAnimatedBorder(
         if (borderColors.isNotEmpty()) Brush.sweepGradient(borderColors)
         else Brush.sweepGradient(listOf(Color.Gray, Color.White))
 
+    val shape = RoundedCornerShape(roundedCorners)
+
     Surface(
-        modifier = modifier.clickable { onCardClick?.invoke() },
-        shape = RoundedCornerShape(roundedCorners)
+        modifier = modifier.clip(shape).clickable { onCardClick?.invoke() },
+        shape = shape,
     ) {
         Surface(
             modifier = Modifier
