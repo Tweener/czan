@@ -13,7 +13,7 @@ import demo.checkbox.CheckboxDemo
 @Composable
 fun Demo(demoId: String? = null) {
     when (demoId) {
-        "boxwithanimatedborder" -> BoxWithAnimatedBorderDemo()
+        "box" -> BoxWithAnimatedBorderDemo()
         "button" -> ButtonDemo()
         "checkbox" -> CheckboxDemo()
         else -> Unit // Nothing to display for unknown demoId

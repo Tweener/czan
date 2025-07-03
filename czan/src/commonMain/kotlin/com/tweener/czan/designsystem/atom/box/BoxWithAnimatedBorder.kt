@@ -64,7 +64,6 @@ fun BoxWithAnimatedBorder(
         Surface(
             modifier = Modifier
                 .clipToBounds()
-                .fillMaxWidth()
                 .padding(borderWidth)
                 .drawWithContent {
                     rotate(angle) {
