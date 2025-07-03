@@ -19,11 +19,9 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
  */
 
 @Composable
-fun CheckboxDemo(
-    modifier: Modifier = Modifier,
-) {
+fun CheckboxDemo() {
     CzanThemePreview {
-        PreviewBox(modifier = modifier) {
+        PreviewBox {
             Section(title = "Basic Checkbox") {
                 SectionFlowContent {
                     Checkbox(checked = true)

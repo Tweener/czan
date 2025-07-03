@@ -53,10 +53,10 @@ Atoms are the basic building blocks of the user interface. They represent the si
 Examples:
 
 - [Button](atoms/button.md)
-- Chip
-- Icon
-- Text
-- TextField, etc.
+- [Chip](atoms/chip.md)
+- [Icon](atoms/icon.md)
+- [Text](atoms/text.md)
+- [TextField](atoms/textfield.md), etc.
 
 #### Molecules
 

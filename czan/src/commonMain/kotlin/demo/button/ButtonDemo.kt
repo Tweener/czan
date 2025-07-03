@@ -24,9 +24,7 @@ import io.github.tweener.czan.generated.resources.chevron_right
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ButtonDemo(
-    modifier: Modifier = Modifier,
-) {
+fun ButtonDemo() {
     var showDialog by remember { mutableStateOf(false) }
 
     CzanThemePreview {
@@ -40,7 +38,7 @@ fun ButtonDemo(
             )
         }
 
-        PreviewBox(modifier = modifier) {
+        PreviewBox {
             Section(title = "Styles") {
                 SectionFlowContent {
                     Button(
