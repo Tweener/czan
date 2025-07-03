@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.9.7] - July 3rd, 2025
+- Image: Fixes CircleCrop modifier and placeholder/error drawable
+- Update Kotlin to 2.2.0.
+- Update Compose Lifecycle to 2.9.1.
+
 ## [2.9.6] - June 29, 2025
 - Update Compose Multiplatform to 1.8.2.
  
