@@ -101,12 +101,14 @@ fun Image(
     imageUrl: String? = null,
     colors: ImageColors = ImageDefaults.imageColors(),
     placeholderRes: DrawableResource? = null,
+    errorRes: DrawableResource? = placeholderRes,
     contentScale: ContentScale = ContentScale.Crop,
     alignment: Alignment = Alignment.Center,
     imageSize: ImageSize? = null,
     circleCrop: Boolean = false,
 ) {
     var isLoading by remember { mutableStateOf(false) }
+    val placeholderPainter = placeholderRes?.let { painterResource(resource = it) }
 
     val model = ImageRequest.Builder(LocalPlatformContext.current)
         .data(imageUrl)
@@ -122,10 +124,11 @@ fun Image(
 
     AsyncImage(
         modifier = modifier
-            .apply { if (circleCrop) clip(CircleShape) }
+            .conditional(circleCrop, { clip(CircleShape) })
             .conditional(isLoading, { shimmer() }),
         model = model,
-        placeholder = placeholderRes?.let { painterResource(resource = it) },
+        placeholder = placeholderPainter,
+        error = errorRes?.let { painterResource(resource = it) } ?: placeholderPainter,
         contentScale = contentScale,
         alignment = alignment,
         contentDescription = null,
