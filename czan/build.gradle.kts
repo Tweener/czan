@@ -1,6 +1,5 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -136,7 +135,7 @@ group = ProjectConfiguration.Czan.Maven.group
 version = ProjectConfiguration.Czan.versionName
 
 mavenPublishing {
-    publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    publishToMavenCentral(automaticRelease = true)
 
     // Only disable signing if the flag is explicitly set to false
     val signAllPublicationsProperty = findProperty("mavenPublishing.signAllPublications")
