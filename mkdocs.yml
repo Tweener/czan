@@ -3,7 +3,7 @@ site_description: "CZAN is an atomic design system for Compose Multiplatform."
 site_url: https://www.czan.dev/
 docs_dir: "docs"
 
-repo_name: "CZAN"
+repo_name: "czan"
 repo_url: https://github.com/Tweener/czan/
 
 extra:
@@ -38,7 +38,6 @@ theme:
         name: Switch to light mode
   features:
     - content.code.copy
-    - navigation.expand
 
 markdown_extensions:
   - admonition
