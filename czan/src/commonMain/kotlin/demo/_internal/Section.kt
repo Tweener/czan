@@ -1,5 +1,6 @@
 package demo._internal
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,15 +26,18 @@ internal fun Section(
 ) {
     Column(
         modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(Size.Padding.Default),
     ) {
-        Text(
-            text = title,
-            color = MaterialTheme.colorScheme.onBackground,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Medium,
-        )
+        Column {
+            Text(
+                text = title,
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Medium,
+            )
 
-        SectionDivider()
+            SectionDivider()
+        }
 
         content()
     }
