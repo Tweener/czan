@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.9.8] - August 7th, 2025
+- TextField: Changed the typography styles for BIG and REGULAR TextFieldSize to use displaySmall and titleSmall, respectively, for better alignment with design guidelines.
+
 ## [2.9.7] - July 3rd, 2025
 - Image: Fixes CircleCrop modifier and placeholder/error drawable
 - Update Kotlin to 2.2.0.
