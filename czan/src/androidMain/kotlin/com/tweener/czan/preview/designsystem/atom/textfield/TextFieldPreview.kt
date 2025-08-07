@@ -1,10 +1,10 @@
 package com.tweener.czan.preview.designsystem.atom.textfield
 
 import androidx.compose.runtime.Composable
-import com.tweener.czan.preview.UiModePreviews
 import com.tweener.czan.designsystem.atom.textfield.TextField
 import com.tweener.czan.designsystem.atom.textfield.TextFieldType
 import com.tweener.czan.preview.CzanThemePreview
+import com.tweener.czan.preview.UiModePreviews
 
 /**
  * @author Vivien Mahe
@@ -19,7 +19,7 @@ private fun TextFieldTextEnabledPlaceholderPreview() {
             text = "",
             label = "Label",
             placeholderText = "Enter something",
-            type = TextFieldType.TEXT
+            type = TextFieldType.TEXT,
         )
     }
 }

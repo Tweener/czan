@@ -32,8 +32,8 @@ enum class TextFieldSize {
         @Composable
         @ReadOnlyComposable
         get() = when (this) {
-            BIG -> MaterialTheme.typography.displayMedium
-            REGULAR -> MaterialTheme.typography.titleMedium
+            BIG -> MaterialTheme.typography.displaySmall
+            REGULAR -> MaterialTheme.typography.titleSmall
             SMALL -> MaterialTheme.typography.labelMedium
         }
 
