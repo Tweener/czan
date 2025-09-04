@@ -73,6 +73,10 @@ Each component includes comprehensive Compose previews in:
 ### Publishing
 The project uses Vanniktech Maven Publish plugin with automatic releases to Maven Central. Version is controlled in `ProjectConfiguration.kt:12`.
 
+### Testing
+- `./gradlew iosSimulatorArm64Test` - Run iOS simulator tests
+- `./gradlew testReleaseUnitTest` - Run Android release unit tests
+
 ### Supported Platforms
 - Android (minSdk 24, compileSdk 35)
 - iOS (arm64, x64, simulator)
