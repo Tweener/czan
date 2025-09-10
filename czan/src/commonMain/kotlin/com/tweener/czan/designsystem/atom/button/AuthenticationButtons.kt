@@ -111,8 +111,6 @@ fun EmailSignUpButton(
         title = Res.string.button_email_signup,
         icon = emailIcon,
         enabled = enabled,
-        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         onClick = onClick,
     )
 }
@@ -129,8 +127,6 @@ fun EmailLogInButton(
         title = Res.string.button_email_login,
         icon = emailIcon,
         enabled = enabled,
-        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         onClick = onClick,
     )
 }
