@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.9] - September 4th, 2025
+- Button: Add new styles: PRIMARY_CONTAINER, SECONDARY_CONTAINER, TERTIARY_CONTAINER
+- Update Kotlin to 2.2.10.
+- Update Gradle to 8.12.2.
+- Update Ktor to 3.2.3.
+- Update Compose Lifecycle to 2.9.3.
+
 ## [2.9.8] - August 7th, 2025
 - TextField: Changed the typography styles for BIG and REGULAR TextFieldSize to use displaySmall and titleSmall, respectively, for better alignment with design guidelines.
 
