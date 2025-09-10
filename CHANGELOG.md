@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.9.10] - September 10th, 2025
+- AuthenticationButtons: Email buttons use default background color
+
 ## [2.9.9] - September 4th, 2025
 - Button: Add new styles: PRIMARY_CONTAINER, SECONDARY_CONTAINER, TERTIARY_CONTAINER
 - Update Kotlin to 2.2.10.
