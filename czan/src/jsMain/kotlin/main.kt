@@ -1,5 +1,6 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 import demo.Demo
 import kotlinx.browser.document
 import org.jetbrains.skiko.wasm.onWasmReady
@@ -16,6 +17,6 @@ fun main() {
     val id = iFrameParams.get("id")
 
     onWasmReady {
-        CanvasBasedWindow(canvasElementId = "ComposeTarget") { Demo(demoId = id) }
+        ComposeViewport(content = { Demo(demoId = id) })
     }
 }
