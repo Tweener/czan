@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.10.0] - September 21st, 2025
+- Card: Border stroke is now always displayed regardless of elevation setting
+- Update Kotlin to 2.2.20
+- Update Gradle to 8.13.0
+- Update Compose Multiplatform to 1.9.0
+- Update Material3 to 1.9.0-beta06
+- Update Ktor to 3.3.0
+- Update Compose Lifecycle to 2.9.4
+- Update Android Activity to 1.11.0
+- Update compile SDK to 36
+
 ## [2.9.10] - September 10th, 2025
 - AuthenticationButtons: Email buttons use default background color
 
