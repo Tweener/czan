@@ -40,8 +40,6 @@ fun Card(
     footer: @Composable (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
-    val cardBorder = if (sizes.elevation() == 0.dp) BorderStroke(width = sizes.borderStrokeWidth(), color = colors.borderStrokeColor()) else null
-
     Card(
         modifier = modifier.shadow(elevation = sizes.elevation(), shape = shape, spotColor = colors.shadowColor()),
         shape = shape,
@@ -49,7 +47,7 @@ fun Card(
             containerColor = colors.containerColor(),
             contentColor = colors.contentColor(),
         ),
-        border = cardBorder,
+        border = BorderStroke(width = sizes.borderStrokeWidth(), color = colors.borderStrokeColor()),
     ) {
         Column(
             modifier = Modifier

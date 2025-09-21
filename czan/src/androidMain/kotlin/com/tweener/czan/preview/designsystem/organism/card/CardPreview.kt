@@ -53,10 +53,12 @@ private fun CardWithHeaderPreview() {
                 colors = CardDefaults.colors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     dividerColor = MaterialTheme.colorScheme.outline,
+                    borderStrokeColor = MaterialTheme.colorScheme.outline,
                 ),
                 sizes = CardDefaults.sizes(
                     elevation = 12.dp,
                     contentPadding = PaddingValues(Size.Padding.Small),
+                    borderStrokeWidth = 1.dp,
                 ),
                 header = {
                     Column(
