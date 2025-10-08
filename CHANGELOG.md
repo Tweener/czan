@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.10.1] - October 8th, 2025
+- Add dashedBorder modifier for custom borders
+
 ## [2.10.0] - September 21st, 2025
 - Card: Border stroke is now always displayed regardless of elevation setting
 - Update Kotlin to 2.2.20
