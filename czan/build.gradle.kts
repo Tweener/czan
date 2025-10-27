@@ -54,7 +54,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
@@ -88,6 +87,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.shimmer)
+            implementation(libs.kmpkit)
 
             // Compose
             implementation(compose.ui)

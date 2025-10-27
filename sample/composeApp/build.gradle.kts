@@ -13,7 +13,6 @@ kotlin {
     // region iOS configuration
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
