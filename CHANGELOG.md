@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.10.2] - October 27th, 2025
+- Add cross-platform ScreenStateObserver and app visibility utilities
+- Add `ObserveAppVisibility` composable to monitor app lifecycle and screen state with debouncing
+- Add `rememberScreenStateObserver` expect/actual function for platform-specific screen state observation
+- Remove iosX64 target
+- Update library versions and add kmpkit dependency
+- Update lifecycle event handling for better Compose idioms
+
 ## [2.10.1] - October 8th, 2025
 - Add dashedBorder modifier for custom borders
 
