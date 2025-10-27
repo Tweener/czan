@@ -1,15 +1,16 @@
 [versions]
 kotlin = "2.2.20"
 gradle = "8.13.0"
-composeMultiplatform = "1.9.0"
-material3 = "1.9.0-beta06"
+composeMultiplatform = "1.9.1"
+material3 = "1.9.0"
 dependencyVersionsPlugin = "0.53.0"
 mavenPublish = "0.34.0"
-dokka = "2.0.0"
+dokka = "2.1.0"
 shimmer = "1.3.3"
-ktor = "3.3.0"
+ktor = "3.3.1"
 coil = "3.3.0"
-composeLifecycle = "2.9.4"
+composeLifecycle = "2.9.5"
+kmpKit = "1.0.12"
 
 # Android
 androidActivity = "1.11.0"
@@ -18,6 +19,7 @@ androidActivity = "1.11.0"
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
 compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "material3" }
 compose-multiplatform-lifecycle = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "composeLifecycle" }
+kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
 
 # Coil
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
