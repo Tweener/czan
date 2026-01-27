@@ -35,6 +35,7 @@ fun Card(
     colors: CardColors = CardDefaults.colors(),
     sizes: CardSizes = CardDefaults.sizes(),
     showDividers: Boolean = true,
+    fillMaxWidth: Boolean = true,
     onClick: (() -> Unit)? = null,
     header: @Composable (() -> Unit)? = null,
     footer: @Composable (() -> Unit)? = null,
@@ -59,21 +60,45 @@ fun Card(
                 .clickableRipple(enabled = onClick != null) { onClick?.invoke() }
         ) {
             header?.let {
-                Box(modifier = Modifier.fillMaxWidth().padding(sizes.headerPadding())) {
+                Box(
+                    modifier = Modifier
+                        .conditional(
+                            condition = fillMaxWidth,
+                            ifTrue = { fillMaxWidth() },
+                        )
+                        .padding(sizes.headerPadding())
+                ) {
                     header()
                 }
 
-                if (showDividers) HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
+                if (showDividers)
+                    HorizontalDivider(modifier = Modifier.conditional(condition = fillMaxWidth, ifTrue = { fillMaxWidth() }), thickness = 1.dp, color = colors.dividerColor())
             }
 
-            Box(modifier = Modifier.fillMaxWidth().padding(sizes.contentPadding())) {
+            Box(
+                modifier = Modifier
+                    .conditional(
+                        condition = fillMaxWidth,
+                        ifTrue = { fillMaxWidth() },
+                    )
+                    .padding(sizes.contentPadding())
+            ) {
                 content()
             }
 
             footer?.let {
-                if (showDividers) HorizontalDivider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = colors.dividerColor())
+                if (showDividers) HorizontalDivider(
+                    modifier = Modifier.conditional(condition = fillMaxWidth, ifTrue = { fillMaxWidth() }), thickness = 1.dp, color = colors.dividerColor()
+                )
 
-                Box(modifier = Modifier.fillMaxWidth().padding(sizes.footerPadding())) {
+                Box(
+                    modifier = Modifier
+                        .conditional(
+                            condition = fillMaxWidth,
+                            ifTrue = { fillMaxWidth() },
+                        )
+                        .padding(sizes.footerPadding())
+                ) {
                     footer()
                 }
             }
