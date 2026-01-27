@@ -75,7 +75,7 @@ The project uses Vanniktech Maven Publish plugin with automatic releases to Mave
 
 ### Testing
 - `./gradlew iosSimulatorArm64Test` - Run iOS simulator tests
-- `./gradlew testReleaseUnitTest` - Run Android release unit tests
+- `./gradlew testAndroidHostTest` - Run Android unit tests
 
 ### Supported Platforms
 - Android (minSdk 24, compileSdk 35)
