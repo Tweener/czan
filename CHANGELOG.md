@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.11.0] - January 27th, 2026
+- Card: Add `fillMaxWidth` parameter to control whether the card fills the maximum available width (defaults to `true`)
+- Migrate to AGP 9.0 with `com.android.kotlin.multiplatform.library` plugin
+- Split sample app into `shared` (KMP library) and `androidApp` (pure Android) modules
+- Update Kotlin to 2.3.0
+- Update Gradle to 9.0
+- Update Compose Multiplatform to 1.10.0
+- Update Ktor to 3.4.0
+- Update Compose Lifecycle to 2.9.6
+- Update Android Activity to 1.12.2
+- Replace deprecated `compose.*` accessors with explicit Maven coordinates
+
 ## [2.10.2] - October 27th, 2025
 - Add cross-platform ScreenStateObserver and app visibility utilities
 - Add `ObserveAppVisibility` composable to monitor app lifecycle and screen state with debouncing
