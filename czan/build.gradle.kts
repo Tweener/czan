@@ -161,8 +161,8 @@ tasks.register<Copy>("copyDemoSamples") {
     into(layout.projectDirectory.dir("../docs/demo"))
 }
 
-//tasks.named("publishToMavenLocal") {
-//    dependsOn("copyDemoSamples")
-//}
+tasks.named("publishToMavenLocal") {
+    dependsOn("copyDemoSamples")
+}
 
 // endregion Demo samples
