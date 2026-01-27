@@ -17,7 +17,7 @@ import demo._internal.Section
 import demo._internal.SectionFlowContent
 import io.github.tweener.czan.generated.resources.Res
 import io.github.tweener.czan.generated.resources.profile_header_background
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * @author Vivien Mahe

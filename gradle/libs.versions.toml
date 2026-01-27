@@ -1,25 +1,37 @@
 [versions]
-kotlin = "2.2.20"
-gradle = "8.13.0"
-composeMultiplatform = "1.9.1"
+kotlin = "2.3.0"
+gradle = "9.0.0"
+composeMultiplatform = "1.10.0"
 material3 = "1.9.0"
+materialIconsExtended = "1.7.3"
 dependencyVersionsPlugin = "0.53.0"
-mavenPublish = "0.34.0"
+mavenPublish = "0.36.0"
 dokka = "2.1.0"
 shimmer = "1.3.3"
-ktor = "3.3.1"
+ktor = "3.4.0"
 coil = "3.3.0"
-composeLifecycle = "2.9.5"
-kmpKit = "1.0.12"
+composeLifecycle = "2.9.6"
+kmpKit = "1.0.13"
 
 # Android
-androidActivity = "1.11.0"
+androidActivity = "1.12.2"
 
 [libraries]
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
+kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
+
+
+# Compose
+compose-multiplatform-backhandler = { group = "org.jetbrains.compose.ui", name = "ui-backhandler", version.ref = "composeMultiplatform" }
+compose-multiplatform-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", version.ref = "composeMultiplatform" }
+compose-multiplatform-foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "composeMultiplatform" }
+compose-multiplatform-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "composeMultiplatform" }
+compose-multiplatform-uiToolingPreview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "composeMultiplatform" }
+compose-multiplatform-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "composeMultiplatform" }
+compose-multiplatform-material = { group = "org.jetbrains.compose.material", name = "material", version.ref = "composeMultiplatform" }
+compose-multiplatform-materialIconsExtended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version.ref = "materialIconsExtended" }
 compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "material3" }
 compose-multiplatform-lifecycle = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "composeLifecycle" }
-kmpkit = { group = "io.github.tweener", name = "kmpkit", version.ref = "kmpKit" }
 
 # Coil
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
@@ -35,11 +47,25 @@ android-activity-compose = { group = "androidx.activity", name = "activity-compo
 
 [bundles]
 coil = ["coil-compose", "coil-network-ktor"]
+compose = [
+    "compose-multiplatform-backhandler",
+    "compose-multiplatform-runtime",
+    "compose-multiplatform-foundation",
+    "compose-multiplatform-ui",
+    "compose-multiplatform-uiToolingPreview",
+    "compose-multiplatform-components-resources",
+    "compose-multiplatform-material",
+    "compose-multiplatform-materialIconsExtended",
+    "compose-multiplatform-material3",
+    "compose-multiplatform-lifecycle"
+]
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "gradle" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "gradle" }
 android-application = { id = "com.android.application", version.ref = "gradle" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dependency-versions = { id = "com.github.ben-manes.versions", version.ref = "dependencyVersionsPlugin" }

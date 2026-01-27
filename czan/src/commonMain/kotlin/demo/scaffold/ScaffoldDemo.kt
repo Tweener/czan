@@ -27,7 +27,7 @@ import com.tweener.czan.designsystem.atom.button.FloatingActionButton
 import com.tweener.czan.designsystem.atom.scaffold.Scaffold
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.preview.CzanThemePreview
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * @author Vivien Mahe

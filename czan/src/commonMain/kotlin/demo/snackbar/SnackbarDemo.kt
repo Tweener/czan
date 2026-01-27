@@ -18,7 +18,7 @@ import com.tweener.czan.designsystem.atom.snackbar.rememberSnackbarHostState
 import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.preview.CzanThemePreview
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * @author Vivien Mahe

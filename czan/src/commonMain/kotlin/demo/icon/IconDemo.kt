@@ -25,7 +25,7 @@ import io.github.tweener.czan.generated.resources.chevron_left
 import io.github.tweener.czan.generated.resources.chevron_right
 import io.github.tweener.czan.generated.resources.email
 import io.github.tweener.czan.generated.resources.google_logo
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * @author Vivien Mahe

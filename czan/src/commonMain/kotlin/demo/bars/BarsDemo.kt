@@ -26,7 +26,7 @@ import com.tweener.czan.designsystem.atom.bars.TopBarWithCloseButton
 import com.tweener.czan.preview.CzanThemePreview
 import demo._internal.PreviewBox
 import demo._internal.Section
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * @author Vivien Mahe

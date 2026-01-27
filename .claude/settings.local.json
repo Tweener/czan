@@ -3,7 +3,8 @@
     "allow": [
       "Bash(find:*)",
       "Bash(./gradlew:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebSearch"
     ],
     "deny": []
   }

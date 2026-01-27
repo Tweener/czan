@@ -21,7 +21,7 @@ import demo._internal.SectionFlowContent
 import io.github.tweener.czan.generated.resources.Res
 import io.github.tweener.czan.generated.resources.chevron_left
 import io.github.tweener.czan.generated.resources.chevron_right
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ButtonDemo() {
