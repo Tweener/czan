@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.11.1] - February 20th, 2026
+- Button: Fix high recomposition frequency in loading animation by deferring state reads to the draw phase
+- Button: Memoize icon composable lambdas and onClick wrapper to reduce unnecessary recompositions
+- Button: Only compose loading content when actively loading or animating out
+- Button: Extract and memoize resolved colors and border for outlined/filled styles
+- Update Kotlin to 2.3.10
+- Update Gradle to 9.0.1
+- Update Compose Multiplatform to 1.10.1
+- Update Android Activity to 1.12.4
+
 ## [2.11.0] - January 27th, 2026
 - Card: Add `fillMaxWidth` parameter to control whether the card fills the maximum available width (defaults to `true`)
 - Migrate to AGP 9.0 with `com.android.kotlin.multiplatform.library` plugin
