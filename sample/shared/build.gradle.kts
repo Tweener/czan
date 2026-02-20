@@ -31,10 +31,10 @@ kotlin {
             api(project(":czan"))
 
             // Compose
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
+            implementation(libs.compose.multiplatform.runtime)
+            implementation(libs.compose.multiplatform.foundation)
+            implementation(libs.compose.multiplatform.material)
+            implementation(libs.compose.multiplatform.ui)
             implementation(libs.compose.multiplatform.material3)
         }
     }

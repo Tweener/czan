@@ -1,7 +1,7 @@
 [versions]
-kotlin = "2.3.0"
-gradle = "9.0.0"
-composeMultiplatform = "1.10.0"
+kotlin = "2.3.10"
+gradle = "9.0.1"
+composeMultiplatform = "1.10.1"
 material3 = "1.9.0"
 materialIconsExtended = "1.7.3"
 dependencyVersionsPlugin = "0.53.0"
@@ -14,7 +14,7 @@ composeLifecycle = "2.9.6"
 kmpKit = "1.0.13"
 
 # Android
-androidActivity = "1.12.2"
+androidActivity = "1.12.4"
 
 [libraries]
 shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "shimmer" }
