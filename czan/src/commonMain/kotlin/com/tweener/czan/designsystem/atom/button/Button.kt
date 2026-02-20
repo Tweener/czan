@@ -113,6 +113,14 @@ fun Button(
     trailingIcon: DrawableResource? = null,
     onClick: (() -> Unit)? = null
 ) {
+    val iconSize = size.iconSize
+    val leadingIconContent: @Composable (() -> Unit)? = remember(leadingIcon, iconSize) {
+        leadingIcon?.let { { Icon(modifier = Modifier.size(iconSize), resource = it, contentDescription = null) } }
+    }
+    val trailingIconContent: @Composable (() -> Unit)? = remember(trailingIcon, iconSize) {
+        trailingIcon?.let { { Icon(modifier = Modifier.size(iconSize), resource = it, contentDescription = null) } }
+    }
+
     CzanButton(
         modifier = modifier,
         text = text?.let { stringResource(resource = it) },
@@ -123,8 +131,8 @@ fun Button(
         outlined = outlined,
         loading = loading,
         loadingStyle = loadingStyle,
-        leadingIcon = leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), resource = it, contentDescription = null) } },
-        trailingIcon = trailingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), resource = it, contentDescription = null) } },
+        leadingIcon = leadingIconContent,
+        trailingIcon = trailingIconContent,
         onClick = onClick,
     )
 }
@@ -144,6 +152,14 @@ fun Button(
     trailingIcon: DrawableResource? = null,
     onClick: (() -> Unit)? = null
 ) {
+    val iconSize = size.iconSize
+    val leadingIconContent: @Composable (() -> Unit)? = remember(leadingIcon, iconSize) {
+        leadingIcon?.let { { Icon(modifier = Modifier.size(iconSize), resource = it, contentDescription = null) } }
+    }
+    val trailingIconContent: @Composable (() -> Unit)? = remember(trailingIcon, iconSize) {
+        trailingIcon?.let { { Icon(modifier = Modifier.size(iconSize), resource = it, contentDescription = null) } }
+    }
+
     CzanButton(
         modifier = modifier,
         text = text,
@@ -154,8 +170,8 @@ fun Button(
         outlined = outlined,
         loading = loading,
         loadingStyle = loadingStyle,
-        leadingIcon = leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), resource = it, contentDescription = null) } },
-        trailingIcon = trailingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), resource = it, contentDescription = null) } },
+        leadingIcon = leadingIconContent,
+        trailingIcon = trailingIconContent,
         onClick = onClick,
     )
 }
@@ -175,6 +191,14 @@ fun Button(
     trailingIcon: ImageVector? = null,
     onClick: (() -> Unit)? = null
 ) {
+    val iconSize = size.iconSize
+    val leadingIconContent: @Composable (() -> Unit)? = remember(leadingIcon, iconSize) {
+        leadingIcon?.let { { Icon(modifier = Modifier.size(iconSize), imageVector = it, contentDescription = null) } }
+    }
+    val trailingIconContent: @Composable (() -> Unit)? = remember(trailingIcon, iconSize) {
+        trailingIcon?.let { { Icon(modifier = Modifier.size(iconSize), imageVector = it, contentDescription = null) } }
+    }
+
     CzanButton(
         modifier = modifier,
         text = text?.let { stringResource(resource = it) },
@@ -185,8 +209,8 @@ fun Button(
         outlined = outlined,
         loading = loading,
         loadingStyle = loadingStyle,
-        leadingIcon = leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
-        trailingIcon = trailingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
+        leadingIcon = leadingIconContent,
+        trailingIcon = trailingIconContent,
         onClick = onClick,
     )
 }
@@ -206,6 +230,14 @@ fun Button(
     trailingIcon: ImageVector? = null,
     onClick: (() -> Unit)? = null
 ) {
+    val iconSize = size.iconSize
+    val leadingIconContent: @Composable (() -> Unit)? = remember(leadingIcon, iconSize) {
+        leadingIcon?.let { { Icon(modifier = Modifier.size(iconSize), imageVector = it, contentDescription = null) } }
+    }
+    val trailingIconContent: @Composable (() -> Unit)? = remember(trailingIcon, iconSize) {
+        trailingIcon?.let { { Icon(modifier = Modifier.size(iconSize), imageVector = it, contentDescription = null) } }
+    }
+
     CzanButton(
         modifier = modifier,
         text = text,
@@ -216,8 +248,8 @@ fun Button(
         outlined = outlined,
         loading = loading,
         loadingStyle = loadingStyle,
-        leadingIcon = leadingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
-        trailingIcon = trailingIcon?.let { { Icon(modifier = Modifier.size(size.iconSize), imageVector = it, contentDescription = null) } },
+        leadingIcon = leadingIconContent,
+        trailingIcon = trailingIconContent,
         onClick = onClick,
     )
 }
@@ -249,19 +281,32 @@ private fun CzanButton(
         else -> size.contentPadding
     }
 
+    val wrappedOnClick = remember(loading, onClick) {
+        { if (!loading) onClick?.invoke() }
+    }
+
+    val resolvedContainerColor = if (outlined) Color.Transparent else style.containerColor
+    val resolvedContentColor = if (outlined) style.containerColor else style.contentColor
+    val colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+        containerColor = resolvedContainerColor,
+        contentColor = resolvedContentColor,
+        disabledContainerColor = style.disabledContainerColor,
+        disabledContentColor = style.disabledContentColor,
+    )
+
+    val outlineColor = MaterialTheme.colorScheme.outline
+    val border = remember(outlined, outlineColor) {
+        if (outlined) BorderStroke(1.dp, outlineColor) else null
+    }
+
     Button(
         modifier = modifier.height(size.height),
         enabled = enabled,
-        onClick = { if (loading.not()) onClick?.invoke() },
+        onClick = wrappedOnClick,
         contentPadding = contentPadding,
         shape = size.shape,
-        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-            containerColor = if (outlined) Color.Transparent else style.containerColor,
-            contentColor = if (outlined) style.containerColor else style.contentColor,
-            disabledContainerColor = style.disabledContainerColor,
-            disabledContentColor = style.disabledContentColor
-        ),
-        border = if (outlined) BorderStroke(1.dp, MaterialTheme.colorScheme.outline) else null
+        colors = colors,
+        border = border
     ) {
         val loadingAlpha by animateFloatAsState(targetValue = if (loading) 1f else 0f)
 
@@ -295,12 +340,14 @@ private fun CzanButton(
                 }
             }
 
-            ButtonLoadingContent(
-                modifier = Modifier.fillMaxHeight().graphicsLayer { alpha = loadingAlpha },
-                contentColor = if (outlined) style.containerColor else style.contentColor,
-                size = size,
-                loadingStyle = loadingStyle,
-            )
+            if (loading || loadingAlpha > 0f) {
+                ButtonLoadingContent(
+                    modifier = Modifier.fillMaxHeight().graphicsLayer { alpha = loadingAlpha },
+                    contentColor = resolvedContentColor,
+                    size = size,
+                    loadingStyle = loadingStyle,
+                )
+            }
         }
     }
 }
