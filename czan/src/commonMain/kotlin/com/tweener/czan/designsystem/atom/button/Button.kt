@@ -340,11 +340,12 @@ private fun ButtonLoadingContent(
         horizontalArrangement = Arrangement.spacedBy(size.loadingDotGap),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        animatableDots.map { it.value }.forEach { animationValue ->
+        animatableDots.forEach { animatable ->
             Box(
                 Modifier
                     .size(size.loadingDotSize)
                     .graphicsLayer {
+                        val animationValue = animatable.value
                         when (loadingStyle) {
                             ButtonLoadingStyle.BOUNCE -> translationY = -animationValue * translationYDelta
                             ButtonLoadingStyle.FADE -> alpha = animationValue
