@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.11.3] - March 5th, 2026
+- AuthenticationButtons: Use dark/light Apple logo based on system theme (`isSystemInDarkTheme`)
+
 ## [2.11.2] - March 5th, 2026
 - Fix missing Compose resources (drawables, strings, fonts) in published Android AAR when using `com.android.kotlin.multiplatform.library` plugin by enabling `androidResources`
 - Update Ktor to 3.4.1
