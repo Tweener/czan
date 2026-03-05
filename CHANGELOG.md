@@ -2,6 +2,8 @@
 
 ## [2.11.2] - March 5th, 2026
 - Fix missing Compose resources (drawables, strings, fonts) in published Android AAR when using `com.android.kotlin.multiplatform.library` plugin by enabling `androidResources`
+- Update Ktor to 3.4.1
+- Update Coil to 3.4.0
 
 ## [2.11.1] - February 20th, 2026
 - Button: Fix high recomposition frequency in loading animation by deferring state reads to the draw phase
