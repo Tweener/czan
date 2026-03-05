@@ -2,6 +2,7 @@ package com.tweener.czan.designsystem.atom.button
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,7 +24,8 @@ import com.tweener.czan.designsystem.atom.text.Text
 import com.tweener.czan.theme.CzanUiDefaults
 import com.tweener.czan.theme.Size
 import io.github.tweener.czan.generated.resources.Res
-import io.github.tweener.czan.generated.resources.apple_logo
+import io.github.tweener.czan.generated.resources.apple_logo_black
+import io.github.tweener.czan.generated.resources.apple_logo_white
 import io.github.tweener.czan.generated.resources.button_apple_login
 import io.github.tweener.czan.generated.resources.button_apple_signup
 import io.github.tweener.czan.generated.resources.button_email_login
@@ -75,10 +77,12 @@ fun AppleSignUpButton(
     enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
+    val appleLogo = if (isSystemInDarkTheme()) Res.drawable.apple_logo_black else Res.drawable.apple_logo_white
+
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_apple_signup,
-        icon = Res.drawable.apple_logo,
+        icon = appleLogo,
         enabled = enabled,
         onClick = onClick,
     )
@@ -90,10 +94,12 @@ fun AppleLogInButton(
     enabled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
+    val appleLogo = if (isSystemInDarkTheme()) Res.drawable.apple_logo_black else Res.drawable.apple_logo_white
+
     AuthenticationButton(
         modifier = modifier,
         title = Res.string.button_apple_login,
-        icon = Res.drawable.apple_logo,
+        icon = appleLogo,
         enabled = enabled,
         onClick = onClick,
     )

@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tweener.czan.designsystem.atom.icon.Icon
 import com.tweener.czan.preview.CzanThemePreview
@@ -20,12 +21,11 @@ import demo._internal.PreviewBox
 import demo._internal.Section
 import demo._internal.SectionFlowContent
 import io.github.tweener.czan.generated.resources.Res
-import io.github.tweener.czan.generated.resources.apple_logo
+import io.github.tweener.czan.generated.resources.apple_logo_white
 import io.github.tweener.czan.generated.resources.chevron_left
 import io.github.tweener.czan.generated.resources.chevron_right
 import io.github.tweener.czan.generated.resources.email
 import io.github.tweener.czan.generated.resources.google_logo
-import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * @author Vivien Mahe
@@ -148,7 +148,7 @@ fun IconDemo() {
                         tint = MaterialTheme.colorScheme.onBackground,
                     )
                     Icon(
-                        resource = Res.drawable.apple_logo,
+                        resource = Res.drawable.apple_logo_white,
                         contentDescription = "Apple Logo",
                         tint = MaterialTheme.colorScheme.onBackground,
                     )
