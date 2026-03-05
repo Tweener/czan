@@ -24,6 +24,10 @@ kotlin {
 
         withHostTestBuilder {}
 
+        androidResources {
+            enable = true
+        }
+
         compilerOptions {
             jvmTarget.set(JvmTarget.fromTarget(ProjectConfiguration.Compiler.jvmTarget))
         }
