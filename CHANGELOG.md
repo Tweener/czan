@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.11.2] - March 5th, 2026
+- Fix missing Compose resources (drawables, strings, fonts) in published Android AAR when using `com.android.kotlin.multiplatform.library` plugin by enabling `androidResources`
+
 ## [2.11.1] - February 20th, 2026
 - Button: Fix high recomposition frequency in loading animation by deferring state reads to the draw phase
 - Button: Memoize icon composable lambdas and onClick wrapper to reduce unnecessary recompositions
