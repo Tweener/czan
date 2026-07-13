@@ -25,7 +25,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Check for new versions of dependencies
-        run: ./gradlew dependencyUpdates
+        run: ./gradlew dependencyUpdates --no-parallel
 
       - name: Adds the content of the list of dependencies to the environment variable
         id: get-dependencies-list
