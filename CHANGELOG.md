@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.11.4] - July 13th, 2026
+- Update compose-shimmer to 1.5.0 to fix an uncatchable `ClassCastException` (SIGABRT) crash on iOS when a shimmer placeholder draws with Compose Multiplatform 1.11.x
+- Drop stale `CanvasBasedWindow` imports in the js/wasmJs demo entry points (API removed in Compose 1.11)
+- Update Kotlin to 2.4.0
+- Update Compose Multiplatform to 1.11.1
+- Update Gradle to 9.3.1
+- Update AGP to 9.1.1
+- Update Ktor to 3.5.1
+- Update Coil to 3.5.0
+- Update Dokka to 2.2.0
+- Update Compose Lifecycle to 2.10.0
+- Update Android Activity to 1.13.0
+
 ## [2.11.3] - March 5th, 2026
 - AuthenticationButtons: Use dark/light Apple logo based on system theme (`isSystemInDarkTheme`)
 
