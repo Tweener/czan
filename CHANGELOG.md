@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.11.5] - November 9th, 2026
+- Update Coil to 3.6.3, built against the same Skiko as Compose Multiplatform 1.12 (Coil 3.5.0 caused a "Skiko dependencies' versions are incompatible" warning in apps on Compose 1.12)
+- Update Kotlin to 2.4.21
+- Update Compose Multiplatform to 1.12.2
+- Update Gradle to 9.9.0
+- Update AGP to 9.5.1
+- Update Ktor to 3.6.1
+- Update Dokka to 2.3.0
+- Update Compose Lifecycle to 2.11.0
+- Update KMPKit to 1.0.15
+- Update Dependency Versions plugin to 0.67.0
+- Update Android compile SDK to 37: Compose Multiplatform 1.12's AndroidX dependencies require apps using CZAN to compile against API 37 or later
+
 ## [2.11.4] - July 13th, 2026
 - Update compose-shimmer to 1.5.0 to fix an uncatchable `ClassCastException` (SIGABRT) crash on iOS when a shimmer placeholder draws with Compose Multiplatform 1.11.x
 - Drop stale `CanvasBasedWindow` imports in the js/wasmJs demo entry points (API removed in Compose 1.11)
